@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { fontVariables } from "./fonts";
 import "./globals.css";
 
@@ -8,14 +7,17 @@ export const metadata: Metadata = {
   description: "PROACTIVE Design and Building Systems, Inc. — design-build across Maryland, DC and Virginia.",
 };
 
-/** Decides before first paint whether the intro will play, so the page never flashes underneath it. */
+/**
+ * Decides before first paint whether the intro will play, so the page never flashes underneath it.
+ * Must be a plain inline script: next/script's beforeInteractive is queued until the app bundle runs.
+ */
 const introFlag = `(function(){try{var d=document.documentElement;var n=performance.getEntriesByType('navigation')[0];var seen=sessionStorage.getItem('define-rhythm-v1')==='seen';var forced=/[?&]intro\\b/.test(location.search);var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;var play=forced||(!seen&&!location.hash&&(!n||n.type==='navigate')&&!reduced);d.dataset.intro=play?'play':'none'}catch(e){}})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-US" className={fontVariables} suppressHydrationWarning>
       <head>
-        <Script id="intro-flag" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: introFlag }} />
+        <script id="intro-flag" dangerouslySetInnerHTML={{ __html: introFlag }} />
       </head>
       <body className="min-h-full">
         <a
