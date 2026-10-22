@@ -34,7 +34,7 @@ export function Insights() {
         <p className="text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase">{INSIGHTS.eyebrow}</p>
         <h2
           id="insights-title"
-          className="mt-3 text-4xl leading-tight font-light tracking-[-.025em] text-[#00142c] [text-wrap:initial] min-[640px]:text-5xl"
+          className="mt-3 font-sans text-4xl leading-tight font-[450] tracking-[-.028em] text-[#00142c] [text-wrap:initial] min-[640px]:text-5xl"
         >
           {INSIGHTS.heading}
         </h2>

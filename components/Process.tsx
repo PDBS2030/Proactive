@@ -51,7 +51,7 @@ export function Process() {
         className="absolute inset-x-0 -top-[25vh] -bottom-[25vh] z-0 bg-[url(/assets/process-bg.jpg)] bg-cover bg-center bg-no-repeat will-change-transform"
       />
       <div className="relative z-1 mx-auto w-[min(1210px,100%)] text-center">
-        <h2 id="process-title" className={`${heading} tracking-[.29em]`}>
+        <h2 id="process-title" className="font-sans text-[clamp(22px,2.4vw,34px)] leading-[1.1] font-[450] tracking-[.29em] uppercase [text-wrap:initial]">
           {PROCESS.title}
         </h2>
         <p className="mt-[17px] text-[clamp(13px,1.4vw,20px)] leading-[1.65] tracking-[1px] uppercase">{PROCESS.lead}</p>
