@@ -43,7 +43,7 @@ export function Process() {
     <section
       ref={sectionRef}
       aria-labelledby="process-title"
-      className="relative z-4 overflow-hidden bg-[#5c5834] px-5 py-14 text-white min-[768px]:px-6 min-[768px]:pt-[70px] min-[768px]:pb-[74px]"
+      className="title-vars relative z-4 overflow-hidden bg-[#5c5834] px-5 py-14 text-white min-[768px]:px-6 min-[768px]:pt-[70px] min-[768px]:pb-[74px]"
     >
       <div
         ref={bgRef}
@@ -51,7 +51,7 @@ export function Process() {
         className="absolute inset-x-0 -top-[25vh] -bottom-[25vh] z-0 bg-[url(/assets/process-bg.jpg)] bg-cover bg-center bg-no-repeat will-change-transform"
       />
       <div className="relative z-1 mx-auto w-[min(1210px,100%)] text-center">
-        <h2 id="process-title" className="font-sans text-[clamp(22px,2.4vw,34px)] leading-[1.1] font-[450] tracking-[.29em] uppercase [text-wrap:initial]">
+        <h2 id="process-title" className="font-sans text-(length:--h2) leading-(--h2-lh) font-[450] tracking-[-.028em] [text-wrap:initial]">
           {PROCESS.title}
         </h2>
         <p className="mt-[17px] text-[clamp(13px,1.4vw,20px)] leading-[1.65] tracking-[1px] uppercase">{PROCESS.lead}</p>

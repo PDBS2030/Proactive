@@ -20,14 +20,14 @@ export function Faq() {
   return (
     <section
       aria-labelledby="faq-title"
-      className="relative z-4 bg-[#f3f6fa] px-6 pt-[90px] pb-[110px] font-mulish text-[#020f18] min-[1000px]:pt-[130px] min-[1000px]:pb-[200px]"
+      className="title-vars relative z-4 bg-[#f3f6fa] px-6 pt-[90px] pb-[110px] font-mulish text-[#020f18] min-[1000px]:pt-[130px] min-[1000px]:pb-[200px]"
     >
       <div className="mx-auto grid w-[min(1275px,100%)] grid-cols-1 items-start gap-y-12 min-[1000px]:grid-cols-[544fr_731fr] min-[1000px]:gap-y-0">
         <div className="max-w-none min-[1000px]:max-w-[71%]">
           <p className="text-sm leading-[23px] font-bold tracking-[2.5px] text-gold uppercase">{FAQS.eyebrow}</p>
           <h3
             id="faq-title"
-            className="mt-[25px] font-sans text-4xl leading-[44px] font-[450] tracking-[-.028em] text-[#020f18] [text-wrap:initial] min-[600px]:text-[45px] min-[600px]:leading-[55px]"
+            className="mt-[25px] font-sans text-(length:--h2) leading-(--h2-lh) font-[450] tracking-[-.028em] [text-wrap:initial] text-[#020f18]"
           >
             {FAQS.title}
           </h3>

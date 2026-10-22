@@ -28,13 +28,13 @@ export function Insights() {
   return (
     <section
       aria-labelledby="insights-title"
-      className="relative z-4 bg-white py-[74px] font-poppins text-[#00142c] min-[640px]:py-[90px] min-[1024px]:py-[106px]"
+      className="title-vars relative z-4 bg-white py-[74px] font-poppins text-[#00142c] min-[640px]:py-[90px] min-[1024px]:py-[106px]"
     >
       <div className="mx-auto w-full max-w-[1680px] px-5 min-[640px]:px-8">
         <p className="text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase">{INSIGHTS.eyebrow}</p>
         <h2
           id="insights-title"
-          className="mt-3 font-sans text-4xl leading-tight font-[450] tracking-[-.028em] text-[#00142c] [text-wrap:initial] min-[640px]:text-5xl"
+          className="mt-3 font-sans text-(length:--h2) leading-(--h2-lh) font-[450] tracking-[-.028em] [text-wrap:initial] text-[#00142c]"
         >
           {INSIGHTS.heading}
         </h2>

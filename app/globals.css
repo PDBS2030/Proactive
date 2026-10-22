@@ -65,6 +65,20 @@ body {
     }
   }
 
+  /* Section-title size: the same clamp values as "Our core offerings" */
+  .title-vars {
+    --h2: clamp(50.04px, calc(2.07vw + 42.24px), 59.04px); --h2-lh: 1.06;
+  }
+  @media (min-width: 810px) {
+    .title-vars { --h2: clamp(59.04px, calc(2.09vw + 42px), 68.04px); --h2-lh: 1.07; }
+  }
+  @media (min-width: 1240px) {
+    .title-vars { --h2: clamp(68.04px, calc(5vw + 6px), 102px); }
+  }
+  @media (min-width: 1920px) {
+    .title-vars { --h2: clamp(102px, 5.31vw, 136px); --h2-lh: 1; }
+  }
+
   .offerings-vars {
     --pad: 15px; --gap: 15px;
     --h2: clamp(50.04px, calc(2.07vw + 42.24px), 59.04px); --h2-lh: 1.06;
