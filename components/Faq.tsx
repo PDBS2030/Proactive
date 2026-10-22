@@ -20,7 +20,7 @@ export function Faq() {
   return (
     <section
       aria-labelledby="faq-title"
-      className="title-vars relative z-4 bg-[#f3f6fa] px-6 pt-[90px] pb-[110px] font-mulish text-[#020f18] min-[1000px]:pt-[130px] min-[1000px]:pb-[200px]"
+      className="title-vars relative z-4 bg-[#f3f6fa] px-6 pt-[90px] pb-[110px] font-sans text-[#020f18] min-[1000px]:pt-[130px] min-[1000px]:pb-[200px]"
     >
       <div className="mx-auto grid w-[min(1275px,100%)] grid-cols-1 items-start gap-y-12 min-[1000px]:grid-cols-[544fr_731fr] min-[1000px]:gap-y-0">
         <div className="max-w-none min-[1000px]:max-w-[71%]">

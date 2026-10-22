@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { PROCESS } from "@/lib/data";
 
 const heading =
-  "font-cormorant text-[clamp(22px,2.4vw,34px)] leading-[1.1] font-medium uppercase [font-variant-numeric:lining-nums] [text-wrap:initial]";
+  "font-sans text-[clamp(22px,2.4vw,34px)] leading-[1.1] font-[450] uppercase [text-wrap:initial]";
 
 /** Process: 15 steps in 3 phases over a photo that drifts at 0.3 of the scroll speed. */
 export function Process() {
@@ -79,7 +79,7 @@ export function Process() {
 
         <Link
           href={PROCESS.cta.href}
-          className="group mt-[53px] inline-flex items-center justify-center border border-white px-4 py-[11px] font-cormorant text-[clamp(13px,1.3vw,18px)] leading-[1.2] font-semibold tracking-[.2em] text-white uppercase no-underline outline-none transition-[background-color,color] duration-300 hover:bg-white hover:text-[#4a4729] focus-visible:bg-white focus-visible:text-[#4a4729]"
+          className="group mt-[53px] inline-flex items-center justify-center border border-white px-4 py-[11px] font-sans text-[clamp(13px,1.3vw,18px)] leading-[1.2] font-medium tracking-[.2em] text-white uppercase no-underline outline-none transition-[background-color,color] duration-300 hover:bg-white hover:text-[#4a4729] focus-visible:bg-white focus-visible:text-[#4a4729]"
         >
           <span>{PROCESS.cta.label}</span>
           <span

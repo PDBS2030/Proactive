@@ -156,7 +156,7 @@ export function Projects() {
           ))}
         </div>
 
-        <div className="mt-4 flex flex-col gap-2 font-raleway min-[768px]:mt-[1.65cqw] min-[768px]:flex-row min-[768px]:items-stretch min-[768px]:gap-[.75cqw]">
+        <div className="mt-4 flex flex-col gap-2 font-sans min-[768px]:mt-[1.65cqw] min-[768px]:flex-row min-[768px]:items-stretch min-[768px]:gap-[.75cqw]">
           <p className="flex h-14 w-full items-center justify-center bg-[#3b608a] text-xl font-semibold text-[#c9dbec] min-[768px]:h-[3.99cqw] min-[768px]:w-[21.24cqw] min-[768px]:text-[1.7cqw]">
             Featured:
           </p>
