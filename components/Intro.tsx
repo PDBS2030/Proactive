@@ -101,7 +101,7 @@ export function Intro() {
       ref={ref}
       id="rhythm-intro"
       aria-label="PROACTIVE intro"
-      className="group fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none overflow-hidden border-0 bg-foreground p-0 text-background"
+      className="group open:animate-[rhythm-veil_.9s_4.5s_both] fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none overflow-hidden border-0 bg-foreground p-0 text-background"
     >
       <div aria-hidden="true" className="absolute inset-0 grid place-items-center [perspective:1100px]">
         <div className="flex [transform-style:preserve-3d] group-open:animate-[rhythm-space_4s_var(--ease-out)_both]">
@@ -144,7 +144,7 @@ export function Intro() {
         </span>
       </div>
 
-      <div aria-hidden="true" className="absolute inset-0 translate-y-[101%] bg-background group-open:animate-[rhythm-wipe_.9s_4.5s_var(--ease-out)_both]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-background group-open:animate-[rhythm-wipe_.9s_4.5s_var(--ease-out)_both]" />
     </dialog>
   );
 }

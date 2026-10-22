@@ -127,6 +127,11 @@ body {
   0% { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
+/* Once the light wipe fully covers the screen, drop the dark intro background so the wipe's exit reveals the page */
+@keyframes rhythm-veil {
+  0%, 48% { background-color: var(--color-foreground); }
+  49%, to { background-color: transparent; }
+}
 @keyframes rhythm-wipe {
   0% { transform: translateY(101%); }
   48% { transform: none; }
@@ -134,6 +139,7 @@ body {
 }
 
 #rhythm-intro::backdrop { background: var(--color-foreground); }
+#rhythm-intro[open]::backdrop { animation: rhythm-veil .9s 4.5s both; }
 
 /* Cover the page from first paint when the intro is going to play (set by the inline script in layout) */
 html[data-intro="play"] #rhythm-intro:not([open]) { display: block; }
