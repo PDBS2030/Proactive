@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* ───── Design tokens ───── */
+@theme inline {
+  --font-sans: var(--f-hanken), "Hanken Grotesk", sans-serif;
+  --font-montserrat: var(--f-montserrat), var(--f-hanken), sans-serif;
+  --font-cormorant: var(--f-cormorant), serif;
+  --font-raleway: var(--f-raleway), var(--f-hanken), sans-serif;
+  --font-poppins: var(--f-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-mulish: var(--f-mulish), var(--f-hanken), sans-serif;
+  --font-mono: var(--f-geist-mono), ui-monospace, monospace;
+}
+
+@theme {
+  --color-background: oklch(96.2% 0.004 75);
+  --color-foreground: oklch(20.5% 0.004 75);
+  --color-muted-foreground: oklch(42% 0.004 75);
+  --color-border: oklch(88% 0.003 240);
+  --color-navy: #082b52;
+  --color-gold: #b58f48;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* ───── Per-section responsive variables (values copied from the reference sites) ───── */
+@layer components {
+  .hero-vars {
+    --hero-pad: 15px;
+    --hero-gap: 15px;
+    --hero-h1: clamp(50.04px, calc(8.05vw + 19.8px), 84.96px);
+    --hero-h1-lh: 1.07;
+    --hero-p: 35.04px;
+    --hero-p-lh: 1.17;
+    --hero-word-gap: 14px;
+  }
+  @media (min-width: 810px) {
+    .hero-vars { --hero-pad: 32px; --hero-gap: 32px; --hero-h1: 84.96px; --hero-p: 24.96px; --hero-p-lh: 1.2; --hero-word-gap: 24px; }
+  }
+  @media (min-width: 1240px) {
+    .hero-vars {
+      --hero-pad: 40px; --hero-gap: 40px;
+      --hero-h1: clamp(84.96px, calc(6.32vw + 6.6px), 128.04px);
+      --hero-p: clamp(21.96px, calc(1.91vw - 1.68px), 35.04px);
+      --hero-p-lh: 1.18;
+    }
+  }
+  @media (min-width: 1920px) {
+    .hero-vars {
+      --hero-pad: 50px; --hero-gap: 52px;
+      --hero-h1: clamp(128.04px, calc(6.56vw + 2px), 170.04px);
+      --hero-p: clamp(35.04px, calc(1.88vw - 0.96px), 47.04px);
+      --hero-p-lh: 1.17;
+    }
+  }
+
+  .offerings-vars {
+    --pad: 15px; --gap: 15px;
+    --h2: clamp(50.04px, calc(2.07vw + 42.24px), 59.04px); --h2-lh: 1.06;
+    --h5: 20px; --h5-lh: 1.2; --h5-weight: 500;
+  }
+  @media (min-width: 810px) {
+    .offerings-vars {
+      --pad: 32px; --gap: 32px;
+      --h2: clamp(59.04px, calc(2.09vw + 42px), 68.04px); --h2-lh: 1.07;
+      --h5: clamp(15.96px, calc(0.7vw + 10.32px), 18.96px); --h5-lh: 1.18;
+    }
+  }
+  @media (min-width: 1240px) {
+    .offerings-vars {
+      --pad: 40px; --gap: 40px;
+      --h2: clamp(68.04px, calc(5vw + 6px), 102px);
+      --h5: clamp(18.96px, calc(1.62vw - 1.08px), 30px); --h5-lh: 1.21; --h5-weight: 450;
+    }
+  }
+  @media (min-width: 1920px) {
+    .offerings-vars {
+      --pad: 50px; --gap: 52px;
+      --h2: clamp(102px, 5.31vw, 136px); --h2-lh: 1;
+      --h5: clamp(30px, 1.56vw, 40px); --h5-lh: 1.2;
+    }
+  }
+
+  /* Green circle arrow: black / white / black sprite, slid sideways on hover */
+  .teaser-arrow {
+    background-image: url("data:image/svg+xml;utf8,<svg width='96' height='32' viewBox='0 0 144 48' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M 127.041 22.497 L 108.008 22.497 L 108.008 25.497 L 127.041 25.497 L 118.874 35.997 L 122.675 35.997 L 132.008 23.997 L 122.675 11.997 L 118.874 11.997 L 127.041 22.497 Z' fill='black'/><path d='M 79.041 22.497 L 60.008 22.497 L 60.008 25.497 L 79.041 25.497 L 70.874 35.997 L 74.675 35.997 L 84.008 23.997 L 74.675 11.997 L 70.874 11.997 L 79.041 22.497 Z' fill='white'/><path d='M 31.041 22.497 L 12.008 22.497 L 12.008 25.497 L 31.041 25.497 L 22.874 35.997 L 26.675 35.997 L 36.008 23.997 L 26.675 11.997 L 22.874 11.997 L 31.041 22.497 Z' fill='black'/></svg>");
+  }
+}
+
+/* ───── Intro (rhythm) ───── */
+@keyframes rhythm-build {
+  0% { opacity: 0; transform: scaleY(0); }
+  30%, 76% { opacity: 1; transform: scaleY(1); }
+  to { opacity: 0; transform: scaleY(1); }
+}
+@keyframes rhythm-space {
+  0%, 15% { transform: rotateX(55deg) rotate(-26deg) scale(0.8); }
+  55% { transform: rotateX(32deg) rotate(-12deg); }
+  85%, to { transform: rotateX(0) rotate(0) scale(0.85); }
+}
+@keyframes rhythm-name {
+  0%, 57% { opacity: 0; transform: translateY(20px); }
+  69%, 86% { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-12px); }
+}
+@keyframes rhythm-rule {
+  0% { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes rhythm-wipe {
+  0% { transform: translateY(101%); }
+  48% { transform: none; }
+  to { transform: translateY(-101%); }
+}
+
+#rhythm-intro::backdrop { background: var(--color-foreground); }
+
+/* Cover the page from first paint when the intro is going to play (set by the inline script in layout) */
+html[data-intro="play"] #rhythm-intro:not([open]) { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  #rhythm-intro:not(.rhythm-explicit) * { animation: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
