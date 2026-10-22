@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" fill="none">
+  <g clip-path="url(#a)">
+    <g clip-path="url(#b)">
+      <g clip-path="url(#c)">
+        <g clip-path="url(#d)" opacity=".45">
+          <ellipse cx="224" cy="847" fill="url(#e)" rx="1537" ry="517"/>
+          <ellipse cx="1648.5" cy="923.5" fill="url(#f)" rx="1570.5" ry="419.5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <defs>
+    <clipPath id="a">
+      <path fill="#fff" d="M0 0h1920v1080H0z"/>
+    </clipPath>
+    <clipPath id="b">
+      <path fill="#fff" d="M0 0h1920v1080H0z"/>
+    </clipPath>
+    <clipPath id="c">
+      <path fill="#fff" d="M0 0h1920v1080H0z"/>
+    </clipPath>
+    <clipPath id="d">
+      <path fill="#fff" d="M0 0h1920v1080H0z"/>
+    </clipPath>
+    <radialGradient id="e" cx="0" cy="0" r="1" gradientTransform="matrix(0 517 -1537 0 224 847)" gradientUnits="userSpaceOnUse">
+      <stop stop-opacity=".85"/>
+      <stop offset=".3" stop-opacity=".85"/>
+      <stop offset="1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="f" cx="0" cy="0" r="1" gradientTransform="matrix(0 420 -1570 0 1648.5 923.5)" gradientUnits="userSpaceOnUse">
+      <stop stop-opacity=".9"/>
+      <stop offset=".33" stop-opacity=".9"/>
+      <stop offset="1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
