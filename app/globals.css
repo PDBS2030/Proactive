@@ -138,6 +138,8 @@ body {
 
 /* Cover the page from first paint when the intro is going to play (set by the inline script in layout) */
 html[data-intro="play"] #rhythm-intro:not([open]) { display: block; }
+/* ...but show only the plain dark screen until the dialog opens: the logo mark builds up from nothing, so it must not sit there fully drawn first */
+#rhythm-intro:not([open]) svg { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   #rhythm-intro:not(.rhythm-explicit) * { animation: none !important; }
