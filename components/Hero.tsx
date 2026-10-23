@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { HERO } from "@/lib/data";
 
 const EASE = "cubic-bezier(.25,.1,.25,1)";
@@ -129,30 +129,32 @@ export function Hero() {
 
       <div
         ref={contentRef}
-        className="relative z-3 box-border flex h-screen transform-gpu flex-col justify-between p-(--hero-pad) will-change-transform"
+        className="relative z-3 box-border flex h-screen transform-gpu flex-col justify-between p-(--hero-pad) pl-4 will-change-transform min-[768px]:pl-[124px]"
       >
         <div
           className={[
             "relative mx-auto mt-auto mb-[200px] grid w-full grid-cols-12 items-end gap-x-(--hero-gap)",
-            "after:pointer-events-none after:absolute after:bottom-[calc(0px-var(--hero-pad)-200px)] after:left-1/2 after:-z-2 after:h-screen after:w-screen after:-translate-x-1/2 after:bg-cover after:bg-no-repeat after:content-['']",
+            "after:pointer-events-none after:absolute after:bottom-[calc(0px-var(--hero-pad)-200px)] after:left-1/2 min-[768px]:after:left-[calc(50%-(124px-var(--hero-pad))/2)] after:-z-2 after:h-screen after:w-screen after:-translate-x-1/2 after:bg-cover after:bg-no-repeat after:content-['']",
             "after:bg-[url(/assets/hero-background-filter-mobile.svg)] after:bg-position-[center_65%]",
             "min-[810px]:after:bg-[url(/assets/hero-background-filter.svg)] min-[810px]:after:bg-position-[center_50%]",
           ].join(" ")}
         >
-          <div className="col-span-12 mb-[18px] flex flex-col gap-3 min-[810px]:col-span-8 min-[810px]:mb-0">
+          <div className="col-span-12 mb-6 flex flex-col gap-3">
             <h1
-              className={`font-mulish text-[37.2px] leading-[45.2px] font-extrabold tracking-[1px] break-words text-white uppercase [text-wrap:initial] min-[690px]:text-[56.95px] min-[690px]:leading-[65.45px] min-[690px]:tracking-[.5px] min-[992px]:text-[90px] min-[992px]:leading-[100px] min-[992px]:tracking-[3.5px] ${textShadow}`}
+              className={`font-mulish text-[37.2px] leading-[45.2px] font-extrabold tracking-[1px] break-words text-white uppercase [text-wrap:initial] min-[690px]:text-[56.95px] min-[690px]:leading-[65.45px] min-[690px]:tracking-[.5px] min-[992px]:text-[length:min(90px,calc((100vw-299px)/12.55))] min-[992px]:leading-[1.11] min-[992px]:tracking-[3.5px] ${textShadow}`}
             >
               <span ref={titleRef} aria-label={HERO.title} className="inline-block will-change-[transform,opacity]">
                 {words.map((w, i) => (
-                  <span
-                    key={`${w}-${i}`}
-                    data-word=""
-                    className="mr-(--hero-word-gap) inline-block max-w-full opacity-0 will-change-[transform,opacity] select-none"
-                    aria-hidden="true"
-                  >
-                    {w}
-                  </span>
+                  <Fragment key={`${w}-${i}`}>
+                    <span
+                      data-word=""
+                      className="mr-(--hero-word-gap) inline-block max-w-full opacity-0 will-change-[transform,opacity] select-none"
+                      aria-hidden="true"
+                    >
+                      {w}
+                    </span>
+                    {i === 2 && <br className="hidden min-[992px]:block" />}
+                  </Fragment>
                 ))}
               </span>
             </h1>
@@ -160,7 +162,7 @@ export function Hero() {
 
           <div
             ref={introRef}
-            className="col-span-12 flex flex-col justify-end gap-6 min-[810px]:col-span-8 min-[1240px]:col-span-4"
+            className="col-span-12 flex max-w-[480px] flex-col justify-end gap-6"
           >
             <p
               className={`font-mulish text-[20px] leading-[31px] font-normal text-white min-[810px]:mt-[15px] ${textShadow}`}
