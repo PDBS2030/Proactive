@@ -107,6 +107,10 @@ export function Hero() {
   }, []);
 
   const words = HERO.title.split(" ");
+  // Two lines on desktop: break after "Virginia,"
+  const cut = HERO.intro.indexOf(" with a clear-cut");
+  const introLine1 = HERO.intro.slice(0, cut);
+  const introLine2 = HERO.intro.slice(cut + 1);
 
   return (
     <section
@@ -165,9 +169,10 @@ export function Hero() {
             className="col-span-12 flex max-w-[480px] flex-col justify-end gap-6 min-[992px]:ml-[calc(50vw-124px)] min-[992px]:max-w-none"
           >
             <p
-              className={`font-mulish text-[20px] leading-[31px] font-normal text-white min-[810px]:mt-[15px] ${textShadow}`}
+              className={`font-mulish text-[20px] leading-[31px] font-normal text-white min-[810px]:mt-[15px] min-[992px]:text-[length:min(20px,calc((50vw-44px)/32.5))] min-[992px]:leading-[1.55] ${textShadow}`}
             >
-              {HERO.intro}
+              {introLine1} <br className="hidden min-[992px]:block" />
+              {introLine2}
             </p>
           </div>
         </div>
