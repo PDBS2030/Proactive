@@ -163,7 +163,7 @@ export function Hero() {
             className="col-span-12 flex flex-col justify-end gap-6 min-[810px]:col-span-8 min-[1240px]:col-span-4"
           >
             <p
-              className={`text-(length:--hero-p) leading-(--hero-p-lh) font-[450] tracking-[-.02em] text-white min-[810px]:mt-[15px] min-[810px]:line-clamp-4 min-[1240px]:line-clamp-none ${textShadow}`}
+              className={`font-mulish text-[20px] leading-[31px] font-normal text-white min-[810px]:mt-[15px] ${textShadow}`}
             >
               {HERO.intro}
             </p>

@@ -17,7 +17,10 @@ export const montserrat = localFont({
 });
 
 export const mulish = localFont({
-  src: [{ path: "./fonts/mulish-800.ttf", weight: "800" }],
+  src: [
+    { path: "./fonts/mulish-400.ttf", weight: "400" },
+    { path: "./fonts/mulish-800.ttf", weight: "800" },
+  ],
   variable: "--f-mulish",
   display: "swap",
 });
