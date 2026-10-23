@@ -133,8 +133,8 @@ export function Hero() {
       >
         <div
           className={[
-            "relative mx-auto mt-auto grid w-full grid-cols-12 items-end gap-x-(--hero-gap)",
-            "after:pointer-events-none after:absolute after:bottom-[calc(0px-var(--hero-pad))] after:left-1/2 after:-z-2 after:h-screen after:w-screen after:-translate-x-1/2 after:bg-cover after:bg-no-repeat after:content-['']",
+            "relative mx-auto mt-auto mb-20 grid w-full grid-cols-12 items-end gap-x-(--hero-gap)",
+            "after:pointer-events-none after:absolute after:bottom-[calc(0px-var(--hero-pad)-5rem)] after:left-1/2 after:-z-2 after:h-screen after:w-screen after:-translate-x-1/2 after:bg-cover after:bg-no-repeat after:content-['']",
             "after:bg-[url(/assets/hero-background-filter-mobile.svg)] after:bg-position-[center_65%]",
             "min-[810px]:after:bg-[url(/assets/hero-background-filter.svg)] min-[810px]:after:bg-position-[center_50%]",
           ].join(" ")}
