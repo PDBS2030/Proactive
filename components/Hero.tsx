@@ -12,7 +12,7 @@ const textShadow =
   "[text-shadow:rgba(0,0,0,.1)_0_2px_8px,rgba(0,0,0,.05)_0_4px_16px,rgba(0,0,0,.024)_0_8px_24px,rgba(0,0,0,.004)_0_16px_48px]";
 
 /**
- * Hero: full-height photo with the headline revealed word by word, one line at a time
+ * Hero: full-height photo with the headline (sized like arcodb.com: 90px, 56.95px, 37.2px) revealed word by word, one line at a time
  * (0.35s per line, 0.2s apart), then the intro paragraph. Photo and text drift on scroll.
  */
 export function Hero() {
@@ -141,7 +141,7 @@ export function Hero() {
         >
           <div className="col-span-12 mb-[18px] flex flex-col gap-3 min-[810px]:col-span-8 min-[810px]:mb-0">
             <h1
-              className={`font-mulish text-[calc(var(--hero-h1)*.78)] leading-(--hero-h1-lh) font-extrabold tracking-[1px] break-words text-white uppercase [text-wrap:initial] ${textShadow}`}
+              className={`font-mulish text-[37.2px] leading-[45.2px] font-extrabold tracking-[1px] break-words text-white uppercase [text-wrap:initial] min-[690px]:text-[56.95px] min-[690px]:leading-[65.45px] min-[690px]:tracking-[.5px] min-[992px]:text-[90px] min-[992px]:leading-[100px] min-[992px]:tracking-[3.5px] ${textShadow}`}
             >
               <span ref={titleRef} aria-label={HERO.title} className="inline-block will-change-[transform,opacity]">
                 {words.map((w, i) => (
