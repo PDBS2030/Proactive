@@ -141,7 +141,7 @@ export function Hero() {
         >
           <div className="col-span-12 mb-[18px] flex flex-col gap-3 min-[810px]:col-span-8 min-[810px]:mb-0">
             <h1
-              className={`text-(length:--hero-h1) leading-(--hero-h1-lh) font-[450] tracking-[-.028em] break-words text-white [text-wrap:initial] ${textShadow}`}
+              className={`font-mulish text-[calc(var(--hero-h1)*.78)] leading-(--hero-h1-lh) font-extrabold tracking-[1px] break-words text-white uppercase [text-wrap:initial] ${textShadow}`}
             >
               <span ref={titleRef} aria-label={HERO.title} className="inline-block will-change-[transform,opacity]">
                 {words.map((w, i) => (

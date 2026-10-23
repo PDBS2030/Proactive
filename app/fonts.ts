@@ -16,4 +16,10 @@ export const montserrat = localFont({
   display: "swap",
 });
 
-export const fontVariables = [hanken, montserrat].map((f) => f.variable).join(" ");
+export const mulish = localFont({
+  src: [{ path: "./fonts/mulish-800.ttf", weight: "800" }],
+  variable: "--f-mulish",
+  display: "swap",
+});
+
+export const fontVariables = [hanken, montserrat, mulish].map((f) => f.variable).join(" ");
