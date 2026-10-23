@@ -166,10 +166,10 @@ export function Hero() {
 
           <div
             ref={introRef}
-            className="col-span-12 flex max-w-[480px] flex-col justify-end gap-6 min-[992px]:ml-[calc(50vw-124px)] min-[992px]:max-w-none"
+            className="col-span-12 flex max-w-[480px] flex-col justify-end gap-6 min-[992px]:ml-[calc(50vw+16px)] min-[992px]:max-w-none"
           >
             <p
-              className={`font-mulish text-[20px] leading-[31px] font-normal text-white min-[810px]:mt-[15px] min-[992px]:text-[length:min(20px,calc((50vw-44px)/32.5))] min-[992px]:leading-[1.55] ${textShadow}`}
+              className={`font-mulish text-[20px] leading-[31px] font-normal text-white min-[810px]:mt-[15px] min-[992px]:text-[length:clamp(14px,calc((50vw-184px)/32.5),20px)] min-[992px]:leading-[1.55] ${textShadow}`}
             >
               {introLine1} <br className="hidden min-[992px]:block" />
               {introLine2}
