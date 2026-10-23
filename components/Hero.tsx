@@ -162,7 +162,7 @@ export function Hero() {
 
           <div
             ref={introRef}
-            className="col-span-12 flex max-w-[480px] flex-col justify-end gap-6"
+            className="col-span-12 flex max-w-[480px] flex-col justify-end gap-6 min-[992px]:ml-[calc(50vw-124px)] min-[992px]:max-w-none"
           >
             <p
               className={`font-mulish text-[20px] leading-[31px] font-normal text-white min-[810px]:mt-[15px] ${textShadow}`}
