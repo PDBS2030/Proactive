@@ -61,43 +61,43 @@ body {
     }
   }
 
-  /* Section-title size: the same clamp values as "Our core offerings" */
+  /* Section-title size: shared with "Our core offerings" (65% of the original size) */
   .title-vars {
-    --h2: clamp(50.04px, calc(2.07vw + 42.24px), 59.04px); --h2-lh: 1.06;
+    --h2: clamp(32.5px, calc(1.35vw + 27.5px), 38.4px); --h2-lh: 1.06;
   }
   @media (min-width: 810px) {
-    .title-vars { --h2: clamp(59.04px, calc(2.09vw + 42px), 68.04px); --h2-lh: 1.07; }
+    .title-vars { --h2: clamp(38.4px, calc(1.36vw + 27.3px), 44.2px); --h2-lh: 1.07; }
   }
   @media (min-width: 1240px) {
-    .title-vars { --h2: clamp(68.04px, calc(5vw + 6px), 102px); }
+    .title-vars { --h2: clamp(44.2px, calc(3.25vw + 3.9px), 66.3px); }
   }
   @media (min-width: 1920px) {
-    .title-vars { --h2: clamp(102px, 5.31vw, 136px); --h2-lh: 1; }
+    .title-vars { --h2: clamp(66.3px, 3.45vw, 88.4px); --h2-lh: 1; }
   }
 
   .offerings-vars {
     --pad: 15px; --gap: 15px;
-    --h2: clamp(50.04px, calc(2.07vw + 42.24px), 59.04px); --h2-lh: 1.06;
+    --h2: clamp(32.5px, calc(1.35vw + 27.5px), 38.4px); --h2-lh: 1.06;
     --h5: 20px; --h5-lh: 1.2; --h5-weight: 500;
   }
   @media (min-width: 810px) {
     .offerings-vars {
       --pad: 32px; --gap: 32px;
-      --h2: clamp(59.04px, calc(2.09vw + 42px), 68.04px); --h2-lh: 1.07;
+      --h2: clamp(38.4px, calc(1.36vw + 27.3px), 44.2px); --h2-lh: 1.07;
       --h5: clamp(15.96px, calc(0.7vw + 10.32px), 18.96px); --h5-lh: 1.18;
     }
   }
   @media (min-width: 1240px) {
     .offerings-vars {
       --pad: 40px; --gap: 40px;
-      --h2: clamp(68.04px, calc(5vw + 6px), 102px);
+      --h2: clamp(44.2px, calc(3.25vw + 3.9px), 66.3px);
       --h5: clamp(18.96px, calc(1.62vw - 1.08px), 30px); --h5-lh: 1.21; --h5-weight: 450;
     }
   }
   @media (min-width: 1920px) {
     .offerings-vars {
       --pad: 50px; --gap: 52px;
-      --h2: clamp(102px, 5.31vw, 136px); --h2-lh: 1;
+      --h2: clamp(66.3px, 3.45vw, 88.4px); --h2-lh: 1;
       --h5: clamp(30px, 1.56vw, 40px); --h5-lh: 1.2;
     }
   }
