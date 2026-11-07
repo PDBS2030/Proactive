@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { BrandMark } from "@/components/BrandMark";
 import { NAV } from "@/lib/data";
 import { cn } from "@/lib/cn";
 
@@ -67,7 +67,7 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-60 border-b py-[calc(1rem+20px)] transition-[background-color,border-color] duration-350 ease-out md:py-[19px]",
+          "fixed inset-x-0 top-0 z-60 border-b py-[calc(1rem+20px)] transition-[background-color,border-color] duration-350 ease-out md:py-[calc(.5rem+20px)]",
           scrolled ? "border-foreground/6 bg-white" : "border-transparent bg-transparent",
         )}
       >
@@ -79,15 +79,17 @@ export function Header() {
           )}
         />
         <div className="flex items-center px-4 md:px-[calc(1.5rem+100px)]">
-          <Link href="/" aria-label="PROACTIVE — home" className="flex min-h-11 min-w-11 items-center focus-visible:outline-2 focus-visible:outline-navy/40">
-            <Image
-              src="/assets/logo.png"
-              alt="PROACTIVE — Design and Building Systems, Inc."
-              width={640}
-              height={175}
-              priority
-              className="h-auto w-[170px] md:w-[236px]"
-            />
+          <Link href="/" aria-label="PROACTIVE — home" className="flex min-h-11 min-w-11 items-center gap-3 focus-visible:outline-2 focus-visible:outline-navy/40">
+            <BrandMark className="h-[34px] md:h-[46px]" />
+            <span className="inline-grid justify-items-start gap-y-[3px]">
+              <span className="font-montserrat text-[22px] leading-none font-extrabold tracking-[-.01em] text-navy md:text-[30px]">
+                PROACTIVE
+              </span>
+              <span className="w-0 min-w-full text-[5.4px] leading-[1.2] font-medium tracking-[.12em] whitespace-nowrap text-[#1c232c] [text-align-last:justify] [text-align:justify] font-montserrat md:text-[7.4px]">
+                DESIGN AND BUILDING SYSTEMS, INC.
+              </span>
+              <span className="block h-0.5 w-full bg-gold" />
+            </span>
           </Link>
 
           <nav aria-label="Main" className="-mr-3 ml-auto hidden items-center gap-1 md:flex">
