@@ -26,7 +26,10 @@ export const mulish = localFont({
 });
 
 export const jost = localFont({
-  src: [{ path: "./fonts/jost-500.ttf", weight: "500" }],
+  src: [
+    { path: "./fonts/jost-400.ttf", weight: "400" },
+    { path: "./fonts/jost-500.ttf", weight: "500" },
+  ],
   variable: "--f-jost",
   display: "swap",
 });
