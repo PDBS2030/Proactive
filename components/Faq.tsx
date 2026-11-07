@@ -27,7 +27,7 @@ export function Faq() {
           <p className="text-sm leading-[23px] font-bold tracking-[2.5px] text-gold uppercase">{FAQS.eyebrow}</p>
           <h3
             id="faq-title"
-            className="mt-[25px] font-jost text-(length:--h2) leading-(--h2-lh) font-medium tracking-normal [text-wrap:initial] text-[#020f18]"
+            className="mt-[25px] font-jost text-(length:--h2) leading-(--h2-lh) font-medium tracking-normal uppercase [text-wrap:initial] text-[#020f18]"
           >
             {FAQS.title}
           </h3>
