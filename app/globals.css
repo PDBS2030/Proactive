@@ -5,7 +5,6 @@
   --font-sans: var(--f-hanken), "Hanken Grotesk", sans-serif;
   --font-montserrat: var(--f-montserrat), var(--f-hanken), sans-serif;
   --font-mulish: var(--f-mulish), var(--f-hanken), sans-serif;
-  --font-jost: var(--f-jost), var(--f-hanken), sans-serif;
 }
 
 @theme {
