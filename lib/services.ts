@@ -160,3 +160,18 @@ export const SERVICES_CTA = {
   text: "A short conversation is all it takes to find the right starting point.",
   button: { label: "Start a project", href: "/contact" },
 };
+
+export const DIFFERENCE = {
+  heading: "Why one team finishes sooner",
+  lead: "In the usual model a building waits while the design is finished, priced and bid. With design-build the builder is already at the table, so each step starts earlier.",
+  points: [
+    { title: "Cost is known early", text: "Estimates follow the drawings from the first sketch, so surprises show up in meetings instead of on site." },
+    { title: "One owner of the outcome", text: "When something does not fit, there is no designer and builder to point at each other. We fix it." },
+    { title: "Fewer changes later", text: "Builders review the design as it develops, so problems are solved on paper where they cost the least." },
+  ],
+};
+
+export const INQUIRY = {
+  heading: "Start with a conversation",
+  lead: "Tell us what you are planning. We reply within one business day to set up a call and suggest the right first step.",
+};
