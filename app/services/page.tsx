@@ -50,18 +50,18 @@ export default function ServicesPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="title-vars relative bg-white text-[#143275]">
+      <main id="main-content" className="offerings-vars relative bg-white text-[#143275]">
         {/* Hero */}
         <section className="px-4 pt-[150px] pb-14 min-[768px]:px-[124px] min-[768px]:pt-[190px] min-[768px]:pb-[72px]">
           <div className="mx-auto grid w-full max-w-[1680px] gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
             <div className="min-[992px]:col-span-7">
               <p className={eyebrow}>{SERVICES_PAGE.eyebrow}</p>
-              <h1 className="mt-4 font-jost text-[clamp(32px,5.2vw,76px)] leading-[1.04] font-normal tracking-normal text-balance uppercase">
+              <h1 className="mt-4 font-jost text-[22.4px] leading-[27px] font-medium tracking-normal uppercase min-[690px]:text-[34.2px] min-[690px]:leading-[39px] min-[992px]:text-[length:min(54px,calc((100vw-299px)/12.55))] min-[992px]:leading-[1.11]">
                 {SERVICES_PAGE.title}
               </h1>
             </div>
             <div className="flex flex-col justify-end min-[992px]:col-span-5">
-              <p className="font-mulish text-[17px] leading-[1.6] text-[#143275]/85 min-[768px]:text-[19px]">{SERVICES_PAGE.lead}</p>
+              <p className="font-mulish text-[20px] leading-[31px] font-normal text-[#143275] min-[992px]:text-[length:clamp(14px,calc((50vw-184px)/32.5),20px)] min-[992px]:leading-[1.55]">{SERVICES_PAGE.lead}</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href={SERVICES_PAGE.primaryCta.href} className={btnPrimary}>
                   {SERVICES_PAGE.primaryCta.label}
@@ -86,7 +86,7 @@ export default function ServicesPage() {
                   >
                     <span className="font-jost text-[28px] leading-none text-gold">{s.num}</span>
                     <span className="flex-1">
-                      <span className="block text-[17px] leading-tight font-medium min-[768px]:text-[19px]">{s.name}</span>
+                      <span className="block text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{s.name}</span>
                       <span className="mt-1 block text-[14px] leading-snug text-[#143275]/70">{s.short}</span>
                     </span>
                     <span aria-hidden="true" className="text-xl transition-transform duration-300 group-hover:translate-y-1 group-focus-visible:translate-y-1">↓</span>
@@ -202,7 +202,7 @@ export default function ServicesPage() {
               {PHASES.items.map((p) => (
                 <li key={p.n} className="border-t-2 border-gold pt-5">
                   <p className="font-jost text-[34px] leading-none text-gold">{p.n}</p>
-                  <h3 className="mt-4 text-[19px] leading-tight font-medium">{p.title}</h3>
+                  <h3 className="mt-4 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{p.title}</h3>
                   <p className="mt-1 text-xs font-semibold tracking-[.15em] text-[#143275]/60 uppercase">{p.steps}</p>
                   <p className="mt-3 text-[15px] leading-[1.6] text-[#143275]/85">{p.text}</p>
                 </li>
@@ -228,7 +228,7 @@ export default function ServicesPage() {
                     <span className="relative block aspect-[4/3] overflow-hidden">
                       <Image src={m.image} alt={m.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105 group-focus-visible:scale-105 motion-reduce:transform-none" />
                     </span>
-                    <span className="mt-4 flex items-center justify-between gap-4 border-b border-[#143275]/15 pb-3 text-[17px] leading-tight font-medium transition-colors duration-300 group-hover:border-gold group-focus-visible:border-gold">
+                    <span className="mt-4 flex items-center justify-between gap-4 border-b border-[#143275]/15 pb-3 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight) transition-colors duration-300 group-hover:border-gold group-focus-visible:border-gold">
                       {m.title}
                       <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1">→</span>
                     </span>
