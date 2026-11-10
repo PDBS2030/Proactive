@@ -6,7 +6,7 @@ import { FAQS } from "@/lib/data";
 import { cn } from "@/lib/cn";
 
 /** FAQ accordion: each question opens and closes on its own. */
-export function Faq() {
+export function Faq({ data = FAQS }: { data?: typeof FAQS }) {
   const [open, setOpen] = useState<Set<number>>(new Set());
 
   const toggle = (i: number) =>
@@ -24,23 +24,23 @@ export function Faq() {
     >
       <div className="mx-auto grid w-[min(1275px,100%)] grid-cols-1 items-start gap-y-12 min-[1000px]:grid-cols-[544fr_731fr] min-[1000px]:gap-y-0">
         <div className="max-w-none min-[1000px]:max-w-[71%]">
-          <p className="text-sm leading-[23px] font-bold tracking-[2.5px] text-gold uppercase">{FAQS.eyebrow}</p>
+          <p className="text-sm leading-[23px] font-bold tracking-[2.5px] text-gold uppercase">{data.eyebrow}</p>
           <h3
             id="faq-title"
             className="mt-[25px] font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial] text-[#020f18]"
           >
-            {FAQS.title}
+            {data.title}
           </h3>
           <Link
-            href={FAQS.cta.href}
+            href={data.cta.href}
             className="mt-[25px] inline-block rounded-[200px] border border-[rgba(154,154,154,.75)] px-[35px] py-[13px] text-sm leading-5 font-bold tracking-[2.5px] text-[#020f18] uppercase no-underline outline-none transition-[background-color,color,border-color] duration-200 hover:border-[#020f18] hover:bg-[#020f18] hover:text-white focus-visible:border-[#020f18] focus-visible:bg-[#020f18] focus-visible:text-white"
           >
-            {FAQS.cta.label}
+            {data.cta.label}
           </Link>
         </div>
 
         <div>
-          {FAQS.items.map((item, i) => {
+          {data.items.map((item, i) => {
             const isOpen = open.has(i);
             return (
               <div key={item.q} className="relative border-b border-black/8">
