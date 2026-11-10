@@ -110,6 +110,7 @@ body {
 }
 
 /* ───── Intro (rhythm) ───── */
+:root { --intro-bg: #e8eaed; }
 @keyframes rhythm-build {
   0% { opacity: 0; transform: scaleY(0); }
   30%, 76% { opacity: 1; transform: scaleY(1); }
@@ -129,21 +130,21 @@ body {
   0% { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
-/* The dark intro screen fades away to reveal the hero */
+/* The intro screen fades away to reveal the hero */
 @keyframes rhythm-veil {
-  from { background-color: var(--color-foreground); }
+  from { background-color: var(--intro-bg); }
   to { background-color: transparent; }
 }
 
-#rhythm-intro::backdrop { background: var(--color-foreground); }
+#rhythm-intro::backdrop { background: var(--intro-bg); }
 #rhythm-intro[open]::backdrop { animation: rhythm-veil .55s 4.85s ease-in-out both; }
 
 /* Cover the page from first paint when the intro is going to play (set by the inline script in layout) */
-/* If an early paint happens before the cover is parsed, the page behind it is still dark, not cream */
-html[data-intro="play"] { background-color: var(--color-foreground); }
+/* If an early paint happens before the cover is parsed, the page behind it is still dark, not white */
+html[data-intro="play"] { background-color: var(--intro-bg); }
 html[data-intro="play"] #rhythm-intro:not([open]) { display: block; }
-/* ...but show only the plain dark screen until the dialog opens: the logo mark builds up from nothing, so it must not sit there fully drawn first */
-#rhythm-intro:not([open]) svg { opacity: 0; }
+/* ...but show only the plain gray screen until the dialog opens: the logo mark builds up from nothing, so it must not sit there fully drawn first */
+#rhythm-intro:not([open]) img { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   #rhythm-intro:not(.rhythm-explicit) * { animation: none !important; }
