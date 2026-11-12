@@ -110,7 +110,7 @@ body {
 }
 
 /* ───── Intro (rhythm) ───── */
-:root { --intro-bg: #e8eaed; }
+:root { --intro-bg: #d2d6dc; }
 @keyframes rhythm-build {
   0% { opacity: 0; transform: scaleY(0); }
   30%, 76% { opacity: 1; transform: scaleY(1); }
