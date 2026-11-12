@@ -167,14 +167,16 @@ html[data-intro="play"] #rhythm-intro:not([open]) { display: block; }
     transform: translate3d(0, 28px, 0);
   }
 
-  /* Images open like a curtain while the picture settles */
-  main[data-motion] [data-wipe] {
+  /* Images open like a curtain while the picture settles.
+     The clip is on the children, never on the watched frame: a fully clipped element is reported as
+     not visible, so it would never be revealed. */
+  main[data-motion] [data-wipe] > * {
     transition: clip-path 1.2s var(--ease-out);
   }
   main[data-motion] [data-wipe] img {
     transition: transform 1.6s var(--ease-out);
   }
-  .rv:not(.rv-off) main[data-motion] [data-wipe]:not(.in) {
+  .rv:not(.rv-off) main[data-motion] [data-wipe]:not(.in) > * {
     clip-path: inset(0 0 100% 0);
   }
   .rv:not(.rv-off) main[data-motion] [data-wipe]:not(.in) img {

@@ -42,6 +42,13 @@ export function Motion() {
       document.querySelectorAll<HTMLElement>(SELECTOR).forEach((el) => {
         if (seen.has(el) || el.classList.contains("in")) return;
         seen.add(el);
+        // Anything already on screen is revealed straight away, without waiting for the observer
+        const r = el.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < window.innerHeight * 0.92) {
+          requestAnimationFrame(() => el.classList.add("in"));
+          window.setTimeout(() => el.style.removeProperty("--d"), 2200);
+          return;
+        }
         io.observe(el);
       });
     };
