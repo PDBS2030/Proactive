@@ -11,7 +11,7 @@ type Phase = {
   steps: { title: string; text: string }[];
 };
 
-/** The 15 steps, one phase at a time. Step numbers run 1 to 15 across the phases because the order matters. */
+/** The 15 steps, one phase at a time. */
 export function PhaseSteps({ phases }: { phases: Phase[] }) {
   const [active, setActive] = useState(0);
   const uid = useId();
@@ -30,7 +30,6 @@ export function PhaseSteps({ phases }: { phases: Phase[] }) {
   };
 
   const phase = phases[active];
-  const offset = phases.slice(0, active).reduce((n, p) => n + p.steps.length, 0);
 
   return (
     <div>
@@ -64,9 +63,9 @@ export function PhaseSteps({ phases }: { phases: Phase[] }) {
       <div id={`${uid}-panel`} role="tabpanel" aria-labelledby={`${uid}-tab-${active}`} tabIndex={0} className="pt-10 outline-none">
         <p className="max-w-[60ch] font-mulish text-[17px] leading-[1.65] text-[#143275]/90">{phase.summary}</p>
         <ol className="mt-10 border-t border-[#143275]/15">
-          {phase.steps.map((s, i) => (
-            <li key={s.title} className="grid grid-cols-[3rem_1fr] gap-x-4 border-b border-[#143275]/15 py-6 min-[768px]:grid-cols-[5rem_minmax(0,1fr)_minmax(0,1.4fr)] min-[768px]:gap-x-10">
-              <span className="font-jost text-[26px] leading-none text-gold min-[768px]:text-[32px]">{String(offset + i + 1).padStart(2, "0")}</span>
+          {phase.steps.map((s) => (
+            <li key={s.title} className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-[#143275]/15 py-6 min-[768px]:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.4fr)] min-[768px]:gap-x-10">
+              <span aria-hidden="true" className="mt-[.6em] h-0.5 w-8 bg-gold" />
               <h3 className="text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{s.title}</h3>
               <p className="col-start-2 mt-2 max-w-[52ch] text-[15px] leading-[1.6] text-[#143275]/85 min-[768px]:col-start-3 min-[768px]:mt-0">{s.text}</p>
             </li>

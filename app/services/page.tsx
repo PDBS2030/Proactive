@@ -84,7 +84,7 @@ export default function ServicesPage() {
                     href={`#${s.id}`}
                     className="group flex h-full items-center gap-5 border border-[#143275]/12 p-5 text-inherit no-underline transition-colors duration-300 outline-none hover:border-gold focus-visible:border-gold min-[768px]:p-7"
                   >
-                    <span className="font-jost text-[28px] leading-none text-gold">{s.num}</span>
+                    <span aria-hidden="true" className="h-10 w-0.5 shrink-0 bg-gold" />
                     <span className="flex-1">
                       <span className="block text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{s.name}</span>
                       <span className="mt-1 block text-[14px] leading-snug text-[#143275]/70">{s.short}</span>
@@ -114,9 +114,7 @@ export default function ServicesPage() {
                 <span aria-hidden="true" className="absolute top-0 left-0 h-12 w-12 border-t-2 border-l-2 border-gold" />
               </div>
               <div className={cn("min-[992px]:col-span-6", i % 2 === 1 && "min-[992px]:order-1")}>
-                <p className={eyebrow}>
-                  {s.num} — {s.name}
-                </p>
+                <p className={eyebrow}>{s.name}</p>
                 <h2 id={`${s.id}-title`} className={cn(title, "mt-4")}>
                   {s.headline}
                 </h2>
@@ -200,8 +198,8 @@ export default function ServicesPage() {
             <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#143275]/85">{PHASES.lead}</p>
             <ol className="mt-10 grid gap-6 min-[992px]:grid-cols-3 min-[992px]:gap-x-10">
               {PHASES.items.map((p) => (
-                <li key={p.n} className="border-t-2 border-gold pt-5">
-                  <p className="font-jost text-[34px] leading-none text-gold">{p.n}</p>
+                <li key={p.n} className="border-t border-[#143275]/15 pt-5">
+                  <span aria-hidden="true" className="block h-0.5 w-10 bg-gold" />
                   <h3 className="mt-4 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{p.title}</h3>
                   <p className="mt-1 text-xs font-semibold tracking-[.15em] text-[#143275]/60 uppercase">{p.steps}</p>
                   <p className="mt-3 text-[15px] leading-[1.6] text-[#143275]/85">{p.text}</p>
