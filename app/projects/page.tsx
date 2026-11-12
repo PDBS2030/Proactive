@@ -15,7 +15,7 @@ export default function ProjectsPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="offerings-vars relative bg-white text-[#143275]">
+      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
         <PageIntro crumb="Projects" title={p.title} lead={p.lead} image={p.image} imageAlt={p.imageAlt} />
         <section aria-label="Project portfolio" className={`${ui.pad} py-12 min-[768px]:py-20`}>
           <div className={ui.wrap}>

@@ -18,7 +18,7 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="offerings-vars relative bg-white text-[#143275]">
+      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
         <PageIntro crumb="Contact" title={c.title} lead={c.lead} />
 
         <section aria-label="Contact details and form" className={`${ui.pad} py-14 min-[768px]:py-[90px]`}>
@@ -57,14 +57,14 @@ export default function ContactPage() {
 
         <section aria-label="Other ways to reach us" className={`${ui.pad} bg-[#f3f6fa] py-16 min-[768px]:py-[100px]`}>
           <div className={`${ui.wrap} grid gap-6 min-[992px]:grid-cols-2 min-[992px]:gap-x-10`}>
-            <article className="bg-white p-7 min-[768px]:p-10">
+            <article data-up className="bg-white p-7 transition-[translate,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_22px_40px_-28px_rgba(20,50,117,.5)] min-[768px]:p-10">
               <h2 className={ui.tile}>{c.subcontractors.heading}</h2>
               <p className="mt-3 max-w-[52ch] text-[15px] leading-[1.6] text-[#143275]/85">{c.subcontractors.text}</p>
               <a href={mail("Subcontractor or supplier inquiry")} className={`${ui.btnGhost} mt-6`}>
                 {c.subcontractors.button}
               </a>
             </article>
-            <article className="bg-white p-7 min-[768px]:p-10">
+            <article data-up style={{ ["--d" as string]: "120ms" }} className="bg-white p-7 transition-[translate,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_22px_40px_-28px_rgba(20,50,117,.5)] min-[768px]:p-10">
               <h2 className={ui.tile}>{c.careers.heading}</h2>
               <p className="mt-3 max-w-[52ch] text-[15px] leading-[1.6] text-[#143275]/85">{c.careers.text}</p>
               <a href={mail("Careers inquiry")} className={`${ui.btnGhost} mt-6`}>

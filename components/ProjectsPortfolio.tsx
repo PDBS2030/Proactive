@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
 
 const ALL = "All";
 const select =
-  "mt-2 block w-full min-h-12 cursor-pointer appearance-none border border-[#143275]/25 bg-white bg-[url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23143275' stroke-width='1.5'><path d='m1 1 5 5 5-5'/></svg>\")] bg-[length:12px_8px] bg-[position:right_16px_center] bg-no-repeat px-4 pr-10 text-[15px] text-[#143275] outline-none transition-colors duration-200 focus:border-gold focus-visible:border-gold";
+  "field-line mt-2 block w-full min-h-12 cursor-pointer appearance-none border border-[#143275]/25 bg-white bg-[url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23143275' stroke-width='1.5'><path d='m1 1 5 5 5-5'/></svg>\")] bg-[length:12px_8px] bg-[position:right_16px_center] bg-no-repeat px-4 pr-10 text-[15px] text-[#143275] outline-none transition-colors duration-200 focus:border-gold focus-visible:border-gold";
 const label = "block text-sm font-medium text-[#143275]";
 
 function Field({
@@ -134,6 +134,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
             <li key={p.id}>
               <article className="group">
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#f3f6fa]">
+                  <span aria-hidden="true" className="absolute bottom-0 left-0 z-10 h-1 w-0 bg-gold transition-[width] duration-500 ease-out group-hover:w-full" />
                   <Image
                     src={p.image}
                     alt=""
@@ -142,7 +143,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
                     className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none"
                   />
                 </div>
-                <h3 className="mt-4 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{p.title}</h3>
+                <h3 className="mt-4 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight) transition-colors duration-300 group-hover:text-gold">{p.title}</h3>
                 <p className="mt-1 text-[15px] text-[#143275]/80">
                   {p.city}, {p.region}
                 </p>

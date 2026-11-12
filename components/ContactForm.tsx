@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FOOTER } from "@/lib/data";
 
 const field =
-  "mt-2 block w-full min-h-12 border border-[#143275]/25 bg-white px-4 py-3 text-[16px] leading-snug text-[#143275] outline-none transition-colors duration-200 placeholder:text-[#143275]/40 focus:border-gold focus-visible:border-gold";
+  "field-line mt-2 block w-full min-h-12 border border-[#143275]/25 bg-white px-4 py-3 text-[16px] leading-snug text-[#143275] outline-none transition-colors duration-200 placeholder:text-[#143275]/40 focus:border-gold focus-visible:border-gold";
 const label = "block text-sm font-medium text-[#143275]";
 
 /** There is no server yet, so sending opens the visitor's email app with the details filled in. */

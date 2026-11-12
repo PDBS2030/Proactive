@@ -33,7 +33,8 @@ export function PhaseSteps({ phases }: { phases: Phase[] }) {
 
   return (
     <div>
-      <div role="tablist" aria-label="Project phases" className="grid border-b border-[#143275]/20 min-[768px]:grid-cols-3">
+      <div role="tablist" aria-label="Project phases" className="relative grid border-b border-[#143275]/20 min-[768px]:grid-cols-3">
+        <span aria-hidden="true" className="absolute bottom-0 left-0 hidden h-0.5 w-1/3 bg-gold transition-transform duration-500 ease-out min-[768px]:block" style={{ transform: `translateX(${active * 100}%)` }} />
         {phases.map((p, i) => (
           <button
             key={p.key}
@@ -49,7 +50,7 @@ export function PhaseSteps({ phases }: { phases: Phase[] }) {
             onKeyDown={(e) => onKey(e, i)}
             className={cn(
               "-mb-px cursor-pointer border-b-2 px-1 py-5 text-left outline-none transition-colors duration-300 focus-visible:bg-[#f3f6fa] min-[768px]:pr-8",
-              active === i ? "border-gold" : "border-transparent hover:border-[#143275]/30",
+              active === i ? "border-gold min-[768px]:border-transparent" : "border-transparent hover:border-[#143275]/30",
             )}
           >
             <span className="block text-sm font-semibold text-gold">

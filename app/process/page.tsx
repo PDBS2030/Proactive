@@ -16,7 +16,7 @@ export default function ProcessPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="offerings-vars relative bg-white text-[#143275]">
+      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
         <PageIntro crumb="Process" title={p.title} lead={p.lead} image={p.image} imageAlt={p.imageAlt} />
 
         <section aria-labelledby="steps-title" className={`${ui.pad} py-16 min-[768px]:py-[100px]`}>
@@ -36,8 +36,8 @@ export default function ProcessPage() {
             <p className={`${ui.body} mt-4 max-w-[56ch]`}>{p.pillars.lead}</p>
             <ul className="mt-12 grid gap-4 min-[640px]:grid-cols-2 min-[1100px]:grid-cols-4 min-[1100px]:gap-6">
               {p.pillars.items.map((i) => (
-                <li key={i.title} className="flex min-h-[220px] flex-col bg-[#082b52] p-7 text-white">
-                  <span aria-hidden="true" className="block h-0.5 w-10 bg-gold" />
+                <li key={i.title} className="group flex min-h-[220px] flex-col bg-[#082b52] p-7 text-white hover:-translate-y-1.5 hover:shadow-[0_22px_40px_-24px_rgba(8,43,82,.7)]">
+                  <span aria-hidden="true" className="block h-0.5 w-10 bg-gold transition-[width] duration-500 ease-out group-hover:w-full" />
                   <h3 className="mt-auto pt-10 font-jost text-[26px] leading-[1.1]">{i.title}</h3>
                   <p className="mt-3 text-[15px] leading-[1.6] text-white/80">{i.text}</p>
                 </li>
@@ -54,10 +54,10 @@ export default function ProcessPage() {
             <p className={`${ui.body} mt-4 max-w-[56ch]`}>{p.delivery.lead}</p>
             <ul className="mt-12 grid border-t border-[#143275]/15 min-[992px]:grid-cols-3">
               {p.delivery.items.map((d, i) => (
-                <li key={d.title} className={`border-b border-[#143275]/15 py-8 min-[992px]:border-b-0 min-[992px]:pr-10 ${i > 0 ? "min-[992px]:border-l min-[992px]:pl-10" : ""}`}>
-                  <h3 className={ui.tile}>{d.title}</h3>
+                <li key={d.title} className={`group border-b border-[#143275]/15 py-8 min-[992px]:border-b-0 min-[992px]:pr-10 ${i > 0 ? "min-[992px]:border-l min-[992px]:pl-10" : ""}`}>
+                  <h3 className={`${ui.tile} transition-colors duration-300 group-hover:text-gold`}>{d.title}</h3>
                   <p className="mt-3 max-w-[40ch] text-[15px] leading-[1.6] text-[#143275]/85">{d.text}</p>
-                  <Link href={d.href} className="mt-5 inline-block border-b-2 border-gold pb-0.5 text-[14px] font-medium text-[#143275] no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]">
+                  <Link href={d.href} className="mt-5 inline-block border-b-2 border-gold pb-0.5 transition-[padding] duration-300 hover:pr-3 text-[14px] font-medium text-[#143275] no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]">
                     Learn more
                   </Link>
                 </li>

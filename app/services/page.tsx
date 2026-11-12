@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ScrollProgress, ParallaxFrame } from "@/components/MotionBits";
+import { Words } from "@/components/PageIntro";
 import { ServicesNav } from "@/components/ServicesNav";
 import { cn } from "@/lib/cn";
 import {
@@ -33,10 +35,9 @@ const NAV_ITEMS = [
 const title =
   "font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial]";
 const eyebrow = "text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase";
-const btnPrimary =
-  "inline-flex min-h-12 items-center justify-center border border-[#143275] bg-[#143275] px-7 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline transition-colors duration-300 outline-none hover:bg-transparent hover:text-[#143275] focus-visible:bg-transparent focus-visible:text-[#143275]";
-const btnGhost =
-  "inline-flex min-h-12 items-center justify-center border border-[#143275]/30 px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#143275] uppercase no-underline transition-colors duration-300 outline-none hover:border-gold focus-visible:border-gold";
+import { ui } from "@/components/PageIntro";
+const btnPrimary = ui.btn;
+const btnGhost = ui.btnGhost;
 
 function Check() {
   return (
@@ -50,14 +51,15 @@ export default function ServicesPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="offerings-vars relative bg-white text-[#143275]">
+      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
         {/* Hero */}
+        <ScrollProgress />
         <section className="px-4 pt-[150px] pb-14 min-[768px]:px-[124px] min-[768px]:pt-[190px] min-[768px]:pb-[72px]">
           <div className="mx-auto grid w-full max-w-[1680px] gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
             <div className="min-[992px]:col-span-7">
               <p className={eyebrow}>{SERVICES_PAGE.eyebrow}</p>
-              <h1 className="mt-4 font-jost text-[22.4px] leading-[27px] font-medium tracking-normal uppercase min-[690px]:text-[34.2px] min-[690px]:leading-[39px] min-[992px]:text-[length:min(54px,calc((100vw-299px)/12.55))] min-[992px]:leading-[1.11]">
-                {SERVICES_PAGE.title}
+              <h1 data-words className="mt-4 font-jost text-[22.4px] leading-[27px] font-medium tracking-normal uppercase min-[690px]:text-[34.2px] min-[690px]:leading-[39px] min-[992px]:text-[length:min(54px,calc((100vw-299px)/12.55))] min-[992px]:leading-[1.11]">
+                <Words text={SERVICES_PAGE.title} />
               </h1>
             </div>
             <div className="flex flex-col justify-end min-[992px]:col-span-5">
@@ -74,9 +76,9 @@ export default function ServicesPage() {
           </div>
 
           <div className="mx-auto mt-12 grid w-full max-w-[1680px] gap-4 min-[992px]:mt-16 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
-            <div className="relative aspect-[16/10] overflow-hidden min-[992px]:col-span-7 min-[992px]:aspect-auto min-[992px]:min-h-[420px]">
+            <ParallaxFrame className="aspect-[16/10] min-[992px]:col-span-7 min-[992px]:aspect-auto min-[992px]:min-h-[420px]">
               <Image src={SERVICES_PAGE.image} alt={SERVICES_PAGE.imageAlt} fill priority sizes="(max-width: 992px) 100vw, 58vw" className="object-cover" />
-            </div>
+            </ParallaxFrame>
             <ul className="grid gap-4 min-[992px]:col-span-5">
               {SERVICE_LIST.map((s) => (
                 <li key={s.id}>
@@ -109,7 +111,7 @@ export default function ServicesPage() {
             className={cn("scroll-mt-[170px] px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]", i % 2 === 1 && "bg-[#f3f6fa]")}
           >
             <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-14">
-              <div className={cn("relative aspect-[4/3] overflow-hidden min-[992px]:col-span-6", i % 2 === 1 && "min-[992px]:order-2")}>
+              <div data-wipe className={cn("relative aspect-[4/3] overflow-hidden min-[992px]:col-span-6", i % 2 === 1 && "min-[992px]:order-2")}>
                 <Image src={s.image} alt={s.alt} fill sizes="(max-width: 992px) 100vw, 50vw" className="object-cover" />
                 <span aria-hidden="true" className="absolute top-0 left-0 h-12 w-12 border-t-2 border-l-2 border-gold" />
               </div>
@@ -163,7 +165,7 @@ export default function ServicesPage() {
                 <span className="text-gold">{COMPARISON.columns[1]}</span>
               </div>
               {COMPARISON.rows.map((r) => (
-                <div key={r.label} className="grid grid-cols-[1fr_1.4fr_1.4fr] gap-x-8 border-t border-white/15 py-5 text-[16px] leading-snug">
+                <div data-up key={r.label} className="grid grid-cols-[1fr_1.4fr_1.4fr] gap-x-8 border-t border-white/15 py-5 text-[16px] leading-snug">
                   <span className="font-medium">{r.label}</span>
                   <span className="text-white/65">{r.a}</span>
                   <span className="text-white">{r.b}</span>

@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { CtaBand, PageIntro, ui } from "@/components/PageIntro";
 import { ServicesNav } from "@/components/ServicesNav";
+import { CountUp } from "@/components/MotionBits";
 import { FOOTER } from "@/lib/data";
 import { ABOUT } from "@/lib/pages";
 
@@ -25,7 +26,7 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="offerings-vars relative bg-white text-[#143275]">
+      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
         <PageIntro crumb="About" title={a.title} lead={a.lead} image={a.image} imageAlt={a.imageAlt} />
 
         {/* Key facts */}
@@ -34,7 +35,7 @@ export default function AboutPage() {
             {a.facts.map((f) => (
               <div key={f.label}>
                 <dt className="sr-only">{f.label}</dt>
-                <dd className="font-jost text-[clamp(32px,3.6vw,52px)] leading-none">{f.value}</dd>
+                <dd className="font-jost text-[clamp(32px,3.6vw,52px)] leading-none"><CountUp text={f.value} /></dd>
                 <p className="mt-3 max-w-[28ch] text-[15px] leading-snug text-[#143275]/80" aria-hidden="true">
                   {f.label}
                 </p>
@@ -72,8 +73,8 @@ export default function AboutPage() {
             </h2>
             <ul className="mt-12 grid gap-4 min-[640px]:grid-cols-2 min-[1100px]:grid-cols-4 min-[1100px]:gap-6">
               {a.values.items.map((v) => (
-                <li key={v.title} className="flex min-h-[220px] flex-col bg-[#082b52] p-7 text-white">
-                  <span aria-hidden="true" className="block h-0.5 w-10 bg-gold" />
+                <li key={v.title} className="group flex min-h-[220px] flex-col bg-[#082b52] p-7 text-white hover:-translate-y-1.5 hover:shadow-[0_22px_40px_-24px_rgba(8,43,82,.7)]">
+                  <span aria-hidden="true" className="block h-0.5 w-10 bg-gold transition-[width] duration-500 ease-out group-hover:w-full" />
                   <h3 className="mt-auto pt-10 font-jost text-[26px] leading-[1.1]">{v.title}</h3>
                   <p className="mt-3 text-[15px] leading-[1.6] text-white/80">{v.text}</p>
                 </li>
@@ -93,8 +94,8 @@ export default function AboutPage() {
             </div>
             <ul className="mt-12 grid border-t border-[#143275]/15 min-[768px]:grid-cols-2">
               {a.leadership.roles.map((r, i) => (
-                <li key={r.title} className={`border-b border-[#143275]/15 py-8 min-[768px]:pr-10 ${i % 2 === 1 ? "min-[768px]:border-l min-[768px]:pl-10" : ""}`}>
-                  <h3 className={ui.tile}>{r.title}</h3>
+                <li key={r.title} className={`group border-b border-[#143275]/15 py-8 min-[768px]:pr-10 ${i % 2 === 1 ? "min-[768px]:border-l min-[768px]:pl-10" : ""}`}>
+                  <h3 className={`${ui.tile} transition-colors duration-300 group-hover:text-gold`}>{r.title}</h3>
                   <p className="mt-3 max-w-[52ch] text-[15px] leading-[1.6] text-[#143275]/85">{r.text}</p>
                 </li>
               ))}
@@ -111,7 +112,8 @@ export default function AboutPage() {
             <p className={`${ui.body} mt-4 max-w-[56ch]`}>{a.commitments.lead}</p>
             <ul className="mt-12 grid gap-x-10 gap-y-0 min-[768px]:grid-cols-2 min-[1100px]:grid-cols-3">
               {a.commitments.items.map((c) => (
-                <li key={c.title} className="border-t-2 border-gold py-7">
+                <li key={c.title} className="relative py-7">
+                  <span data-rule aria-hidden="true" className="absolute top-0 left-0 h-0.5 w-full bg-gold" />
                   <h3 className={ui.tile}>{c.title}</h3>
                   <p className="mt-3 max-w-[44ch] text-[15px] leading-[1.6] text-[#143275]/85">{c.text}</p>
                 </li>
@@ -129,7 +131,7 @@ export default function AboutPage() {
               </h2>
               <p className={`${ui.body} mt-5 max-w-[44ch]`}>{a.locations.lead}</p>
             </div>
-            <div className="border border-[#143275]/15 p-7 min-[768px]:p-10 min-[992px]:col-span-6 min-[992px]:col-start-7">
+            <div className="border border-[#143275]/15 p-7 transition-[border-color,box-shadow] duration-500 hover:border-gold hover:shadow-[0_20px_40px_-28px_rgba(20,50,117,.5)] min-[768px]:p-10 min-[992px]:col-span-6 min-[992px]:col-start-7">
               <h3 className={ui.eyebrow}>Headquarters</h3>
               <p className="mt-4 text-[19px] leading-snug font-medium">PROACTIVE Design and Building Systems, Inc.</p>
               <address className="mt-3 text-[16px] leading-[1.6] whitespace-pre-line not-italic">{FOOTER.office}</address>

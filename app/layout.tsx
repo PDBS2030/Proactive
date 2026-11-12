@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { fontVariables } from "./fonts";
+import { Motion } from "@/components/Motion";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,11 +14,15 @@ export const metadata: Metadata = {
  */
 const introFlag = `(function(){try{var d=document.documentElement;var n=performance.getEntriesByType('navigation')[0];var seen=sessionStorage.getItem('define-rhythm-v1')==='seen';var forced=/[?&]intro\\b/.test(location.search);var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;var play=forced||(!seen&&!location.hash&&(!n||n.type==='navigate')&&!reduced);d.dataset.intro=play?'play':'none'}catch(e){}})()`;
 
+/** Marks the document as able to play reveals; the page shows normally if the reveal script never starts. */
+const motionFlag = `(function(){try{var d=document.documentElement;d.classList.add('rv');setTimeout(function(){if(!d.classList.contains('rv-ready'))d.classList.add('rv-off')},4000)}catch(e){}})()`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-US" className={fontVariables} suppressHydrationWarning>
       <head>
         <script id="intro-flag" dangerouslySetInnerHTML={{ __html: introFlag }} />
+        <script id="motion-flag" dangerouslySetInnerHTML={{ __html: motionFlag }} />
       </head>
       <body className="min-h-full">
         <a
@@ -27,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         {children}
+        <Motion />
       </body>
     </html>
   );
