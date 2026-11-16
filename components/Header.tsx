@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
 import { NAV } from "@/lib/data";
@@ -11,6 +12,8 @@ const navLink =
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  // The Services page opens on a full-screen photograph, so its bar is solid white from the start
+  const solid = scrolled || usePathname().startsWith("/services");
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const linksRef = useRef<HTMLAnchorElement[]>([]);
@@ -68,14 +71,14 @@ export function Header() {
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-60 border-b py-[calc(1rem+20px)] transition-[background-color,border-color] duration-350 ease-out md:py-[calc(.5rem+20px)]",
-          scrolled ? "border-foreground/6 bg-white" : "border-transparent bg-transparent",
+          solid ? "border-foreground/6 bg-white" : "border-transparent bg-transparent",
         )}
       >
         <span
           aria-hidden="true"
           className={cn(
             "pointer-events-none absolute inset-x-0 top-0 -bottom-7 -z-10 bg-linear-to-b from-white/94 via-white/88 via-60% to-white/0 transition-opacity duration-350 ease-out",
-            scrolled && "opacity-0",
+            solid && "opacity-0",
           )}
         />
         <div className="px-4 md:px-[124px]">

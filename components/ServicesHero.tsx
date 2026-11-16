@@ -109,7 +109,7 @@ export function ServicesHero({
             </h1>
           </div>
 
-          <div className="flex flex-col justify-end min-[992px]:col-span-5">
+          <div className="flex flex-col justify-end min-[992px]:col-span-5 min-[1280px]:col-span-4 min-[1280px]:col-start-9">
             <div key={slide.id} className="hero-in" aria-live={paused ? "polite" : "off"}>
               <p className="text-sm font-semibold tracking-[.04em] text-gold">{slide.name}</p>
               <p className="mt-2 font-mulish text-[20px] leading-[31px] font-normal text-white/95 min-[992px]:text-[length:clamp(14px,calc((50vw-184px)/32.5),20px)] min-[992px]:leading-[1.55]">

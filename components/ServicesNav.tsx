@@ -38,7 +38,7 @@ export function ServicesNav({ items }: { items: Item[] }) {
   }, [items]);
 
   return (
-    <div ref={barRef} className="sticky top-[104px] z-50 border-y border-[#143275]/10 bg-white/95 px-4 backdrop-blur min-[768px]:px-[124px]">
+    <div ref={barRef} className="sticky top-[104px] z-50 border-y border-[#143275]/10 bg-white px-4 min-[768px]:px-[124px]">
       <div className="mx-auto w-full max-w-[1680px]">
       <nav
         aria-label="On this page"
