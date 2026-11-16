@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { FaintVideo } from "@/components/FaintVideo";
 import type { Phase } from "@/lib/process";
@@ -83,6 +84,13 @@ export function PhasePanel({ phase }: { phase: Phase }) {
         <>
           <FaintVideo src="/assets/service-video.mp4" poster="/assets/service-video-poster.jpg" className="absolute inset-0 -z-20 size-full object-cover opacity-[.2]" />
           <span aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-b from-[#082b52]/70 via-[#082b52]/35 to-[#082b52]/70" />
+        </>
+      )}
+      {phase.tone === "paper" && (
+        <>
+          {/* a photograph washed almost to white, so the text and the drafting grid stay easy to read */}
+          <Image src="/assets/gallery/landmark/1.jpg" alt="" fill sizes="100vw" className="-z-20 object-cover object-[center_40%]" />
+          <span aria-hidden="true" className="absolute inset-0 -z-[15] bg-white/[.8]" />
         </>
       )}
       {t.grid && <span aria-hidden="true" className={cn("absolute inset-0 -z-10 bg-[length:56px_56px]", t.grid)} />}
