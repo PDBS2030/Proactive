@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { fontVariables } from "./fonts";
 import { Motion } from "@/components/Motion";
+import { StartProject } from "@/components/StartProject";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         {children}
         <Motion />
+        <StartProject />
       </body>
     </html>
   );

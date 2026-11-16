@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { goToSection } from "@/components/Stack";
 import { cn } from "@/lib/cn";
@@ -59,12 +58,13 @@ export function ServicesNav({ items }: { items: Item[] }) {
             {i.label}
           </a>
         ))}
-        <Link
-          href="/contact"
+        <a
+          href="#inquiry"
+          data-start-project
           className="ml-auto hidden shrink-0 items-center border border-[#143275] px-5 py-3 text-[.875rem] leading-none font-semibold tracking-[.08em] text-[#143275] uppercase no-underline transition-colors duration-300 outline-none hover:bg-[#143275] hover:text-white focus-visible:bg-[#143275] focus-visible:text-white min-[1560px]:inline-flex"
         >
           Start a project
-        </Link>
+        </a>
       </nav>
       </div>
     </div>

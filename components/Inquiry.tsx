@@ -34,19 +34,33 @@ export function InquiryLink({ service, className, children }: { service: string;
 }
 
 /** There is no server yet, so sending opens the visitor's email app with the details filled in. */
-export function InquiryForm() {
-  const [service, setService] = useState(SERVICES[0]);
+export function InquiryForm({
+  idPrefix = "iq",
+  initialService,
+  listen = true,
+  autoFocus = false,
+  onSent,
+}: {
+  idPrefix?: string;
+  initialService?: string;
+  /** Follow the service buttons on the page. The popup chooses its own service instead. */
+  listen?: boolean;
+  autoFocus?: boolean;
+  onSent?: () => void;
+}) {
+  const [service, setService] = useState(initialService && SERVICES.includes(initialService) ? initialService : SERVICES[0]);
   const [sent, setSent] = useState(false);
   const form = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
+    if (!listen) return;
     const on = (e: Event) => {
       const v = (e as CustomEvent<string>).detail;
       if (SERVICES.includes(v)) setService(v);
     };
     window.addEventListener(INQUIRY_EVENT, on);
     return () => window.removeEventListener(INQUIRY_EVENT, on);
-  }, []);
+  }, [listen]);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,69 +81,70 @@ export function InquiryForm() {
     ].join("\n");
     window.location.href = `mailto:${FOOTER.email}?subject=${encodeURIComponent(`${service} inquiry from ${get("name")}`)}&body=${encodeURIComponent(body)}`;
     setSent(true);
+    onSent?.();
   };
 
   return (
-    <form ref={form} onSubmit={onSubmit} className="grid gap-5 min-[640px]:grid-cols-2" aria-describedby="inquiry-note">
+    <form ref={form} onSubmit={onSubmit} className="grid gap-5 min-[640px]:grid-cols-2" aria-describedby={`${idPrefix}-note`}>
       <div>
-        <label htmlFor="iq-name" className={label}>
+        <label htmlFor={`${idPrefix}-name`} className={label}>
           Your name
         </label>
-        <input id="iq-name" name="name" required autoComplete="name" className={field} />
+        <input id={`${idPrefix}-name`} name="name" required autoFocus={autoFocus} autoComplete="name" className={field} />
       </div>
       <div>
-        <label htmlFor="iq-email" className={label}>
+        <label htmlFor={`${idPrefix}-email`} className={label}>
           Email address
         </label>
-        <input id="iq-email" name="email" type="email" required autoComplete="email" className={field} />
+        <input id={`${idPrefix}-email`} name="email" type="email" required autoComplete="email" className={field} />
       </div>
       <div>
-        <label htmlFor="iq-phone" className={label}>
+        <label htmlFor={`${idPrefix}-phone`} className={label}>
           Phone <span className="font-normal text-[#143275]/60">(optional)</span>
         </label>
-        <input id="iq-phone" name="phone" type="tel" autoComplete="tel" className={field} />
+        <input id={`${idPrefix}-phone`} name="phone" type="tel" autoComplete="tel" className={field} />
       </div>
       <div>
-        <label htmlFor="iq-location" className={label}>
+        <label htmlFor={`${idPrefix}-location`} className={label}>
           Project location
         </label>
-        <input id="iq-location" name="location" autoComplete="address-level2" placeholder="City and state" className={field} />
+        <input id={`${idPrefix}-location`} name="location" autoComplete="address-level2" placeholder="City and state" className={field} />
       </div>
       <div>
-        <label htmlFor="iq-service" className={label}>
+        <label htmlFor={`${idPrefix}-service`} className={label}>
           Service
         </label>
-        <select id="iq-service" value={service} onChange={(e) => setService(e.target.value)} className={field}>
+        <select id={`${idPrefix}-service`} value={service} onChange={(e) => setService(e.target.value)} className={field}>
           {SERVICES.map((o) => (
             <option key={o}>{o}</option>
           ))}
         </select>
       </div>
       <div>
-        <label htmlFor="iq-type" className={label}>
+        <label htmlFor={`${idPrefix}-type`} className={label}>
           Type of project
         </label>
-        <select id="iq-type" name="type" defaultValue={TYPES[0]} className={field}>
+        <select id={`${idPrefix}-type`} name="type" defaultValue={TYPES[0]} className={field}>
           {TYPES.map((o) => (
             <option key={o}>{o}</option>
           ))}
         </select>
       </div>
       <div>
-        <label htmlFor="iq-budget" className={label}>
+        <label htmlFor={`${idPrefix}-budget`} className={label}>
           Estimated budget
         </label>
-        <select id="iq-budget" name="budget" defaultValue={SIZES[SIZES.length - 1]} className={field}>
+        <select id={`${idPrefix}-budget`} name="budget" defaultValue={SIZES[SIZES.length - 1]} className={field}>
           {SIZES.map((o) => (
             <option key={o}>{o}</option>
           ))}
         </select>
       </div>
       <div>
-        <label htmlFor="iq-when" className={label}>
+        <label htmlFor={`${idPrefix}-when`} className={label}>
           When do you want to start?
         </label>
-        <select id="iq-when" name="when" defaultValue={WHEN[WHEN.length - 1]} className={field}>
+        <select id={`${idPrefix}-when`} name="when" defaultValue={WHEN[WHEN.length - 1]} className={field}>
           {WHEN.map((o) => (
             <option key={o}>{o}</option>
           ))}
@@ -147,10 +162,10 @@ export function InquiryForm() {
         </div>
       </fieldset>
       <div className="min-[640px]:col-span-2">
-        <label htmlFor="iq-message" className={label}>
+        <label htmlFor={`${idPrefix}-message`} className={label}>
           Tell us about the project
         </label>
-        <textarea id="iq-message" name="message" required rows={5} placeholder="What you want to build, the site, and anything we should know." className={field} />
+        <textarea id={`${idPrefix}-message`} name="message" required rows={5} placeholder="What you want to build, the site, and anything we should know." className={field} />
       </div>
       <div className="flex flex-wrap items-center gap-4 min-[640px]:col-span-2">
         <button
@@ -159,7 +174,7 @@ export function InquiryForm() {
         >
           Send inquiry
         </button>
-        <p id="inquiry-note" role="status" className="text-[14px] leading-snug text-[#143275]/75">
+        <p id={`${idPrefix}-note`} role="status" className="text-[14px] leading-snug text-[#143275]/75">
           {sent ? "Your email app should now open with the details filled in. Press send there to finish." : "This opens your email app with your details filled in."}
         </p>
       </div>

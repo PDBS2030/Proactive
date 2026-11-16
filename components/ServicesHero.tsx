@@ -7,6 +7,13 @@ import { cn } from "@/lib/cn";
 import { Words } from "@/components/PageIntro";
 import { goToSection } from "@/components/Stack";
 
+/** The service the popup form chooses for each slide */
+const START_SERVICE: Record<string, string> = {
+  architecture: "Architecture and design",
+  "design-build": "Design-build",
+  "construction-management": "Construction management",
+};
+
 export type HeroSlide = {
   id: string;
   name: string;
@@ -127,7 +134,8 @@ export function ServicesHero({
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={primary.href}
-                onClick={(e) => primary.href.startsWith("#") && goToSection(e, primary.href.slice(1))}
+                data-start-project
+                data-service={START_SERVICE[slide.id]}
                 className="btn-sweep inline-flex min-h-12 items-center justify-center border border-white bg-white bg-[linear-gradient(#143275,#143275)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#143275] uppercase no-underline outline-none hover:text-white focus-visible:text-white"
               >
                 {primary.label}
