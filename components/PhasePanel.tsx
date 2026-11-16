@@ -87,11 +87,14 @@ export function PhasePanel({ phase }: { phase: Phase }) {
         </>
       )}
       {phase.tone === "paper" && (
-        <>
-          {/* a photograph washed almost to white, so the text and the drafting grid stay easy to read */}
-          <Image src="/assets/gallery/landmark/1.jpg" alt="" fill sizes="100vw" className="-z-20 object-cover object-[center_40%]" />
-          <span aria-hidden="true" className="absolute inset-0 -z-[15] bg-white/[.8]" />
-        </>
+        /* a photograph behind the title side only, washed so the text stays easy to read and faded out toward the steps */
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute top-0 left-0 -z-20 h-[460px] w-full min-[992px]:h-full min-[992px]:w-[42%] [mask-image:linear-gradient(to_bottom,#000_70%,transparent)] min-[992px]:[mask-image:linear-gradient(to_right,#000_68%,transparent)]"
+        >
+          <Image src="/assets/gallery/landmark/2.jpg" alt="" fill sizes="(max-width: 992px) 100vw, 42vw" className="object-cover object-[40%_center]" />
+          <span className="absolute inset-0 bg-white/[.72]" />
+        </span>
       )}
       {t.grid && <span aria-hidden="true" className={cn("absolute inset-0 -z-10 bg-[length:56px_56px]", t.grid)} />}
 
