@@ -90,9 +90,9 @@ export function ServiceProjects({
                   <span
                     aria-hidden="true"
                     className={cn(
-                      "absolute left-4 text-[14px] font-medium tracking-[.04em] whitespace-nowrap text-white transition-opacity duration-300",
+                      "absolute left-4 text-[13px] font-medium tracking-[.1em] whitespace-nowrap text-white uppercase transition-opacity duration-300",
                       "max-md:top-1/2 max-md:-translate-y-1/2",
-                      "min-[768px]:bottom-6 min-[768px]:left-1/2 min-[768px]:-translate-x-1/2 min-[768px]:rotate-180 min-[768px]:text-[15px] min-[768px]:[writing-mode:vertical-rl]",
+                      "min-[768px]:bottom-6 min-[768px]:left-1/2 min-[768px]:-translate-x-1/2 min-[768px]:rotate-180 min-[768px]:text-[13px] min-[768px]:[writing-mode:vertical-rl]",
                       on ? "opacity-0" : "opacity-100",
                     )}
                   >
@@ -111,12 +111,13 @@ export function ServiceProjects({
                   )}
                 >
                   <p className="text-[18px] leading-snug font-semibold">{x.title}</p>
-                  <p className="mt-1 text-[13px] text-white/75">
-                    {x.city}, {x.region}
-                  </p>
-                  <p className="mt-2 text-[15px] leading-[1.5] text-white/90">{x.scope}</p>
-                  <p className="mt-1 text-[13px] text-white/70">
-                    {x.size}, {x.year}
+                  <p className="mt-1.5 text-[15px] leading-[1.5] text-white/90">{x.scope}</p>
+                  <p className="mt-2 flex flex-wrap gap-x-4 gap-y-0.5 text-[13px] text-white/70">
+                    <span>
+                      {x.city}, {x.region}
+                    </span>
+                    <span>{x.size}</span>
+                    <span>{x.year}</span>
                   </p>
                   <Link
                     href={`/projects?service=${serviceId}&q=${encodeURIComponent(x.title)}`}

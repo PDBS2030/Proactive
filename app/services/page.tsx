@@ -115,7 +115,7 @@ export default function ServicesPage() {
               </div>
               <div className={cn("min-[992px]:col-span-5", i % 2 === 1 && "min-[992px]:order-1")}>
                 <p className={eyebrow}>{s.name}</p>
-                <h2 id={`${s.id}-title`} className={cn(title, "mt-4")}>
+                <h2 id={`${s.id}-title`} className={cn(title, "mt-4 text-[length:calc(var(--h2)*.78)]")}>
                   {s.headline}
                 </h2>
                 <p className="mt-5 font-mulish text-[17px] leading-[1.65] text-[#143275]/85">{s.body}</p>
