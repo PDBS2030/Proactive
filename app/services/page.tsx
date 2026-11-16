@@ -9,9 +9,7 @@ import { ServicesHero } from "@/components/ServicesHero";
 import { Words } from "@/components/PageIntro";
 import { ServicesNav } from "@/components/ServicesNav";
 import { InquiryForm, InquiryLink } from "@/components/Inquiry";
-import { RelatedProjects } from "@/components/RelatedProjects";
 import { StackSection } from "@/components/Stack";
-import { PROJECTS } from "@/lib/pages";
 import { QUALIFICATIONS } from "@/lib/qualifications";
 import { cn } from "@/lib/cn";
 import {
@@ -33,7 +31,6 @@ export const metadata: Metadata = {
 const NAV_ITEMS = [
   ...SERVICE_LIST.map((s) => ({ id: s.id, label: s.name })),
   { id: "why-design-build", label: "Why design-build" },
-  { id: "related-projects", label: "Projects" },
   { id: "faqs", label: "FAQs" },
   { id: "inquiry", label: "Contact" },
 ];
@@ -213,23 +210,6 @@ export default function ServicesPage() {
             </Link>
           </div>
         </section>
-        </StackSection>
-
-        <StackSection index={6}>
-          <section id="related-projects" aria-labelledby="related-title" className="px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
-            <div className="mx-auto w-full max-w-[1680px]">
-              <p className={eyebrow}>Completed work</p>
-              <h2 id="related-title" className={cn(title, "mt-4")}>
-                Experience that performs
-              </h2>
-              <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#143275]/85">
-                Projects by service, from our portfolio. Open the full gallery to filter by sector, region and size.
-              </p>
-              <div className="mt-10">
-                <RelatedProjects projects={PROJECTS} />
-              </div>
-            </div>
-          </section>
         </StackSection>
 
         <StackSection index={7}>
