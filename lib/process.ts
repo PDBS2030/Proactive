@@ -5,6 +5,7 @@
 
 export const PROCESS_HERO = {
   title: "Fifteen steps. Three phases.",
+  tagline: "One path from first conversation to handover.",
   lead: "One disciplined path on every project, from the first conversation to the day we hand over the keys. You always know where you are, what comes next and what it costs.",
 };
 
