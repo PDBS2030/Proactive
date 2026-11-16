@@ -38,10 +38,11 @@ export function ServicesNav({ items }: { items: Item[] }) {
   }, [items]);
 
   return (
-    <div ref={barRef} className="sticky top-[104px] z-50 border-y border-[#143275]/10 bg-white/95 backdrop-blur">
+    <div ref={barRef} className="sticky top-[104px] z-50 border-y border-[#143275]/10 bg-white/95 px-4 backdrop-blur min-[768px]:px-[124px]">
+      <div className="mx-auto w-full max-w-[1680px]">
       <nav
         aria-label="On this page"
-        className="mx-auto flex w-full max-w-[1680px] items-center gap-1 overflow-x-auto px-4 [scrollbar-width:none] min-[768px]:px-[124px] [&::-webkit-scrollbar]:hidden"
+        className="-ml-3 flex w-[calc(100%+.75rem)] items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {items.map((i) => (
           <a
@@ -63,6 +64,7 @@ export function ServicesNav({ items }: { items: Item[] }) {
           Start a project
         </Link>
       </nav>
+      </div>
     </div>
   );
 }
