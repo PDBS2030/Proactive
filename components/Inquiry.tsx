@@ -175,7 +175,7 @@ export function InquiryForm({
           Send inquiry
         </button>
         <p id={`${idPrefix}-note`} role="status" className="text-[14px] leading-snug text-[#143275]/75">
-          {sent ? "Your email app should now open with the details filled in. Press send there to finish." : "This opens your email app with your details filled in."}
+          {sent ? "Your email app should now open with the details filled in. Press send there to finish." : ""}
         </p>
       </div>
     </form>
