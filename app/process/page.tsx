@@ -32,8 +32,8 @@ export default function ProcessPage() {
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
         <ProcessHero
           slides={[
-            { id: "line", label: "Our process", title: PROCESS_HERO.title, text: PROCESS_HERO.lead },
-            ...PHASES.map((p, i) => ({ id: p.id, label: p.range, title: p.title, text: p.summary, ...HERO_PHOTOS[i] })),
+            { id: "line", label: "Our process", tab: "Overview", title: PROCESS_HERO.title, text: PROCESS_HERO.lead },
+            ...PHASES.map((p, i) => ({ id: p.id, label: p.range, tab: p.short, title: p.title, text: p.summary, ...HERO_PHOTOS[i] })),
           ]}
         />
         <PhaseRail items={PHASES.map((p) => ({ id: p.id, label: p.short }))} endId="commit-title" />
