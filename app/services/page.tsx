@@ -125,13 +125,13 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                 </div>
-                <dl className="grid gap-4 border-t border-[#143275]/12 pt-6 min-[640px]:grid-cols-2">
-                  <div>
-                    <dt className="text-xs font-semibold tracking-[.15em] text-gold uppercase">Best for</dt>
+                <dl className="grid gap-5 min-[640px]:grid-cols-2">
+                  <div className="group border border-[#143275]/10 bg-white p-5 shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.14),0_36px_64px_-14px_rgba(8,43,82,.3)] hover:-translate-y-1 hover:bg-[#143275] hover:text-white hover:shadow-[0_2px_2px_rgba(8,43,82,.12),0_10px_18px_rgba(8,43,82,.16),0_26px_44px_rgba(8,43,82,.22),0_48px_80px_-16px_rgba(8,43,82,.42)]">
+                    <dt className="text-xs font-semibold tracking-[.15em] text-gold uppercase transition-colors duration-300 group-hover:text-[#e3c98f]">Best for</dt>
                     <dd className="mt-1.5 text-[15px] leading-snug">{s.bestFor}</dd>
                   </div>
-                  <div>
-                    <dt className="text-xs font-semibold tracking-[.15em] text-gold uppercase">You receive</dt>
+                  <div className="group border border-[#143275]/10 bg-white p-5 shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.14),0_36px_64px_-14px_rgba(8,43,82,.3)] hover:-translate-y-1 hover:bg-[#143275] hover:text-white hover:shadow-[0_2px_2px_rgba(8,43,82,.12),0_10px_18px_rgba(8,43,82,.16),0_26px_44px_rgba(8,43,82,.22),0_48px_80px_-16px_rgba(8,43,82,.42)]">
+                    <dt className="text-xs font-semibold tracking-[.15em] text-gold uppercase transition-colors duration-300 group-hover:text-[#e3c98f]">You receive</dt>
                     <dd className="mt-1.5 text-[15px] leading-snug">{s.outcome}</dd>
                   </div>
                 </dl>

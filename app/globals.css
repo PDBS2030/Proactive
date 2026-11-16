@@ -159,8 +159,8 @@ html[data-intro="play"] #rhythm-intro:not([open]) { display: block; }
    and the reveal script is alive. Without any of these the pages simply show their content. */
 @media (prefers-reduced-motion: no-preference) {
   main[data-motion] :is(h2, ul > li:not(nav li), ol > li:not(nav li), dl > div, [data-up]) {
-    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out), translate 0.5s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.3s;
-    transition-delay: var(--d, 0ms), var(--d, 0ms), 0ms, 0ms, 0ms;
+    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out), translate 0.5s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.3s, background-color 0.35s, color 0.35s;
+    transition-delay: var(--d, 0ms), var(--d, 0ms), 0ms, 0ms, 0ms, 0ms, 0ms;
   }
   .rv:not(.rv-off) main[data-motion] :is(h2, ul > li:not(nav li), ol > li:not(nav li), dl > div, [data-up]):not(.in) {
     opacity: 0;
