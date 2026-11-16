@@ -16,7 +16,6 @@ import { QUALIFICATIONS } from "@/lib/qualifications";
 import { cn } from "@/lib/cn";
 import {
   COMPARISON,
-  MARKETS,
   PHASES,
   SERVICES_CTA,
   SERVICES_FAQS,
@@ -212,33 +211,6 @@ export default function ServicesPage() {
             <Link href={PHASES.cta.href} className={cn(btnGhost, "mt-10")}>
               {PHASES.cta.label}
             </Link>
-          </div>
-        </section>
-        </StackSection>
-
-        {/* Markets */}
-        <StackSection index={5}>
-        <section id="markets" aria-labelledby="markets-title" className="scroll-mt-[190px] border-t border-[#143275]/10 px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
-          <div className="mx-auto w-full max-w-[1680px]">
-            <h2 id="markets-title" className={title}>
-              {MARKETS.heading}
-            </h2>
-            <p className="mt-4 font-mulish text-[17px] leading-[1.6] text-[#143275]/85">{MARKETS.lead}</p>
-            <ul className="mt-10 grid gap-6 min-[768px]:grid-cols-3 min-[768px]:gap-x-8">
-              {MARKETS.items.map((m) => (
-                <li key={m.href}>
-                  <Link href={m.href} className="group block text-inherit no-underline outline-offset-[3px] focus-visible:outline-2 focus-visible:outline-[#2356e5]">
-                    <span className="relative block aspect-[4/3] overflow-hidden">
-                      <Image src={m.image} alt={m.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105 group-focus-visible:scale-105 motion-reduce:transform-none" />
-                    </span>
-                    <span className="mt-4 flex items-center justify-between gap-4 border-b border-[#143275]/15 pb-3 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight) transition-colors duration-300 group-hover:border-gold group-focus-visible:border-gold">
-                      {m.title}
-                      <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1">→</span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
         </StackSection>
