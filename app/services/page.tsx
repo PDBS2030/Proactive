@@ -106,14 +106,14 @@ export default function ServicesPage() {
             className={cn("scroll-mt-[190px] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]", i % 2 === 1 && "bg-[#f3f6fa]")}
           >
             <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-14">
-              <div className={cn("min-[992px]:col-span-6", i % 2 === 1 && "min-[992px]:order-2")}>
+              <div className={cn("min-[992px]:col-span-7", i % 2 === 1 && "min-[992px]:order-2")}>
                 <ServiceProjects
                   serviceId={s.id}
                   serviceName={s.name}
                   projects={PROJECTS.filter((p) => p.service === SERVICE_SLUGS[s.id]).slice(0, 5)}
                 />
               </div>
-              <div className={cn("min-[992px]:col-span-6", i % 2 === 1 && "min-[992px]:order-1")}>
+              <div className={cn("min-[992px]:col-span-5", i % 2 === 1 && "min-[992px]:order-1")}>
                 <p className={eyebrow}>{s.name}</p>
                 <h2 id={`${s.id}-title`} className={cn(title, "mt-4")}>
                   {s.headline}
