@@ -42,7 +42,7 @@ export function ServicesNav({ items }: { items: Item[] }) {
       <div className="mx-auto w-full max-w-[1680px]">
       <nav
         aria-label="On this page"
-        className="-ml-3 flex w-[calc(100%+.75rem)] items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="-ml-3 flex w-[calc(100%+.75rem)] items-center gap-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {items.map((i) => (
           <a
@@ -50,7 +50,7 @@ export function ServicesNav({ items }: { items: Item[] }) {
             href={`#${i.id}`}
             aria-current={active === i.id ? "true" : undefined}
             className={cn(
-              "inline-flex min-h-12 shrink-0 items-center px-3 text-[.75rem] leading-none font-medium tracking-[.08em] whitespace-nowrap text-[#143275] uppercase underline decoration-transparent decoration-2 underline-offset-[14px] transition-[text-decoration-color] duration-300 outline-none hover:decoration-gold focus-visible:decoration-gold",
+              "inline-flex min-h-[68px] shrink-0 items-center px-3 text-[.875rem] leading-none font-semibold tracking-[.08em] whitespace-nowrap text-[#143275] uppercase underline decoration-transparent decoration-2 underline-offset-[20px] transition-[text-decoration-color] duration-300 outline-none hover:decoration-gold focus-visible:decoration-gold",
               active === i.id && "decoration-gold",
             )}
           >
@@ -59,7 +59,7 @@ export function ServicesNav({ items }: { items: Item[] }) {
         ))}
         <Link
           href="/contact"
-          className="my-2 ml-auto hidden shrink-0 items-center border border-[#143275] px-4 py-2 text-[.75rem] leading-none font-medium tracking-[.08em] text-[#143275] uppercase no-underline transition-colors duration-300 outline-none hover:bg-[#143275] hover:text-white focus-visible:bg-[#143275] focus-visible:text-white min-[1320px]:inline-flex"
+          className="ml-auto hidden shrink-0 items-center border border-[#143275] px-5 py-3 text-[.875rem] leading-none font-semibold tracking-[.08em] text-[#143275] uppercase no-underline transition-colors duration-300 outline-none hover:bg-[#143275] hover:text-white focus-visible:bg-[#143275] focus-visible:text-white min-[1560px]:inline-flex"
         >
           Start a project
         </Link>

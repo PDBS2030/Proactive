@@ -78,7 +78,7 @@ export default function ServicesPage() {
             key={s.id}
             id={s.id}
             aria-labelledby={`${s.id}-title`}
-            className={cn("scroll-mt-[170px] px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]", i % 2 === 1 && "bg-[#f3f6fa]")}
+            className={cn("scroll-mt-[190px] px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]", i % 2 === 1 && "bg-[#f3f6fa]")}
           >
             <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-14">
               <div data-wipe className={cn("relative aspect-[4/3] overflow-hidden min-[992px]:col-span-6", i % 2 === 1 && "min-[992px]:order-2")}>
@@ -119,7 +119,7 @@ export default function ServicesPage() {
         ))}
 
         {/* Why design-build */}
-        <section id="why-design-build" aria-labelledby="why-title" className="scroll-mt-[170px] bg-[#082b52] px-4 py-16 text-white min-[768px]:px-[124px] min-[768px]:py-[110px]">
+        <section id="why-design-build" aria-labelledby="why-title" className="scroll-mt-[190px] bg-[#082b52] px-4 py-16 text-white min-[768px]:px-[124px] min-[768px]:py-[110px]">
           <div className="mx-auto w-full max-w-[1680px]">
             <p className={eyebrow}>The difference</p>
             <h2 id="why-title" className={cn(title, "mt-4")}>
@@ -185,7 +185,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Markets */}
-        <section id="markets" aria-labelledby="markets-title" className="scroll-mt-[170px] border-t border-[#143275]/10 px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]">
+        <section id="markets" aria-labelledby="markets-title" className="scroll-mt-[190px] border-t border-[#143275]/10 px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]">
           <div className="mx-auto w-full max-w-[1680px]">
             <h2 id="markets-title" className={title}>
               {MARKETS.heading}
