@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 
 const NAVY = "#143275";
 const GOLD = "#b58f48";
-const INTERVAL = 6500;
+const INTERVAL = 7500;
 
 /** Draw order for the elevation: each stroke starts a little after the one before it. */
 const d = (n: number) => ({ ["--d" as string]: `${(n * 0.28).toFixed(2)}s` });
@@ -50,11 +50,20 @@ function Elevation({ active }: { active: boolean }) {
  */
 export function ProcessHero({ slides }: { slides: HeroSlide[] }) {
   const [i, setI] = useState(0);
+  const [prev, setPrev] = useState<number | null>(null);
   const [hold, setHold] = useState(false);
   const [still, setStill] = useState(false);
   const n = slides.length;
 
-  const go = useCallback((to: number) => setI(((to % n) + n) % n), [n]);
+  const go = useCallback(
+    (to: number) => {
+      const next = ((to % n) + n) % n;
+      if (next === i) return;
+      setPrev(i);
+      setI(next);
+    },
+    [n, i],
+  );
 
   useEffect(() => {
     setStill(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -85,36 +94,46 @@ export function ProcessHero({ slides }: { slides: HeroSlide[] }) {
         className="absolute inset-0 -z-30 bg-[linear-gradient(rgba(20,50,117,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(20,50,117,.06)_1px,transparent_1px)] bg-[length:56px_56px]"
       />
 
-      {slides.map((sl, k) => (
-        <div
-          key={sl.id}
-          aria-hidden={k !== i}
-          className={cn("absolute inset-0 -z-20 transition-opacity duration-[1400ms] ease-in-out motion-reduce:transition-none", k === i ? "opacity-100" : "opacity-0")}
-        >
-          {sl.image ? (
-            <Image
-              src={sl.image}
-              alt=""
-              fill
-              priority={k === 1}
-              sizes="100vw"
-              className={cn("object-cover transition-transform duration-[7000ms] ease-out motion-reduce:transition-none", k === i ? "scale-100" : "scale-[1.08]")}
-              style={{ objectPosition: sl.position ?? "center" }}
-            />
-          ) : (
-            <div className="absolute inset-x-0 top-[14%] h-[40%] min-[992px]:inset-x-auto min-[992px]:top-[11%] min-[992px]:right-[4%] min-[992px]:h-[46%] min-[992px]:w-[min(860px,60%)]">
-              <Elevation active={k === i} />
-            </div>
-          )}
-        </div>
-      ))}
+      {/* Each new slide is revealed by a slow wipe over the one before it, while its photograph drifts */}
+      {slides.map((sl, k) => {
+        const on = k === i;
+        const out = k === prev;
+        return (
+          <div
+            key={sl.id}
+            aria-hidden={!on}
+            className={cn(
+              "absolute inset-0 overflow-hidden bg-white",
+              !sl.image && "bg-[linear-gradient(rgba(20,50,117,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(20,50,117,.06)_1px,transparent_1px)] bg-[length:56px_56px]",
+              on ? "-z-[15]" : out ? "-z-[16]" : "-z-[17] invisible",
+              on && prev !== null && "cine-wipe",
+            )}
+          >
+            {sl.image ? (
+              <Image
+                src={sl.image}
+                alt=""
+                fill
+                priority={k === 1}
+                sizes="100vw"
+                className={cn("object-cover", (on || out) && "cine-drift")}
+                style={{ objectPosition: sl.position ?? "center" }}
+              />
+            ) : (
+              <div className="absolute inset-x-0 top-[14%] h-[40%] min-[992px]:inset-x-auto min-[992px]:top-[11%] min-[992px]:right-[4%] min-[992px]:h-[46%] min-[992px]:w-[min(860px,60%)]">
+                <Elevation active={on} />
+              </div>
+            )}
+          </div>
+        );
+      })}
       <span
         aria-hidden="true"
-        className={cn("absolute inset-0 -z-10 bg-linear-to-t from-[#061a33]/90 via-[#061a33]/45 to-[#061a33]/30 transition-opacity duration-[1400ms]", dark ? "opacity-100" : "opacity-0")}
+        className={cn("absolute inset-0 -z-10 bg-linear-to-t from-[#061a33]/90 via-[#061a33]/45 to-[#061a33]/30 transition-opacity duration-[1800ms] ease-in-out", dark ? "opacity-100" : "opacity-0")}
       />
 
       <div className="absolute inset-x-0 bottom-0 px-4 pb-14 min-[768px]:px-[124px] min-[768px]:pb-20">
-        <div key={s.id} aria-live={hold ? "polite" : "off"} className={cn("hero-in mx-auto w-full max-w-[1680px] transition-colors duration-700", dark ? "text-white" : "text-[#143275]")}>
+        <div key={s.id} aria-live={hold ? "polite" : "off"} className={cn("cine-text mx-auto w-full max-w-[1680px] transition-colors duration-700", dark ? "text-white" : "text-[#143275]")}>
           <p className={cn("text-xs leading-4 font-semibold tracking-[.15em] uppercase", dark ? "text-[#e3c98f]" : "text-gold")}>{s.label}</p>
           <h1 className="mt-4 max-w-[16ch] font-jost text-[clamp(30px,5.2vw,84px)] leading-[1.02] font-normal tracking-normal uppercase">{s.title}</h1>
           <p className="mt-6 max-w-[48ch] font-mulish text-[17px] leading-[1.6] min-[992px]:text-[19px]">{s.text}</p>
