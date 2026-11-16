@@ -69,7 +69,7 @@ export function PhaseCards({ items, cta }: { items: Phase[]; cta: { label: strin
                 <span className="absolute inset-0 shadow-[inset_0_22px_40px_rgba(0,0,0,.7),inset_0_-18px_36px_rgba(0,0,0,.55),inset_18px_0_34px_rgba(0,0,0,.45),inset_-18px_0_34px_rgba(0,0,0,.45)]" />
               </span>
 
-              <span aria-hidden="true" className="block h-0.5 w-10 bg-gold" />
+              <span aria-hidden="true" className={cn("block h-0.5 w-10 origin-left bg-gold transition-[opacity,transform] duration-500 ease-out motion-reduce:transition-none", on ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0")} />
               <div className={cn("transition-[translate] duration-500 ease-out motion-reduce:transition-none", on && "-translate-y-1")}>
                 <h3
                   className={cn(
