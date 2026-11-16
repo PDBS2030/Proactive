@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
 import { NAV } from "@/lib/data";
@@ -11,21 +10,12 @@ const navLink =
   "inline-flex min-h-11 items-center px-3 py-2 text-[.8125rem] leading-[1.4286] font-medium tracking-[.08em] text-navy uppercase underline decoration-transparent decoration-2 underline-offset-8 outline-none transition-[text-decoration-color] duration-300 hover:decoration-gold focus-visible:decoration-gold";
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  // The Services page opens on a full-screen photograph, so its bar is solid white from the start
-  const pathname = usePathname();
-  const solid = scrolled || pathname.startsWith("/services");
+  // One bar for every page: solid white from the start, as on Services
+  const solid = true;
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const linksRef = useRef<HTMLAnchorElement[]>([]);
   const lastFocused = useRef<Element | null>(null);
-
-  useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 8);
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
 
   const close = useCallback((restoreFocus = true) => {
     setOpen(false);
