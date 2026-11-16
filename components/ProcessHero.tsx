@@ -122,7 +122,7 @@ export function ProcessHero({ slides }: { slides: HeroSlide[] }) {
                 style={{ objectPosition: sl.position ?? "center" }}
               />
             ) : (
-              <div className="absolute inset-x-0 top-[14%] h-[40%] min-[992px]:inset-x-auto min-[992px]:top-[11%] min-[992px]:right-[4%] min-[992px]:h-[46%] min-[992px]:w-[min(860px,60%)]">
+              <div className="absolute inset-x-0 top-[14%] h-[40%] min-[992px]:inset-x-auto min-[992px]:top-[12%] min-[992px]:right-[124px] min-[992px]:h-[min(34%,calc(50svh-190px))] min-[992px]:w-[min(640px,50%)]">
                 <Elevation active={on} />
               </div>
             )}
