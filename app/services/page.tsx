@@ -79,7 +79,7 @@ export default function ServicesPage() {
           <section
             id={s.id}
             aria-labelledby={`${s.id}-title`}
-            className={cn("scroll-mt-[190px] px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]", i % 2 === 1 && "bg-[#f3f6fa]")}
+            className={cn("scroll-mt-[190px] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]", i % 2 === 1 && "bg-[#f3f6fa]")}
           >
             <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-14">
               <div data-wipe className={cn("relative aspect-[4/3] overflow-hidden min-[992px]:col-span-6", i % 2 === 1 && "min-[992px]:order-2")}>
@@ -122,7 +122,7 @@ export default function ServicesPage() {
 
         {/* Why design-build */}
         <StackSection index={3}>
-        <section id="why-design-build" aria-labelledby="why-title" className="scroll-mt-[190px] bg-[#082b52] px-4 py-16 text-white min-[768px]:px-[124px] min-[768px]:py-[110px]">
+        <section id="why-design-build" aria-labelledby="why-title" className="scroll-mt-[190px] bg-[#082b52] px-4 py-[94px] text-white min-[768px]:px-[124px] min-[768px]:py-[140px]">
           <div className="mx-auto w-full max-w-[1680px]">
             <p className={eyebrow}>The difference</p>
             <h2 id="why-title" className={cn(title, "mt-4")}>
@@ -167,7 +167,7 @@ export default function ServicesPage() {
 
         {/* Process teaser */}
         <StackSection index={4}>
-        <section aria-labelledby="phases-title" className="px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]">
+        <section aria-labelledby="phases-title" className="px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
           <div className="mx-auto w-full max-w-[1680px]">
             <h2 id="phases-title" className={title}>
               {PHASES.heading}
@@ -192,7 +192,7 @@ export default function ServicesPage() {
 
         {/* Markets */}
         <StackSection index={5}>
-        <section id="markets" aria-labelledby="markets-title" className="scroll-mt-[190px] border-t border-[#143275]/10 px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]">
+        <section id="markets" aria-labelledby="markets-title" className="scroll-mt-[190px] border-t border-[#143275]/10 px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
           <div className="mx-auto w-full max-w-[1680px]">
             <h2 id="markets-title" className={title}>
               {MARKETS.heading}
@@ -219,13 +219,13 @@ export default function ServicesPage() {
 
         <StackSection index={6}>
         <div id="faqs">
-          <Faq data={SERVICES_FAQS} />
+          <Faq data={SERVICES_FAQS} roomy />
         </div>
         </StackSection>
 
         {/* Closing call to action */}
         <StackSection index={7}>
-        <section aria-labelledby="cta-title" className="bg-[#082b52] px-4 py-16 text-center text-white min-[768px]:px-[124px] min-[768px]:py-[100px]">
+        <section aria-labelledby="cta-title" className="bg-[#082b52] px-4 py-[94px] text-center text-white min-[768px]:px-[124px] min-[768px]:py-[130px]">
           <div className="mx-auto max-w-3xl">
             <h2 id="cta-title" className={title}>
               {SERVICES_CTA.title}

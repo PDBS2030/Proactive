@@ -6,7 +6,7 @@ import { FAQS } from "@/lib/data";
 import { cn } from "@/lib/cn";
 
 /** FAQ accordion: each question opens and closes on its own. */
-export function Faq({ data = FAQS }: { data?: typeof FAQS }) {
+export function Faq({ data = FAQS, roomy = false }: { data?: typeof FAQS; roomy?: boolean }) {
   const [open, setOpen] = useState<Set<number>>(new Set());
 
   const toggle = (i: number) =>
@@ -20,7 +20,10 @@ export function Faq({ data = FAQS }: { data?: typeof FAQS }) {
   return (
     <section
       aria-labelledby="faq-title"
-      className="title-vars relative z-4 bg-[#f3f6fa] px-4 py-16 font-sans text-[#020f18] min-[768px]:px-[124px] min-[768px]:py-[110px]"
+      className={cn(
+        "title-vars relative z-4 bg-[#f3f6fa] px-4 font-sans text-[#020f18] min-[768px]:px-[124px]",
+        roomy ? "py-[94px] min-[768px]:py-[140px]" : "py-16 min-[768px]:py-[110px]",
+      )}
     >
       <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 items-start gap-y-12 min-[1000px]:grid-cols-[544fr_731fr] min-[1000px]:gap-y-0">
         <div className="max-w-none min-[1000px]:max-w-[71%]">
