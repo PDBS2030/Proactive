@@ -1,72 +1,108 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { PhaseSteps } from "@/components/PhaseSteps";
-import { CtaBand, PageIntro, ui } from "@/components/PageIntro";
-import { PROCESS_PAGE } from "@/lib/pages";
+import { InquiryForm } from "@/components/Inquiry";
+import { PhasePanel } from "@/components/PhasePanel";
+import { PhaseRail } from "@/components/PhaseRail";
+import { ProcessHero } from "@/components/ProcessHero";
+import { StackSection } from "@/components/Stack";
+import { FOOTER } from "@/lib/data";
+import { COMMITMENTS, PHASES, PROCESS_FAQS, PROCESS_HERO } from "@/lib/process";
 
 export const metadata: Metadata = {
   title: "Process — PROACTIVE Design and Building Systems",
   description: "Our design-build process: fifteen steps in three phases, from preliminary study to handover.",
 };
 
+const title = "font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial]";
+const contactLink =
+  "text-inherit underline decoration-transparent decoration-2 underline-offset-[6px] transition-[text-decoration-color] duration-300 hover:decoration-gold focus-visible:decoration-gold";
+
 export default function ProcessPage() {
-  const p = PROCESS_PAGE;
   return (
     <>
       <Header />
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
-        <PageIntro crumb="Process" title={p.title} lead={p.lead} image={p.image} imageAlt={p.imageAlt} />
+        <ProcessHero title={PROCESS_HERO.title} lead={PROCESS_HERO.lead} />
+        <PhaseRail items={PHASES.map((p) => ({ id: p.id, label: p.short }))} endId="commit-title" />
 
-        <section aria-labelledby="steps-title" className={`${ui.pad} py-16 min-[768px]:py-[100px]`}>
-          <div className={ui.wrap}>
-            <h2 id="steps-title" className={`${ui.title} mb-10`}>
-              15 Steps | 3 Phases
-            </h2>
-            <PhaseSteps phases={p.phases} />
-          </div>
-        </section>
+        <div className="relative z-10 bg-white">
+          {PHASES.map((p, i) => (
+            <StackSection key={p.id} index={i}>
+              <PhasePanel phase={p} />
+            </StackSection>
+          ))}
 
-        <section aria-labelledby="pillars-title" className={`${ui.pad} bg-[#f3f6fa] py-16 min-[768px]:py-[110px]`}>
-          <div className={ui.wrap}>
-            <h2 id="pillars-title" className={ui.title}>
-              {p.pillars.heading}
-            </h2>
-            <p className={`${ui.body} mt-4 max-w-[56ch]`}>{p.pillars.lead}</p>
-            <ul className="mt-12 grid gap-4 min-[640px]:grid-cols-2 min-[1100px]:grid-cols-4 min-[1100px]:gap-6">
-              {p.pillars.items.map((i) => (
-                <li key={i.title} className="group flex min-h-[220px] flex-col bg-[#082b52] p-7 text-white hover:-translate-y-1.5 hover:shadow-[0_22px_40px_-24px_rgba(8,43,82,.7)]">
-                  <span aria-hidden="true" className="block h-0.5 w-10 bg-gold transition-[width] duration-500 ease-out group-hover:w-full" />
-                  <h3 className="mt-auto pt-10 font-jost text-[26px] leading-[1.1]">{i.title}</h3>
-                  <p className="mt-3 text-[15px] leading-[1.6] text-white/80">{i.text}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+          <StackSection index={3}>
+            <section aria-labelledby="commit-title" className="bg-white px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px]">
+              <div className="mx-auto w-full max-w-[1680px]">
+                <h2 id="commit-title" className={title}>
+                  {COMMITMENTS.heading}
+                </h2>
+                <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#143275]/85">{COMMITMENTS.lead}</p>
+                <ul className="mt-10 grid gap-8 min-[768px]:grid-cols-2 min-[992px]:grid-cols-4 min-[992px]:gap-x-10">
+                  {COMMITMENTS.items.map((c) => (
+                    <li
+                      key={c.title}
+                      className="border border-[#143275]/10 bg-white p-8 shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.12)]"
+                    >
+                      <span aria-hidden="true" className="block h-0.5 w-10 bg-gold" />
+                      <h3 className="mt-4 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{c.title}</h3>
+                      <p className="mt-3 text-[15px] leading-[1.6] text-[#143275]/85">{c.text}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          </StackSection>
 
-        <section aria-labelledby="delivery-title" className={`${ui.pad} py-16 min-[768px]:py-[110px]`}>
-          <div className={ui.wrap}>
-            <h2 id="delivery-title" className={ui.title}>
-              {p.delivery.heading}
-            </h2>
-            <p className={`${ui.body} mt-4 max-w-[56ch]`}>{p.delivery.lead}</p>
-            <ul className="mt-12 grid border-t border-[#143275]/15 min-[992px]:grid-cols-3">
-              {p.delivery.items.map((d, i) => (
-                <li key={d.title} className={`group border-b border-[#143275]/15 py-8 min-[992px]:border-b-0 min-[992px]:pr-10 ${i > 0 ? "min-[992px]:border-l min-[992px]:pl-10" : ""}`}>
-                  <h3 className={`${ui.tile} transition-colors duration-300 group-hover:text-gold`}>{d.title}</h3>
-                  <p className="mt-3 max-w-[40ch] text-[15px] leading-[1.6] text-[#143275]/85">{d.text}</p>
-                  <Link href={d.href} className="mt-5 inline-block border-b-2 border-gold pb-0.5 transition-[padding] duration-300 hover:pr-3 text-[14px] font-medium text-[#143275] no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]">
-                    Learn more
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+          <StackSection index={4}>
+            <div id="faqs">
+              <Faq data={PROCESS_FAQS} roomy />
+            </div>
+          </StackSection>
 
-        <CtaBand heading={p.cta.heading} label={p.cta.button.label} href={p.cta.button.href} />
+          <StackSection index={5}>
+            <section id="inquiry" aria-labelledby="inquiry-title" className="bg-white px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
+              <div className="mx-auto grid w-full max-w-[1680px] gap-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-16">
+                <div className="min-[992px]:col-span-5">
+                  <h2 id="inquiry-title" className={title}>
+                    Start with a conversation
+                  </h2>
+                  <p className="mt-5 max-w-[44ch] font-mulish text-[17px] leading-[1.65] text-[#143275]/85">
+                    Tell us what you are planning. We reply within one business day to set up a call and suggest the right first step.
+                  </p>
+                  <dl className="mt-8 grid gap-5 text-[15px] leading-snug">
+                    <div>
+                      <dt className="text-sm font-semibold text-gold">Call</dt>
+                      <dd className="mt-1">
+                        <a href={FOOTER.phone.href} className={contactLink}>
+                          {FOOTER.phone.label}
+                        </a>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm font-semibold text-gold">Email</dt>
+                      <dd className="mt-1">
+                        <a href={`mailto:${FOOTER.email}`} className={contactLink}>
+                          {FOOTER.email}
+                        </a>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm font-semibold text-gold">Office</dt>
+                      <dd className="mt-1 whitespace-pre-line">{FOOTER.office}</dd>
+                    </div>
+                  </dl>
+                </div>
+                <div className="min-[992px]:col-span-7">
+                  <InquiryForm />
+                </div>
+              </div>
+            </section>
+          </StackSection>
+        </div>
       </main>
       <Footer />
     </>
