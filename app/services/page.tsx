@@ -8,7 +8,7 @@ import { ScrollProgress } from "@/components/MotionBits";
 import { ServicesHero } from "@/components/ServicesHero";
 import { Words } from "@/components/PageIntro";
 import { ServicesNav } from "@/components/ServicesNav";
-import { InquiryForm, InquiryLink } from "@/components/Inquiry";
+import { InquiryForm } from "@/components/Inquiry";
 import { ServiceProjects } from "@/components/ServiceProjects";
 import { StackSection } from "@/components/Stack";
 import { QUALIFICATIONS } from "@/lib/qualifications";
@@ -37,13 +37,6 @@ const NAV_ITEMS = [
   { id: "inquiry", label: "Contact" },
 ];
 
-/** The wording the inquiry form uses for each service */
-const INQUIRY_SERVICE: Record<string, string> = {
-  architecture: "Architecture and design",
-  "design-build": "Design-build",
-  "construction-management": "Construction management",
-};
-
 const HERO_IMAGES: Record<string, { image: string; alt: string; position?: string }> = {
   architecture: { image: "/assets/gallery/landmark/1.jpg", alt: "Brick-walled study with built-in shelving and a long work table", position: "center 40%" },
   "design-build": { image: "/assets/gallery/loft/1.jpg", alt: "Living room with custom wood cabinetry and a fireplace", position: "center 45%" },
@@ -54,7 +47,6 @@ const title =
   "font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial]";
 const eyebrow = "text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase";
 import { ui } from "@/components/PageIntro";
-const btnPrimary = ui.btn;
 const btnGhost = ui.btnGhost;
 
 function Check() {
@@ -133,9 +125,16 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                 </div>
-                <InquiryLink service={INQUIRY_SERVICE[s.id]} className={cn(btnPrimary, "self-start")}>
-                  Discuss {s.name}
-                </InquiryLink>
+                <dl className="grid gap-4 border-t border-[#143275]/12 pt-6 min-[640px]:grid-cols-2">
+                  <div>
+                    <dt className="text-xs font-semibold tracking-[.15em] text-gold uppercase">Best for</dt>
+                    <dd className="mt-1.5 text-[15px] leading-snug">{s.bestFor}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs font-semibold tracking-[.15em] text-gold uppercase">You receive</dt>
+                    <dd className="mt-1.5 text-[15px] leading-snug">{s.outcome}</dd>
+                  </div>
+                </dl>
               </div>
             </div>
           </section>
