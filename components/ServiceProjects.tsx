@@ -133,12 +133,6 @@ export function ServiceProjects({
         </div>
       </div>
 
-      <Link
-        href={`/projects?service=${serviceId}`}
-        className="mt-4 inline-block text-[14px] font-medium text-[#143275] underline decoration-gold decoration-2 underline-offset-[6px] outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]"
-      >
-        See all {serviceName.toLowerCase()} projects
-      </Link>
     </div>
   );
 }
