@@ -128,16 +128,6 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-                <dl className="mt-8 grid gap-4 border-t border-[#143275]/12 pt-6 min-[640px]:grid-cols-2">
-                  <div>
-                    <dt className="text-xs font-semibold tracking-[.15em] text-gold uppercase">Best for</dt>
-                    <dd className="mt-1.5 text-[15px] leading-snug">{s.bestFor}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs font-semibold tracking-[.15em] text-gold uppercase">You receive</dt>
-                    <dd className="mt-1.5 text-[15px] leading-snug">{s.outcome}</dd>
-                  </div>
-                </dl>
                 <InquiryLink service={INQUIRY_SERVICE[s.id]} className={cn(btnPrimary, "mt-8")}>
                   Discuss {s.name}
                 </InquiryLink>
