@@ -115,37 +115,40 @@ export function PhasePanel({ phase }: { phase: Phase }) {
           </div>
         </div>
 
-        <ol ref={list} className="relative min-[992px]:col-span-8">
-          <span aria-hidden="true" className={cn("absolute top-2 bottom-2 left-[9px] w-px", t.rule)} />
-          <span ref={fill} aria-hidden="true" className="absolute top-2 bottom-2 left-[8px] w-0.5 origin-top bg-gold will-change-transform" style={{ transform: "scaleY(0)" }} />
-          {phase.steps.map((s) => (
-            <li key={s.title} className={cn("group/step relative border-t py-9 pl-12 first:border-t-0 first:pt-0 last:pb-0", t.hair)}>
-              <span
-                data-dot
-                data-on="0"
-                aria-hidden="true"
-                className={cn("absolute left-0 size-5 border-2 transition-[background-color,border-color,transform] duration-500 data-[on=1]:scale-110 data-[on=1]:border-gold data-[on=1]:bg-gold", t.dot, "top-[39px] group-first/step:top-1.5")}
-              />
-              {/* The step on the left; on the right a two-line ledger of who decides and who delivers */}
-              <div className="grid gap-6 min-[1100px]:grid-cols-[5fr_6fr] min-[1100px]:gap-x-12">
-                <div>
+        <div className="min-[992px]:col-span-8">
+          {/* Column heads, once per phase */}
+          <div aria-hidden="true" className={cn("hidden grid-cols-[5fr_4fr_4fr] gap-x-8 border-b pb-3 pl-12 text-[15px] font-semibold min-[1280px]:grid", t.hair)}>
+            <span className={t.muted}>Step</span>
+            <span className={t.label}>You decide</span>
+            <span className={t.label}>We deliver</span>
+          </div>
+          <ol ref={list} className="relative">
+            <span aria-hidden="true" className={cn("absolute top-0 bottom-0 left-[9px] w-px", t.rule)} />
+            <span ref={fill} aria-hidden="true" className="absolute top-0 bottom-0 left-[8px] w-0.5 origin-top bg-gold will-change-transform" style={{ transform: "scaleY(0)" }} />
+            {phase.steps.map((s) => (
+              <li key={s.title} className={cn("relative grid gap-x-8 gap-y-5 border-b py-8 pl-12 min-[640px]:grid-cols-2 min-[1280px]:grid-cols-[5fr_4fr_4fr]", t.hair)}>
+                <span
+                  data-dot
+                  data-on="0"
+                  aria-hidden="true"
+                  className={cn("absolute top-[38px] left-0 size-5 border-2 transition-[background-color,border-color,transform] duration-500 data-[on=1]:scale-110 data-[on=1]:border-gold data-[on=1]:bg-gold", t.dot)}
+                />
+                <div className="min-[640px]:col-span-2 min-[1280px]:col-span-1">
                   <h3 className="font-jost text-(length:--h5) leading-(--h5-lh) font-normal uppercase">{s.title}</h3>
-                  <p className={cn("mt-3 max-w-[44ch] font-mulish text-[16px] leading-[1.65]", t.muted)}>{s.text}</p>
+                  <p className={cn("mt-2 max-w-[40ch] font-mulish text-[15px] leading-[1.6]", t.muted)}>{s.text}</p>
                 </div>
-                <dl className={cn("grid self-start border-y", t.hair)}>
-                  <div className="grid grid-cols-[104px_1fr] gap-x-5 py-4 min-[640px]:grid-cols-[120px_1fr]">
-                    <dt className={cn("text-[15px] leading-snug font-semibold", t.label)}>You decide</dt>
-                    <dd className="text-[16px] leading-[1.5]">{s.decide}</dd>
-                  </div>
-                  <div className={cn("grid grid-cols-[104px_1fr] gap-x-5 border-t py-4 min-[640px]:grid-cols-[120px_1fr]", t.hair)}>
-                    <dt className={cn("text-[15px] leading-snug font-semibold", t.label)}>We deliver</dt>
-                    <dd className="text-[16px] leading-[1.5]">{s.deliver}</dd>
-                  </div>
-                </dl>
-              </div>
-            </li>
-          ))}
-        </ol>
+                <div>
+                  <p className={cn("mb-1 text-[14px] font-semibold min-[1280px]:hidden", t.label)}>You decide</p>
+                  <p className="text-[16px] leading-[1.55]">{s.decide}</p>
+                </div>
+                <div>
+                  <p className={cn("mb-1 text-[14px] font-semibold min-[1280px]:hidden", t.label)}>We deliver</p>
+                  <p className="text-[16px] leading-[1.55]">{s.deliver}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );
