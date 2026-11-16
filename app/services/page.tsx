@@ -8,6 +8,7 @@ import { ScrollProgress } from "@/components/MotionBits";
 import { ServicesHero } from "@/components/ServicesHero";
 import { Words } from "@/components/PageIntro";
 import { ServicesNav } from "@/components/ServicesNav";
+import { FaintVideo } from "@/components/FaintVideo";
 import { InquiryForm } from "@/components/Inquiry";
 import { ServiceProjects } from "@/components/ServiceProjects";
 import { StackSection } from "@/components/Stack";
@@ -144,7 +145,10 @@ export default function ServicesPage() {
 
         {/* Why design-build */}
         <StackSection index={5}>
-        <section id="why-design-build" aria-labelledby="why-title" className="scroll-mt-[190px] bg-[#082b52] px-4 py-[94px] text-white min-[768px]:px-[124px] min-[768px]:py-[140px]">
+        <section id="why-design-build" aria-labelledby="why-title" className="relative isolate scroll-mt-[190px] overflow-hidden bg-[#082b52] px-4 py-[94px] text-white min-[768px]:px-[124px] min-[768px]:py-[140px]">
+          {/* A faint construction video plays behind this section while it is the one on screen */}
+          <FaintVideo src="/assets/service-video.mp4" poster="/assets/service-video-poster.jpg" className="absolute inset-0 -z-20 size-full object-cover opacity-[.12]" />
+          <span aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-b from-[#082b52]/70 via-[#082b52]/30 to-[#082b52]/70" />
           <div className="mx-auto w-full max-w-[1680px]">
             <p className={eyebrow}>The difference</p>
             <h2 id="why-title" className={cn(title, "mt-4")}>
