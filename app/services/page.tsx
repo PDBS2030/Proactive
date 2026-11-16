@@ -13,7 +13,6 @@ import { InquiryForm } from "@/components/Inquiry";
 import { PhaseCards } from "@/components/PhaseCards";
 import { ServiceProjects } from "@/components/ServiceProjects";
 import { StackSection } from "@/components/Stack";
-import { QUALIFICATIONS } from "@/lib/qualifications";
 import { PROJECTS, SERVICE_SLUGS } from "@/lib/pages";
 import { cn } from "@/lib/cn";
 import {
@@ -75,17 +74,17 @@ export default function ServicesPage() {
         <div className="relative z-10 bg-white">
           <ServicesNav items={NAV_ITEMS} />
 
-        {/* What buyers check first: only facts that have a real value are shown */}
+        {/* Services under one roof */}
         <StackSection index={0}>
-          <section aria-label="Qualifications" className="border-b border-[#143275]/10 px-4 py-14 min-[768px]:px-[124px] min-[768px]:py-[72px]">
-            <dl className="mx-auto grid w-full max-w-[1680px] gap-x-10 gap-y-8 min-[768px]:grid-cols-2 min-[1100px]:grid-cols-3">
-              {QUALIFICATIONS.filter((q) => q.value).map((q) => (
-                <div key={q.label} className="border-t border-[#143275]/15 pt-4">
-                  <dt className="text-sm font-semibold text-gold">{q.label}</dt>
-                  <dd className="mt-2 font-jost text-[clamp(22px,2.2vw,32px)] leading-[1.15]">{q.value}</dd>
-                </div>
-              ))}
-            </dl>
+          <section aria-labelledby="one-roof-title" className="border-b border-[#143275]/10 px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px]">
+            <div className="mx-auto grid w-full max-w-[1680px] gap-8 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
+              <h2 id="one-roof-title" className={cn(title, "min-[992px]:col-span-4")}>
+                Services under one roof
+              </h2>
+              <p className="font-mulish text-[clamp(18px,1.55vw,24px)] leading-[1.6] text-[#143275] min-[992px]:col-span-7 min-[992px]:col-start-6">
+                We bring architecture, design-build, and construction management together under one roof, uniting thoughtful design with disciplined execution. From the earliest concept to final completion, our integrated approach provides clear communication, coordinated expertise, and a consistent focus on your vision, budget, and schedule, delivering a seamless experience and spaces built for lasting value.
+              </p>
+            </div>
           </section>
         </StackSection>
 
