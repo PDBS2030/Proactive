@@ -105,7 +105,7 @@ export default function ServicesPage() {
             aria-labelledby={`${s.id}-title`}
             className={cn("scroll-mt-[190px] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]", i % 2 === 1 && "bg-[#f3f6fa]")}
           >
-            <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-14">
+            <div className="mx-auto grid w-full max-w-[1680px] gap-10 min-[992px]:grid-cols-12 min-[992px]:items-stretch min-[992px]:gap-x-14">
               <div className={cn("min-[992px]:col-span-7", i % 2 === 1 && "min-[992px]:order-2")}>
                 <ServiceProjects
                   serviceId={s.id}
@@ -113,22 +113,27 @@ export default function ServicesPage() {
                   projects={PROJECTS.filter((p) => p.service === SERVICE_SLUGS[s.id]).slice(0, 5)}
                 />
               </div>
-              <div className={cn("min-[992px]:col-span-5", i % 2 === 1 && "min-[992px]:order-1")}>
-                <p className={eyebrow}>{s.name}</p>
-                <h2 id={`${s.id}-title`} className={cn(title, "mt-4 text-[length:calc(var(--h2)*.78)]")}>
-                  {s.headline}
-                </h2>
-                <p className="mt-5 font-mulish text-[17px] leading-[1.65] text-[#143275]/85">{s.body}</p>
-                <h3 className="mt-8 text-xs font-semibold tracking-[.15em] uppercase">What’s included</h3>
-                <ul className="mt-3 grid gap-2.5">
-                  {s.includes.map((x) => (
-                    <li key={x} className="flex gap-3 text-[15px] leading-snug">
-                      <Check />
-                      <span>{x}</span>
-                    </li>
-                  ))}
-                </ul>
-                <InquiryLink service={INQUIRY_SERVICE[s.id]} className={cn(btnPrimary, "mt-8")}>
+              {/* The text runs from the top edge of the project accordion to its bottom edge, with even space between its parts */}
+              <div className={cn("flex flex-col justify-between gap-9 min-[992px]:col-span-5", i % 2 === 1 && "min-[992px]:order-1")}>
+                <div>
+                  <p className={eyebrow}>{s.name}</p>
+                  <h2 id={`${s.id}-title`} className={cn(title, "mt-4 text-[length:calc(var(--h2)*.78)]")}>
+                    {s.headline}
+                  </h2>
+                </div>
+                <p className="font-mulish text-[17px] leading-[1.65] text-[#143275]/85">{s.body}</p>
+                <div>
+                  <h3 className="text-xs font-semibold tracking-[.15em] uppercase">What’s included</h3>
+                  <ul className="mt-3 grid gap-2.5">
+                    {s.includes.map((x) => (
+                      <li key={x} className="flex gap-3 text-[15px] leading-snug">
+                        <Check />
+                        <span>{x}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <InquiryLink service={INQUIRY_SERVICE[s.id]} className={cn(btnPrimary, "self-start")}>
                   Discuss {s.name}
                 </InquiryLink>
               </div>

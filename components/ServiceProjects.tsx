@@ -38,12 +38,12 @@ export function ServiceProjects({
   };
 
   return (
-    <div>
-      <div data-wipe className="relative">
+    <div className="h-full">
+      <div data-wipe className="relative h-full">
         <div
           role="tablist"
           aria-label={`Projects completed under ${serviceName}`}
-          className="flex flex-col gap-1 bg-[#061a33] min-[768px]:h-[clamp(440px,40vw,640px)] min-[768px]:flex-row"
+          className="flex flex-col gap-1 bg-[#061a33] min-[768px]:h-full min-[768px]:min-h-[clamp(440px,40vw,640px)] min-[768px]:flex-row"
         >
           {projects.map((x, i) => {
             const on = i === active;
