@@ -3,7 +3,7 @@ export const SERVICES_PAGE = {
   title: "One team, from first sketch to final handover",
   lead: "Architecture, design-build and construction management under one roof, so design decisions and construction realities are made together, with one accountable partner from the first meeting to the keys.",
   regions: "Maryland · DC · Virginia",
-  primaryCta: { label: "Start a project", href: "/contact" },
+  primaryCta: { label: "Start a project", href: "#inquiry" },
   secondaryCta: { label: "See our process", href: "/process" },
   image: "/assets/hero.jpg",
   imageAlt: "Open oak stair with slender black balusters",

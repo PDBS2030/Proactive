@@ -74,22 +74,32 @@ export type Project = {
   sector: Sector;
   service: ServiceType;
   image: string;
+  year: number;
+  size: string;
+  scope: string;
 };
 
-/** SAMPLE portfolio entries (photos from the prototype gallery). Replace with real PDBS projects. */
+/** Address-bar values for the service filter, shared by the Services and Projects pages. */
+export const SERVICE_SLUGS: Record<string, ServiceType> = {
+  architecture: "Architecture & design",
+  "design-build": "Design-build",
+  "construction-management": "Construction management",
+};
+
+/** SAMPLE portfolio entries (photos from the prototype gallery, sizes and years invented). Replace with real PDBS projects. */
 export const PROJECTS: Project[] = [
-  { id: "p1", title: "Harbor-view residence", city: "Baltimore", region: "Maryland", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/1.jpg" },
-  { id: "p2", title: "Family home renovation", city: "Bethesda", region: "Maryland", sector: "Residential", service: "Architecture & design", image: "/assets/gallery/residential/2.jpg" },
-  { id: "p3", title: "Hillside residence", city: "Arlington", region: "Virginia", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/3.jpg" },
-  { id: "p4", title: "Warehouse loft conversion", city: "Baltimore", region: "Maryland", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/1.jpg" },
-  { id: "p5", title: "Industrial studio", city: "Washington", region: "DC", sector: "Loft & industrial conversions", service: "Construction management", image: "/assets/gallery/loft/2.jpg" },
-  { id: "p6", title: "Factory residences", city: "Alexandria", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/3.jpg" },
-  { id: "p7", title: "Historic rowhouse restoration", city: "Washington", region: "DC", sector: "Landmark & brownstone", service: "Architecture & design", image: "/assets/gallery/landmark/1.jpg" },
-  { id: "p8", title: "Townhouse renovation", city: "Annapolis", region: "Maryland", sector: "Landmark & brownstone", service: "Design-build", image: "/assets/gallery/landmark/2.jpg" },
-  { id: "p9", title: "Landmark facade and interiors", city: "Richmond", region: "Virginia", sector: "Landmark & brownstone", service: "Construction management", image: "/assets/gallery/landmark/3.jpg" },
-  { id: "p10", title: "Office interior fit-out", city: "Baltimore", region: "Maryland", sector: "Commercial", service: "Design-build", image: "/assets/gallery/commercial/1.jpg" },
-  { id: "p11", title: "Academy and learning space", city: "Washington", region: "DC", sector: "Commercial", service: "Construction management", image: "/assets/gallery/commercial/2.jpg" },
-  { id: "p12", title: "Retail and showroom", city: "Tysons", region: "Virginia", sector: "Commercial", service: "Architecture & design", image: "/assets/gallery/commercial/3.jpg" },
+  { id: "p1", title: "Harbor-view residence", city: "Baltimore", region: "Maryland", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/1.jpg", year: 2024, size: "3,800 sq ft", scope: "New residence, designed and built" },
+  { id: "p2", title: "Family home renovation", city: "Bethesda", region: "Maryland", sector: "Residential", service: "Architecture & design", image: "/assets/gallery/residential/2.jpg", year: 2023, size: "2,600 sq ft", scope: "Whole-house renovation and redesign" },
+  { id: "p3", title: "Hillside residence", city: "Arlington", region: "Virginia", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/3.jpg", year: 2024, size: "4,100 sq ft", scope: "Hillside residence with new structure" },
+  { id: "p4", title: "Warehouse loft conversion", city: "Baltimore", region: "Maryland", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/1.jpg", year: 2023, size: "6,500 sq ft", scope: "Warehouse converted to loft residences" },
+  { id: "p5", title: "Industrial studio", city: "Washington", region: "DC", sector: "Loft & industrial conversions", service: "Construction management", image: "/assets/gallery/loft/2.jpg", year: 2022, size: "5,200 sq ft", scope: "Studio fit-out managed for the owner" },
+  { id: "p6", title: "Factory residences", city: "Alexandria", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/3.jpg", year: 2024, size: "18,000 sq ft", scope: "Factory building converted to homes" },
+  { id: "p7", title: "Historic rowhouse restoration", city: "Washington", region: "DC", sector: "Landmark & brownstone", service: "Architecture & design", image: "/assets/gallery/landmark/1.jpg", year: 2022, size: "3,400 sq ft", scope: "Historic rowhouse restoration and redesign" },
+  { id: "p8", title: "Townhouse renovation", city: "Annapolis", region: "Maryland", sector: "Landmark & brownstone", service: "Design-build", image: "/assets/gallery/landmark/2.jpg", year: 2023, size: "2,900 sq ft", scope: "Townhouse renovation, interiors and systems" },
+  { id: "p9", title: "Landmark facade and interiors", city: "Richmond", region: "Virginia", sector: "Landmark & brownstone", service: "Construction management", image: "/assets/gallery/landmark/3.jpg", year: 2021, size: "22,000 sq ft", scope: "Landmark facade and interiors, managed construction" },
+  { id: "p10", title: "Office interior fit-out", city: "Baltimore", region: "Maryland", sector: "Commercial", service: "Design-build", image: "/assets/gallery/commercial/1.jpg", year: 2024, size: "8,800 sq ft", scope: "Office interior fit-out" },
+  { id: "p11", title: "Academy and learning space", city: "Washington", region: "DC", sector: "Commercial", service: "Construction management", image: "/assets/gallery/commercial/2.jpg", year: 2023, size: "12,000 sq ft", scope: "Learning space built to the owner’s design" },
+  { id: "p12", title: "Retail and showroom", city: "Tysons", region: "Virginia", sector: "Commercial", service: "Architecture & design", image: "/assets/gallery/commercial/3.jpg", year: 2022, size: "5,600 sq ft", scope: "Retail and showroom design" },
 ];
 
 export const PROJECTS_PAGE = {

@@ -125,12 +125,13 @@ export function ServicesHero({
               </a>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
+              <a
                 href={primary.href}
+                onClick={(e) => primary.href.startsWith("#") && goToSection(e, primary.href.slice(1))}
                 className="btn-sweep inline-flex min-h-12 items-center justify-center border border-white bg-white bg-[linear-gradient(#143275,#143275)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#143275] uppercase no-underline outline-none hover:text-white focus-visible:text-white"
               >
                 {primary.label}
-              </Link>
+              </a>
               <Link
                 href={secondary.href}
                 className="btn-sweep inline-flex min-h-12 items-center justify-center border border-white/60 bg-[linear-gradient(#fff,#fff)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline outline-none hover:border-white hover:text-[#143275] focus-visible:border-white focus-visible:text-[#143275]"

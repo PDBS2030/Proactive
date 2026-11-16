@@ -8,7 +8,11 @@ import { ScrollProgress } from "@/components/MotionBits";
 import { ServicesHero } from "@/components/ServicesHero";
 import { Words } from "@/components/PageIntro";
 import { ServicesNav } from "@/components/ServicesNav";
+import { InquiryForm, InquiryLink } from "@/components/Inquiry";
+import { RelatedProjects } from "@/components/RelatedProjects";
 import { StackSection } from "@/components/Stack";
+import { PROJECTS } from "@/lib/pages";
+import { QUALIFICATIONS } from "@/lib/qualifications";
 import { cn } from "@/lib/cn";
 import {
   COMPARISON,
@@ -30,9 +34,17 @@ export const metadata: Metadata = {
 const NAV_ITEMS = [
   ...SERVICE_LIST.map((s) => ({ id: s.id, label: s.name })),
   { id: "why-design-build", label: "Why design-build" },
-  { id: "markets", label: "Markets" },
+  { id: "related-projects", label: "Projects" },
   { id: "faqs", label: "FAQs" },
+  { id: "inquiry", label: "Contact" },
 ];
+
+/** The wording the inquiry form uses for each service */
+const INQUIRY_SERVICE: Record<string, string> = {
+  architecture: "Architecture and design",
+  "design-build": "Design-build",
+  "construction-management": "Construction management",
+};
 
 const HERO_IMAGES: Record<string, { image: string; alt: string; position?: string }> = {
   architecture: { image: "/assets/gallery/landmark/1.jpg", alt: "Brick-walled study with built-in shelving and a long work table", position: "center 40%" },
@@ -73,6 +85,20 @@ export default function ServicesPage() {
         <div className="relative z-10 bg-white">
           <ServicesNav items={NAV_ITEMS} />
 
+        {/* What buyers check first: only facts that have a real value are shown */}
+        <StackSection index={0}>
+          <section aria-label="Qualifications" className="border-b border-[#143275]/10 px-4 py-14 min-[768px]:px-[124px] min-[768px]:py-[72px]">
+            <dl className="mx-auto grid w-full max-w-[1680px] gap-x-10 gap-y-8 min-[768px]:grid-cols-2 min-[1100px]:grid-cols-3">
+              {QUALIFICATIONS.filter((q) => q.value).map((q) => (
+                <div key={q.label} className="border-t border-[#143275]/15 pt-4">
+                  <dt className="text-sm font-semibold text-gold">{q.label}</dt>
+                  <dd className="mt-2 font-jost text-[clamp(22px,2.2vw,32px)] leading-[1.15]">{q.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        </StackSection>
+
         {/* The three services */}
         {SERVICE_LIST.map((s, i) => (
           <StackSection key={s.id} index={i}>
@@ -111,9 +137,9 @@ export default function ServicesPage() {
                     <dd className="mt-1.5 text-[15px] leading-snug">{s.outcome}</dd>
                   </div>
                 </dl>
-                <Link href="/contact" className={cn(btnPrimary, "mt-8")}>
+                <InquiryLink service={INQUIRY_SERVICE[s.id]} className={cn(btnPrimary, "mt-8")}>
                   Discuss {s.name}
-                </Link>
+                </InquiryLink>
               </div>
             </div>
           </section>
@@ -218,29 +244,64 @@ export default function ServicesPage() {
         </StackSection>
 
         <StackSection index={6}>
+          <section id="related-projects" aria-labelledby="related-title" className="px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
+            <div className="mx-auto w-full max-w-[1680px]">
+              <p className={eyebrow}>Completed work</p>
+              <h2 id="related-title" className={cn(title, "mt-4")}>
+                Experience that performs
+              </h2>
+              <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#143275]/85">
+                Projects by service, from our portfolio. Open the full gallery to filter by sector, region and size.
+              </p>
+              <div className="mt-10">
+                <RelatedProjects projects={PROJECTS} />
+              </div>
+            </div>
+          </section>
+        </StackSection>
+
+        <StackSection index={7}>
         <div id="faqs">
           <Faq data={SERVICES_FAQS} roomy />
         </div>
         </StackSection>
 
-        {/* Closing call to action */}
-        <StackSection index={7}>
-        <section aria-labelledby="cta-title" className="bg-[#082b52] px-4 py-[94px] text-center text-white min-[768px]:px-[124px] min-[768px]:py-[130px]">
-          <div className="mx-auto max-w-3xl">
-            <h2 id="cta-title" className={title}>
-              {SERVICES_CTA.title}
-            </h2>
-            <p className="mt-4 font-mulish text-[17px] leading-[1.6] text-white/80">{SERVICES_CTA.text}</p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href={SERVICES_CTA.button.href}
-                className="inline-flex min-h-12 items-center justify-center border border-gold bg-gold px-8 text-[.8125rem] font-medium tracking-[.08em] text-[#082b52] uppercase no-underline transition-colors duration-300 outline-none hover:bg-transparent hover:text-gold focus-visible:bg-transparent focus-visible:text-gold"
-              >
-                {SERVICES_CTA.button.label}
-              </Link>
-              <a href={FOOTER.phone.href} className="inline-flex min-h-12 items-center justify-center border border-white/30 px-8 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline transition-colors duration-300 outline-none hover:border-gold focus-visible:border-gold">
-                Call {FOOTER.phone.label}
-              </a>
+        {/* Inquiry form */}
+        <StackSection index={8}>
+        <section id="inquiry" aria-labelledby="inquiry-title" className="bg-white px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
+          <div className="mx-auto grid w-full max-w-[1680px] gap-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-16">
+            <div className="min-[992px]:col-span-5">
+              <h2 id="inquiry-title" className={title}>
+                Start with a conversation
+              </h2>
+              <p className="mt-5 max-w-[44ch] font-mulish text-[17px] leading-[1.65] text-[#143275]/85">
+                Tell us what you are planning. We reply within one business day to set up a call and suggest the right first step.
+              </p>
+              <dl className="mt-8 grid gap-5 text-[15px] leading-snug">
+                <div>
+                  <dt className="text-sm font-semibold text-gold">Call</dt>
+                  <dd className="mt-1">
+                    <a href={FOOTER.phone.href} className="text-inherit underline decoration-transparent decoration-2 underline-offset-[6px] transition-[text-decoration-color] duration-300 hover:decoration-gold focus-visible:decoration-gold">
+                      {FOOTER.phone.label}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-sm font-semibold text-gold">Email</dt>
+                  <dd className="mt-1">
+                    <a href={`mailto:${FOOTER.email}`} className="text-inherit underline decoration-transparent decoration-2 underline-offset-[6px] transition-[text-decoration-color] duration-300 hover:decoration-gold focus-visible:decoration-gold">
+                      {FOOTER.email}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-sm font-semibold text-gold">Office</dt>
+                  <dd className="mt-1 whitespace-pre-line">{FOOTER.office}</dd>
+                </div>
+              </dl>
+            </div>
+            <div className="min-[992px]:col-span-7">
+              <InquiryForm />
             </div>
           </div>
         </section>

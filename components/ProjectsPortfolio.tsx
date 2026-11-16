@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
-import type { Project, Region, Sector, ServiceType } from "@/lib/pages";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { SERVICE_SLUGS, type Project, type Region, type Sector, type ServiceType } from "@/lib/pages";
 import { cn } from "@/lib/cn";
 
 const ALL = "All";
+const slugify = (v: string) => v.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const select =
   "field-line mt-2 block w-full min-h-12 cursor-pointer appearance-none border border-[#143275]/25 bg-white bg-[url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23143275' stroke-width='1.5'><path d='m1 1 5 5 5-5'/></svg>\")] bg-[length:12px_8px] bg-[position:right_16px_center] bg-no-repeat px-4 pr-10 text-[15px] text-[#143275] outline-none transition-colors duration-200 focus:border-gold focus-visible:border-gold";
 const label = "block text-sm font-medium text-[#143275]";
@@ -50,6 +51,32 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
   const sectors = useMemo(() => [...new Set(projects.map((p) => p.sector))] as Sector[], [projects]);
   const regions = useMemo(() => [...new Set(projects.map((p) => p.region))] as Region[], [projects]);
   const services = useMemo(() => [...new Set(projects.map((p) => p.service))] as ServiceType[], [projects]);
+
+  // Open with the filters named in the address, e.g. /projects?service=design-build, and keep it in step
+  const ready = useRef(false);
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const pick = (list: string[], value: string | null) => list.find((x) => slugify(x) === value) ?? ALL;
+    const svc = SERVICE_SLUGS[q.get("service") ?? ""];
+    if (svc) setService(svc);
+    setSector(pick(sectors, q.get("sector")));
+    setRegion(pick(regions, q.get("region")));
+    setQuery(q.get("q") ?? "");
+  }, [sectors, regions]);
+  useEffect(() => {
+    if (!ready.current) {
+      ready.current = true;
+      return;
+    }
+    const q = new URLSearchParams();
+    const svcKey = Object.keys(SERVICE_SLUGS).find((k) => SERVICE_SLUGS[k] === service);
+    if (svcKey) q.set("service", svcKey);
+    if (sector !== ALL) q.set("sector", slugify(sector));
+    if (region !== ALL) q.set("region", slugify(region));
+    if (query.trim()) q.set("q", query.trim());
+    const qs = q.toString();
+    window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
+  }, [sector, region, service, query]);
 
   const shown = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -147,9 +174,12 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
                 <p className="mt-1 text-[15px] text-[#143275]/80">
                   {p.city}, {p.region}
                 </p>
+                <p className="mt-2 text-[14px] leading-snug text-[#143275]/75">{p.scope}</p>
                 <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t border-[#143275]/12 pt-3 text-[13px] text-[#143275]/70">
-                  <span>{p.sector}</span>
                   <span>{p.service}</span>
+                  <span>{p.sector}</span>
+                  <span>{p.size}</span>
+                  <span>{p.year}</span>
                 </p>
               </article>
             </li>
