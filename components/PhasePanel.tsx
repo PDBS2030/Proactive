@@ -12,6 +12,7 @@ const TONES = {
     grid: "bg-[linear-gradient(rgba(20,50,117,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(20,50,117,.06)_1px,transparent_1px)]",
     muted: "text-[#143275]/80",
     rule: "bg-[#143275]/15",
+    hair: "border-[#143275]/15",
     dot: "border-[#143275] bg-white",
     card: "border-[#143275]/10 bg-white",
     label: "text-gold",
@@ -21,6 +22,7 @@ const TONES = {
     grid: "bg-[linear-gradient(rgba(255,255,255,.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.09)_1px,transparent_1px)]",
     muted: "text-white/80",
     rule: "bg-white/25",
+    hair: "border-white/25",
     dot: "border-white bg-[#0b3a6b]",
     card: "border-white/20 bg-[#0b3a6b]/60",
     label: "text-[#e3c98f]",
@@ -30,6 +32,7 @@ const TONES = {
     grid: "",
     muted: "text-white/80",
     rule: "bg-white/25",
+    hair: "border-white/25",
     dot: "border-white bg-[#082b52]",
     card: "border-white/20 bg-[#082b52]/60",
     label: "text-[#e3c98f]",
@@ -116,25 +119,30 @@ export function PhasePanel({ phase }: { phase: Phase }) {
           <span aria-hidden="true" className={cn("absolute top-2 bottom-2 left-[9px] w-px", t.rule)} />
           <span ref={fill} aria-hidden="true" className="absolute top-2 bottom-2 left-[8px] w-0.5 origin-top bg-gold will-change-transform" style={{ transform: "scaleY(0)" }} />
           {phase.steps.map((s) => (
-            <li key={s.title} className="relative pl-12 pb-12 last:pb-0">
+            <li key={s.title} className={cn("group/step relative border-t py-9 pl-12 first:border-t-0 first:pt-0 last:pb-0", t.hair)}>
               <span
                 data-dot
                 data-on="0"
                 aria-hidden="true"
-                className={cn("absolute top-1.5 left-0 size-5 border-2 transition-[background-color,border-color,transform] duration-500 data-[on=1]:scale-110 data-[on=1]:border-gold data-[on=1]:bg-gold", t.dot)}
+                className={cn("absolute left-0 size-5 border-2 transition-[background-color,border-color,transform] duration-500 data-[on=1]:scale-110 data-[on=1]:border-gold data-[on=1]:bg-gold", t.dot, "top-[39px] group-first/step:top-1.5")}
               />
-              <h3 className="font-jost text-(length:--h5) leading-(--h5-lh) font-normal uppercase">{s.title}</h3>
-              <p className={cn("mt-2 max-w-[56ch] font-mulish text-[16px] leading-[1.6]", t.muted)}>{s.text}</p>
-              <dl className="mt-5 grid max-w-[760px] gap-4 min-[640px]:grid-cols-2">
-                <div className={cn("border p-5", t.card)}>
-                  <dt className={cn("text-xs font-semibold tracking-[.15em] uppercase", t.label)}>You decide</dt>
-                  <dd className="mt-1.5 text-[15px] leading-snug">{s.decide}</dd>
+              {/* The step on the left; on the right a two-line ledger of who decides and who delivers */}
+              <div className="grid gap-6 min-[1100px]:grid-cols-[5fr_6fr] min-[1100px]:gap-x-12">
+                <div>
+                  <h3 className="font-jost text-(length:--h5) leading-(--h5-lh) font-normal uppercase">{s.title}</h3>
+                  <p className={cn("mt-3 max-w-[44ch] font-mulish text-[16px] leading-[1.65]", t.muted)}>{s.text}</p>
                 </div>
-                <div className={cn("border p-5", t.card)}>
-                  <dt className={cn("text-xs font-semibold tracking-[.15em] uppercase", t.label)}>We deliver</dt>
-                  <dd className="mt-1.5 text-[15px] leading-snug">{s.deliver}</dd>
-                </div>
-              </dl>
+                <dl className={cn("grid self-start border-y", t.hair)}>
+                  <div className="grid grid-cols-[104px_1fr] gap-x-5 py-4 min-[640px]:grid-cols-[120px_1fr]">
+                    <dt className={cn("text-[15px] leading-snug font-semibold", t.label)}>You decide</dt>
+                    <dd className="text-[16px] leading-[1.5]">{s.decide}</dd>
+                  </div>
+                  <div className={cn("grid grid-cols-[104px_1fr] gap-x-5 border-t py-4 min-[640px]:grid-cols-[120px_1fr]", t.hair)}>
+                    <dt className={cn("text-[15px] leading-snug font-semibold", t.label)}>We deliver</dt>
+                    <dd className="text-[16px] leading-[1.5]">{s.deliver}</dd>
+                  </div>
+                </dl>
+              </div>
             </li>
           ))}
         </ol>
