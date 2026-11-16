@@ -97,7 +97,7 @@ export function ServicesHero({
       ))}
       <span aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-[#082b52]/92 via-[#082b52]/45 to-[#082b52]/15" />
 
-      <div className="px-4 pt-44 min-[768px]:px-[124px]">
+      <div className="flex flex-1 items-center px-4 pt-28 min-[768px]:absolute min-[768px]:inset-x-0 min-[768px]:top-1/2 min-[768px]:flex-none min-[768px]:-translate-y-1/2 min-[768px]:px-[124px] min-[768px]:pt-0">
         <div className="mx-auto grid w-full max-w-[1680px] gap-8 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
           <div className="min-[992px]:col-span-7">
             <p className="text-xs leading-4 font-semibold tracking-[.15em] text-white uppercase">{eyebrow}</p>
@@ -140,7 +140,7 @@ export function ServicesHero({
         </div>
       </div>
 
-      <div className="mt-8 px-4 pb-8 min-[768px]:mt-12 min-[768px]:px-[124px] min-[768px]:pb-10">
+      <div className="mt-8 px-4 pb-8 min-[768px]:px-[124px] min-[768px]:pb-10">
         <div role="tablist" aria-label="Choose a service" className="mx-auto grid w-full max-w-[1680px] grid-cols-3 gap-x-3 min-[768px]:gap-x-10">
           {slides.map((s, i) => (
             <button
