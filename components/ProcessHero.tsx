@@ -156,8 +156,8 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
         {/* the opening line */}
         <div ref={intro} className="absolute inset-x-0 top-[44.7%] px-4 min-[768px]:px-[124px]">
           <div className="mx-auto w-full max-w-[1680px]">
-            <h1 className="hero-in max-w-[9.5ch] font-jost text-[clamp(44px,5.6vw,86px)] leading-[.94] font-semibold tracking-[.03125rem]">{title}</h1>
-            <p className="hero-in mt-7 max-w-[24ch] font-mulish text-[clamp(20px,2.3vw,34px)] leading-[1.2] font-bold" style={{ animationDelay: "250ms" }}>
+            <h1 className="hero-in max-w-[16ch] font-jost text-[22.4px] leading-[27px] font-medium tracking-normal uppercase min-[690px]:text-[34.2px] min-[690px]:leading-[39px] min-[992px]:text-[length:min(54px,calc((100vw-299px)/12.55))] min-[992px]:leading-[1.11]">{title}</h1>
+            <p className="hero-in mt-5 max-w-[40ch] font-mulish text-[20px] leading-[31px] font-normal" style={{ animationDelay: "250ms" }}>
               {tagline}
             </p>
           </div>
@@ -171,17 +171,17 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
                 <div
                   key={s.word}
                   aria-hidden={k !== a}
-                  className={cn("absolute max-w-[78vw] transition-opacity duration-200 ease-linear min-[820px]:max-w-[min(660px,46vw)]", k === a && ready ? "pointer-events-auto opacity-100" : "opacity-0")}
+                  className={cn("absolute max-w-[78vw] transition-opacity duration-200 ease-linear min-[820px]:max-w-[min(660px,calc(53vw-164px))]", k === a && ready ? "pointer-events-auto opacity-100" : "opacity-0")}
                   style={{ ["--accent" as string]: s.accent }}
                 >
-                  <p className="font-mulish text-[clamp(15px,1.6vw,26px)] leading-[1.2] font-bold tracking-[.03125rem] uppercase">
+                  <p className="text-xs leading-4 font-semibold tracking-[.15em] uppercase">
                     {states.map((o, j) => (
                       <span key={o.word} className={cn("transition-opacity duration-200", j === k ? "opacity-100" : "opacity-55")}>
                         {o.word}.{" "}
                       </span>
                     ))}
                   </p>
-                  <p role="heading" aria-level={2} className="mt-5 font-jost text-[clamp(26px,3.3vw,48px)] leading-[1.12] font-semibold tracking-[.03125rem]">
+                  <p role="heading" aria-level={2} className="mt-4 font-mulish text-[clamp(18px,1.55vw,24px)] leading-[1.6] font-normal">
                     {s.statement.split(" ").map((w, j, all) => (
                       <span
                         key={j}
