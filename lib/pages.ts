@@ -88,7 +88,7 @@ export const SERVICE_SLUGS: Record<string, ServiceType> = {
 
 /** SAMPLE portfolio entries (photos from the prototype gallery, sizes and years invented). Replace with real PDBS projects. */
 export const PROJECTS: Project[] = [
-  { id: "p1", title: "Harbor-view residence", city: "Baltimore", region: "Maryland", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/1.jpg", year: 2024, size: "3,800 sq ft", scope: "New residence, designed and built" },
+  { id: "p1", title: "Harbor view residence", city: "Baltimore", region: "Maryland", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/1.jpg", year: 2024, size: "3,800 sq ft", scope: "New residence, designed and built" },
   { id: "p2", title: "Family home renovation", city: "Bethesda", region: "Maryland", sector: "Residential", service: "Architecture & design", image: "/assets/gallery/residential/2.jpg", year: 2023, size: "2,600 sq ft", scope: "Whole-house renovation and redesign" },
   { id: "p3", title: "Hillside residence", city: "Arlington", region: "Virginia", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/3.jpg", year: 2024, size: "4,100 sq ft", scope: "Hillside residence with new structure" },
   { id: "p4", title: "Warehouse loft conversion", city: "Baltimore", region: "Maryland", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/1.jpg", year: 2023, size: "6,500 sq ft", scope: "Warehouse converted to loft residences" },

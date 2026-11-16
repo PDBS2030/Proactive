@@ -110,7 +110,7 @@ export function ServiceProjects({
                     on ? "opacity-100 delay-200" : "pointer-events-none opacity-0",
                   )}
                 >
-                  <p className="text-[18px] leading-snug font-semibold">{x.title}</p>
+                  <p className="text-[18px] leading-snug font-semibold tracking-[.03em] uppercase">{x.title}</p>
                   <p className="mt-1.5 text-[15px] leading-[1.5] text-white/90">{x.scope}</p>
                   <p className="mt-2 flex flex-wrap gap-x-4 gap-y-0.5 text-[13px] text-white/70">
                     <span>
