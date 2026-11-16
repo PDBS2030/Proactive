@@ -6,9 +6,9 @@ import { useState } from "react";
 import { OFFERINGS } from "@/lib/data";
 import { cn } from "@/lib/cn";
 
-/** Core offerings: the card you hover or focus grows wider and stays wide, while the others narrow. */
+/** Core offerings: four equal cards at rest. The card you hover or focus grows wider and taller while the others narrow. */
 export function Offerings() {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState<number | null>(null);
 
   return (
     <section className="offerings-vars relative z-4 bg-white px-4 py-16 text-[#143275] min-[768px]:px-[124px] min-[768px]:py-[110px]">
@@ -17,20 +17,31 @@ export function Offerings() {
           {OFFERINGS.heading}
         </h2>
 
-        <div className="col-span-12 flex w-full flex-col gap-y-9 min-[810px]:flex-row min-[810px]:gap-x-3 min-[810px]:gap-y-0 min-[810px]:[container-type:inline-size]">
+        {/* The outer box is the size reference for the cqw units used by the row inside it */}
+        <div className="col-span-12 w-full min-[810px]:[container-type:inline-size]">
+        <div
+          onMouseLeave={() => setActive(null)}
+          className="flex w-full flex-col gap-y-9 min-[810px]:h-[calc((100cqw-36px)/3+96px)] min-[810px]:flex-row min-[810px]:items-start min-[810px]:gap-x-3 min-[810px]:gap-y-0"
+        >
           {OFFERINGS.items.map((item, i) => (
             <Link
               key={item.href}
               href={item.href}
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
+              onBlur={() => setActive(null)}
               className={cn(
                 "group block aspect-[3/2] min-w-0 text-inherit no-underline outline-offset-[3px] focus-visible:outline-2 focus-visible:outline-[#2356e5]",
                 "min-[810px]:aspect-auto min-[810px]:basis-0 min-[810px]:transition-[flex-grow] min-[810px]:duration-500 min-[810px]:ease-[cubic-bezier(.22,1,.36,1)] motion-reduce:transition-none",
                 active === i ? "min-[810px]:grow-[1.9]" : "min-[810px]:grow",
               )}
             >
-              <div className="relative aspect-[3/2] w-full overflow-hidden min-[810px]:aspect-auto min-[810px]:h-[31cqw]">
+              <div
+                className={cn(
+                  "relative aspect-[3/2] w-full overflow-hidden min-[810px]:aspect-auto min-[810px]:transition-[height] min-[810px]:duration-500 min-[810px]:ease-[cubic-bezier(.22,1,.36,1)] motion-reduce:transition-none",
+                  active === i ? "min-[810px]:h-[calc((100cqw-36px)/3)]" : "min-[810px]:h-[calc((100cqw-36px)/4)]",
+                )}
+              >
                 <Image
                   src={item.image}
                   alt={item.alt}
@@ -50,6 +61,7 @@ export function Offerings() {
               </h3>
             </Link>
           ))}
+        </div>
         </div>
       </div>
     </section>
