@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { ScrollProgress, ParallaxFrame } from "@/components/MotionBits";
+import { ScrollProgress } from "@/components/MotionBits";
 import { Words } from "@/components/PageIntro";
 import { ServicesNav } from "@/components/ServicesNav";
 import { cn } from "@/lib/cn";
@@ -52,52 +52,57 @@ export default function ServicesPage() {
     <>
       <Header />
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
-        {/* Hero */}
+        {/* Hero: a full-screen photograph with the title at the bottom and the three services as links */}
         <ScrollProgress />
-        <section className="px-4 pt-[150px] pb-14 min-[768px]:px-[124px] min-[768px]:pt-[190px] min-[768px]:pb-[72px]">
-          <div className="mx-auto grid w-full max-w-[1680px] gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
-            <div className="min-[992px]:col-span-7">
-              <p className={eyebrow}>{SERVICES_PAGE.eyebrow}</p>
-              <h1 data-words className="mt-4 font-jost text-[22.4px] leading-[27px] font-medium tracking-normal uppercase min-[690px]:text-[34.2px] min-[690px]:leading-[39px] min-[992px]:text-[length:min(54px,calc((100vw-299px)/12.55))] min-[992px]:leading-[1.11]">
-                <Words text={SERVICES_PAGE.title} />
-              </h1>
-            </div>
-            <div className="flex flex-col justify-end min-[992px]:col-span-5">
-              <p className="font-mulish text-[20px] leading-[31px] font-normal text-[#143275] min-[992px]:text-[length:clamp(14px,calc((50vw-184px)/32.5),20px)] min-[992px]:leading-[1.55]">{SERVICES_PAGE.lead}</p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href={SERVICES_PAGE.primaryCta.href} className={btnPrimary}>
-                  {SERVICES_PAGE.primaryCta.label}
-                </Link>
-                <Link href={SERVICES_PAGE.secondaryCta.href} className={btnGhost}>
-                  {SERVICES_PAGE.secondaryCta.label}
-                </Link>
+        <section className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[#082b52] text-white">
+          <div data-wipe className="absolute inset-0 -z-20">
+            <Image src={SERVICES_PAGE.image} alt={SERVICES_PAGE.imageAlt} fill priority sizes="100vw" className="object-cover object-center" />
+          </div>
+          <span aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-[#082b52]/92 via-[#082b52]/45 to-[#082b52]/10" />
+
+          <div className="px-4 pt-28 min-[768px]:px-[124px] min-[768px]:pt-40">
+            <div className="mx-auto grid w-full max-w-[1680px] gap-8 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
+              <div className="min-[992px]:col-span-7">
+                <p className="text-xs leading-4 font-semibold tracking-[.15em] text-white uppercase">{SERVICES_PAGE.eyebrow}</p>
+                <h1 data-words className="mt-4 font-jost text-[22.4px] leading-[27px] font-medium tracking-normal uppercase min-[690px]:text-[34.2px] min-[690px]:leading-[39px] min-[992px]:text-[length:min(54px,calc((100vw-299px)/12.55))] min-[992px]:leading-[1.11]">
+                  <Words text={SERVICES_PAGE.title} />
+                </h1>
+              </div>
+              <div className="flex flex-col justify-end min-[992px]:col-span-5">
+                <p className="font-mulish text-[20px] leading-[31px] font-normal text-white/95 min-[992px]:text-[length:clamp(14px,calc((50vw-184px)/32.5),20px)] min-[992px]:leading-[1.55]">{SERVICES_PAGE.lead}</p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link
+                    href={SERVICES_PAGE.primaryCta.href}
+                    className="btn-sweep inline-flex min-h-12 items-center justify-center border border-white bg-white bg-[linear-gradient(#143275,#143275)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#143275] uppercase no-underline outline-none hover:text-white focus-visible:text-white"
+                  >
+                    {SERVICES_PAGE.primaryCta.label}
+                  </Link>
+                  <Link
+                    href={SERVICES_PAGE.secondaryCta.href}
+                    className="btn-sweep inline-flex min-h-12 items-center justify-center border border-white/60 bg-[linear-gradient(#fff,#fff)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline outline-none hover:border-white hover:text-[#143275] focus-visible:border-white focus-visible:text-[#143275]"
+                  >
+                    {SERVICES_PAGE.secondaryCta.label}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="mx-auto mt-12 grid w-full max-w-[1680px] gap-4 min-[992px]:mt-16 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
-            <ParallaxFrame className="aspect-[16/10] min-[992px]:col-span-7 min-[992px]:aspect-auto min-[992px]:min-h-[420px]">
-              <Image src={SERVICES_PAGE.image} alt={SERVICES_PAGE.imageAlt} fill priority sizes="(max-width: 992px) 100vw, 58vw" className="object-cover" />
-            </ParallaxFrame>
-            <ul className="grid gap-4 min-[992px]:col-span-5">
+          <div className="mt-8 px-4 pb-10 min-[768px]:mt-12 min-[768px]:px-[124px]">
+            <ul className="mx-auto hidden w-full max-w-[1680px] gap-x-10 min-[768px]:grid min-[768px]:grid-cols-3">
               {SERVICE_LIST.map((s) => (
                 <li key={s.id}>
-                  <a
-                    href={`#${s.id}`}
-                    className="group flex h-full items-center gap-5 border border-[#143275]/12 p-5 text-inherit no-underline transition-colors duration-300 outline-none hover:border-gold focus-visible:border-gold min-[768px]:p-7"
-                  >
-                    <span aria-hidden="true" className="h-10 w-0.5 shrink-0 bg-gold" />
-                    <span className="flex-1">
-                      <span className="block text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{s.name}</span>
-                      <span className="mt-1 block text-[14px] leading-snug text-[#143275]/70">{s.short}</span>
+                  <a href={`#${s.id}`} className="group block border-t border-white/40 py-4 text-inherit no-underline transition-colors duration-300 outline-none hover:border-gold focus-visible:border-gold">
+                    <span className="flex items-center justify-between gap-4">
+                      <span className="text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{s.name}</span>
+                      <span aria-hidden="true" className="text-xl transition-transform duration-300 group-hover:translate-y-1 group-focus-visible:translate-y-1">↓</span>
                     </span>
-                    <span aria-hidden="true" className="text-xl transition-transform duration-300 group-hover:translate-y-1 group-focus-visible:translate-y-1">↓</span>
+                    <span className="mt-1 hidden text-[14px] leading-snug text-white/75 min-[768px]:block">{s.short}</span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
-          <p className="mx-auto mt-6 w-full max-w-[1680px] text-xs font-semibold tracking-[.15em] text-[#143275]/70 uppercase">{SERVICES_PAGE.regions}</p>
         </section>
 
         <ServicesNav items={NAV_ITEMS} />
