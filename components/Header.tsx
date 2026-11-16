@@ -13,7 +13,8 @@ const navLink =
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   // The Services page opens on a full-screen photograph, so its bar is solid white from the start
-  const solid = scrolled || usePathname().startsWith("/services");
+  const pathname = usePathname();
+  const solid = scrolled || pathname.startsWith("/services");
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const linksRef = useRef<HTMLAnchorElement[]>([]);

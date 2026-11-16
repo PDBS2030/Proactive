@@ -9,8 +9,10 @@ import { ServicesHero } from "@/components/ServicesHero";
 import { Words } from "@/components/PageIntro";
 import { ServicesNav } from "@/components/ServicesNav";
 import { InquiryForm, InquiryLink } from "@/components/Inquiry";
+import { ServiceProjects } from "@/components/ServiceProjects";
 import { StackSection } from "@/components/Stack";
 import { QUALIFICATIONS } from "@/lib/qualifications";
+import { PROJECTS, SERVICE_SLUGS } from "@/lib/pages";
 import { cn } from "@/lib/cn";
 import {
   COMPARISON,
@@ -97,16 +99,19 @@ export default function ServicesPage() {
 
         {/* The three services */}
         {SERVICE_LIST.map((s, i) => (
-          <StackSection key={s.id} index={i}>
+          <StackSection key={s.id} index={1 + i}>
           <section
             id={s.id}
             aria-labelledby={`${s.id}-title`}
             className={cn("scroll-mt-[190px] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]", i % 2 === 1 && "bg-[#f3f6fa]")}
           >
             <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-14">
-              <div data-wipe className={cn("relative aspect-[4/3] overflow-hidden min-[992px]:col-span-6", i % 2 === 1 && "min-[992px]:order-2")}>
-                <Image src={s.image} alt={s.alt} fill sizes="(max-width: 992px) 100vw, 50vw" className="object-cover" />
-                <span aria-hidden="true" className="absolute top-0 left-0 h-12 w-12 border-t-2 border-l-2 border-gold" />
+              <div className={cn("min-[992px]:col-span-6", i % 2 === 1 && "min-[992px]:order-2")}>
+                <ServiceProjects
+                  serviceId={s.id}
+                  serviceName={s.name}
+                  projects={PROJECTS.filter((p) => p.service === SERVICE_SLUGS[s.id]).slice(0, 5)}
+                />
               </div>
               <div className={cn("min-[992px]:col-span-6", i % 2 === 1 && "min-[992px]:order-1")}>
                 <p className={eyebrow}>{s.name}</p>
@@ -140,10 +145,11 @@ export default function ServicesPage() {
             </div>
           </section>
           </StackSection>
+
         ))}
 
         {/* Why design-build */}
-        <StackSection index={3}>
+        <StackSection index={5}>
         <section id="why-design-build" aria-labelledby="why-title" className="scroll-mt-[190px] bg-[#082b52] px-4 py-[94px] text-white min-[768px]:px-[124px] min-[768px]:py-[140px]">
           <div className="mx-auto w-full max-w-[1680px]">
             <p className={eyebrow}>The difference</p>
@@ -188,7 +194,7 @@ export default function ServicesPage() {
         </StackSection>
 
         {/* Process teaser */}
-        <StackSection index={4}>
+        <StackSection index={6}>
         <section aria-labelledby="phases-title" className="px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
           <div className="mx-auto w-full max-w-[1680px]">
             <h2 id="phases-title" className={title}>
