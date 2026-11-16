@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { goToSection } from "@/components/Stack";
 import { cn } from "@/lib/cn";
 
 type Item = { id: string; label: string };
@@ -38,7 +39,7 @@ export function ServicesNav({ items }: { items: Item[] }) {
   }, [items]);
 
   return (
-    <div ref={barRef} className="sticky top-[104px] z-50 border-y border-[#143275]/10 bg-white px-4 min-[768px]:px-[124px]">
+    <div ref={barRef} data-section-bar className="sticky top-[104px] z-50 border-y border-[#143275]/10 bg-white px-4 min-[768px]:px-[124px]">
       <div className="mx-auto w-full max-w-[1680px]">
       <nav
         aria-label="On this page"
@@ -48,6 +49,7 @@ export function ServicesNav({ items }: { items: Item[] }) {
           <a
             key={i.id}
             href={`#${i.id}`}
+            onClick={(e) => goToSection(e, i.id)}
             aria-current={active === i.id ? "true" : undefined}
             className={cn(
               "inline-flex min-h-[68px] shrink-0 items-center px-3 text-[.875rem] leading-none font-semibold tracking-[.08em] whitespace-nowrap text-[#143275] uppercase underline decoration-transparent decoration-2 underline-offset-[20px] transition-[text-decoration-color] duration-300 outline-none hover:decoration-gold focus-visible:decoration-gold",

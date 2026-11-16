@@ -8,6 +8,7 @@ import { ScrollProgress } from "@/components/MotionBits";
 import { ServicesHero } from "@/components/ServicesHero";
 import { Words } from "@/components/PageIntro";
 import { ServicesNav } from "@/components/ServicesNav";
+import { StackSection } from "@/components/Stack";
 import { cn } from "@/lib/cn";
 import {
   COMPARISON,
@@ -74,8 +75,8 @@ export default function ServicesPage() {
 
         {/* The three services */}
         {SERVICE_LIST.map((s, i) => (
+          <StackSection key={s.id} index={i}>
           <section
-            key={s.id}
             id={s.id}
             aria-labelledby={`${s.id}-title`}
             className={cn("scroll-mt-[190px] px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]", i % 2 === 1 && "bg-[#f3f6fa]")}
@@ -116,9 +117,11 @@ export default function ServicesPage() {
               </div>
             </div>
           </section>
+          </StackSection>
         ))}
 
         {/* Why design-build */}
+        <StackSection index={3}>
         <section id="why-design-build" aria-labelledby="why-title" className="scroll-mt-[190px] bg-[#082b52] px-4 py-16 text-white min-[768px]:px-[124px] min-[768px]:py-[110px]">
           <div className="mx-auto w-full max-w-[1680px]">
             <p className={eyebrow}>The difference</p>
@@ -160,8 +163,10 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+        </StackSection>
 
         {/* Process teaser */}
+        <StackSection index={4}>
         <section aria-labelledby="phases-title" className="px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]">
           <div className="mx-auto w-full max-w-[1680px]">
             <h2 id="phases-title" className={title}>
@@ -183,8 +188,10 @@ export default function ServicesPage() {
             </Link>
           </div>
         </section>
+        </StackSection>
 
         {/* Markets */}
+        <StackSection index={5}>
         <section id="markets" aria-labelledby="markets-title" className="scroll-mt-[190px] border-t border-[#143275]/10 px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]">
           <div className="mx-auto w-full max-w-[1680px]">
             <h2 id="markets-title" className={title}>
@@ -208,12 +215,16 @@ export default function ServicesPage() {
             </ul>
           </div>
         </section>
+        </StackSection>
 
-        <div id="faqs" className="scroll-mt-[120px]">
+        <StackSection index={6}>
+        <div id="faqs">
           <Faq data={SERVICES_FAQS} />
         </div>
+        </StackSection>
 
         {/* Closing call to action */}
+        <StackSection index={7}>
         <section aria-labelledby="cta-title" className="bg-[#082b52] px-4 py-16 text-center text-white min-[768px]:px-[124px] min-[768px]:py-[100px]">
           <div className="mx-auto max-w-3xl">
             <h2 id="cta-title" className={title}>
@@ -233,6 +244,7 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+        </StackSection>
         </div>
       </main>
       <Footer />

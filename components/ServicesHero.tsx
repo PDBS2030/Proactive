@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { Words } from "@/components/PageIntro";
+import { goToSection } from "@/components/Stack";
 
 export type HeroSlide = {
   id: string;
@@ -117,6 +118,7 @@ export function ServicesHero({
               </p>
               <a
                 href={`#${slide.id}`}
+                onClick={(e) => goToSection(e, slide.id)}
                 className="mt-3 inline-block border-b-2 border-gold pb-0.5 text-[14px] font-medium text-white no-underline transition-[padding] duration-300 outline-none hover:pr-3 focus-visible:pr-3"
               >
                 Explore {slide.name.toLowerCase()}
