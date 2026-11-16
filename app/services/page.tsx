@@ -10,6 +10,7 @@ import { Words } from "@/components/PageIntro";
 import { ServicesNav } from "@/components/ServicesNav";
 import { FaintVideo } from "@/components/FaintVideo";
 import { InquiryForm } from "@/components/Inquiry";
+import { PhaseCards } from "@/components/PhaseCards";
 import { ServiceProjects } from "@/components/ServiceProjects";
 import { StackSection } from "@/components/Stack";
 import { QUALIFICATIONS } from "@/lib/qualifications";
@@ -47,8 +48,6 @@ const HERO_IMAGES: Record<string, { image: string; alt: string; position?: strin
 const title =
   "font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial]";
 const eyebrow = "text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase";
-import { ui } from "@/components/PageIntro";
-const btnGhost = ui.btnGhost;
 
 function Check() {
   return (
@@ -199,19 +198,7 @@ export default function ServicesPage() {
               {PHASES.heading}
             </h2>
             <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#143275]/85">{PHASES.lead}</p>
-            <ol className="mt-10 grid gap-6 min-[992px]:grid-cols-3 min-[992px]:gap-x-10">
-              {PHASES.items.map((p) => (
-                <li key={p.n} className="border-t border-[#143275]/15 pt-5">
-                  <span aria-hidden="true" className="block h-0.5 w-10 bg-gold" />
-                  <h3 className="mt-4 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{p.title}</h3>
-                  <p className="mt-1 text-xs font-semibold tracking-[.15em] text-[#143275]/60 uppercase">{p.steps}</p>
-                  <p className="mt-3 text-[15px] leading-[1.6] text-[#143275]/85">{p.text}</p>
-                </li>
-              ))}
-            </ol>
-            <Link href={PHASES.cta.href} className={cn(btnGhost, "mt-10")}>
-              {PHASES.cta.label}
-            </Link>
+            <PhaseCards items={PHASES.items} cta={PHASES.cta} />
           </div>
         </section>
         </StackSection>
