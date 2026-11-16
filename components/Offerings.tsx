@@ -11,8 +11,8 @@ export function Offerings() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="offerings-vars relative z-4 bg-white px-(--pad) pt-[120px] pb-[112px] text-[#143275] min-[810px]:pt-[200px]">
-      <div className="grid w-full grid-cols-12 gap-x-(--gap)">
+    <section className="offerings-vars relative z-4 bg-white px-4 py-16 text-[#143275] min-[768px]:px-[124px] min-[768px]:py-[110px]">
+      <div className="mx-auto grid w-full max-w-[1680px] grid-cols-12 gap-x-(--gap)">
         <h2 className="col-span-12 mb-9 font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase text-[#143275] [text-wrap:initial] min-[810px]:col-span-8 min-[1440px]:mb-18">
           {OFFERINGS.heading}
         </h2>

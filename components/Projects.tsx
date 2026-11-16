@@ -104,8 +104,8 @@ export function Projects() {
   const tab = PROJECT_TABS[selected];
 
   return (
-    <section className="relative z-4 bg-[#ececf0] pt-40 pr-[4vw] pb-[6vw] pl-[4vw] min-[768px]:pr-[3.15vw] min-[768px]:pl-[2.9vw]">
-      <div className="mx-auto w-full [container-type:inline-size]">
+    <section className="relative z-4 bg-[#ececf0] px-4 py-16 min-[768px]:px-[124px] min-[768px]:py-[110px]">
+      <div className="mx-auto w-full max-w-[1680px] [container-type:inline-size]">
         <div
           role="tablist"
           aria-label="Project categories"

@@ -43,7 +43,7 @@ export function Process() {
     <section
       ref={sectionRef}
       aria-labelledby="process-title"
-      className="title-vars relative z-4 overflow-hidden bg-[#5c5834] px-5 py-14 text-white min-[768px]:px-6 min-[768px]:pt-[70px] min-[768px]:pb-[74px]"
+      className="title-vars relative z-4 overflow-hidden bg-[#5c5834] px-4 py-16 text-white min-[768px]:px-[124px] min-[768px]:py-[110px]"
     >
       <div
         ref={bgRef}

@@ -55,7 +55,7 @@ export function Footer() {
   const [line1, line2] = FOOTER.office.split("\n");
   return (
     <footer className="relative z-4 border-t border-navy/14 bg-white font-medium tracking-[.08em] text-navy uppercase">
-      <div className="mx-auto max-w-7xl px-6 py-8 min-[768px]:px-12 min-[768px]:py-12">
+      <div className="mx-auto max-w-[1680px] px-4 py-8 min-[768px]:px-[124px] min-[768px]:py-12">
         <div className="mb-8 grid grid-cols-1 gap-y-8 min-[640px]:grid-cols-[repeat(3,auto)] min-[640px]:justify-between min-[640px]:gap-x-6 min-[768px]:gap-x-10">
           <div>
             <span className={label}>Office</span>
