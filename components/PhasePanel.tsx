@@ -1,81 +1,92 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useRef, useState } from "react";
 import { FaintVideo } from "@/components/FaintVideo";
 import type { Phase } from "@/lib/process";
 import { cn } from "@/lib/cn";
+
+/** One photograph for each step of each phase (placeholders from the gallery until project photos are chosen). */
+const IMAGES: Record<string, { src: string; position?: string }[]> = {
+  "phase-1": [
+    { src: "/assets/gallery/landmark/2.jpg", position: "center 55%" },
+    { src: "/assets/gallery/landmark/8.jpg", position: "center" },
+    { src: "/assets/gallery/landmark/9.jpg", position: "center 60%" },
+    { src: "/assets/gallery/landmark/3.jpg", position: "center 35%" },
+    { src: "/assets/gallery/landmark/4.jpg", position: "center 60%" },
+  ],
+  "phase-2": [
+    { src: "/assets/gallery/explore/2.jpg", position: "center 60%" },
+    { src: "/assets/gallery/explore/9.jpg", position: "center" },
+    { src: "/assets/gallery/explore/5.jpg", position: "center 40%" },
+    { src: "/assets/gallery/explore/7.jpg", position: "center 60%" },
+    { src: "/assets/gallery/explore/3.jpg", position: "center 60%" },
+  ],
+  "phase-3": [
+    { src: "/assets/offerings-buildings.jpg", position: "center" },
+    { src: "/assets/offerings-talent.jpg", position: "center 75%" },
+    { src: "/assets/offerings-development.jpg", position: "center 40%" },
+    { src: "/assets/service-video-poster.jpg", position: "center" },
+    { src: "/assets/offerings-infrastructure.jpg", position: "center 35%" },
+  ],
+};
 
 const TONES = {
   paper: {
     section: "bg-white text-[#143275]",
     grid: "bg-[linear-gradient(rgba(20,50,117,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(20,50,117,.06)_1px,transparent_1px)]",
     muted: "text-[#143275]/80",
-    rule: "bg-[#143275]/15",
     hair: "border-[#143275]/15",
-    dot: "border-[#143275] bg-white",
-    card: "border-[#143275]/10 bg-white",
     label: "text-gold",
+    idle: "text-[#143275]/75 hover:bg-[#143275]/[.05] hover:text-[#143275]",
+    on: "bg-[#143275] text-white",
+    list: "bg-white",
   },
   blueprint: {
     section: "bg-[#0b3a6b] text-white",
     grid: "bg-[linear-gradient(rgba(255,255,255,.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.09)_1px,transparent_1px)]",
     muted: "text-white/80",
-    rule: "bg-white/25",
     hair: "border-white/25",
-    dot: "border-white bg-[#0b3a6b]",
-    card: "border-white/20 bg-[#0b3a6b]/60",
     label: "text-[#e3c98f]",
+    idle: "text-white/75 hover:bg-white/[.07] hover:text-white",
+    on: "bg-white text-[#0b3a6b]",
+    list: "bg-[#0b3a6b]/70",
   },
   site: {
     section: "bg-[#082b52] text-white",
     grid: "",
     muted: "text-white/80",
-    rule: "bg-white/25",
     hair: "border-white/25",
-    dot: "border-white bg-[#082b52]",
-    card: "border-white/20 bg-[#082b52]/60",
     label: "text-[#e3c98f]",
+    idle: "text-white/75 hover:bg-white/[.07] hover:text-white",
+    on: "bg-white text-[#082b52]",
+    list: "bg-[#082b52]/70",
   },
 } as const;
 
 /**
- * One phase: a title block that stays in view on the left, and on the right a gold route that fills as you
- * scroll, with a station for each step and a "You decide / We deliver" pair under it.
+ * One phase as a step explorer: the five steps in a list on the left, and on the right a photograph with the
+ * step's description and what you decide and what we deliver.
  */
 export function PhasePanel({ phase }: { phase: Phase }) {
   const t = TONES[phase.tone];
-  const list = useRef<HTMLOListElement>(null);
-  const fill = useRef<HTMLSpanElement>(null);
+  const [i, setI] = useState(0);
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const imgs = IMAGES[phase.id] ?? [];
+  const step = phase.steps[i];
+  const n = phase.steps.length;
 
-  useEffect(() => {
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const el = list.current;
-      if (!el || !fill.current) return;
-      const r = el.getBoundingClientRect();
-      const mid = window.innerHeight * 0.6;
-      const p = Math.min(1, Math.max(0, (mid - r.top) / Math.max(1, r.height)));
-      fill.current.style.transform = `scaleY(${p.toFixed(3)})`;
-      const dots = el.querySelectorAll<HTMLElement>("[data-dot]");
-      dots.forEach((d) => {
-        const y = d.getBoundingClientRect().top;
-        d.dataset.on = y < mid ? "1" : "0";
-      });
-    };
-    const req = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", req, { passive: true });
-    window.addEventListener("resize", req);
-    return () => {
-      window.removeEventListener("scroll", req);
-      window.removeEventListener("resize", req);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
+  const onKey = (e: React.KeyboardEvent, k: number) => {
+    let next = k;
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") next = (k + 1) % n;
+    else if (e.key === "ArrowUp" || e.key === "ArrowLeft") next = (k - 1 + n) % n;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = n - 1;
+    else return;
+    e.preventDefault();
+    setI(next);
+    tabs.current[next]?.focus();
+  };
 
   return (
     <section
@@ -89,21 +100,11 @@ export function PhasePanel({ phase }: { phase: Phase }) {
           <span aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-b from-[#082b52]/70 via-[#082b52]/35 to-[#082b52]/70" />
         </>
       )}
-      {phase.tone === "paper" && (
-        /* a photograph behind the title side only, washed so the text stays easy to read and faded out toward the steps */
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute top-0 left-0 -z-20 h-[460px] w-full min-[992px]:h-full min-[992px]:w-[42%] [mask-image:linear-gradient(to_bottom,#000_70%,transparent)] min-[992px]:[mask-image:linear-gradient(to_right,#000_68%,transparent)]"
-        >
-          <Image src="/assets/gallery/landmark/2.jpg" alt="" fill sizes="(max-width: 992px) 100vw, 42vw" className="object-cover object-[40%_center]" />
-          <span className="absolute inset-0 bg-white/[.72]" />
-        </span>
-      )}
       {t.grid && <span aria-hidden="true" className={cn("absolute inset-0 -z-10 bg-[length:56px_56px]", t.grid)} />}
 
-      <div className="mx-auto grid w-full max-w-[1680px] gap-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-14">
-        <div className="min-[992px]:col-span-4">
-          <div className="min-[992px]:sticky min-[992px]:top-[150px]">
+      <div className="mx-auto w-full max-w-[1680px]">
+        <div className="grid gap-6 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
+          <div className="min-[992px]:col-span-5">
             <p className={cn("text-xs leading-4 font-semibold tracking-[.15em] uppercase", t.label)}>{phase.range}</p>
             <h2
               id={`${phase.id}-title`}
@@ -111,43 +112,74 @@ export function PhasePanel({ phase }: { phase: Phase }) {
             >
               {phase.title}
             </h2>
-            <p className={cn("mt-5 max-w-[40ch] font-mulish text-[17px] leading-[1.65]", t.muted)}>{phase.summary}</p>
           </div>
+          <p className={cn("max-w-[52ch] self-end font-mulish text-[17px] leading-[1.65] min-[992px]:col-span-6 min-[992px]:col-start-7", t.muted)}>{phase.summary}</p>
         </div>
 
-        <div className="min-[992px]:col-span-8">
-          {/* Column heads, once per phase */}
-          <div aria-hidden="true" className={cn("hidden grid-cols-[5fr_4fr_4fr] gap-x-8 border-b pb-3 pl-12 text-[15px] font-semibold min-[1280px]:grid", t.hair)}>
-            <span className={t.muted}>Step</span>
-            <span className={t.label}>You decide</span>
-            <span className={t.label}>We deliver</span>
-          </div>
-          <ol ref={list} className="relative">
-            <span aria-hidden="true" className={cn("absolute top-0 bottom-0 left-[9px] w-px", t.rule)} />
-            <span ref={fill} aria-hidden="true" className="absolute top-0 bottom-0 left-[8px] w-0.5 origin-top bg-gold will-change-transform" style={{ transform: "scaleY(0)" }} />
-            {phase.steps.map((s) => (
-              <li key={s.title} className={cn("relative grid gap-x-8 gap-y-5 border-b py-8 pl-12 min-[640px]:grid-cols-2 min-[1280px]:grid-cols-[5fr_4fr_4fr]", t.hair)}>
+        <div className="mt-12 grid gap-8 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
+          {/* The steps */}
+          <div role="tablist" aria-label={`${phase.title} steps`} aria-orientation="vertical" className={cn("self-start border shadow-[0_18px_40px_-18px_rgba(8,43,82,.45)] min-[992px]:col-span-4", t.hair, t.list)}>
+            {phase.steps.map((s, k) => (
+              <button
+                key={s.title}
+                ref={(el) => {
+                  tabs.current[k] = el;
+                }}
+                type="button"
+                role="tab"
+                id={`${phase.id}-tab-${k}`}
+                aria-selected={k === i}
+                aria-controls={`${phase.id}-panel`}
+                tabIndex={k === i ? 0 : -1}
+                onClick={() => setI(k)}
+                onKeyDown={(e) => onKey(e, k)}
+                className={cn("relative block w-full cursor-pointer border-b text-left outline-none last:border-b-0 focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-[#2356e5]", t.hair)}
+              >
                 <span
-                  data-dot
-                  data-on="0"
-                  aria-hidden="true"
-                  className={cn("absolute top-[38px] left-0 size-5 border-2 transition-[background-color,border-color,transform] duration-500 data-[on=1]:scale-110 data-[on=1]:border-gold data-[on=1]:bg-gold", t.dot)}
-                />
-                <div className="min-[640px]:col-span-2 min-[1280px]:col-span-1">
-                  <h3 className="font-jost text-(length:--h5) leading-(--h5-lh) font-normal uppercase">{s.title}</h3>
-                  <p className={cn("mt-2 max-w-[40ch] font-mulish text-[15px] leading-[1.6]", t.muted)}>{s.text}</p>
-                </div>
-                <div>
-                  <p className={cn("mb-1 text-[14px] font-semibold min-[1280px]:hidden", t.label)}>You decide</p>
-                  <p className="text-[16px] leading-[1.55]">{s.decide}</p>
-                </div>
-                <div>
-                  <p className={cn("mb-1 text-[14px] font-semibold min-[1280px]:hidden", t.label)}>We deliver</p>
-                  <p className="text-[16px] leading-[1.55]">{s.deliver}</p>
-                </div>
-              </li>
+                  className={cn(
+                    "block py-[18px] pr-5 pl-6 text-[17px] leading-snug transition-[background-color,color,padding] duration-300",
+                    k === i ? cn(t.on, "pl-8 font-medium") : t.idle,
+                  )}
+                >
+                  {s.title}
+                </span>
+                <span aria-hidden="true" className={cn("absolute inset-y-0 left-0 w-1 origin-top bg-gold transition-transform duration-300", k === i ? "scale-y-100" : "scale-y-0")} />
+              </button>
             ))}
-          </ol>
+          </div>
+
+          {/* The step in detail */}
+          <div role="tabpanel" id={`${phase.id}-panel`} aria-labelledby={`${phase.id}-tab-${i}`} className="min-[992px]:col-span-8">
+            <div className="relative aspect-[16/8.5] overflow-hidden bg-[#061a33]">
+              {imgs.map((im, k) => (
+                <Image
+                  key={im.src}
+                  src={im.src}
+                  alt=""
+                  fill
+                  sizes="(max-width: 992px) 100vw, 60vw"
+                  className={cn("object-cover transition-[opacity,transform] duration-[900ms] ease-out motion-reduce:transition-none", k === i ? "scale-100 opacity-100" : "scale-[1.05] opacity-0")}
+                  style={{ objectPosition: im.position ?? "center" }}
+                />
+              ))}
+              <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-[#061a33]/35 via-transparent to-transparent" />
+            </div>
+
+            <div key={step.title} className="hero-in mt-8">
+              <h3 className="font-jost text-[clamp(22px,2vw,30px)] leading-[1.15] font-normal uppercase">{step.title}</h3>
+              <p className={cn("mt-3 max-w-[64ch] font-mulish text-[17px] leading-[1.65]", t.muted)}>{step.text}</p>
+              <div className={cn("mt-7 grid gap-x-10 gap-y-6 border-t pt-6 min-[640px]:grid-cols-2", t.hair)}>
+                <div>
+                  <p className={cn("text-[15px] font-semibold", t.label)}>You decide</p>
+                  <p className="mt-1.5 text-[16px] leading-[1.55]">{step.decide}</p>
+                </div>
+                <div>
+                  <p className={cn("text-[15px] font-semibold", t.label)}>We deliver</p>
+                  <p className="mt-1.5 text-[16px] leading-[1.55]">{step.deliver}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
