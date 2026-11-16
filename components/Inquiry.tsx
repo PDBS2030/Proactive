@@ -172,7 +172,7 @@ export function InquiryForm({
           type="submit"
           className="btn-sweep inline-flex min-h-12 cursor-pointer items-center justify-center border border-[#143275] bg-[#143275] bg-[linear-gradient(#fff,#fff)] px-8 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase outline-none hover:text-[#143275] focus-visible:text-[#143275]"
         >
-          Send inquiry
+          Submit
         </button>
         <p id={`${idPrefix}-note`} role="status" className="text-[14px] leading-snug text-[#143275]/75">
           {sent ? "Your email app should now open with the details filled in. Press send there to finish." : ""}
