@@ -54,7 +54,6 @@ export function ProcessHero({ slides }: { slides: HeroSlide[] }) {
   const [i, setI] = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
   const [hold, setHold] = useState(false);
-  const [still, setStill] = useState(false);
   const n = slides.length;
 
   const go = useCallback(
@@ -68,14 +67,10 @@ export function ProcessHero({ slides }: { slides: HeroSlide[] }) {
   );
 
   useEffect(() => {
-    setStill(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
-
-  useEffect(() => {
-    if (hold || still) return;
+    if (hold || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const t = window.setTimeout(() => go(i + 1), timeFor(i, slides[i]));
     return () => window.clearTimeout(t);
-  }, [i, hold, still, go, slides]);
+  }, [i, hold, go, slides]);
 
   const s = slides[i];
   const dark = !!s.image;
@@ -167,34 +162,7 @@ export function ProcessHero({ slides }: { slides: HeroSlide[] }) {
         </div>
       </div>
 
-      {/* The tabs along the bottom are also the timer, as on Services */}
-      <div className="mt-8 px-4 pb-8 min-[768px]:px-[124px] min-[768px]:pb-10">
-        <div role="tablist" aria-label="Choose a slide" className={cn("mx-auto grid w-full max-w-[1680px] grid-cols-4 gap-x-3 min-[768px]:gap-x-10", dark ? "text-white" : "text-[#143275]")}>
-          {slides.map((sl, k) => (
-            <button
-              key={sl.id}
-              type="button"
-              role="tab"
-              aria-selected={k === i}
-              onClick={() => go(k)}
-              className="group relative cursor-pointer pt-4 text-left outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
-            >
-              <span className={cn("absolute top-0 left-0 h-[3px] w-full", dark ? "bg-white/30" : "bg-[#143275]/20")} aria-hidden="true" />
-              {k === i && (
-                <span
-                  key={`${i}-${hold}`}
-                  aria-hidden="true"
-                  className={cn("absolute top-0 left-0 h-[3px] w-full origin-left bg-gold", !hold && !still && "progress-bar")}
-                  style={{ animationDuration: `${timeFor(k, sl)}ms` }}
-                />
-              )}
-              <span className={cn("block text-[13px] leading-snug transition-opacity duration-300 min-[768px]:text-(length:--h5) min-[768px]:leading-(--h5-lh) min-[768px]:font-(--h5-weight)", k === i ? "opacity-100" : "opacity-65 group-hover:opacity-100")}>
-                {sl.tab}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <div className="pb-10 min-[768px]:pb-14" />
     </section>
   );
 }

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { Words } from "@/components/PageIntro";
 import { goToSection } from "@/components/Stack";
@@ -24,8 +24,8 @@ export type HeroSlide = {
 };
 
 /**
- * Full-screen hero with one slide per service. It advances by itself (the progress bar under each tab
- * is the timer), pauses on hover or focus, and also responds to tabs, swiping and the arrow keys.
+ * Full-screen hero with one slide per service. It advances by itself, pauses on hover or focus, and
+ * also responds to swiping.
  * It is pinned to the top of the page so the sections that follow slide over it.
  */
 export function ServicesHero({
@@ -44,23 +44,17 @@ export function ServicesHero({
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const startX = useRef<number | null>(null);
-  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const count = slides.length;
   const slide = slides[index];
 
   const go = (i: number) => setIndex(((i % count) + count) % count);
 
-  const onKey = (e: React.KeyboardEvent, i: number) => {
-    let next = i;
-    if (e.key === "ArrowRight") next = i + 1;
-    else if (e.key === "ArrowLeft") next = i - 1;
-    else if (e.key === "Home") next = 0;
-    else if (e.key === "End") next = count - 1;
-    else return;
-    e.preventDefault();
-    go(next);
-    tabs.current[((next % count) + count) % count]?.focus();
-  };
+  // Advances by itself every few seconds, and waits while the pointer or focus is on the hero
+  useEffect(() => {
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = window.setTimeout(() => setIndex((v) => (v + 1) % count), 6500);
+    return () => window.clearTimeout(t);
+  }, [index, paused, count]);
 
   return (
     <section
@@ -151,44 +145,7 @@ export function ServicesHero({
         </div>
       </div>
 
-      <div className="mt-8 px-4 pb-8 min-[768px]:px-[124px] min-[768px]:pb-10">
-        <div role="tablist" aria-label="Choose a service" className="mx-auto grid w-full max-w-[1680px] grid-cols-3 gap-x-3 min-[768px]:gap-x-10">
-          {slides.map((s, i) => (
-            <button
-              key={s.id}
-              ref={(el) => {
-                tabs.current[i] = el;
-              }}
-              type="button"
-              role="tab"
-              aria-selected={i === index}
-              aria-label={s.name}
-              tabIndex={i === index ? 0 : -1}
-              onClick={() => go(i)}
-              onKeyDown={(e) => onKey(e, i)}
-              className="group relative cursor-pointer pt-4 text-left outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-            >
-              <span className="absolute top-0 left-0 h-[3px] w-full bg-white/30" aria-hidden="true" />
-              {i === index && (
-                <span
-                  key={`${index}-bar`}
-                  aria-hidden="true"
-                  onAnimationEnd={() => go(index + 1)}
-                  className="hero-progress absolute top-0 left-0 h-[3px] w-full origin-left bg-gold"
-                />
-              )}
-              <span
-                className={cn(
-                  "block text-[13px] leading-snug transition-colors duration-300 min-[768px]:text-(length:--h5) min-[768px]:leading-(--h5-lh) min-[768px]:font-(--h5-weight)",
-                  i === index ? "text-white" : "text-white/65 group-hover:text-white",
-                )}
-              >
-                {s.name}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <div className="pb-10 min-[768px]:pb-14" />
     </section>
   );
 }
