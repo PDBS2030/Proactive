@@ -7,6 +7,8 @@ import { cn } from "@/lib/cn";
 const NAVY = "#143275";
 const GOLD = "#b58f48";
 const INTERVAL = 7500;
+/** The drawing is only there to set the scene, so it does not stay as long as the photographs */
+const timeFor = (k: number, slide: HeroSlide) => (slide.image ? INTERVAL : 4800);
 
 /** Draw order for the elevation: each stroke starts a little after the one before it. */
 const d = (n: number) => ({ ["--d" as string]: `${(n * 0.28).toFixed(2)}s` });
@@ -71,9 +73,9 @@ export function ProcessHero({ slides }: { slides: HeroSlide[] }) {
 
   useEffect(() => {
     if (hold || still) return;
-    const t = window.setTimeout(() => go(i + 1), INTERVAL);
+    const t = window.setTimeout(() => go(i + 1), timeFor(i, slides[i]));
     return () => window.clearTimeout(t);
-  }, [i, hold, still, go]);
+  }, [i, hold, still, go, slides]);
 
   const s = slides[i];
   const dark = !!s.image;
@@ -163,7 +165,7 @@ export function ProcessHero({ slides }: { slides: HeroSlide[] }) {
                         <span
                           key={k === i ? `${i}-${hold}` : "off"}
                           className={cn("block h-full origin-left bg-gold", k === i && !hold && !still ? "progress-bar" : k === i ? "" : "scale-x-0")}
-                          style={{ animationDuration: `${INTERVAL}ms` }}
+                          style={{ animationDuration: `${timeFor(k, sl)}ms` }}
                         />
                       </span>
                     </button>
