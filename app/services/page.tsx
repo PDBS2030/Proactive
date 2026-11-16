@@ -110,7 +110,7 @@ export default function ServicesPage() {
               <div className={cn("flex flex-col justify-between gap-9 min-[992px]:col-span-5", i % 2 === 1 && "min-[992px]:order-1")}>
                 <div>
                   <p className={eyebrow}>{s.name}</p>
-                  <h2 id={`${s.id}-title`} className={cn(title, "mt-4 text-[length:calc(var(--h2)*.78)]")}>
+                  <h2 id={`${s.id}-title`} className="mt-4 font-jost text-[length:calc(var(--h2)*.68)] leading-[1.22] font-normal tracking-normal uppercase [text-wrap:initial]">
                     {s.headline}
                   </h2>
                 </div>
