@@ -8,7 +8,7 @@ import { PhaseRail } from "@/components/PhaseRail";
 import { ProcessHero } from "@/components/ProcessHero";
 import { StackSection } from "@/components/Stack";
 import { FOOTER } from "@/lib/data";
-import { COMMITMENTS, PHASES, PROCESS_FAQS, PROCESS_HERO } from "@/lib/process";
+import { COMMITMENTS, HERO_STATES, PHASES, PROCESS_FAQS, PROCESS_HERO } from "@/lib/process";
 
 export const metadata: Metadata = {
   title: "Process — PROACTIVE Design and Building Systems",
@@ -24,7 +24,7 @@ export default function ProcessPage() {
     <>
       <Header />
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
-        <ProcessHero title={PROCESS_HERO.title} tagline={PROCESS_HERO.tagline} />
+        <ProcessHero title={PROCESS_HERO.title} tagline={PROCESS_HERO.tagline} states={HERO_STATES} />
         <PhaseRail items={PHASES.map((p) => ({ id: p.id, label: p.short }))} endId="commit-title" />
 
         <div className="relative z-10 bg-white">
