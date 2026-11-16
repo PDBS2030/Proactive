@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   description: "Our design-build process: fifteen steps in three phases, from preliminary study to handover.",
 };
 
+const HERO_PHOTOS = [
+  { image: "/assets/gallery/landmark/1.jpg", position: "center 40%" },
+  { image: "/assets/gallery/explore/1.jpg", position: "center" },
+  { image: "/assets/offerings-talent.jpg", position: "center 78%" },
+];
+
 const title = "font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial]";
 const contactLink =
   "text-inherit underline decoration-transparent decoration-2 underline-offset-[6px] transition-[text-decoration-color] duration-300 hover:decoration-gold focus-visible:decoration-gold";
@@ -24,7 +30,12 @@ export default function ProcessPage() {
     <>
       <Header />
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
-        <ProcessHero title={PROCESS_HERO.title} lead={PROCESS_HERO.lead} />
+        <ProcessHero
+          slides={[
+            { id: "line", label: "Our process", title: PROCESS_HERO.title, text: PROCESS_HERO.lead },
+            ...PHASES.map((p, i) => ({ id: p.id, label: p.range, title: p.title, text: p.summary, ...HERO_PHOTOS[i] })),
+          ]}
+        />
         <PhaseRail items={PHASES.map((p) => ({ id: p.id, label: p.short }))} endId="commit-title" />
 
         <div className="relative z-10 bg-white">

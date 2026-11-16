@@ -292,3 +292,12 @@ section[data-paused="true"] .hero-progress { animation-play-state: paused; }
   .draw-path { animation: none; stroke-dashoffset: 0; }
   .fade-path { animation: none; }
 }
+
+/* Process hero: the slide timer */
+@keyframes progress-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.progress-bar {
+  animation: progress-fill linear forwards;
+}
