@@ -69,9 +69,8 @@ export default function ServicesPage() {
           secondary={SERVICES_PAGE.secondaryCta}
         />
 
-        <ServicesNav items={NAV_ITEMS} />
-
         <div className="relative z-10 bg-white">
+          <ServicesNav items={NAV_ITEMS} />
 
         {/* The three services */}
         {SERVICE_LIST.map((s, i) => (
