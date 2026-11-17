@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { InquiryForm } from "@/components/Inquiry";
 import { ProcessIntro } from "@/components/ProcessIntro";
+import { PhaseCards } from "@/components/PhaseCards";
 import { PhaseCardsSection } from "@/components/PhaseCardsSection";
 import { ProcessHero } from "@/components/ProcessHero";
 import { StackSection } from "@/components/Stack";
@@ -14,6 +15,13 @@ export const metadata: Metadata = {
   title: "Process — PROACTIVE Design and Building Systems",
   description: "Our design-build process: fifteen steps in three phases, from preliminary study to handover.",
 };
+
+const COMMITMENT_IMAGES = [
+  { src: "/assets/offerings-talent.jpg", position: "center 72%" },
+  { src: "/assets/process-design.jpg", position: "center 40%" },
+  { src: "/assets/gallery/residential/3.jpg", position: "center 55%" },
+  { src: "/assets/offerings-buildings.jpg", position: "center 60%" },
+];
 
 const title = "font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial]";
 const contactLink =
@@ -37,24 +45,14 @@ export default function ProcessPage() {
           </StackSection>
 
           <StackSection index={2}>
-            <section aria-labelledby="commit-title" className="bg-white px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px]">
+            {/* Built the same way as "How a project runs" on the Services page */}
+            <section aria-labelledby="commit-title" className="px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
               <div className="mx-auto w-full max-w-[1680px]">
                 <h2 id="commit-title" className={title}>
                   {COMMITMENTS.heading}
                 </h2>
                 <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#082b52]/85">{COMMITMENTS.lead}</p>
-                <ul className="mt-10 grid gap-8 min-[768px]:grid-cols-2 min-[992px]:grid-cols-4 min-[992px]:gap-x-10">
-                  {COMMITMENTS.items.map((c) => (
-                    <li
-                      key={c.title}
-                      className="border border-[#082b52]/10 bg-white p-8 shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.12)]"
-                    >
-                      <span aria-hidden="true" className="block h-0.5 w-10 bg-gold" />
-                      <h3 className="mt-4 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{c.title}</h3>
-                      <p className="mt-3 text-[15px] leading-[1.6] text-[#082b52]/85">{c.text}</p>
-                    </li>
-                  ))}
-                </ul>
+                <PhaseCards items={COMMITMENTS.items} images={COMMITMENT_IMAGES} />
               </div>
             </section>
           </StackSection>

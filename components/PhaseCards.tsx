@@ -6,10 +6,11 @@ import { useState } from "react";
 import { ui } from "@/components/PageIntro";
 import { cn } from "@/lib/cn";
 
-type Phase = { n: string; title: string; steps: string; text: string };
+type Phase = { n?: string; title: string; steps?: string; text: string };
+type Pic = { src: string; position: string };
 
 /** One photograph per phase, shown inside the card when it is the active one. */
-const IMAGES = [
+const IMAGES: Pic[] = [
   { src: "/assets/gallery/landmark/1.jpg", position: "center 40%" },
   { src: "/assets/gallery/explore/1.jpg", position: "center" },
   { src: "/assets/offerings-talent.jpg", position: "center 78%" },
@@ -19,7 +20,7 @@ const IMAGES = [
  * The three project phases as cards. The card you hover or focus opens onto a photograph set deep into it,
  * with the text floating above, and the "learn more" button slides to sit under that card.
  */
-export function PhaseCards({ items, cta }: { items: Phase[]; cta: { label: string; href: string } }) {
+export function PhaseCards({ items, cta, images = IMAGES }: { items: Phase[]; cta?: { label: string; href: string }; images?: Pic[] }) {
   const [active, setActive] = useState<number | null>(null);
   const [anchor, setAnchor] = useState(0);
 
@@ -30,10 +31,10 @@ export function PhaseCards({ items, cta }: { items: Phase[]; cta: { label: strin
 
   return (
     <div>
-      <ol className="mt-10 grid gap-8 min-[992px]:grid-cols-3 min-[992px]:gap-x-10" onMouseLeave={() => setActive(null)}>
+      <ol className={cn("mt-10 grid gap-8", items.length === 4 ? "min-[992px]:grid-cols-4 min-[992px]:gap-x-6" : "min-[992px]:grid-cols-3 min-[992px]:gap-x-10")} onMouseLeave={() => setActive(null)}>
         {items.map((p, i) => {
           const on = active === i;
-          const img = IMAGES[i % IMAGES.length];
+          const img = images[i % images.length];
           return (
             <li
               key={p.title}
@@ -79,9 +80,11 @@ export function PhaseCards({ items, cta }: { items: Phase[]; cta: { label: strin
                 >
                   {p.title}
                 </h3>
-                <p className={cn("mt-1 text-xs font-semibold tracking-[.15em] uppercase transition-colors duration-500", on ? "text-white/75" : "text-[#082b52]/60")}>
-                  {p.steps}
-                </p>
+                {p.steps && (
+                  <p className={cn("mt-1 text-xs font-semibold tracking-[.15em] uppercase transition-colors duration-500", on ? "text-white/75" : "text-[#082b52]/60")}>
+                    {p.steps}
+                  </p>
+                )}
                 <p
                   className={cn(
                     "mt-3 text-[15px] leading-[1.6] transition-[color,text-shadow] duration-500",
@@ -97,6 +100,8 @@ export function PhaseCards({ items, cta }: { items: Phase[]; cta: { label: strin
         })}
       </ol>
 
+      {cta && (
+        <>
       {/* Wide screens: the button follows the active card. Narrow screens: it sits under the cards. */}
       <div className="relative mt-10 hidden h-12 min-[992px]:block">
         <Link
@@ -110,6 +115,8 @@ export function PhaseCards({ items, cta }: { items: Phase[]; cta: { label: strin
       <Link href={cta.href} className={cn(ui.btnGhost, "mt-10 min-[992px]:hidden")}>
         {cta.label}
       </Link>
+        </>
+      )}
     </div>
   );
 }
