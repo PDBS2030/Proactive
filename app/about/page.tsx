@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { CtaBand, PageIntro, ui } from "@/components/PageIntro";
+import { AboutHero } from "@/components/AboutHero";
+import { CtaBand, ui } from "@/components/PageIntro";
+import { ParallaxFrame, ScrollProgress } from "@/components/MotionBits";
+import Image from "next/image";
 import { ServicesNav } from "@/components/ServicesNav";
 import { CountUp } from "@/components/MotionBits";
 import { FOOTER } from "@/lib/data";
@@ -27,7 +30,20 @@ export default function AboutPage() {
     <>
       <Header />
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#082b52]">
-        <PageIntro crumb="About" title={a.title} lead={a.lead} image={a.image} imageAlt={a.imageAlt} />
+        <AboutHero title={a.title} items={NAV} />
+
+        {/* Introduction */}
+        <section aria-label="Introduction" className={`${ui.pad} pt-14 min-[768px]:pt-[90px]`}>
+          <ScrollProgress />
+          <div className={ui.wrap}>
+            <p data-up className="mx-auto max-w-[62ch] text-center font-mulish text-[clamp(18px,1.55vw,24px)] leading-[1.6] text-[#082b52]">
+              {a.lead}
+            </p>
+            <ParallaxFrame className="mt-12 aspect-[16/10] min-[992px]:aspect-[21/8]">
+              <Image src={a.image} alt={a.imageAlt ?? ""} fill priority sizes="100vw" className="object-cover" />
+            </ParallaxFrame>
+          </div>
+        </section>
 
         {/* Key facts */}
         <section aria-label="Key facts" className={`${ui.pad} pt-12 pb-16 min-[768px]:pb-[90px]`}>
