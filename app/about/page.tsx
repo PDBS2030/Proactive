@@ -7,7 +7,6 @@ import { FilmDialog } from "@/components/FilmDialog";
 import { TeamSection } from "@/components/TeamSection";
 import { CtaBand, ui } from "@/components/PageIntro";
 import { ScrollProgress } from "@/components/MotionBits";
-import { ServicesNav } from "@/components/ServicesNav";
 import { FOOTER } from "@/lib/data";
 import { ABOUT } from "@/lib/pages";
 
@@ -16,14 +15,6 @@ export const metadata: Metadata = {
   description:
     "Proactive Design and Building Systems is a Baltimore design-build firm serving Maryland, DC and Virginia.",
 };
-
-const NAV = [
-  { id: "leadership", label: "Our Team" },
-  { id: "who-we-are", label: "Our Vision" },
-  { id: "values", label: "Values" },
-  { id: "commitments", label: "Commitments" },
-  { id: "locations", label: "Locations" },
-];
 
 export default function AboutPage() {
   const a = ABOUT;
@@ -49,8 +40,6 @@ export default function AboutPage() {
             />
           </div>
         </section>
-
-        <ServicesNav items={NAV} />
 
         {/* Our team */}
         <TeamSection id="leadership" people={a.leadership.people} />
