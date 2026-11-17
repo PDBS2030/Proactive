@@ -1,3 +1,4 @@
+import { Bodoni_Moda } from "next/font/google";
 import localFont from "next/font/local";
 
 export const hanken = localFont({
@@ -34,4 +35,12 @@ export const jost = localFont({
   display: "swap",
 });
 
-export const fontVariables = [hanken, montserrat, mulish, jost].map((f) => f.variable).join(" ");
+/** The high-contrast serif used for the project titles and the portfolio heading */
+export const bodoni = Bodoni_Moda({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--f-bodoni",
+  display: "swap",
+});
+
+export const fontVariables = [hanken, montserrat, mulish, jost, bodoni].map((f) => f.variable).join(" ");
