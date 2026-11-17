@@ -230,7 +230,7 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
                 <div
                   key={s.word}
                   aria-hidden={k !== a}
-                  className={cn("absolute max-w-[78vw] transition-opacity duration-200 ease-linear min-[820px]:max-w-[min(660px,calc(53vw-164px))]", k === a && show ? "pointer-events-auto opacity-100" : "opacity-0")}
+                  className={cn("absolute w-[78vw] [container-type:inline-size] transition-opacity duration-200 ease-linear min-[820px]:w-[calc(58vw-154px)] min-[820px]:max-w-[820px]", k === a && show ? "pointer-events-auto opacity-100" : "opacity-0")}
                   style={{ ["--accent" as string]: s.accent }}
                 >
                   <p className="text-xs leading-4 font-semibold tracking-[.15em] uppercase">
@@ -240,7 +240,7 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
                       </span>
                     ))}
                   </p>
-                  <p role="heading" aria-level={2} className={`mt-4 ${HERO_H1}`}>
+                  <p role="heading" aria-level={2} className={`mt-4 ${HERO_H1} [text-wrap:balance]`} style={{ fontSize: "min(54px, calc(100cqw / 15.6))", textWrap: "balance" }}>
                     {s.statement.split(" ").map((w, j, all) => (
                       <span
                         key={j}
