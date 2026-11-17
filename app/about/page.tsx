@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { AboutCta } from "@/components/AboutCta";
 import { AboutHero } from "@/components/AboutHero";
 import { AboutLinks } from "@/components/AboutLinks";
 import { CommitmentsSection } from "@/components/CommitmentsSection";
 import { FilmDialog } from "@/components/FilmDialog";
 import { TeamSection } from "@/components/TeamSection";
-import { CtaBand, ui } from "@/components/PageIntro";
+import { ui } from "@/components/PageIntro";
 import { ScrollProgress } from "@/components/MotionBits";
 import { ABOUT } from "@/lib/pages";
 
@@ -47,7 +48,7 @@ export default function AboutPage() {
         {/* Commitments */}
         <CommitmentsSection id="commitments" heading={a.commitments.heading} lead={a.commitments.lead} items={a.commitments.items} />
 
-        <CtaBand heading={a.cta.heading} label={a.cta.button.label} href={a.cta.button.href} />
+        <AboutCta heading={a.cta.heading} />
       </main>
       <FilmDialog
         id="vision"
