@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { PageIntro, ui } from "@/components/PageIntro";
+import { ImageHero } from "@/components/ImageHero";
+import { ui } from "@/components/PageIntro";
 import { FOOTER } from "@/lib/data";
 import { CONTACT } from "@/lib/pages";
 
@@ -17,9 +18,10 @@ export default function ContactPage() {
     <>
       <Header />
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#082b52]">
-        <PageIntro crumb="Contact" title={c.title} lead={c.lead} />
+        <ImageHero title={c.title} image="/assets/contact-hero.jpg" alt="Curved blue glass facade of a modern building against the sky." position="center 40%" />
 
         <section aria-label="Contact details and form" className={`${ui.pad} py-14 min-[768px]:py-[90px]`}>
+          <p className={`${ui.body} mx-auto mb-14 max-w-[62ch] text-center`}>{c.lead}</p>
           <div className={`${ui.wrap} grid gap-14 border-t border-[#082b52]/15 pt-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
             <div className="min-[992px]:col-span-4">
               <h2 className={ui.eyebrow}>Headquarters</h2>
