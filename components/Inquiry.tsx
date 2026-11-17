@@ -11,8 +11,8 @@ const WHEN = ["As soon as possible", "Within 3 months", "3 to 6 months", "6 to 1
 const PLANS = ["Yes", "In progress", "No"];
 
 const field =
-  "field-line mt-2 block w-full min-h-12 border border-[#143275]/25 bg-white px-4 py-3 text-[16px] leading-snug text-[#143275] outline-none transition-colors duration-200 placeholder:text-[#143275]/40 focus:border-gold focus-visible:border-gold";
-const label = "block text-sm font-medium text-[#143275]";
+  "field-line mt-2 block w-full min-h-12 border border-[#082b52]/25 bg-white px-4 py-3 text-[16px] leading-snug text-[#082b52] outline-none transition-colors duration-200 placeholder:text-[#082b52]/40 focus:border-gold focus-visible:border-gold";
+const label = "block text-sm font-medium text-[#082b52]";
 
 /** Fired by the service buttons so the form opens with that service already chosen. */
 export const INQUIRY_EVENT = "inquiry:service";
@@ -100,7 +100,7 @@ export function InquiryForm({
       </div>
       <div>
         <label htmlFor={`${idPrefix}-phone`} className={label}>
-          Phone <span className="font-normal text-[#143275]/60">(optional)</span>
+          Phone <span className="font-normal text-[#082b52]/60">(optional)</span>
         </label>
         <input id={`${idPrefix}-phone`} name="phone" type="tel" autoComplete="tel" className={field} />
       </div>
@@ -154,8 +154,8 @@ export function InquiryForm({
         <legend className={label}>Do you already have plans or drawings?</legend>
         <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
           {PLANS.map((o, i) => (
-            <label key={o} className="inline-flex min-h-8 cursor-pointer items-center gap-2 text-[15px] text-[#143275]">
-              <input type="radio" name="plans" value={o} defaultChecked={i === 2} className="size-4 accent-[#143275]" />
+            <label key={o} className="inline-flex min-h-8 cursor-pointer items-center gap-2 text-[15px] text-[#082b52]">
+              <input type="radio" name="plans" value={o} defaultChecked={i === 2} className="size-4 accent-[#082b52]" />
               {o}
             </label>
           ))}
@@ -170,11 +170,11 @@ export function InquiryForm({
       <div className="flex flex-wrap items-center gap-4 min-[640px]:col-span-2">
         <button
           type="submit"
-          className="btn-sweep inline-flex min-h-12 cursor-pointer items-center justify-center border border-[#143275] bg-[#143275] bg-[linear-gradient(#fff,#fff)] px-8 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase outline-none hover:text-[#143275] focus-visible:text-[#143275]"
+          className="btn-sweep inline-flex min-h-12 cursor-pointer items-center justify-center border border-[#082b52] bg-[#082b52] bg-[linear-gradient(#fff,#fff)] px-8 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase outline-none hover:text-[#082b52] focus-visible:text-[#082b52]"
         >
           Submit
         </button>
-        <p id={`${idPrefix}-note`} role="status" className="text-[14px] leading-snug text-[#143275]/75">
+        <p id={`${idPrefix}-note`} role="status" className="text-[14px] leading-snug text-[#082b52]/75">
           {sent ? "Your email app should now open with the details filled in. Press send there to finish." : ""}
         </p>
       </div>

@@ -54,7 +54,7 @@ export function PhaseRail({ items, endId }: { items: { id: string; label: string
                 href={`#${it.id}`}
                 onClick={(e) => goToSection(e, it.id)}
                 aria-current={on ? "true" : undefined}
-                className="group flex items-center justify-end gap-3 text-[#143275] no-underline outline-none"
+                className="group flex items-center justify-end gap-3 text-[#082b52] no-underline outline-none"
               >
                 <span
                   className={cn(

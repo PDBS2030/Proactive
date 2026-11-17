@@ -38,7 +38,7 @@ export function ServicesNav({ items }: { items: Item[] }) {
   }, [items]);
 
   return (
-    <div ref={barRef} data-section-bar className="sticky top-[104px] z-50 border-y border-[#143275]/10 bg-white px-4 min-[768px]:px-[124px]">
+    <div ref={barRef} data-section-bar className="sticky top-[104px] z-50 border-y border-[#082b52]/10 bg-white px-4 min-[768px]:px-[124px]">
       <div className="mx-auto w-full max-w-[1680px]">
       <nav
         aria-label="On this page"
@@ -51,7 +51,7 @@ export function ServicesNav({ items }: { items: Item[] }) {
             onClick={(e) => goToSection(e, i.id)}
             aria-current={active === i.id ? "true" : undefined}
             className={cn(
-              "inline-flex min-h-[68px] shrink-0 items-center px-3 text-[.875rem] leading-none font-semibold tracking-[.08em] whitespace-nowrap text-[#143275] uppercase underline decoration-transparent decoration-2 underline-offset-[20px] transition-[text-decoration-color] duration-300 outline-none hover:decoration-gold focus-visible:decoration-gold",
+              "inline-flex min-h-[68px] shrink-0 items-center px-3 text-[.875rem] leading-none font-semibold tracking-[.08em] whitespace-nowrap text-[#082b52] uppercase underline decoration-transparent decoration-2 underline-offset-[20px] transition-[text-decoration-color] duration-300 outline-none hover:decoration-gold focus-visible:decoration-gold",
               active === i.id && "decoration-gold",
             )}
           >
@@ -61,7 +61,7 @@ export function ServicesNav({ items }: { items: Item[] }) {
         <a
           href="#inquiry"
           data-start-project
-          className="ml-auto hidden shrink-0 items-center border border-[#143275] px-5 py-3 text-[.875rem] leading-none font-semibold tracking-[.08em] text-[#143275] uppercase no-underline transition-colors duration-300 outline-none hover:bg-[#143275] hover:text-white focus-visible:bg-[#143275] focus-visible:text-white min-[1560px]:inline-flex"
+          className="ml-auto hidden shrink-0 items-center border border-[#082b52] px-5 py-3 text-[.875rem] leading-none font-semibold tracking-[.08em] text-[#082b52] uppercase no-underline transition-colors duration-300 outline-none hover:bg-[#082b52] hover:text-white focus-visible:bg-[#082b52] focus-visible:text-white min-[1560px]:inline-flex"
         >
           Start a project
         </a>

@@ -16,11 +16,11 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
+      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#082b52]">
         <PageIntro crumb="Contact" title={c.title} lead={c.lead} />
 
         <section aria-label="Contact details and form" className={`${ui.pad} py-14 min-[768px]:py-[90px]`}>
-          <div className={`${ui.wrap} grid gap-14 border-t border-[#143275]/15 pt-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
+          <div className={`${ui.wrap} grid gap-14 border-t border-[#082b52]/15 pt-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
             <div className="min-[992px]:col-span-4">
               <h2 className={ui.eyebrow}>Headquarters</h2>
               <p className="mt-4 text-[19px] leading-snug font-medium">PROACTIVE Design and Building Systems, Inc.</p>

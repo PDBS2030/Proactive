@@ -9,11 +9,11 @@ export const ui = {
   wrap: "mx-auto w-full max-w-[1680px]",
   title: "font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial]",
   eyebrow: "text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase",
-  body: "font-mulish text-[17px] leading-[1.65] text-[#143275]/90",
+  body: "font-mulish text-[17px] leading-[1.65] text-[#082b52]/90",
   tile: "text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)",
-  btn: "btn-sweep inline-flex min-h-12 items-center justify-center border border-[#143275] bg-[#143275] bg-[linear-gradient(#fff,#fff)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline outline-none hover:text-[#143275] focus-visible:text-[#143275]",
+  btn: "btn-sweep inline-flex min-h-12 items-center justify-center border border-[#082b52] bg-[#082b52] bg-[linear-gradient(#fff,#fff)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline outline-none hover:text-[#082b52] focus-visible:text-[#082b52]",
   btnGhost:
-    "btn-sweep inline-flex min-h-12 items-center justify-center border border-[#143275]/30 bg-[linear-gradient(#143275,#143275)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#143275] uppercase no-underline outline-none hover:border-[#143275] hover:text-white focus-visible:border-[#143275] focus-visible:text-white",
+    "btn-sweep inline-flex min-h-12 items-center justify-center border border-[#082b52]/30 bg-[linear-gradient(#082b52,#082b52)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#082b52] uppercase no-underline outline-none hover:border-[#082b52] hover:text-white focus-visible:border-[#082b52] focus-visible:text-white",
   link: "text-inherit underline decoration-transparent decoration-2 underline-offset-[6px] transition-[text-decoration-color] duration-300 hover:decoration-gold focus-visible:decoration-gold",
 };
 
@@ -51,7 +51,7 @@ export function PageIntro({
     <section className={`${ui.pad} pt-[140px] min-[768px]:pt-[180px]`}>
       <ScrollProgress />
       <div className={ui.wrap}>
-        <nav data-up aria-label="Breadcrumb" className="text-sm text-[#143275]/70">
+        <nav data-up aria-label="Breadcrumb" className="text-sm text-[#082b52]/70">
           <ol className="flex items-center gap-2">
             <li>
               <Link href="/" className={ui.link}>
@@ -59,7 +59,7 @@ export function PageIntro({
               </Link>
             </li>
             <li aria-hidden="true">/</li>
-            <li aria-current="page" className="text-[#143275]">
+            <li aria-current="page" className="text-[#082b52]">
               {crumb}
             </li>
           </ol>
@@ -68,7 +68,7 @@ export function PageIntro({
           <h1 data-words className={`${HERO_H1} min-[992px]:col-span-6`}>
             <Words text={title} />
           </h1>
-          <p data-up style={{ ["--d" as string]: "250ms" }} className="font-mulish text-[20px] leading-[31px] font-normal text-[#143275] min-[992px]:col-span-5 min-[992px]:col-start-8 min-[992px]:text-[length:clamp(14px,calc((50vw-184px)/32.5),20px)] min-[992px]:leading-[1.55]">
+          <p data-up style={{ ["--d" as string]: "250ms" }} className="font-mulish text-[20px] leading-[31px] font-normal text-[#082b52] min-[992px]:col-span-5 min-[992px]:col-start-8 min-[992px]:text-[length:clamp(14px,calc((50vw-184px)/32.5),20px)] min-[992px]:leading-[1.55]">
             {lead}
           </p>
         </div>

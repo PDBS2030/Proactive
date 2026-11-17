@@ -33,13 +33,13 @@ const IMAGES: Record<string, { src: string; position?: string }[]> = {
 
 const TONES = {
   paper: {
-    section: "bg-white text-[#143275]",
-    grid: "bg-[linear-gradient(rgba(20,50,117,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(20,50,117,.06)_1px,transparent_1px)]",
-    muted: "text-[#143275]/80",
-    hair: "border-[#143275]/15",
+    section: "bg-white text-[#082b52]",
+    grid: "bg-[linear-gradient(rgba(8,43,82,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(8,43,82,.06)_1px,transparent_1px)]",
+    muted: "text-[#082b52]/80",
+    hair: "border-[#082b52]/15",
     label: "text-gold",
-    idle: "text-[#143275]/75 hover:bg-[#143275]/[.05] hover:text-[#143275]",
-    on: "bg-[#143275] text-white",
+    idle: "text-[#082b52]/75 hover:bg-[#082b52]/[.05] hover:text-[#082b52]",
+    on: "bg-[#082b52] text-white",
     list: "bg-white",
   },
   blueprint: {

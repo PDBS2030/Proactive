@@ -47,7 +47,7 @@ export function PhaseCards({ items, cta }: { items: Phase[]; cta: { label: strin
               {/* The list item keeps a fixed class (the scroll reveal marks it); everything that changes is inside */}
               <div
                 className={cn(
-                  "relative isolate h-full min-h-[236px] overflow-hidden border border-[#143275]/10 bg-white p-8 transition-[translate,box-shadow] duration-500 ease-out motion-reduce:transition-none",
+                  "relative isolate h-full min-h-[236px] overflow-hidden border border-[#082b52]/10 bg-white p-8 transition-[translate,box-shadow] duration-500 ease-out motion-reduce:transition-none",
                   "shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.12)]",
                   on && "-translate-y-1.5 shadow-[0_2px_2px_rgba(8,43,82,.14),0_12px_22px_rgba(8,43,82,.2),0_30px_56px_rgba(8,43,82,.3)]",
                 )}
@@ -74,18 +74,18 @@ export function PhaseCards({ items, cta }: { items: Phase[]; cta: { label: strin
                 <h3
                   className={cn(
                     "mt-4 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight) transition-[color,text-shadow] duration-500",
-                    on ? "text-white [text-shadow:0_6px_22px_rgba(0,0,0,.7)]" : "text-[#143275]",
+                    on ? "text-white [text-shadow:0_6px_22px_rgba(0,0,0,.7)]" : "text-[#082b52]",
                   )}
                 >
                   {p.title}
                 </h3>
-                <p className={cn("mt-1 text-xs font-semibold tracking-[.15em] uppercase transition-colors duration-500", on ? "text-white/75" : "text-[#143275]/60")}>
+                <p className={cn("mt-1 text-xs font-semibold tracking-[.15em] uppercase transition-colors duration-500", on ? "text-white/75" : "text-[#082b52]/60")}>
                   {p.steps}
                 </p>
                 <p
                   className={cn(
                     "mt-3 text-[15px] leading-[1.6] transition-[color,text-shadow] duration-500",
-                    on ? "text-white/95 [text-shadow:0_4px_16px_rgba(0,0,0,.65)]" : "text-[#143275]/85",
+                    on ? "text-white/95 [text-shadow:0_4px_16px_rgba(0,0,0,.65)]" : "text-[#082b52]/85",
                   )}
                 >
                   {p.text}

@@ -60,7 +60,7 @@ export default function ServicesPage() {
   return (
     <>
       <Header />
-      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
+      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#082b52]">
         {/* Hero: a full-screen slider with one slide per service, pinned so the sections below slide over it */}
         <ScrollProgress />
         <ServicesHero
@@ -76,12 +76,12 @@ export default function ServicesPage() {
 
         {/* Services under one roof */}
         <StackSection index={0}>
-          <section aria-labelledby="one-roof-title" className="border-b border-[#143275]/10 px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px]">
+          <section aria-labelledby="one-roof-title" className="border-b border-[#082b52]/10 px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px]">
             <div className="mx-auto grid w-full max-w-[1680px] gap-8 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
               <h2 id="one-roof-title" className={cn(title, "min-[992px]:col-span-4")}>
                 Services under one roof
               </h2>
-              <p className="font-mulish text-[clamp(18px,1.55vw,24px)] leading-[1.6] text-[#143275] min-[992px]:col-span-7 min-[992px]:col-start-6">
+              <p className="font-mulish text-[clamp(18px,1.55vw,24px)] leading-[1.6] text-[#082b52] min-[992px]:col-span-7 min-[992px]:col-start-6">
                 We bring architecture, design-build, and construction management together under one roof, uniting thoughtful design with disciplined execution. From the earliest concept to final completion, our integrated approach provides clear communication, coordinated expertise, and a consistent focus on your vision, budget, and schedule, delivering a seamless experience and spaces built for lasting value.
               </p>
             </div>
@@ -112,7 +112,7 @@ export default function ServicesPage() {
                     {s.headline}
                   </h2>
                 </div>
-                <p className="font-mulish text-[17px] leading-[1.65] text-[#143275]/85">{s.body}</p>
+                <p className="font-mulish text-[17px] leading-[1.65] text-[#082b52]/85">{s.body}</p>
                 <div>
                   <h3 className="text-xs font-semibold tracking-[.15em] uppercase">What’s included</h3>
                   <ul className="mt-3 grid gap-2.5">
@@ -125,11 +125,11 @@ export default function ServicesPage() {
                   </ul>
                 </div>
                 <dl className="grid gap-5 min-[640px]:grid-cols-2">
-                  <div className="group border border-[#143275]/10 bg-white p-5 shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.14),0_36px_64px_-14px_rgba(8,43,82,.3)] hover:-translate-y-1 hover:bg-[#143275] hover:text-white hover:shadow-[0_2px_2px_rgba(8,43,82,.12),0_10px_18px_rgba(8,43,82,.16),0_26px_44px_rgba(8,43,82,.22),0_48px_80px_-16px_rgba(8,43,82,.42)]">
+                  <div className="group border border-[#082b52]/10 bg-white p-5 shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.14),0_36px_64px_-14px_rgba(8,43,82,.3)] hover:-translate-y-1 hover:bg-[#082b52] hover:text-white hover:shadow-[0_2px_2px_rgba(8,43,82,.12),0_10px_18px_rgba(8,43,82,.16),0_26px_44px_rgba(8,43,82,.22),0_48px_80px_-16px_rgba(8,43,82,.42)]">
                     <dt className="text-xs font-semibold tracking-[.15em] text-gold uppercase transition-colors duration-300 group-hover:text-[#e3c98f]">Best for</dt>
                     <dd className="mt-1.5 text-[15px] leading-snug">{s.bestFor}</dd>
                   </div>
-                  <div className="group border border-[#143275]/10 bg-white p-5 shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.14),0_36px_64px_-14px_rgba(8,43,82,.3)] hover:-translate-y-1 hover:bg-[#143275] hover:text-white hover:shadow-[0_2px_2px_rgba(8,43,82,.12),0_10px_18px_rgba(8,43,82,.16),0_26px_44px_rgba(8,43,82,.22),0_48px_80px_-16px_rgba(8,43,82,.42)]">
+                  <div className="group border border-[#082b52]/10 bg-white p-5 shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.14),0_36px_64px_-14px_rgba(8,43,82,.3)] hover:-translate-y-1 hover:bg-[#082b52] hover:text-white hover:shadow-[0_2px_2px_rgba(8,43,82,.12),0_10px_18px_rgba(8,43,82,.16),0_26px_44px_rgba(8,43,82,.22),0_48px_80px_-16px_rgba(8,43,82,.42)]">
                     <dt className="text-xs font-semibold tracking-[.15em] text-gold uppercase transition-colors duration-300 group-hover:text-[#e3c98f]">You receive</dt>
                     <dd className="mt-1.5 text-[15px] leading-snug">{s.outcome}</dd>
                   </div>
@@ -196,7 +196,7 @@ export default function ServicesPage() {
             <h2 id="phases-title" className={title}>
               {PHASES.heading}
             </h2>
-            <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#143275]/85">{PHASES.lead}</p>
+            <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#082b52]/85">{PHASES.lead}</p>
             <PhaseCards items={PHASES.items} cta={PHASES.cta} />
           </div>
         </section>
@@ -216,7 +216,7 @@ export default function ServicesPage() {
               <h2 id="inquiry-title" className={title}>
                 Start with a conversation
               </h2>
-              <p className="mt-5 max-w-[44ch] font-mulish text-[17px] leading-[1.65] text-[#143275]/85">
+              <p className="mt-5 max-w-[44ch] font-mulish text-[17px] leading-[1.65] text-[#082b52]/85">
                 Tell us what you are planning. We reply within one business day to set up a call and suggest the right first step.
               </p>
               <dl className="mt-8 grid gap-5 text-[15px] leading-snug">

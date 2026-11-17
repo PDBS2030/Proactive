@@ -131,13 +131,13 @@ export function ServicesHero({
                 href={primary.href}
                 data-start-project
                 data-service={START_SERVICE[slide.id]}
-                className="btn-sweep inline-flex min-h-12 items-center justify-center border border-white bg-white bg-[linear-gradient(#143275,#143275)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#143275] uppercase no-underline outline-none hover:text-white focus-visible:text-white"
+                className="btn-sweep inline-flex min-h-12 items-center justify-center border border-white bg-white bg-[linear-gradient(#082b52,#082b52)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#082b52] uppercase no-underline outline-none hover:text-white focus-visible:text-white"
               >
                 {primary.label}
               </a>
               <Link
                 href={secondary.href}
-                className="btn-sweep inline-flex min-h-12 items-center justify-center border border-white/60 bg-[linear-gradient(#fff,#fff)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline outline-none hover:border-white hover:text-[#143275] focus-visible:border-white focus-visible:text-[#143275]"
+                className="btn-sweep inline-flex min-h-12 items-center justify-center border border-white/60 bg-[linear-gradient(#fff,#fff)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline outline-none hover:border-white hover:text-[#082b52] focus-visible:border-white focus-visible:text-[#082b52]"
               >
                 {secondary.label}
               </Link>

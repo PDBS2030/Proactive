@@ -69,7 +69,7 @@ export function StartProject() {
       onClick={(e) => {
         if (e.target === ref.current) close();
       }}
-      className="m-auto max-h-none w-screen max-w-none overflow-hidden border-0 bg-white p-0 max-md:m-0 max-md:h-dvh max-md:w-dvw text-[#143275] shadow-[0_40px_120px_-20px_rgba(4,18,40,.65)] min-[768px]:max-h-[min(92dvh,880px)] min-[768px]:w-[min(1040px,calc(100vw-3rem))]"
+      className="m-auto max-h-none w-screen max-w-none overflow-hidden border-0 bg-white p-0 max-md:m-0 max-md:h-dvh max-md:w-dvw text-[#082b52] shadow-[0_40px_120px_-20px_rgba(4,18,40,.65)] min-[768px]:max-h-[min(92dvh,880px)] min-[768px]:w-[min(1040px,calc(100vw-3rem))]"
     >
       {open && (
         <div className="grid h-full min-[768px]:grid-cols-[5fr_7fr]">
@@ -113,7 +113,7 @@ export function StartProject() {
               type="button"
               onClick={close}
               aria-label="Close"
-              className="absolute top-3 right-3 z-10 inline-flex size-11 cursor-pointer items-center justify-center text-[#143275] transition-colors duration-200 outline-none hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2356e5] min-[768px]:top-5 min-[768px]:right-5"
+              className="absolute top-3 right-3 z-10 inline-flex size-11 cursor-pointer items-center justify-center text-[#082b52] transition-colors duration-200 outline-none hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2356e5] min-[768px]:top-5 min-[768px]:right-5"
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" strokeWidth="1.6" />
@@ -127,13 +127,13 @@ export function StartProject() {
               <div role="status" className="hero-in my-auto max-w-[44ch]">
                 <span aria-hidden="true" className="block h-0.5 w-12 bg-gold" />
                 <p className="mt-5 font-jost text-[clamp(26px,2.6vw,36px)] leading-[1.1] uppercase">Thank you</p>
-                <p className="mt-4 font-mulish text-[17px] leading-[1.65] text-[#143275]/90">
+                <p className="mt-4 font-mulish text-[17px] leading-[1.65] text-[#082b52]/90">
                   Your email app should now be open with your project details filled in. Press send there to finish, and we will reply within one business day.
                 </p>
                 <button
                   type="button"
                   onClick={close}
-                  className="btn-sweep mt-8 inline-flex min-h-12 cursor-pointer items-center justify-center border border-[#143275] bg-[#143275] bg-[linear-gradient(#fff,#fff)] px-8 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase outline-none hover:text-[#143275] focus-visible:text-[#143275]"
+                  className="btn-sweep mt-8 inline-flex min-h-12 cursor-pointer items-center justify-center border border-[#082b52] bg-[#082b52] bg-[linear-gradient(#fff,#fff)] px-8 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase outline-none hover:text-[#082b52] focus-visible:text-[#082b52]"
                 >
                   Close
                 </button>

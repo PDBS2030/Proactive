@@ -8,8 +8,8 @@ import { cn } from "@/lib/cn";
 const ALL = "All";
 const slugify = (v: string) => v.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const select =
-  "field-line mt-2 block w-full min-h-12 cursor-pointer appearance-none border border-[#143275]/25 bg-white bg-[url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23143275' stroke-width='1.5'><path d='m1 1 5 5 5-5'/></svg>\")] bg-[length:12px_8px] bg-[position:right_16px_center] bg-no-repeat px-4 pr-10 text-[15px] text-[#143275] outline-none transition-colors duration-200 focus:border-gold focus-visible:border-gold";
-const label = "block text-sm font-medium text-[#143275]";
+  "field-line mt-2 block w-full min-h-12 cursor-pointer appearance-none border border-[#082b52]/25 bg-white bg-[url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23082b52' stroke-width='1.5'><path d='m1 1 5 5 5-5'/></svg>\")] bg-[length:12px_8px] bg-[position:right_16px_center] bg-no-repeat px-4 pr-10 text-[15px] text-[#082b52] outline-none transition-colors duration-200 focus:border-gold focus-visible:border-gold";
+const label = "block text-sm font-medium text-[#082b52]";
 
 function Field({
   id,
@@ -100,7 +100,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      <form role="search" aria-label="Filter projects" onSubmit={(e) => e.preventDefault()} className="grid gap-4 border-y border-[#143275]/15 py-6 min-[640px]:grid-cols-2 min-[1100px]:grid-cols-[repeat(3,1fr)_1.4fr_1fr]">
+      <form role="search" aria-label="Filter projects" onSubmit={(e) => e.preventDefault()} className="grid gap-4 border-y border-[#082b52]/15 py-6 min-[640px]:grid-cols-2 min-[1100px]:grid-cols-[repeat(3,1fr)_1.4fr_1fr]">
         <Field id="f-sector" name="Sector" value={sector} options={sectors} onChange={setSector} />
         <Field id="f-region" name="Region" value={region} options={regions} onChange={setRegion} />
         <Field id="f-service" name="Service" value={service} options={services} onChange={setService} />
@@ -114,7 +114,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Project or city"
-            className={cn(select, "bg-none pr-4 placeholder:text-[#143275]/40")}
+            className={cn(select, "bg-none pr-4 placeholder:text-[#082b52]/40")}
           />
         </div>
         <div>
@@ -129,14 +129,14 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
       </form>
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-        <p role="status" aria-live="polite" className="text-[15px] text-[#143275]/80">
+        <p role="status" aria-live="polite" className="text-[15px] text-[#082b52]/80">
           Showing {shown.length} of {projects.length} projects
         </p>
         {filtered && (
           <button
             type="button"
             onClick={clear}
-            className="cursor-pointer text-[14px] font-medium text-[#143275] underline decoration-gold decoration-2 underline-offset-[6px] outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]"
+            className="cursor-pointer text-[14px] font-medium text-[#082b52] underline decoration-gold decoration-2 underline-offset-[6px] outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]"
           >
             Clear filters
           </button>
@@ -144,13 +144,13 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
       </div>
 
       {shown.length === 0 ? (
-        <div className="mt-10 border border-[#143275]/15 px-6 py-14 text-center">
+        <div className="mt-10 border border-[#082b52]/15 px-6 py-14 text-center">
           <p className="text-[19px] font-medium">No projects match these filters</p>
-          <p className="mt-2 text-[15px] text-[#143275]/80">Try a different sector or region, or clear the filters to see everything.</p>
+          <p className="mt-2 text-[15px] text-[#082b52]/80">Try a different sector or region, or clear the filters to see everything.</p>
           <button
             type="button"
             onClick={clear}
-            className="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center border border-[#143275] px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#143275] uppercase outline-none transition-colors duration-300 hover:bg-[#143275] hover:text-white focus-visible:bg-[#143275] focus-visible:text-white"
+            className="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center border border-[#082b52] px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#082b52] uppercase outline-none transition-colors duration-300 hover:bg-[#082b52] hover:text-white focus-visible:bg-[#082b52] focus-visible:text-white"
           >
             Clear filters
           </button>
@@ -171,11 +171,11 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
                   />
                 </div>
                 <h3 className="mt-4 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight) transition-colors duration-300 group-hover:text-gold">{p.title}</h3>
-                <p className="mt-1 text-[15px] text-[#143275]/80">
+                <p className="mt-1 text-[15px] text-[#082b52]/80">
                   {p.city}, {p.region}
                 </p>
-                <p className="mt-2 text-[14px] leading-snug text-[#143275]/75">{p.scope}</p>
-                <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t border-[#143275]/12 pt-3 text-[13px] text-[#143275]/70">
+                <p className="mt-2 text-[14px] leading-snug text-[#082b52]/75">{p.scope}</p>
+                <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t border-[#082b52]/12 pt-3 text-[13px] text-[#082b52]/70">
                   <span>{p.service}</span>
                   <span>{p.sector}</span>
                   <span>{p.size}</span>

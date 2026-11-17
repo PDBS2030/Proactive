@@ -23,7 +23,7 @@ export default function ProcessPage() {
   return (
     <>
       <Header />
-      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#143275]">
+      <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#082b52]">
         <ProcessHero title={PROCESS_HERO.title} tagline={PROCESS_HERO.tagline} states={HERO_STATES} />
         <PhaseRail items={PHASES.map((p) => ({ id: p.id, label: p.short }))} endId="commit-title" />
 
@@ -40,16 +40,16 @@ export default function ProcessPage() {
                 <h2 id="commit-title" className={title}>
                   {COMMITMENTS.heading}
                 </h2>
-                <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#143275]/85">{COMMITMENTS.lead}</p>
+                <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#082b52]/85">{COMMITMENTS.lead}</p>
                 <ul className="mt-10 grid gap-8 min-[768px]:grid-cols-2 min-[992px]:grid-cols-4 min-[992px]:gap-x-10">
                   {COMMITMENTS.items.map((c) => (
                     <li
                       key={c.title}
-                      className="border border-[#143275]/10 bg-white p-8 shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.12)]"
+                      className="border border-[#082b52]/10 bg-white p-8 shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_5px_10px_rgba(8,43,82,.08),0_16px_30px_rgba(8,43,82,.12)]"
                     >
                       <span aria-hidden="true" className="block h-0.5 w-10 bg-gold" />
                       <h3 className="mt-4 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{c.title}</h3>
-                      <p className="mt-3 text-[15px] leading-[1.6] text-[#143275]/85">{c.text}</p>
+                      <p className="mt-3 text-[15px] leading-[1.6] text-[#082b52]/85">{c.text}</p>
                     </li>
                   ))}
                 </ul>
@@ -70,7 +70,7 @@ export default function ProcessPage() {
                   <h2 id="inquiry-title" className={title}>
                     Start with a conversation
                   </h2>
-                  <p className="mt-5 max-w-[44ch] font-mulish text-[17px] leading-[1.65] text-[#143275]/85">
+                  <p className="mt-5 max-w-[44ch] font-mulish text-[17px] leading-[1.65] text-[#082b52]/85">
                     Tell us what you are planning. We reply within one business day to set up a call and suggest the right first step.
                   </p>
                   <dl className="mt-8 grid gap-5 text-[15px] leading-snug">
