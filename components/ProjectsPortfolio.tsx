@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { SERVICE_SLUGS, type Project, type Region } from "@/lib/pages";
+import { SERVICE_SLUGS, projectSlug, type Project, type Region } from "@/lib/pages";
 import { cn } from "@/lib/cn";
 
 const PAGE = 24;
@@ -274,7 +274,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
           <ul className="grid grid-cols-1 gap-6 min-[520px]:grid-cols-2 min-[768px]:grid-cols-3 min-[1100px]:grid-cols-4">
             {visible.map((p, i) => (
               <li key={p.id}>
-                <article className="group relative overflow-hidden border border-[#c7c8ca]">
+                <Link href={`/projects/${projectSlug(p)}`} className="group relative block overflow-hidden border border-[#c7c8ca] no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]">
                   <div className="relative aspect-[3/4] bg-[#e6e6e6]">
                     <Image
                       src={p.image}
@@ -295,7 +295,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
                       {p.city}, {p.region}. {p.sector}. {p.service}.
                     </p>
                   </div>
-                </article>
+                </Link>
               </li>
             ))}
           </ul>

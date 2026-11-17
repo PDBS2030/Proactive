@@ -170,6 +170,40 @@ export const PROJECTS: Project[] = [
   { id: "p40", title: "Light installation lobby", city: "Tysons", region: "Virginia", sector: "Commercial", service: "Architecture & design", image: "/assets/gallery/commercial/10.jpg", year: 2021, size: "900 sq ft", scope: "Lobby ceiling with a linear light installation" },
 ];
 
+/** Address of a project's own page, from its title */
+export const projectSlug = (p: Pick<Project, "title">) =>
+  p.title
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+/** "Baltimore, Maryland", and plain "Washington, D.C." for the District */
+export const projectPlace = (p: Pick<Project, "city" | "region">) => (p.region === "DC" ? "Washington, D.C." : `${p.city}, ${p.region}`);
+
+/** Four more photographs from the same kind of work, taken in turn from the folder the project's own photo is in. SAMPLE: replace with the real photos of each project. */
+export function projectGallery(p: Pick<Project, "image">): string[] {
+  const m = p.image.match(/^(.*)\/(\d+)\.jpg$/);
+  if (!m) return [];
+  const n = Number(m[2]);
+  return [1, 2, 3, 4].map((k) => `${m[1]}/${((n + k * 2 - 1) % 10) + 1}.jpg`);
+}
+
+/** A line about the kind of work, for the top of a project page */
+export const SECTOR_BLURB: Record<Sector, string> = {
+  Residential: "Homes planned around the way the people in them live, with the storage, light and finish that daily use asks for.",
+  "Loft & industrial conversions": "Old warehouse and factory shells given new lives as homes and studios, with their columns, windows and scale kept.",
+  "Landmark & brownstone": "Historic buildings renewed with care: original brick, stairs and bays kept, and the systems behind them brought up to date.",
+  Commercial: "Interiors for working and learning, built to last under daily use and priced against a firm budget.",
+};
+
+/** How PDBS worked on a project, by service */
+export const SERVICE_LINE: Record<ServiceType, string> = {
+  "Design-build": "One PDBS team designed and built it under a single contract, so the price and the plan stayed in step.",
+  "Architecture & design": "PDBS provided the architecture and design, checked for buildability and priced as it developed.",
+  "Construction management": "PDBS managed the construction on the owner’s behalf, from preconstruction to closeout.",
+};
+
 export const PROJECTS_PAGE = {
   title: "Our portfolio",
   lead: "A selection of projects across Maryland, DC and Virginia. Filter by sector, region or service to see work like yours.",
