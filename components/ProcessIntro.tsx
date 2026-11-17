@@ -47,8 +47,8 @@ export function ProcessIntro() {
   const parts = INTRO.statement.split(/(\[\[.*?\]\])/g).filter(Boolean);
   return (
     <section aria-label="The process in figures" className="bg-white px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px]">
-      <div className="mx-auto w-full max-w-[1680px]">
-        <p className="max-w-[26ch] font-jost text-[clamp(26px,2.9vw,44px)] leading-[1.14] font-medium text-[#082b52] min-[992px]:max-w-[24ch]">
+      <div className="mx-auto w-full max-w-[1250px]">
+        <p className="max-w-[34ch] font-jost text-[clamp(24px,2.5vw,40px)] leading-[1.12] font-normal text-[#082b52] min-[992px]:max-w-[62%]">
           {parts.map((p, i) =>
             p.startsWith("[[") ? (
               <span key={i} className="text-[#7d9bc1]">
@@ -60,14 +60,14 @@ export function ProcessIntro() {
           )}
         </p>
 
-        <dl className="mt-14 grid grid-cols-2 min-[992px]:grid-cols-5">
+        <dl className="mt-12 grid grid-cols-2 min-[992px]:grid-cols-[repeat(5,minmax(0,1fr))]">
           {INTRO.stats.map((s) => (
             <div
               key={s.label}
-              className="flex flex-col items-center border-[#082b52]/15 px-4 pt-2 pb-8 text-center nth-even:border-l min-[992px]:border-l min-[992px]:first:border-l-0"
+              className="flex flex-col items-center border-[#082b52]/15 px-4 pt-2 pb-12 text-center nth-even:border-l min-[992px]:border-l min-[992px]:first:border-l-0"
             >
-              <dd className="order-1 mt-5 max-w-[16ch] text-[13px] leading-snug font-medium tracking-[.03em] text-[#082b52] uppercase">{s.label}</dd>
-              <dt className="order-0 font-jost text-[clamp(44px,4.4vw,68px)] leading-none font-normal text-[#7d9bc1]">
+              <dd className="order-1 mt-6 text-[14px] leading-snug font-medium text-[#082b52] uppercase">{s.label}</dd>
+              <dt className="order-0 font-jost text-[clamp(36px,3.3vw,52px)] leading-none font-normal text-[#7d9bc1]">
                 {"text" in s && s.text ? s.text : <Figure value={s.value as number} suffix={s.suffix} />}
               </dt>
             </div>

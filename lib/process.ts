@@ -109,12 +109,12 @@ export const HERO_STATES = [
  */
 export const INTRO = {
   /** Words wrapped in [[ ]] take the accent colour */
-  statement: "[[Fifteen steps]] and one accountable team, with a clear [[decision at every stage]] and no surprises on [[cost or schedule]].",
+  statement: "[[Fifteen steps]] and one accountable team, with a [[clear decision]] at every stage and no surprises on [[cost]] or [[schedule]].",
   stats: [
     { value: 15, suffix: "", label: "Steps on every project" },
-    { value: 3, suffix: "", label: "Phases from study to handover" },
-    { value: 1, suffix: "", label: "Project manager from start to finish" },
-    { value: 3, suffix: "", label: "Regions served: Maryland, DC and Virginia" },
+    { value: 3, suffix: "", label: "Phases, study to handover" },
+    { value: 1, suffix: "", label: "Project manager throughout" },
+    { value: 3, suffix: "", label: "Regions served" },
     { text: "80–90%", label: "Repeat business" },
   ] as ({ value: number; suffix: string; label: string; text?: undefined } | { text: string; label: string; value?: undefined; suffix?: undefined })[],
 };
