@@ -7,7 +7,7 @@
 
 export const ABOUT = {
   title: "About PROACTIVE",
-  lead: "PROACTIVE Design and Building Systems, Inc. is a design-build firm based in Baltimore, Maryland. We design and construct projects of all types across Maryland, DC and Virginia, with a clear-cut focus: build for a better society.",
+  lead: "Proactive Design and Building Systems is a design-build firm based in Baltimore, Maryland. We design and construct projects of all types across Maryland, DC and Virginia, with a clear-cut focus: build for a better society.",
   image: "/assets/offerings-talent.jpg",
   imageAlt: "Construction workers wearing safety helmets and vests at an outdoor site.",
   facts: [
