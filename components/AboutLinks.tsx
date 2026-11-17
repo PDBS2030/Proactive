@@ -1,7 +1,6 @@
 "use client";
 
 import { goToSection } from "@/components/Stack";
-import { OPEN_VISION } from "@/components/VisionDialog";
 
 const ICONS: Record<string, React.ReactNode> = {
   people: (
@@ -32,7 +31,7 @@ const ICONS: Record<string, React.ReactNode> = {
 };
 
 /** Three round icons, each with a link to a section further down the page, as on the reference's about page */
-export function AboutLinks({ items }: { items: { id: string; label: string; icon: keyof typeof ICONS; dialog?: boolean }[] }) {
+export function AboutLinks({ items }: { items: { id: string; label: string; icon: keyof typeof ICONS; dialog?: string }[] }) {
   return (
     <ul className="relative left-1/2 mt-[86px] grid w-full max-w-[1400px] -translate-x-1/2 gap-10 min-[640px]:grid-cols-3 min-[1100px]:w-[min(1400px,calc(100%+96px))]">
       {items.map((it) => (
@@ -44,7 +43,7 @@ export function AboutLinks({ items }: { items: { id: string; label: string; icon
                 // opens the dialog from the middle of the icon that was pressed
                 e.preventDefault();
                 const r = (e.currentTarget.firstElementChild as HTMLElement).getBoundingClientRect();
-                window.dispatchEvent(new CustomEvent(OPEN_VISION, { detail: { x: r.left + r.width / 2, y: r.top + r.height / 2 } }));
+                window.dispatchEvent(new CustomEvent(it.dialog, { detail: { x: r.left + r.width / 2, y: r.top + r.height / 2 } }));
               } else goToSection(e, it.id);
             }}
             className="group flex flex-col items-center text-[#082b52] no-underline outline-none"

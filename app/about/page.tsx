@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { AboutHero } from "@/components/AboutHero";
 import { AboutLinks } from "@/components/AboutLinks";
-import { VisionDialog } from "@/components/VisionDialog";
+import { FilmDialog } from "@/components/FilmDialog";
 import { CtaBand, ui } from "@/components/PageIntro";
 import { ParallaxFrame, ScrollProgress } from "@/components/MotionBits";
 import Image from "next/image";
@@ -44,8 +44,8 @@ export default function AboutPage() {
             <AboutLinks
               items={[
                 { id: "leadership", label: "Our Team", icon: "people" },
-                { id: "values", label: "Our Values", icon: "idea" },
-                { id: "who-we-are", label: "Our Vision", icon: "group", dialog: true },
+                { id: "values", label: "Our Values", icon: "idea", dialog: "open-values" },
+                { id: "who-we-are", label: "Our Vision", icon: "group", dialog: "open-vision" },
               ]}
             />
             <ParallaxFrame className="mt-16 aspect-[16/10] min-[992px]:aspect-[21/8]">
@@ -176,7 +176,34 @@ export default function AboutPage() {
 
         <CtaBand heading={a.cta.heading} label={a.cta.button.label} href={a.cta.button.href} />
       </main>
-      <VisionDialog statement={a.who.statement} paragraphs={a.who.body} />
+      <FilmDialog
+        id="vision"
+        event="open-vision"
+        title="Our Vision"
+        outline="VISION"
+        statement={a.who.statement}
+        rows={[
+          { word: "Plan", text: "Goals, site and budget settled before design begins." },
+          { word: "Design", text: "Architecture and engineering that are buildable and priced." },
+          { word: "Build", text: "One accountable team, from the first sketch to handover." },
+        ]}
+        paragraphs={a.who.body}
+        ring={"BUILD FOR A BETTER SOCIETY • "}
+      />
+      {/* the same dialog with the film and the words on opposite sides */}
+      <FilmDialog
+        id="values"
+        event="open-values"
+        title="Our Values"
+        outline="VALUES"
+        statement={a.values.statement}
+        rows={a.values.items.map((v) => ({ word: v.title, text: v.text }))}
+        paragraphs={[a.values.closing]}
+        ring={"INTEGRITY • ACCOUNTABILITY • COLLABORATION • CRAFTSMANSHIP • "}
+        ringSize={10.5}
+        wordWidth="12rem"
+        mirrored
+      />
       <Footer />
     </>
   );

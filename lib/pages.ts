@@ -26,6 +26,9 @@ export const ABOUT = {
   },
   values: {
     heading: "Our Values",
+    /** DRAFT wording for the Our Values dialog */
+    statement: "Four values guide every project, from the first sketch to the final handover.",
+    closing: "Our clients return to us for the next project, and that repeat business is the measure we trust most.",
     items: [
       { title: "Integrity", text: "We say what we will do, price it honestly and stand behind it." },
       { title: "Accountability", text: "One team owns the outcome from first sketch to final handover." },
