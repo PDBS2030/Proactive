@@ -47,7 +47,7 @@ export function ProjectHero({ project: p }: { project: Project }) {
       </div>
 
       <div className="collage-in relative -mx-4 mt-14 aspect-[16/10] overflow-hidden bg-[#0e365c] min-[768px]:-mx-[124px] min-[992px]:absolute min-[992px]:top-[104px] min-[992px]:bottom-0 min-[992px]:right-0 min-[992px]:mx-0 min-[992px]:mt-0 min-[992px]:aspect-auto min-[992px]:w-[54%]" style={{ ["--d" as string]: "250ms" }}>
-        <Image src={p.image} alt={`${p.title}, ${p.city}`} fill sizes="(max-width: 992px) 100vw, 54vw" priority quality={90} className="object-cover" />
+        <Image src={p.hero ?? p.image} alt={`${p.title}, ${p.city}`} fill sizes="(max-width: 992px) 100vw, 54vw" priority quality={90} className="object-cover" />
         {/* the picture melts into the blue where it meets the text */}
         <span aria-hidden="true" className="absolute inset-y-0 left-0 hidden w-[14%] bg-gradient-to-r from-[#04142a] to-transparent min-[992px]:block" />
       </div>

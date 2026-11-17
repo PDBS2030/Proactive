@@ -114,6 +114,8 @@ export type Project = {
   sector: Sector;
   service: ServiceType;
   image: string;
+  /** A larger photograph for the project's own page, where the card photo is too small */
+  hero?: string;
   year: number;
   size: string;
   scope: string;
@@ -130,7 +132,7 @@ export const SERVICE_SLUGS: Record<string, ServiceType> = {
 export const PROJECTS: Project[] = [
   { id: "p1", title: "Harbor view residence", city: "Baltimore", region: "Maryland", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/1.jpg", year: 2024, size: "3,800 sq ft", scope: "New residence, designed and built" },
   { id: "p2", title: "Family home renovation", city: "Bethesda", region: "Maryland", sector: "Residential", service: "Architecture & design", image: "/assets/gallery/residential/2.jpg", year: 2023, size: "2,600 sq ft", scope: "Whole-house renovation and redesign" },
-  { id: "p3", title: "Hillside residence", city: "Arlington", region: "Virginia", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/3.jpg", year: 2024, size: "4,100 sq ft", scope: "Hillside residence with new structure" },
+  { id: "p3", title: "Hillside residence", city: "Arlington", region: "Virginia", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/3.jpg", hero: "/assets/projects/hillside-residence.jpg", year: 2024, size: "4,100 sq ft", scope: "Hillside residence with new structure" },
   { id: "p4", title: "Warehouse loft conversion", city: "Baltimore", region: "Maryland", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/1.jpg", year: 2023, size: "6,500 sq ft", scope: "Warehouse converted to loft residences" },
   { id: "p5", title: "Industrial studio", city: "Washington", region: "DC", sector: "Loft & industrial conversions", service: "Construction management", image: "/assets/gallery/loft/2.jpg", year: 2022, size: "5,200 sq ft", scope: "Studio fit-out managed for the owner" },
   { id: "p6", title: "Factory residences", city: "Alexandria", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/3.jpg", year: 2024, size: "18,000 sq ft", scope: "Factory building converted to homes" },
