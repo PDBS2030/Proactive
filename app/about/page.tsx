@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { AboutHero } from "@/components/AboutHero";
 import { AboutLinks } from "@/components/AboutLinks";
+import { VisionDialog } from "@/components/VisionDialog";
 import { CtaBand, ui } from "@/components/PageIntro";
 import { ParallaxFrame, ScrollProgress } from "@/components/MotionBits";
 import Image from "next/image";
@@ -44,7 +45,7 @@ export default function AboutPage() {
               items={[
                 { id: "leadership", label: "Our Team", icon: "people" },
                 { id: "values", label: "Our Values", icon: "idea" },
-                { id: "who-we-are", label: "Our Vision", icon: "group" },
+                { id: "who-we-are", label: "Our Vision", icon: "group", dialog: true },
               ]}
             />
             <ParallaxFrame className="mt-16 aspect-[16/10] min-[992px]:aspect-[21/8]">
@@ -175,6 +176,7 @@ export default function AboutPage() {
 
         <CtaBand heading={a.cta.heading} label={a.cta.button.label} href={a.cta.button.href} />
       </main>
+      <VisionDialog statement={a.who.statement} paragraphs={a.who.body} />
       <Footer />
     </>
   );
