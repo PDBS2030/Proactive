@@ -9,7 +9,6 @@ import { CtaBand, ui } from "@/components/PageIntro";
 import { ParallaxFrame, ScrollProgress } from "@/components/MotionBits";
 import Image from "next/image";
 import { ServicesNav } from "@/components/ServicesNav";
-import { CountUp } from "@/components/MotionBits";
 import { FOOTER } from "@/lib/data";
 import { ABOUT } from "@/lib/pages";
 
@@ -36,7 +35,7 @@ export default function AboutPage() {
         <AboutHero title="About" />
 
         {/* Introduction */}
-        <section aria-label="Introduction" className={`${ui.pad} pt-14 min-[768px]:pt-[90px]`}>
+        <section aria-label="Introduction" className={`${ui.pad} pt-14 pb-14 min-[768px]:pt-[90px] min-[768px]:pb-[90px]`}>
           <ScrollProgress />
           <div className={ui.wrap}>
             <p data-up className="mx-auto w-full max-w-[1340px] text-center font-mulish text-[22px] leading-[1.55] text-[#082b52] [text-wrap:balance]">
@@ -53,21 +52,6 @@ export default function AboutPage() {
               <Image src={a.image} alt={a.imageAlt ?? ""} fill priority sizes="100vw" className="object-cover" />
             </ParallaxFrame>
           </div>
-        </section>
-
-        {/* Key facts */}
-        <section aria-label="Key facts" className={`${ui.pad} pt-12 pb-16 min-[768px]:pb-[90px]`}>
-          <dl className={`${ui.wrap} grid gap-8 border-t border-[#082b52]/15 pt-10 min-[768px]:grid-cols-2 min-[1100px]:grid-cols-4 min-[1100px]:gap-x-10`}>
-            {a.facts.map((f) => (
-              <div key={f.label}>
-                <dt className="sr-only">{f.label}</dt>
-                <dd className="font-jost text-[clamp(32px,3.6vw,52px)] leading-none"><CountUp text={f.value} /></dd>
-                <p className="mt-3 max-w-[28ch] text-[15px] leading-snug text-[#082b52]/80" aria-hidden="true">
-                  {f.label}
-                </p>
-              </div>
-            ))}
-          </dl>
         </section>
 
         <ServicesNav items={NAV} />
