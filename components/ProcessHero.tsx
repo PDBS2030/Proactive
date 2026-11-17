@@ -270,7 +270,7 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
 
         {/* scroll cue down the right edge */}
         <a
-          href="#phase-1"
+          href="#phases"
           aria-label="Scroll to the phases"
           className="absolute top-[16.1%] right-4 hidden w-[55px] flex-col items-center gap-8 overflow-hidden text-white no-underline opacity-60 outline-none transition-opacity duration-300 [filter:drop-shadow(0_1px_3px_rgba(0,0,0,.45))] hover:opacity-100 focus-visible:opacity-100 min-[820px]:right-5 min-[820px]:flex"
           style={{ bottom: "7%" }}
