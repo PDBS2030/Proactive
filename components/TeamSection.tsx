@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { RotatingBadge } from "@/components/RotatingBadge";
 import { HERO_H1 } from "@/lib/heroType";
 
 type Person = { name: string; title: string; image: string };
@@ -19,6 +20,7 @@ export function TeamSection({ id, heading, lead, people }: { id: string; heading
             Meet Our Dedicated {heading.replace(/^Our\s+/i, "")}
           </h2>
           <p className="mt-7 max-w-[34ch] font-mulish text-[18px] leading-[1.65] text-white/85">{lead}</p>
+          <RotatingBadge className="mt-14" />
         </div>
 
         <div className="grid gap-5 min-[640px]:grid-cols-2 min-[992px]:col-span-8">

@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import { AboutHero } from "@/components/AboutHero";
 import { AboutLinks } from "@/components/AboutLinks";
 import { FilmDialog } from "@/components/FilmDialog";
-import { RotatingBadge } from "@/components/RotatingBadge";
 import { TeamSection } from "@/components/TeamSection";
 import { CtaBand, ui } from "@/components/PageIntro";
 import { ParallaxFrame, ScrollProgress } from "@/components/MotionBits";
@@ -157,13 +156,6 @@ export default function AboutPage() {
               <p className="mt-6 border-t border-[#082b52]/15 pt-5 text-[15px] text-[#082b52]/80">Service area: Maryland, DC and Virginia</p>
             </div>
           </div>
-        </section>
-
-        {/* The round badge over a blurred photograph */}
-        <section aria-label="PDBS" className="relative isolate flex items-center justify-center overflow-hidden bg-[#2a2420] px-4 py-[90px] min-[768px]:py-[120px]">
-          <Image src="/assets/gallery/landmark/3.jpg" alt="" fill sizes="100vw" className="-z-20 scale-110 object-cover blur-[14px]" />
-          <span aria-hidden="true" className="absolute inset-0 -z-10 bg-[#1b1613]/35" />
-          <RotatingBadge />
         </section>
 
         <CtaBand heading={a.cta.heading} label={a.cta.button.label} href={a.cta.button.href} />
