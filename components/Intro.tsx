@@ -96,7 +96,7 @@ export function Intro() {
     <dialog
       ref={ref}
       id="rhythm-intro"
-      aria-label="PROACTIVE intro"
+      aria-label="PDBS intro"
       className="group open:animate-[rhythm-veil_.55s_4.85s_ease-in-out_both] fixed inset-0 z-100 m-0 h-dvh max-h-none w-screen max-w-none overflow-hidden border-0 bg-(--intro-bg) p-0"
     >
       <div aria-hidden="true" className="absolute inset-0 grid place-items-center [perspective:1100px]">
@@ -116,7 +116,7 @@ export function Intro() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/assets/intro-lockup.png"
-          alt="PROACTIVE — Design and Building Systems, Inc."
+          alt="Proactive Design and Building Systems"
           width={1400}
           height={380}
           className="h-auto w-[min(86vw,980px)]"

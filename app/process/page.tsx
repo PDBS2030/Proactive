@@ -12,7 +12,7 @@ import { FOOTER } from "@/lib/data";
 import { COMMITMENTS, HERO_STATES, PHASES, PROCESS_FAQS, PROCESS_HERO } from "@/lib/process";
 
 export const metadata: Metadata = {
-  title: "Process — PROACTIVE Design and Building Systems",
+  title: "Process — Proactive Design and Building Systems",
   description: "Our design-build process: fifteen steps in three phases, from preliminary study to handover.",
 };
 

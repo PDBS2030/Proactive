@@ -13,9 +13,9 @@ import { FOOTER } from "@/lib/data";
 import { ABOUT } from "@/lib/pages";
 
 export const metadata: Metadata = {
-  title: "About — PROACTIVE Design and Building Systems",
+  title: "About — Proactive Design and Building Systems",
   description:
-    "PROACTIVE Design and Building Systems, Inc. is a Baltimore design-build firm serving Maryland, DC and Virginia.",
+    "Proactive Design and Building Systems is a Baltimore design-build firm serving Maryland, DC and Virginia.",
 };
 
 const NAV = [
@@ -158,7 +158,7 @@ export default function AboutPage() {
             </div>
             <div className="border border-[#082b52]/15 p-7 transition-[border-color,box-shadow] duration-500 hover:border-gold hover:shadow-[0_20px_40px_-28px_rgba(8,43,82,.5)] min-[768px]:p-10 min-[992px]:col-span-6 min-[992px]:col-start-7">
               <h3 className={ui.eyebrow}>Headquarters</h3>
-              <p className="mt-4 text-[19px] leading-snug font-medium">PROACTIVE Design and Building Systems, Inc.</p>
+              <p className="mt-4 text-[19px] leading-snug font-medium">Proactive Design and Building Systems</p>
               <address className="mt-3 text-[16px] leading-[1.6] whitespace-pre-line not-italic">{FOOTER.office}</address>
               <p className="mt-4 text-[16px] leading-[1.6]">
                 <a href={FOOTER.phone.href} className={ui.link}>

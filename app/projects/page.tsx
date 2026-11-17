@@ -6,7 +6,7 @@ import { ProjectsPortfolio } from "@/components/ProjectsPortfolio";
 import { PROJECTS, PROJECTS_PAGE } from "@/lib/pages";
 
 export const metadata: Metadata = {
-  title: "Projects — PROACTIVE Design and Building Systems",
+  title: "Projects — Proactive Design and Building Systems",
   description: "A selection of design-build projects across Maryland, DC and Virginia.",
 };
 

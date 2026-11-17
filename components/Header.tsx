@@ -74,7 +74,7 @@ export function Header() {
         />
         <div className="px-4 md:px-[124px]">
         <div className="mx-auto flex w-full max-w-[1680px] items-center">
-          <Link href="/" aria-label="PROACTIVE — home" className="flex min-h-11 min-w-11 items-center gap-3 focus-visible:outline-2 focus-visible:outline-navy/40">
+          <Link href="/" aria-label="Proactive Design and Building Systems — home" className="flex min-h-11 min-w-11 items-center gap-3 focus-visible:outline-2 focus-visible:outline-navy/40">
             <BrandMark className="h-[34px] md:h-[46px]" />
             <span className="inline-grid justify-items-start gap-y-[3px]">
               <span className="font-montserrat text-[22px] leading-none font-extrabold tracking-[-.01em] text-navy md:text-[30px]">

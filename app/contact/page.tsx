@@ -7,8 +7,8 @@ import { FOOTER } from "@/lib/data";
 import { CONTACT } from "@/lib/pages";
 
 export const metadata: Metadata = {
-  title: "Contact — PROACTIVE Design and Building Systems",
-  description: "Contact PROACTIVE Design and Building Systems, Inc. in Baltimore, Maryland.",
+  title: "Contact — Proactive Design and Building Systems",
+  description: "Contact Proactive Design and Building Systems in Baltimore, Maryland.",
 };
 
 export default function ContactPage() {
@@ -23,7 +23,7 @@ export default function ContactPage() {
           <div className={`${ui.wrap} grid gap-14 border-t border-[#082b52]/15 pt-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
             <div className="min-[992px]:col-span-4">
               <h2 className={ui.eyebrow}>Headquarters</h2>
-              <p className="mt-4 text-[19px] leading-snug font-medium">PROACTIVE Design and Building Systems, Inc.</p>
+              <p className="mt-4 text-[19px] leading-snug font-medium">Proactive Design and Building Systems</p>
               <address className="mt-3 text-[16px] leading-[1.6] whitespace-pre-line not-italic">{FOOTER.office}</address>
 
               <h2 className={`${ui.eyebrow} mt-10`}>Phone</h2>

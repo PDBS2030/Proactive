@@ -104,7 +104,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-navy/15 pt-5">
-          <Link href="/" aria-label="PROACTIVE — home" className="inline-flex items-center gap-2.5 no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy/40">
+          <Link href="/" aria-label="Proactive Design and Building Systems — home" className="inline-flex items-center gap-2.5 no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy/40">
             <BrandMark className="h-[26px]" />
             <span className="font-montserrat text-[18px] leading-none font-extrabold tracking-[-.01em] text-navy normal-case">
               PROACTIVE

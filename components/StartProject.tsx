@@ -76,7 +76,7 @@ export function StartProject() {
           <aside className="relative hidden flex-col justify-between overflow-hidden bg-[#082b52] p-10 text-white min-[768px]:flex">
             <span aria-hidden="true" className="absolute -top-px left-0 h-1 w-24 bg-gold" />
             <div>
-              <p className="text-sm font-semibold text-gold">PROACTIVE</p>
+              <p className="text-sm font-semibold text-gold">PDBS</p>
               <h2 id="start-project-title" className="mt-4 font-jost text-[clamp(30px,3vw,42px)] leading-[1.08] font-normal tracking-normal uppercase">
                 Start a project
               </h2>

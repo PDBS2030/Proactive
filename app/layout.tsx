@@ -5,8 +5,8 @@ import { StartProject } from "@/components/StartProject";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PROACTIVE — Design + Build",
-  description: "PROACTIVE Design and Building Systems, Inc. — design-build across Maryland, DC and Virginia.",
+  title: "Proactive Design and Building Systems",
+  description: "Proactive Design and Building Systems — design-build across Maryland, DC and Virginia.",
 };
 
 /**

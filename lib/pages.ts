@@ -6,7 +6,7 @@
  */
 
 export const ABOUT = {
-  title: "About PROACTIVE",
+  title: "About PDBS",
   lead: "Proactive Design and Building Systems is a design-build firm based in Baltimore, Maryland. We design and construct projects of all types across Maryland, DC and Virginia, with a clear-cut focus: build for a better society.",
   image: "/assets/offerings-talent.jpg",
   imageAlt: "Construction workers wearing safety helmets and vests at an outdoor site.",
@@ -20,7 +20,7 @@ export const ABOUT = {
     heading: "Our Vision",
     statement: "We plan, design and build projects that move and inspire the communities around them.",
     body: [
-      "PROACTIVE brings architecture, engineering and construction together in one firm. The people who design your building are the people who price it and build it, so decisions are made once, with the whole picture in view.",
+      "PDBS brings architecture, engineering and construction together in one firm. The people who design your building are the people who price it and build it, so decisions are made once, with the whole picture in view.",
       "We are a Baltimore company, and our work is local. Our clients return to us for the next project, and that repeat business is the measure we trust most.",
     ],
   },

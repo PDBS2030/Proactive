@@ -26,7 +26,7 @@ import {
 import { FOOTER } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Services — PROACTIVE Design and Building Systems",
+  title: "Services — Proactive Design and Building Systems",
   description:
     "Architecture, design-build and construction management from one accountable team, serving Maryland, DC and Virginia.",
 };
