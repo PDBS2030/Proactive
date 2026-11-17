@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { AboutHero } from "@/components/AboutHero";
 import { AboutLinks } from "@/components/AboutLinks";
 import { FilmDialog } from "@/components/FilmDialog";
+import { TeamSection } from "@/components/TeamSection";
 import { CtaBand, ui } from "@/components/PageIntro";
 import { ParallaxFrame, ScrollProgress } from "@/components/MotionBits";
 import Image from "next/image";
@@ -19,9 +20,9 @@ export const metadata: Metadata = {
 };
 
 const NAV = [
+  { id: "leadership", label: "Our Team" },
   { id: "who-we-are", label: "Our Vision" },
   { id: "values", label: "Values" },
-  { id: "leadership", label: "Our Team" },
   { id: "commitments", label: "Commitments" },
   { id: "locations", label: "Locations" },
 ];
@@ -71,6 +72,9 @@ export default function AboutPage() {
 
         <ServicesNav items={NAV} />
 
+        {/* Our team */}
+        <TeamSection id="leadership" heading={a.leadership.heading} lead={a.leadership.lead} roles={a.leadership.roles} />
+
         {/* Who we are */}
         <section id="who-we-are" aria-labelledby="who-title" className={`${ui.pad} scroll-mt-[130px] py-16 min-[768px]:py-[110px]`}>
           <div className={`${ui.wrap} grid gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
@@ -102,26 +106,6 @@ export default function AboutPage() {
                   <span aria-hidden="true" className="block h-0.5 w-10 bg-gold transition-[width] duration-500 ease-out group-hover:w-full" />
                   <h3 className="mt-auto pt-10 font-jost text-[26px] leading-[1.1]">{v.title}</h3>
                   <p className="mt-3 text-[15px] leading-[1.6] text-white/80">{v.text}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* Leadership */}
-        <section id="leadership" aria-labelledby="leadership-title" className={`${ui.pad} scroll-mt-[130px] py-16 min-[768px]:py-[110px]`}>
-          <div className={ui.wrap}>
-            <div className="grid gap-6 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
-              <h2 id="leadership-title" className={`${ui.title} min-[992px]:col-span-5`}>
-                {a.leadership.heading}
-              </h2>
-              <p className="max-w-[48ch] font-mulish text-[clamp(18px,1.5vw,22px)] leading-[1.6] text-[#082b52]/90 min-[992px]:col-span-6 min-[992px]:col-start-7">{a.leadership.lead}</p>
-            </div>
-            <ul className="mt-12 grid border-t border-[#082b52]/15 min-[768px]:grid-cols-2">
-              {a.leadership.roles.map((r, i) => (
-                <li key={r.title} className={`group border-b border-[#082b52]/15 py-8 min-[768px]:pr-10 ${i % 2 === 1 ? "min-[768px]:border-l min-[768px]:pl-10" : ""}`}>
-                  <h3 className="text-[clamp(24px,2.1vw,32px)] leading-[1.15] font-(--h5-weight) transition-colors duration-300 group-hover:text-gold">{r.title}</h3>
-                  <p className="mt-4 max-w-[48ch] text-[clamp(17px,1.35vw,20px)] leading-[1.6] text-[#082b52]/85">{r.text}</p>
                 </li>
               ))}
             </ul>
