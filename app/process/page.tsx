@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FaintVideo } from "@/components/FaintVideo";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -33,13 +34,22 @@ export default function ProcessPage() {
             <ProcessIntro />
           </StackSection>
 
+          {/* A full-screen film in the brand blue between the figures and the phases */}
+          <StackSection index={1}>
+            <section aria-hidden="true" className="relative isolate h-[100svh] min-h-[560px] overflow-hidden bg-[#082b52]">
+              <FaintVideo src="/assets/service-video.mp4" poster="/assets/service-video-poster.jpg" className="absolute inset-0 -z-20 size-full object-cover" />
+              <span className="absolute inset-0 -z-10 bg-[#082b52]/60" />
+              <span className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,43,82,.55)_0%,rgba(8,43,82,0)_30%,rgba(8,43,82,0)_70%,rgba(8,43,82,.6)_100%)]" />
+            </section>
+          </StackSection>
+
           {PHASES.map((p, i) => (
-            <StackSection key={p.id} index={i + 1}>
+            <StackSection key={p.id} index={i + 2}>
               <PhasePanel phase={p} />
             </StackSection>
           ))}
 
-          <StackSection index={4}>
+          <StackSection index={5}>
             <section aria-labelledby="commit-title" className="bg-white px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px]">
               <div className="mx-auto w-full max-w-[1680px]">
                 <h2 id="commit-title" className={title}>
@@ -62,13 +72,13 @@ export default function ProcessPage() {
             </section>
           </StackSection>
 
-          <StackSection index={5}>
+          <StackSection index={6}>
             <div id="faqs">
               <Faq data={PROCESS_FAQS} roomy />
             </div>
           </StackSection>
 
-          <StackSection index={6}>
+          <StackSection index={7}>
             <section id="inquiry" aria-labelledby="inquiry-title" className="bg-white px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
               <div className="mx-auto grid w-full max-w-[1680px] gap-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-16">
                 <div className="min-[992px]:col-span-5">
