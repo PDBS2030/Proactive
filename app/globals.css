@@ -383,3 +383,177 @@ section[data-paused="true"] .hero-progress { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   #vision-dialog .vision-ring, #vision-dialog .vision-line, #vision-dialog .vision-panel { animation: none !important; }
 }
+
+/* ───── Our Vision, the cinematic version: a title sequence, a shutter, film grain, a light leak and a lens flare ───── */
+#vision-dialog { --t0: 3100ms; }
+#vision-dialog[data-skip] { --t0: 0ms; }
+#vision-dialog .vision-rise { animation-delay: calc(var(--t0, 0ms) + var(--d, 700ms)); }
+#vision-dialog .vision-line { animation-delay: calc(var(--t0, 0ms) + 700ms); }
+#vision-dialog .vision-panel { animation-delay: calc(var(--t0, 0ms) - 300ms); }
+
+@keyframes vc-shutter {
+  0% { clip-path: inset(0 0 0 0); }
+  70% { clip-path: inset(49.6% 0 49.6% 0); }
+  100% { clip-path: inset(50% 0 50% 0); }
+}
+@keyframes vc-title {
+  0% { opacity: 0; letter-spacing: 0.7em; filter: blur(14px); transform: scale(1.06); }
+  35% { opacity: 1; letter-spacing: 0.12em; filter: blur(0); transform: scale(1); }
+  80% { opacity: 1; letter-spacing: 0.1em; filter: blur(0); transform: scale(1); }
+  100% { opacity: 0; letter-spacing: 0.08em; filter: blur(4px); transform: scale(0.98); }
+}
+@keyframes vc-small {
+  0%, 12% { opacity: 0; transform: translateY(10px); }
+  34%, 78% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(-6px); }
+}
+@keyframes vc-rule {
+  0%, 10% { transform: scaleX(0); opacity: 1; }
+  38%, 78% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+@keyframes vc-film {
+  from { transform: scale(1.18); }
+  to { transform: scale(1.02); }
+}
+@keyframes vc-streak {
+  0% { opacity: 0; transform: scaleX(0); }
+  25% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(1.1); }
+}
+@keyframes vc-grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes vc-leak {
+  0% { opacity: 0.18; transform: translate3d(-8%, 0, 0) scale(1); }
+  50% { opacity: 0.34; transform: translate3d(6%, -3%, 0) scale(1.08); }
+  100% { opacity: 0.18; transform: translate3d(-8%, 0, 0) scale(1); }
+}
+@keyframes vc-flare {
+  0%, 62% { transform: translateX(-130%); opacity: 0; }
+  68% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translateX(130%); opacity: 0; }
+}
+@keyframes vc-fade-up {
+  from { opacity: 0; }
+  to { opacity: 0.5; }
+}
+
+#vision-dialog .vision-cinema {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  overflow: hidden;
+  background: #030b16;
+  cursor: pointer;
+  animation: vc-shutter 1100ms cubic-bezier(0.77, 0, 0.18, 1) 2400ms both;
+}
+#vision-dialog[data-skip] .vision-cinema { display: none; }
+#vision-dialog .vision-cinema-film {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  animation: vc-film 6s ease-out both;
+}
+#vision-dialog .vision-grain {
+  position: absolute;
+  inset: -10%;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: vc-grain 0.6s steps(1) infinite;
+}
+#vision-dialog .vision-title-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: #fff;
+  text-align: center;
+  padding: 0 16px;
+}
+#vision-dialog .vision-tc-small {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  animation: vc-small 2900ms ease-out 700ms both;
+}
+#vision-dialog .vision-tc-late { animation-delay: 1000ms; }
+#vision-dialog .vision-tc-title {
+  font-family: var(--font-jost), sans-serif;
+  font-size: clamp(44px, 8.5vw, 132px);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  animation: vc-title 2900ms cubic-bezier(0.22, 1, 0.36, 1) 700ms both;
+}
+#vision-dialog .vision-tc-rule {
+  width: min(360px, 60vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #b58f48, transparent);
+  transform-origin: center;
+  animation: vc-rule 2900ms ease-out 700ms both;
+}
+#vision-dialog .vision-skip {
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  opacity: 0;
+  animation: vc-fade-up 600ms ease 1600ms both;
+}
+#vision-dialog .vision-streak {
+  z-index: 31;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 1px);
+  height: 2px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 244, 214, 0.95), transparent);
+  box-shadow: 0 0 22px 4px rgba(255, 220, 150, 0.6);
+  animation: vc-streak 900ms ease-out 3050ms both;
+}
+
+#vision-dialog .vision-leak {
+  background: radial-gradient(60% 60% at 8% 88%, rgba(255, 150, 70, 0.55), transparent 70%), radial-gradient(45% 50% at 96% 6%, rgba(120, 170, 255, 0.4), transparent 70%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: vc-leak 11s ease-in-out infinite;
+}
+#vision-dialog .vision-flare {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 36%;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 244, 214, 0.9) 50%, transparent);
+  box-shadow: 0 0 26px 5px rgba(255, 215, 150, 0.45);
+  animation: vc-flare 9s ease-in-out 5s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #vision-dialog { --t0: 0ms; }
+  #vision-dialog .vision-cinema { display: none; }
+  #vision-dialog .vision-leak, #vision-dialog .vision-flare, #vision-dialog .vision-grain { animation: none; }
+}

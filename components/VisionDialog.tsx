@@ -33,6 +33,7 @@ export function VisionDialog({ statement, paragraphs }: { statement: string; par
     // far enough to cover the whole window from wherever the circle starts
     d.style.setProperty("--r", `${Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 40}px`);
     d.removeAttribute("data-closing");
+    d.removeAttribute("data-skip");
     setOpen(true);
   }, []);
 
@@ -96,12 +97,17 @@ export function VisionDialog({ statement, paragraphs }: { statement: string; par
       }}
     >
       {open && (
+        <>
         <div className="vision-panel relative m-4 grid h-[min(800px,calc(100dvh-2rem))] w-[min(1220px,calc(100vw-2rem))] overflow-y-auto bg-white text-[#082b52] shadow-[0_50px_140px_-20px_rgba(0,0,0,.75)] min-[860px]:grid-cols-[5fr_6fr] min-[860px]:overflow-hidden">
           {/* the film side */}
           <div onPointerMove={onMove} className="vision-film relative min-h-[300px] overflow-hidden bg-[#061a33] [--px:.5] [--py:.5] min-[860px]:min-h-0">
             <video className="vision-drift absolute inset-0 size-full object-cover" src="/assets/about-video.mp4" poster="/assets/about-video-poster.jpg" muted loop playsInline autoPlay aria-hidden="true" />
             <span aria-hidden="true" className="absolute inset-0 bg-[#061a33]/60" />
             <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-[#061a33]/85 via-transparent to-[#061a33]/35" />
+            <span aria-hidden="true" className="vision-leak absolute inset-0" />
+            <span aria-hidden="true" className="vision-grain" />
+            <span aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,transparent_45%,rgba(2,8,18,.6)_100%)]" />
+            <span aria-hidden="true" className="vision-flare" />
             {/* a soft light that follows the pointer */}
             <span aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(380px_circle_at_calc(var(--px)*100%)_calc(var(--py)*100%),rgba(255,255,255,.2),transparent_62%)] mix-blend-soft-light" />
 
@@ -182,6 +188,22 @@ export function VisionDialog({ statement, paragraphs }: { statement: string; par
             </div>
           </div>
         </div>
+        {/* the title sequence: a dark opening with the title set wide, then a shutter that closes on a line of light */}
+        <div className="vision-cinema" aria-hidden="true" onClick={() => ref.current?.setAttribute("data-skip", "")}>
+          <video className="vision-cinema-film" src="/assets/about-video.mp4" poster="/assets/about-video-poster.jpg" muted loop playsInline autoPlay />
+          <span className="vision-grain" />
+          <span className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,transparent_30%,rgba(2,8,18,.85)_100%)]" />
+          <div className="vision-title-card">
+            <p className="vision-tc-small">Proactive Design and Building Systems</p>
+            <div className="vision-tc-rule" />
+            <p className="vision-tc-title">Our Vision</p>
+            <div className="vision-tc-rule" />
+            <p className="vision-tc-small vision-tc-late">Build for a better society</p>
+          </div>
+          <span className="vision-skip">Click to skip</span>
+        </div>
+        <span className="vision-streak" aria-hidden="true" />
+        </>
       )}
     </dialog>
   );
