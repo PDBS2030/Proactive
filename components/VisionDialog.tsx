@@ -45,7 +45,7 @@ export function VisionDialog({ statement, paragraphs }: { statement: string; par
       return;
     }
     d.setAttribute("data-closing", "");
-    window.setTimeout(() => d.close(), 800);
+    window.setTimeout(() => d.close(), 1300);
   }, []);
 
   useEffect(() => {

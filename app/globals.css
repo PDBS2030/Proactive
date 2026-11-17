@@ -557,3 +557,29 @@ section[data-paused="true"] .hero-progress { animation-play-state: paused; }
   #vision-dialog .vision-cinema { display: none; }
   #vision-dialog .vision-leak, #vision-dialog .vision-flare, #vision-dialog .vision-grain { animation: none; }
 }
+
+/* ───── Our Vision: the same sequence, slowed to roughly half speed ───── */
+#vision-dialog { --t0: 5600ms; }
+#vision-dialog[data-skip] { --t0: 0ms; }
+#vision-dialog[open]:not([data-closing]) { animation-duration: 2000ms; }
+#vision-dialog[open]:not([data-closing])::backdrop { animation-duration: 1500ms; }
+#vision-dialog[data-closing] { animation-duration: 1300ms; }
+#vision-dialog[data-closing]::backdrop { animation-duration: 1100ms; }
+#vision-dialog .vision-rise { animation-duration: 1900ms; animation-delay: calc(var(--t0, 0ms) + var(--d, 700ms) * 1.7); }
+#vision-dialog .vision-line { animation-duration: 2600ms; animation-delay: calc(var(--t0, 0ms) + 1000ms); }
+#vision-dialog .vision-panel { animation-duration: 2200ms; animation-delay: calc(var(--t0, 0ms) - 600ms); }
+#vision-dialog .vision-drift { animation-duration: 30s; }
+#vision-dialog .vision-ring { animation-duration: 44s; }
+#vision-dialog .vision-leak { animation-duration: 18s; }
+#vision-dialog .vision-flare { animation-duration: 15s; animation-delay: 8s; }
+#vision-dialog .vision-cinema { animation-duration: 1900ms; animation-delay: 4800ms; }
+#vision-dialog .vision-cinema-film { animation-duration: 12s; }
+#vision-dialog .vision-tc-small { animation-duration: 4800ms; animation-delay: 1300ms; }
+#vision-dialog .vision-tc-late { animation-delay: 1900ms; }
+#vision-dialog .vision-tc-title { animation-duration: 4800ms; animation-delay: 1300ms; }
+#vision-dialog .vision-tc-rule { animation-duration: 4800ms; animation-delay: 1300ms; }
+#vision-dialog .vision-skip { animation-delay: 2800ms; }
+#vision-dialog .vision-streak { animation-duration: 1600ms; animation-delay: 5500ms; }
+@media (prefers-reduced-motion: reduce) {
+  #vision-dialog { --t0: 0ms; }
+}
