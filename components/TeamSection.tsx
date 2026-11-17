@@ -22,7 +22,7 @@ const TOWERS = [
 function Skyline() {
   const base = 560;
   return (
-    <svg aria-hidden="true" viewBox="0 0 1600 560" preserveAspectRatio="xMidYMax slice" className="pointer-events-none absolute inset-x-0 bottom-0 h-[85%] w-full text-[#082b52] opacity-[.085]" fill="none" stroke="currentColor" strokeWidth="1.1">
+    <svg aria-hidden="true" viewBox="0 0 1600 560" preserveAspectRatio="xMidYMax slice" className="pointer-events-none absolute inset-x-0 bottom-0 h-[85%] w-full text-[#082b52] opacity-[.04]" fill="none" stroke="currentColor" strokeWidth="1.1">
       <path d="M0 559.5 H1600" />
       {TOWERS.map((t, i) => {
         const top = base - t.h;
@@ -65,11 +65,12 @@ export function TeamSection({ id, people }: { id: string; people: Person[] }) {
       <Skyline />
 
       <div className="mx-auto grid w-full max-w-[1680px] gap-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-14">
-        <div className="min-[992px]:col-span-4">
+        <div className="relative min-[992px]:col-span-4">
           <h2 id={`${id}-title`} className={HERO_H1}>
             Our Team
           </h2>
-          <RotatingBadge className="mt-14" />
+          {/* on wide screens the badge sits level with the gap between the upper and the lower pictures */}
+          <RotatingBadge className="mt-14 min-[992px]:absolute min-[992px]:top-1/2 min-[992px]:left-0 min-[992px]:-mt-[4.3rem] min-[992px]:-translate-y-1/2" />
         </div>
 
         <div className="grid gap-5 min-[640px]:grid-cols-2 min-[992px]:col-span-8">
