@@ -188,21 +188,6 @@ export function VisionDialog({ statement, paragraphs }: { statement: string; par
             </div>
           </div>
         </div>
-        {/* the title sequence: a dark opening with the title set wide, then a shutter that closes on a line of light */}
-        <div className="vision-cinema" aria-hidden="true" onClick={() => ref.current?.setAttribute("data-skip", "")}>
-          <video className="vision-cinema-film" src="/assets/about-video.mp4" poster="/assets/about-video-poster.jpg" muted loop playsInline autoPlay />
-          <span className="vision-grain" />
-          <span className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,transparent_30%,rgba(2,8,18,.85)_100%)]" />
-          <div className="vision-title-card">
-            <p className="vision-tc-small">Proactive Design and Building Systems</p>
-            <div className="vision-tc-rule" />
-            <p className="vision-tc-title">Our Vision</p>
-            <div className="vision-tc-rule" />
-            <p className="vision-tc-small vision-tc-late">Build for a better society</p>
-          </div>
-          <span className="vision-skip">Click to skip</span>
-        </div>
-        <span className="vision-streak" aria-hidden="true" />
         </>
       )}
     </dialog>
