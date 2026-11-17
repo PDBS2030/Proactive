@@ -191,6 +191,18 @@ export function projectGallery(p: Pick<Project, "image">): string[] {
   return [1, 2, 3, 4].map((k) => `${m[1]}/${((n + k * 2 - 1) % 10) + 1}.jpg`);
 }
 
+/** Nine photographs for a project's page, three blocks of a wide picture and a pair. SAMPLE: stock photographs of the same kind of work; replace with the project's own. Projects of one type start at different blocks so their pages differ. */
+export function projectPhotos(p: Pick<Project, "id" | "sector">): string[] {
+  const folder: Record<Sector, string> = {
+    Residential: "residential",
+    "Loft & industrial conversions": "loft",
+    "Landmark & brownstone": "landmark",
+    Commercial: "commercial",
+  };
+  const start = Number(p.id.replace(/\D/g, "")) % 3;
+  return [0, 1, 2].flatMap((b) => [0, 1, 2].map((k) => `/assets/projects/${folder[p.sector]}/${((start + b) % 3) * 3 + k + 1}.jpg`));
+}
+
 /** A line about the kind of work, for the top of a project page */
 export const SECTOR_BLURB: Record<Sector, string> = {
   Residential: "Homes planned around the way the people in them live, with the storage, light and finish that daily use asks for.",

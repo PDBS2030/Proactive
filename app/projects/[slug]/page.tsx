@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import { AboutCta } from "@/components/AboutCta";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ProjectGallery } from "@/components/ProjectGallery";
 import { ProjectHero } from "@/components/ProjectHero";
-import { PROJECTS, projectSlug } from "@/lib/pages";
+import { PROJECTS, projectPhotos, projectSlug } from "@/lib/pages";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ slug: projectSlug(p) }));
@@ -30,6 +31,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <Header />
       <main id="main-content" className="relative bg-white text-[#082b52]">
         <ProjectHero project={p} />
+
+        <ProjectGallery title={p.title} photos={projectPhotos(p)} />
 
         <AboutCta heading="Have a project like this in mind?" />
       </main>
