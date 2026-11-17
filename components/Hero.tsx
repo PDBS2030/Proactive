@@ -133,12 +133,12 @@ export function Hero() {
 
       <div
         ref={contentRef}
-        className="relative z-3 box-border flex h-screen transform-gpu flex-col justify-between p-(--hero-pad) pl-4 will-change-transform min-[768px]:pl-[124px]"
+        className="relative z-3 box-border flex h-screen transform-gpu flex-col justify-between px-4 py-(--hero-pad) will-change-transform min-[768px]:px-[124px]"
       >
         <div
           className={[
-            "relative mx-auto mt-auto mb-[200px] grid w-full grid-cols-12 items-end gap-x-(--hero-gap)",
-            "after:pointer-events-none after:absolute after:bottom-[calc(0px-var(--hero-pad)-200px)] after:left-1/2 min-[768px]:after:left-[calc(50%-(124px-var(--hero-pad))/2)] after:-z-2 after:h-screen after:w-screen after:-translate-x-1/2 after:bg-cover after:bg-no-repeat after:content-['']",
+            "relative mx-auto mt-auto mb-[200px] grid w-full max-w-[1680px] grid-cols-12 items-end gap-x-(--hero-gap)",
+            "after:pointer-events-none after:absolute after:bottom-[calc(0px-var(--hero-pad)-200px)] after:left-1/2 after:-z-2 after:h-screen after:w-screen after:-translate-x-1/2 after:bg-cover after:bg-no-repeat after:content-['']",
             "after:bg-[url(/assets/hero-background-filter-mobile.svg)] after:bg-position-[center_65%]",
             "min-[810px]:after:bg-[url(/assets/hero-background-filter.svg)] min-[810px]:after:bg-position-[center_50%]",
           ].join(" ")}
@@ -166,7 +166,7 @@ export function Hero() {
 
           <div
             ref={introRef}
-            className="col-span-12 flex max-w-[480px] flex-col justify-end gap-6 min-[992px]:ml-[calc(50vw+16px)] min-[992px]:max-w-none"
+            className="col-span-12 flex max-w-[480px] flex-col justify-end gap-6 min-[992px]:-mr-[calc(124px-var(--hero-pad))] min-[992px]:ml-[calc(50vw+16px-max(0px,(100vw-1928px)/2))] min-[992px]:max-w-none"
           >
             <p
               className={`font-mulish text-[20px] leading-[31px] font-normal text-white min-[810px]:mt-[15px] min-[992px]:text-[length:clamp(14px,calc((50vw-184px)/32.5),20px)] min-[992px]:leading-[1.55] ${textShadow}`}

@@ -1,3 +1,4 @@
+import { HERO_H1 } from "@/lib/heroType";
 import Image from "next/image";
 import Link from "next/link";
 import { ParallaxFrame, ScrollProgress } from "@/components/MotionBits";
@@ -64,7 +65,7 @@ export function PageIntro({
           </ol>
         </nav>
         <div className="mt-8 grid gap-8 min-[992px]:grid-cols-12 min-[992px]:gap-x-10">
-          <h1 data-words className="font-jost text-[22.4px] leading-[27px] font-medium tracking-normal uppercase min-[690px]:text-[34.2px] min-[690px]:leading-[39px] min-[992px]:col-span-6 min-[992px]:text-[length:min(54px,calc((100vw-299px)/12.55))] min-[992px]:leading-[1.11]">
+          <h1 data-words className={`${HERO_H1} min-[992px]:col-span-6`}>
             <Words text={title} />
           </h1>
           <p data-up style={{ ["--d" as string]: "250ms" }} className="font-mulish text-[20px] leading-[31px] font-normal text-[#143275] min-[992px]:col-span-5 min-[992px]:col-start-8 min-[992px]:text-[length:clamp(14px,calc((50vw-184px)/32.5),20px)] min-[992px]:leading-[1.55]">

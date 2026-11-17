@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
+import { HERO_H1 } from "@/lib/heroType";
 import { Words } from "@/components/PageIntro";
 import { goToSection } from "@/components/Stack";
 
@@ -105,7 +106,7 @@ export function ServicesHero({
             <p className="text-xs leading-4 font-semibold tracking-[.15em] text-white uppercase">{eyebrow}</p>
             <h1
               data-words
-              className="mt-4 font-jost text-[22.4px] leading-[27px] font-medium tracking-normal uppercase min-[690px]:text-[34.2px] min-[690px]:leading-[39px] min-[992px]:text-[length:min(54px,calc((100vw-299px)/12.55))] min-[992px]:leading-[1.11]"
+              className={`mt-4 ${HERO_H1}`}
             >
               <Words text={title} />
             </h1>

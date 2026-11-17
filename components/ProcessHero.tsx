@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { cn } from "@/lib/cn";
+import { HERO_H1 } from "@/lib/heroType";
 
 export type HeroState = {
   word: string;
@@ -156,7 +157,7 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
         {/* the opening line */}
         <div ref={intro} className="absolute inset-x-0 top-[44.7%] px-4 min-[768px]:px-[124px]">
           <div className="mx-auto w-full max-w-[1680px]">
-            <h1 className="hero-in max-w-[16ch] font-jost text-[22.4px] leading-[27px] font-medium tracking-normal uppercase min-[690px]:text-[34.2px] min-[690px]:leading-[39px] min-[992px]:text-[length:min(54px,calc((100vw-299px)/12.55))] min-[992px]:leading-[1.11]">{title}</h1>
+            <h1 className={`hero-in max-w-[16ch] ${HERO_H1}`}>{title}</h1>
             <p className="hero-in mt-5 max-w-[40ch] font-mulish text-[20px] leading-[31px] font-normal" style={{ animationDelay: "250ms" }}>
               {tagline}
             </p>
