@@ -97,7 +97,7 @@ export const PROCESS_FAQS = {
 
 /** The three states of the opening, one per phase. DRAFT wording. */
 export const HERO_STATES = [
-  { word: "Study", statement: "We study your goals, site and budget, and show you a first design with an estimate before you commit.", plate: "#143275", accent: "#e3c98f", image: "/assets/gallery/landmark/5.jpg", position: "center 60%" },
-  { word: "Design", statement: "We develop the drawings, selections and contract price together, with your input at every decision.", plate: "#1d5aa0", accent: "#f3d79a", image: "/assets/gallery/explore/9.jpg", position: "center" },
-  { word: "Build", statement: "We build to the plan, with one point of contact, regular reporting and a thorough handover.", plate: "#082b52", accent: "#7d9bc1", image: "/assets/offerings-talent.jpg", position: "center 75%" },
+  { word: "Study", statement: "We study your goals, site and budget before you commit.", plate: "#143275", accent: "#e3c98f", image: "/assets/gallery/landmark/5.jpg", position: "center 60%" },
+  { word: "Design", statement: "We design and price it together, with your input.", plate: "#1d5aa0", accent: "#f3d79a", image: "/assets/gallery/explore/9.jpg", position: "center" },
+  { word: "Build", statement: "We build to the plan, with one point of contact.", plate: "#082b52", accent: "#7d9bc1", image: "/assets/offerings-talent.jpg", position: "center 75%" },
 ];

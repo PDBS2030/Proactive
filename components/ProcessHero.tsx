@@ -182,7 +182,7 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
                       </span>
                     ))}
                   </p>
-                  <p role="heading" aria-level={2} className="mt-4 font-mulish text-[clamp(18px,1.55vw,24px)] leading-[1.6] font-normal">
+                  <p role="heading" aria-level={2} className={`mt-4 ${HERO_H1}`}>
                     {s.statement.split(" ").map((w, j, all) => (
                       <span
                         key={j}
