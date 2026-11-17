@@ -3,6 +3,7 @@ import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { InquiryForm } from "@/components/Inquiry";
+import { ProcessIntro } from "@/components/ProcessIntro";
 import { PhasePanel } from "@/components/PhasePanel";
 import { PhaseRail } from "@/components/PhaseRail";
 import { ProcessHero } from "@/components/ProcessHero";
@@ -28,13 +29,17 @@ export default function ProcessPage() {
         <PhaseRail items={PHASES.map((p) => ({ id: p.id, label: p.short }))} endId="commit-title" />
 
         <div className="relative z-10 bg-white">
+          <StackSection index={0}>
+            <ProcessIntro />
+          </StackSection>
+
           {PHASES.map((p, i) => (
-            <StackSection key={p.id} index={i}>
+            <StackSection key={p.id} index={i + 1}>
               <PhasePanel phase={p} />
             </StackSection>
           ))}
 
-          <StackSection index={3}>
+          <StackSection index={4}>
             <section aria-labelledby="commit-title" className="bg-white px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px]">
               <div className="mx-auto w-full max-w-[1680px]">
                 <h2 id="commit-title" className={title}>
@@ -57,13 +62,13 @@ export default function ProcessPage() {
             </section>
           </StackSection>
 
-          <StackSection index={4}>
+          <StackSection index={5}>
             <div id="faqs">
               <Faq data={PROCESS_FAQS} roomy />
             </div>
           </StackSection>
 
-          <StackSection index={5}>
+          <StackSection index={6}>
             <section id="inquiry" aria-labelledby="inquiry-title" className="bg-white px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[140px]">
               <div className="mx-auto grid w-full max-w-[1680px] gap-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-16">
                 <div className="min-[992px]:col-span-5">

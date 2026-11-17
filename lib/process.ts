@@ -101,3 +101,20 @@ export const HERO_STATES = [
   { word: "Design", statement: "We design and price it together, with your input.", plate: "#082b52", accent: "#8fb0d6", image: "/assets/process-design.jpg", position: "center 40%" },
   { word: "Build", statement: "We build to the plan, with one point of contact.", plate: "#082b52", accent: "#e3c98f", image: "/assets/offerings-talent.jpg", position: "center 75%" },
 ];
+
+/**
+ * The statement and figures that follow the opening. Every figure comes from what the site already states
+ * (fifteen steps, three phases, three regions, 80 to 90 percent repeat business); "1 project manager" is from
+ * the draft FAQ and needs PDBS to confirm it.
+ */
+export const INTRO = {
+  /** Words wrapped in [[ ]] take the accent colour */
+  statement: "[[Fifteen steps]] and one accountable team, with a clear [[decision at every stage]] and no surprises on [[cost or schedule]].",
+  stats: [
+    { value: 15, suffix: "", label: "Steps on every project" },
+    { value: 3, suffix: "", label: "Phases from study to handover" },
+    { value: 1, suffix: "", label: "Project manager from start to finish" },
+    { value: 3, suffix: "", label: "Regions served: Maryland, DC and Virginia" },
+    { text: "80–90%", label: "Repeat business" },
+  ] as ({ value: number; suffix: string; label: string; text?: undefined } | { text: string; label: string; value?: undefined; suffix?: undefined })[],
+};
