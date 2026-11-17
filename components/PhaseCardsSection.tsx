@@ -25,7 +25,7 @@ function Row({ step, open, onToggle, id }: { step: Phase["steps"][number]; open:
         aria-expanded={open}
         aria-controls={`${id}-panel`}
         id={`${id}-btn`}
-        className="group flex w-full cursor-pointer items-start gap-4 py-4 text-left outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#2356e5]"
+        className="group flex w-full cursor-pointer items-start gap-4 py-3 text-left outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#2356e5]"
       >
         <span aria-hidden="true" className="relative mt-[3px] block size-[18px] shrink-0 text-gold">
           <span className="absolute top-1/2 left-0 h-0.5 w-full -translate-y-1/2 bg-current" />
@@ -63,7 +63,7 @@ function Card({ phase, tilt }: { phase: Phase; tilt: string }) {
       id={phase.id}
       aria-labelledby={`${phase.id}-title`}
       className={cn(
-        "group relative isolate min-h-[var(--card-h,0px)] scroll-mt-[130px] overflow-hidden border border-white/60 bg-white p-7 min-[768px]:p-9",
+        "group relative isolate min-h-[var(--card-h,0px)] scroll-mt-[130px] overflow-hidden border border-white/60 bg-white p-7 min-[768px]:p-8",
         "transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(.22,1,.36,1)] motion-reduce:transition-none",
         "[transform:translate3d(0,calc(var(--lift,0px)+var(--hv,0px)),0)] min-[1100px]:[transform:perspective(1200px)_rotateY(var(--ry,0deg))_translate3d(0,calc(var(--lift,0px)+var(--hv,0px)),0)_scale(var(--hs,1))]",
         tilt,
@@ -89,7 +89,7 @@ function Card({ phase, tilt }: { phase: Phase; tilt: string }) {
         {phase.title}
       </h3>
       <p className="mt-3 text-[15px] leading-[1.6] text-[#082b52]/85">{phase.summary}</p>
-      <div className="mt-6 border-y border-[#082b52]/12">
+      <div className="mt-5 border-y border-[#082b52]/12">
         {phase.steps.map((s, k) => (
           <Row key={s.title} id={`${uid}-${k}`} step={s} open={open === k} onToggle={() => setOpen(open === k ? null : k)} />
         ))}
@@ -129,7 +129,7 @@ export function PhaseCardsSection({ phases }: { phases: Phase[] }) {
   }, []);
 
   return (
-    <section ref={root} id="phases" aria-labelledby="phases-heading" style={{ ["--p" as string]: 0 }} className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_40%,#0e3f6e_0%,#082b52_58%,#061f3c_100%)] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px] [--phase-card-h:0px] min-[1100px]:[--phase-card-h:667px]">
+    <section ref={root} id="phases" aria-labelledby="phases-heading" style={{ ["--p" as string]: 0 }} className="relative isolate flex min-h-[calc(100svh-100px)] flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_40%,#0e3f6e_0%,#082b52_58%,#061f3c_100%)] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[106px] [--phase-card-h:0px] min-[1100px]:[--phase-card-h:594px]">
       <h2 id="phases-heading" className="sr-only">
         The three phases
       </h2>
