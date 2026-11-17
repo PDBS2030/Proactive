@@ -289,14 +289,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
                   <div className="absolute inset-x-px bottom-0 border-b border-[#c7c8ca] bg-white/95 p-4 transition-colors duration-200 group-hover:bg-white/75">
                     <span aria-hidden="true" className="absolute top-0 left-0 -mt-1 block h-1 w-full bg-gold opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
                     <h2 className="font-bodoni text-[20px] leading-[30px] text-[#082b52]">
-                      {p.title}{" "}
-                      <span className="relative inline-block pr-7">
-                        <span aria-hidden="true" className="absolute top-1/2 right-1 -translate-y-1/2 text-gold transition-[right] duration-200 group-hover:right-0">
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M1 6h10M7 2l4 4-4 4" />
-                          </svg>
-                        </span>
-                      </span>
+                      {p.title}
                     </h2>
                     <p className="sr-only">
                       {p.city}, {p.region}. {p.sector}. {p.service}.
