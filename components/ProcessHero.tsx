@@ -20,9 +20,33 @@ const ease = (x: number) => {
   return t * t * (3 - 2 * t);
 };
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+const lerpPose = (a: { edge: number; cy: number; ry: number }, b: { edge: number; cy: number; ry: number }, t: number) => ({
+  edge: lerp(a.edge, b.edge, clamp(t)),
+  cy: lerp(a.cy, b.cy, clamp(t)),
+  ry: lerp(a.ry, b.ry, clamp(t)),
+});
 
-/** Where the left edge of the curved window sits (percent of the width) in each state: wide screens, then phones */
-const EDGES = { wide: [53, 61, 69], narrow: [76, 80, 84] };
+/**
+ * The window has a different pose in each phase, as on the reference: where its left edge starts and ends as
+ * you scroll through the phase (percent of the width), how high its centre sits and how tall its curve is.
+ */
+type Pose = { edge: number; cy: number; ry: number };
+const START: Pose[] = [
+  { edge: 58, cy: 50, ry: 118 },
+  { edge: 64, cy: 82, ry: 100 },
+  { edge: 60, cy: 36, ry: 105 },
+];
+const END: Pose[] = [
+  { edge: 82, cy: 56, ry: 118 },
+  { edge: 84, cy: 86, ry: 100 },
+  { edge: 78, cy: 40, ry: 105 },
+];
+/** Screens scrolled at which each phase starts and ends its drift, then the hand-offs between phases */
+const HOLD = [
+  [0.9, 1.9],
+  [2.4, 3.0],
+  [3.5, 4.0],
+];
 
 /**
  * A pinned, scroll-driven opening. It starts as a full-screen film with a headline; as you scroll, the film
@@ -37,6 +61,8 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
   const video = useRef<HTMLVideoElement>(null);
   const [a, setA] = useState(0);
   const [ready, setReady] = useState(false);
+  const [show, setShow] = useState(false);
+  const line = useRef<SVGEllipseElement>(null);
   const still = useSyncExternalStore(
     (cb) => {
       const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -57,32 +83,58 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
       const r = o.getBoundingClientRect();
       const total = Math.max(1, r.height - window.innerHeight);
       const t = clamp(-r.top / total) * 4; // distance scrolled, in screens (0 to 4)
-      const edges = window.matchMedia("(max-width: 819px)").matches ? EDGES.narrow : EDGES.wide;
+      const narrow = window.matchMedia("(max-width: 819px)").matches;
+      const shift = narrow ? 16 : 0;
 
-      // the window: full screen at first, then a large curve whose edge steps right with each phase
-      const morph = ease((t - 0.35) / 0.75);
-      const slide = (from: number, to: number, start: number) => lerp(from, to, ease((t - start) / 0.4));
-      const edge = t < 2.1 ? slide(edges[0], edges[1], 1.9) : slide(edges[1], edges[2], 3.0);
-      const cx = lerp(50, 112, morph);
-      const rx = lerp(160, 112 - (t < 1.1 ? edges[0] : edge), morph);
-      const ry = lerp(160, 105, morph);
-      if (shot.current) shot.current.style.clipPath = `ellipse(${rx.toFixed(2)}% ${ry.toFixed(2)}% at ${cx.toFixed(2)}% 50%)`;
+      // The window: full screen at first; the plate then sweeps in from the left and the window settles into its
+      // first pose. Through each phase its edge drifts right; between phases it opens again into the next pose.
+      const at = (p: Pose): Pose => ({ edge: Math.min(94, p.edge + shift), cy: p.cy, ry: p.ry });
+      let pose: Pose;
+      if (t < HOLD[0][0]) pose = at(START[0]);
+      else if (t < HOLD[0][1]) pose = lerpPose(at(START[0]), at(END[0]), (t - HOLD[0][0]) / (HOLD[0][1] - HOLD[0][0]));
+      else if (t < HOLD[1][0]) pose = lerpPose(at(END[0]), at(START[1]), ease((t - HOLD[0][1]) / (HOLD[1][0] - HOLD[0][1])));
+      else if (t < HOLD[1][1]) pose = lerpPose(at(START[1]), at(END[1]), (t - HOLD[1][0]) / (HOLD[1][1] - HOLD[1][0]));
+      else if (t < HOLD[2][0]) pose = lerpPose(at(END[1]), at(START[2]), ease((t - HOLD[1][1]) / (HOLD[2][0] - HOLD[1][1])));
+      else pose = lerpPose(at(START[2]), at(END[2]), (t - HOLD[2][0]) / (HOLD[2][1] - HOLD[2][0]));
+      const m = ease((t - 0.3) / 0.6);
+      const cx = lerp(50, 112, m);
+      const rx = lerp(160, cx - pose.edge, m);
+      const ry = lerp(160, pose.ry, m);
+      const cy = lerp(50, pose.cy, m);
+      if (shot.current) shot.current.style.clipPath = `ellipse(${rx.toFixed(2)}% ${ry.toFixed(2)}% at ${cx.toFixed(2)}% ${cy.toFixed(2)}%)`;
+      // a fine gold line follows the window's edge
+      const ln = line.current;
+      if (ln) {
+        ln.setAttribute("cx", cx.toFixed(2));
+        ln.setAttribute("cy", cy.toFixed(2));
+        ln.setAttribute("rx", rx.toFixed(2));
+        ln.setAttribute("ry", ry.toFixed(2));
+        ln.style.opacity = String(clamp(m * 1.4));
+      }
 
+      // the opening line fades out as the plate comes over it
       if (intro.current) {
-        const o2 = 1 - ease((t - 0.25) / 0.3);
+        const o2 = 1 - ease((t - 0.25) / 0.5);
         intro.current.style.opacity = String(o2);
         intro.current.style.visibility = o2 <= 0.01 ? "hidden" : "visible";
       }
 
-      const idx = t < 2.1 ? 0 : t < 3.2 ? 1 : 2;
+      const idx = t < 2.15 ? 0 : t < 3.25 ? 1 : 2;
       setA((v) => (v === idx ? v : idx));
-      setReady((v) => (t >= 1.0) === v ? v : t >= 1.0);
+      // the film gives way to the first phase's photograph as the window begins to close
+      setReady((v) => (t >= 0.4) === v ? v : t >= 0.4);
+      setShow((v) => (t >= 0.85) === v ? v : t >= 0.85);
+
+      // the photograph drifts inward as you scroll through its phase
+      const hs = HOLD[idx];
+      const within = clamp((t - hs[0]) / (hs[1] - hs[0]));
+      shot.current?.style.setProperty("--pz", (1.16 - 0.12 * within).toFixed(3));
 
       // the statement lights up word by word as you read down through each phase
       const hold = [
-        [1.15, 1.9],
-        [2.35, 3.0],
-        [3.45, 4.0],
+        [1.0, 1.85],
+        [2.5, 2.95],
+        [3.6, 3.95],
       ][idx];
       const q = clamp((t - hold[0]) / (hold[1] - hold[0]));
       const list = words.current[idx] ?? [];
@@ -147,12 +199,18 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
                 fill
                 sizes="100vw"
                 className={cn("object-cover transition-opacity duration-700", ready && k === a ? "opacity-100" : "opacity-0")}
-                style={{ objectPosition: s.position ?? "center" }}
+                style={{ objectPosition: s.position ?? "center", transform: "scale(var(--pz, 1.16))" }}
               />
             ))}
           <span aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(100deg,rgba(0,0,0,.5)_0%,rgba(0,0,0,.2)_38%,rgba(0,0,0,.05)_65%)]" />
           <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[241px] bg-linear-to-b from-black/50 to-transparent" />
         </div>
+
+        {!still && (
+          <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 -z-[5] size-full">
+            <ellipse ref={line} cx="50" cy="50" rx="160" ry="160" fill="none" stroke="#e3c98f" strokeWidth="1.5" vectorEffect="non-scaling-stroke" style={{ opacity: 0 }} />
+          </svg>
+        )}
 
         {/* the opening line */}
         <div ref={intro} className="absolute inset-x-0 top-[44.7%] px-4 min-[768px]:px-[124px]">
@@ -172,7 +230,7 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
                 <div
                   key={s.word}
                   aria-hidden={k !== a}
-                  className={cn("absolute max-w-[78vw] transition-opacity duration-200 ease-linear min-[820px]:max-w-[min(660px,calc(53vw-164px))]", k === a && ready ? "pointer-events-auto opacity-100" : "opacity-0")}
+                  className={cn("absolute max-w-[78vw] transition-opacity duration-200 ease-linear min-[820px]:max-w-[min(660px,calc(53vw-164px))]", k === a && show ? "pointer-events-auto opacity-100" : "opacity-0")}
                   style={{ ["--accent" as string]: s.accent }}
                 >
                   <p className="text-xs leading-4 font-semibold tracking-[.15em] uppercase">
