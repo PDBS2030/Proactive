@@ -44,43 +44,6 @@ export default function AboutPage() {
         {/* Our team */}
         <TeamSection id="leadership" people={a.leadership.people} />
 
-        {/* Who we are */}
-        <section id="who-we-are" aria-labelledby="who-title" className={`${ui.pad} scroll-mt-[130px] py-16 min-[768px]:py-[110px]`}>
-          <div className={`${ui.wrap} grid gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
-            <div className="min-[992px]:col-span-5">
-              <h2 id="who-title" className={ui.eyebrow}>
-                {a.who.heading}
-              </h2>
-              <p className={`${ui.title} mt-5`}>{a.who.statement}</p>
-            </div>
-            <div className="grid gap-6 min-[992px]:col-span-6 min-[992px]:col-start-7">
-              {a.who.body.map((p) => (
-                <p key={p} className={`${ui.body} max-w-[62ch]`}>
-                  {p}
-                </p>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Values */}
-        <section id="values" aria-labelledby="values-title" className={`${ui.pad} scroll-mt-[130px] bg-[#f3f6fa] py-16 min-[768px]:py-[110px]`}>
-          <div className={ui.wrap}>
-            <h2 id="values-title" className={ui.title}>
-              {a.values.heading}
-            </h2>
-            <ul className="mt-12 grid gap-4 min-[640px]:grid-cols-2 min-[1100px]:grid-cols-4 min-[1100px]:gap-6">
-              {a.values.items.map((v) => (
-                <li key={v.title} className="group flex min-h-[220px] flex-col bg-[#082b52] p-7 text-white hover:-translate-y-1.5 hover:shadow-[0_22px_40px_-24px_rgba(8,43,82,.7)]">
-                  <span aria-hidden="true" className="block h-0.5 w-10 bg-gold transition-[width] duration-500 ease-out group-hover:w-full" />
-                  <h3 className="mt-auto pt-10 font-jost text-[26px] leading-[1.1]">{v.title}</h3>
-                  <p className="mt-3 text-[15px] leading-[1.6] text-white/80">{v.text}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
         {/* Commitments */}
         <section id="commitments" aria-labelledby="commitments-title" className={`${ui.pad} scroll-mt-[130px] bg-[#f3f6fa] py-16 min-[768px]:py-[110px]`}>
           <div className={ui.wrap}>
