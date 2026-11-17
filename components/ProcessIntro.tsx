@@ -42,29 +42,80 @@ function Figure({ value, suffix = "" }: { value: number; suffix?: string }) {
   );
 }
 
-/** A statement with a few words in the accent colour, then a row of figures divided by hairlines */
+const PLATE =
+  "shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(8,43,82,.08),0_6px_12px_rgba(8,43,82,.08),0_20px_36px_rgba(8,43,82,.12),0_44px_70px_-16px_rgba(8,43,82,.28)]";
+
+/**
+ * A statement with a few words in the accent colour, then a row of figures. The section is built in layers so it
+ * has depth: a drafting grid that recedes toward a horizon, raised plates for the figures, and a slight difference
+ * in how fast the layers move as you scroll past.
+ */
 export function ProcessIntro() {
   const parts = INTRO.statement.split(/(\[\[.*?\]\])/g).filter(Boolean);
-  return (
-    <section aria-label="The process in figures" className="bg-white px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px]">
-      <div className="mx-auto w-full max-w-[1250px]">
-        <p className="max-w-[34ch] font-jost text-[clamp(24px,2.5vw,40px)] leading-[1.12] font-normal text-[#082b52] min-[992px]:max-w-[62%]">
-          {parts.map((p, i) =>
-            p.startsWith("[[") ? (
-              <span key={i} className="text-[#7d9bc1]">
-                {p.slice(2, -2)}
-              </span>
-            ) : (
-              <Fragment key={i}>{p}</Fragment>
-            ),
-          )}
-        </p>
+  const root = useRef<HTMLElement>(null);
 
-        <dl className="mt-12 grid grid-cols-2 min-[992px]:grid-cols-[repeat(5,minmax(0,1fr))]">
+  // How far the section has travelled through the window (-1 to 1), shared with the layers as --p
+  useEffect(() => {
+    const el = root.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = el.getBoundingClientRect();
+      const mid = r.top + r.height / 2;
+      el.style.setProperty("--p", Math.max(-1, Math.min(1, (mid - window.innerHeight / 2) / window.innerHeight)).toFixed(3));
+    };
+    const req = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", req, { passive: true });
+    window.addEventListener("resize", req);
+    return () => {
+      window.removeEventListener("scroll", req);
+      window.removeEventListener("resize", req);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <section
+      ref={root}
+      aria-label="The process in figures"
+      style={{ ["--p" as string]: 0 }}
+      className="relative isolate overflow-clip bg-linear-to-b from-white via-white to-[#e9eff7] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px]"
+    >
+      {/* the floor: a drafting grid laid flat and receding to a horizon */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[78%] [perspective:760px]">
+        <div
+          className="absolute -inset-x-[60%] top-0 bottom-0 origin-bottom bg-[linear-gradient(rgba(8,43,82,.9)_1px,transparent_1px),linear-gradient(90deg,rgba(8,43,82,.9)_1px,transparent_1px)] bg-[length:72px_72px] opacity-[.12] [mask-image:linear-gradient(to_top,#000_10%,transparent_92%)] [transform:rotateX(62deg)]"
+          style={{ backgroundPosition: "0 calc(var(--p) * 90px)" }}
+        />
+      </div>
+
+      <div className="mx-auto w-full max-w-[1250px]">
+        <div className="[container-type:inline-size]" style={{ transform: "translate3d(0, calc(var(--p) * -14px), 0)" }}>
+          <p
+            className="font-jost leading-[1.12] font-normal text-[#082b52]"
+            style={{ fontSize: "clamp(22px, calc(100cqw / 27.5), 44px)", textWrap: "balance" }}
+          >
+            {parts.map((p, i) =>
+              p.startsWith("[[") ? (
+                <span key={i} className="text-[#7d9bc1]">
+                  {p.slice(2, -2)}
+                </span>
+              ) : (
+                <Fragment key={i}>{p}</Fragment>
+              ),
+            )}
+          </p>
+        </div>
+
+        <dl className="mt-14 grid grid-cols-2 gap-5 min-[992px]:grid-cols-[repeat(5,minmax(0,1fr))]" style={{ transform: "translate3d(0, calc(var(--p) * 22px), 0)" }}>
           {INTRO.stats.map((s) => (
             <div
               key={s.label}
-              className="flex flex-col items-center border-[#082b52]/15 px-4 pt-2 pb-12 text-center nth-even:border-l min-[992px]:border-l min-[992px]:first:border-l-0"
+              className={`flex flex-col items-center border border-[#082b52]/10 bg-white px-4 pt-9 pb-8 text-center transition-[translate,box-shadow] duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_2px_2px_rgba(8,43,82,.12),0_12px_22px_rgba(8,43,82,.16),0_30px_52px_rgba(8,43,82,.22),0_56px_88px_-16px_rgba(8,43,82,.36)] ${PLATE}`}
             >
               <dd className="order-1 mt-6 text-[14px] leading-snug font-medium text-[#082b52] uppercase">{s.label}</dd>
               <dt className="order-0 font-jost text-[clamp(36px,3.3vw,52px)] leading-none font-normal text-[#7d9bc1]">
