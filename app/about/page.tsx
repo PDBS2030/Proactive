@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { AboutHero } from "@/components/AboutHero";
 import { AboutLinks } from "@/components/AboutLinks";
+import { CommitmentsSection } from "@/components/CommitmentsSection";
 import { FilmDialog } from "@/components/FilmDialog";
 import { TeamSection } from "@/components/TeamSection";
 import { CtaBand, ui } from "@/components/PageIntro";
@@ -44,23 +45,7 @@ export default function AboutPage() {
         <TeamSection id="leadership" people={a.leadership.people} />
 
         {/* Commitments */}
-        <section id="commitments" aria-labelledby="commitments-title" className={`${ui.pad} scroll-mt-[130px] bg-[#f3f6fa] py-16 min-[768px]:py-[110px]`}>
-          <div className={ui.wrap}>
-            <h2 id="commitments-title" className={ui.title}>
-              {a.commitments.heading}
-            </h2>
-            <p className={`${ui.body} mt-4 max-w-[56ch]`}>{a.commitments.lead}</p>
-            <ul className="mt-12 grid gap-x-10 gap-y-0 min-[768px]:grid-cols-2 min-[1100px]:grid-cols-3">
-              {a.commitments.items.map((c) => (
-                <li key={c.title} className="relative py-7">
-                  <span data-rule aria-hidden="true" className="absolute top-0 left-0 h-0.5 w-full bg-gold" />
-                  <h3 className={ui.tile}>{c.title}</h3>
-                  <p className="mt-3 max-w-[44ch] text-[15px] leading-[1.6] text-[#082b52]/85">{c.text}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        <CommitmentsSection id="commitments" heading={a.commitments.heading} lead={a.commitments.lead} items={a.commitments.items} />
 
         <CtaBand heading={a.cta.heading} label={a.cta.button.label} href={a.cta.button.href} />
       </main>
