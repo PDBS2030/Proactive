@@ -12,11 +12,11 @@ export const MARK_PATHS = [
 ] as const;
 
 /** The PROACTIVE logo mark in its brand colours. */
-export function BrandMark({ className }: { className?: string }) {
+export function BrandMark({ className, light = false }: { className?: string; light?: boolean }) {
   return (
     <svg viewBox="217 178 823 925" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className={cn("block w-auto flex-none", className)}>
       {MARK_PATHS.map((p) => (
-        <path key={p.d} d={p.d} fill={p.gold ? "#b58f48" : "#0e365c"} />
+        <path key={p.d} d={p.d} fill={p.gold ? "#b58f48" : light ? "#ffffff" : "#0e365c"} />
       ))}
     </svg>
   );

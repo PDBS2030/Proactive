@@ -461,3 +461,12 @@ section[data-paused="true"] .hero-progress { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .film-dialog { --t0: 0ms; }
 }
+
+/* ───── The round badge: the ring of text turns, the logo stays still ───── */
+@keyframes badge-spin {
+  to { transform: rotate(360deg); }
+}
+.badge-spin { animation: badge-spin 22s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .badge-spin { animation: none; }
+}
