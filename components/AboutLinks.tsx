@@ -33,7 +33,7 @@ const ICONS: Record<string, React.ReactNode> = {
 /** Three round icons, each with a link to a section further down the page, as on the reference's about page */
 export function AboutLinks({ items }: { items: { id: string; label: string; icon: keyof typeof ICONS }[] }) {
   return (
-    <ul className="mx-auto mt-12 grid max-w-[900px] gap-10 min-[640px]:grid-cols-3">
+    <ul className="mx-auto mt-9 grid max-w-[1050px] gap-10 min-[640px]:grid-cols-3">
       {items.map((it) => (
         <li key={it.id}>
           <a
@@ -46,7 +46,7 @@ export function AboutLinks({ items }: { items: { id: string; label: string; icon
                 {ICONS[it.icon]}
               </svg>
             </span>
-            <span className="mt-4 text-[20px] leading-snug font-semibold underline decoration-2 underline-offset-[6px] transition-colors duration-300 group-hover:text-gold group-focus-visible:text-gold">{it.label}</span>
+            <span className="mt-4 text-[22px] leading-snug font-bold underline decoration-2 underline-offset-[6px] transition-colors duration-300 group-hover:text-gold group-focus-visible:text-gold">{it.label}</span>
           </a>
         </li>
       ))}
