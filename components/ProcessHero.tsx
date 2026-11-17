@@ -215,7 +215,7 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
         {/* the opening line */}
         <div ref={intro} className="absolute inset-x-0 top-[44.7%] px-4 min-[768px]:px-[124px]">
           <div className="mx-auto w-full max-w-[1680px]">
-            <h1 className={`hero-in max-w-[16ch] ${HERO_H1}`}>{title}</h1>
+            <h1 className={`hero-in min-[690px]:whitespace-nowrap ${HERO_H1}`}>{title}</h1>
             <p className="hero-in mt-5 max-w-[40ch] font-mulish text-[20px] leading-[31px] font-normal" style={{ animationDelay: "250ms" }}>
               {tagline}
             </p>
