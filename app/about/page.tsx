@@ -30,7 +30,7 @@ export default function AboutPage() {
     <>
       <Header />
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#082b52]">
-        <AboutHero title={a.title} items={NAV} />
+        <AboutHero title="About" />
 
         {/* Introduction */}
         <section aria-label="Introduction" className={`${ui.pad} pt-14 min-[768px]:pt-[90px]`}>
