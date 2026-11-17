@@ -13,12 +13,12 @@ const CARD_IMAGES: Record<string, { src: string; position: string }> = {
 };
 
 const LIFT =
-  "shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(2,12,28,.18),0_8px_14px_rgba(2,12,28,.2),0_26px_44px_rgba(2,12,28,.3),0_64px_100px_-18px_rgba(2,12,28,.6)]";
+  "shadow-[inset_0_1px_0_rgba(255,255,255,.25),0_1px_1px_rgba(8,43,82,.22),0_10px_18px_rgba(8,43,82,.22),0_30px_50px_rgba(8,43,82,.28),0_70px_110px_-20px_rgba(8,43,82,.55)]";
 
 /** One step: a plus that opens its description, what you decide and what we deliver */
 function Row({ step, open, onToggle, id }: { step: Phase["steps"][number]; open: boolean; onToggle: () => void; id: string }) {
   return (
-    <div className="border-t border-[#082b52]/12 first:border-t-0">
+    <div className="border-t border-white/20 first:border-t-0">
       <button
         type="button"
         onClick={onToggle}
@@ -27,24 +27,24 @@ function Row({ step, open, onToggle, id }: { step: Phase["steps"][number]; open:
         id={`${id}-btn`}
         className="group flex w-full cursor-pointer items-start gap-4 py-3 text-left outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#2356e5]"
       >
-        <span aria-hidden="true" className="relative mt-[3px] block size-[18px] shrink-0 text-gold">
+        <span aria-hidden="true" className="relative mt-[3px] block size-[18px] shrink-0 text-[#e3c98f]">
           <span className="absolute top-1/2 left-0 h-0.5 w-full -translate-y-1/2 bg-current" />
           <span className={cn("absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 bg-current transition-transform duration-300 ease-out", open && "scale-y-0")} />
         </span>
-        <span className="text-[17px] leading-snug text-[#082b52] underline decoration-[#082b52]/25 decoration-1 underline-offset-[5px] transition-[text-decoration-color] duration-300 group-hover:decoration-gold">
+        <span className="text-[17px] leading-snug text-white underline decoration-white/35 decoration-1 underline-offset-[5px] transition-[text-decoration-color] duration-300 group-hover:decoration-gold">
           {step.title}
         </span>
       </button>
       <div id={`${id}-panel`} role="region" aria-labelledby={`${id}-btn`} className={cn("grid transition-[grid-template-rows] duration-400 ease-out motion-reduce:transition-none", open ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}>
         <div className="overflow-hidden">
           <div className="pr-2 pb-5 pl-[34px]">
-            <p className="text-[15px] leading-[1.6] text-[#082b52]/85">{step.text}</p>
-            <p className="mt-3 text-[15px] leading-[1.55] text-[#082b52]">
-              <span className="font-semibold text-gold">You decide: </span>
+            <p className="text-[15px] leading-[1.6] text-white/90">{step.text}</p>
+            <p className="mt-3 text-[15px] leading-[1.55] text-white">
+              <span className="font-semibold text-[#e3c98f]">You decide: </span>
               {step.decide}
             </p>
-            <p className="mt-2 text-[15px] leading-[1.55] text-[#082b52]">
-              <span className="font-semibold text-gold">We deliver: </span>
+            <p className="mt-2 text-[15px] leading-[1.55] text-white">
+              <span className="font-semibold text-[#e3c98f]">We deliver: </span>
               {step.deliver}
             </p>
           </div>
@@ -63,13 +63,13 @@ function Card({ phase, tilt }: { phase: Phase; tilt: string }) {
       id={phase.id}
       aria-labelledby={`${phase.id}-title`}
       className={cn(
-        "group relative isolate min-h-[var(--card-h,0px)] scroll-mt-[130px] overflow-hidden border border-white/60 bg-white p-7 min-[768px]:p-8",
+        "group relative isolate text-white [text-shadow:0_1px_12px_rgba(0,0,0,.35)] min-h-[var(--card-h,0px)] scroll-mt-[130px] overflow-hidden border border-white/25 bg-[#061a33] p-7 min-[768px]:p-8",
         "transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(.22,1,.36,1)] motion-reduce:transition-none",
         "[transform:translate3d(0,calc(var(--lift,0px)+var(--hv,0px)),0)] min-[1100px]:[transform:perspective(1200px)_rotateY(var(--ry,0deg))_translate3d(0,calc(var(--lift,0px)+var(--hv,0px)),0)_scale(var(--hs,1))]",
         tilt,
         "hover:[--hs:1.03] hover:[--hv:-16px] min-[1100px]:hover:[--ry:0deg]",
         LIFT,
-        "hover:shadow-[inset_0_1px_0_#fff,0_2px_2px_rgba(2,12,28,.22),0_16px_26px_rgba(2,12,28,.28),0_44px_72px_rgba(2,12,28,.38),0_90px_130px_-20px_rgba(2,12,28,.7)]",
+        "hover:shadow-[inset_0_1px_0_rgba(255,255,255,.3),0_2px_2px_rgba(8,43,82,.26),0_18px_30px_rgba(8,43,82,.32),0_50px_80px_rgba(8,43,82,.38),0_100px_140px_-22px_rgba(8,43,82,.7)]",
       )}
     >
       {/* the photograph, washed so the text stays easy to read; it opens up and slowly zooms on hover */}
@@ -78,18 +78,18 @@ function Card({ phase, tilt }: { phase: Phase; tilt: string }) {
           src={img.src}
           alt=""
           fill
-          sizes="(max-width: 1100px) 100vw, 33vw"
-          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110 motion-reduce:transition-none"
+          sizes="(max-width: 1100px) 100vw, 720px"
+          quality={92} className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110 motion-reduce:transition-none"
           style={{ objectPosition: img.position }}
         />
-        <span className="absolute inset-0 bg-linear-to-b from-white/90 via-white/90 to-white/95 transition-opacity duration-500 group-hover:opacity-80" />
+        <span className="absolute inset-0 bg-linear-to-b from-[#061a33]/72 via-[#061a33]/66 to-[#061a33]/82 transition-opacity duration-500 group-hover:opacity-85" />
       </span>
-      <p className="text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase">{phase.range}</p>
-      <h3 id={`${phase.id}-title`} className="mt-3 font-jost text-[clamp(24px,2vw,32px)] leading-[1.08] font-medium tracking-normal text-[#082b52] uppercase">
+      <p className="text-xs leading-4 font-semibold tracking-[.15em] text-[#e3c98f] uppercase">{phase.range}</p>
+      <h3 id={`${phase.id}-title`} className="mt-3 font-jost text-[clamp(24px,2vw,32px)] leading-[1.08] font-medium tracking-normal text-white uppercase">
         {phase.title}
       </h3>
-      <p className="mt-3 text-[15px] leading-[1.6] text-[#082b52]/85">{phase.summary}</p>
-      <div className="mt-5 border-y border-[#082b52]/12">
+      <p className="mt-3 text-[15px] leading-[1.6] text-white/90">{phase.summary}</p>
+      <div className="mt-5 border-y border-white/20">
         {phase.steps.map((s, k) => (
           <Row key={s.title} id={`${uid}-${k}`} step={s} open={open === k} onToggle={() => setOpen(open === k ? null : k)} />
         ))}
@@ -129,12 +129,13 @@ export function PhaseCardsSection({ phases }: { phases: Phase[] }) {
   }, []);
 
   return (
-    <section ref={root} id="phases" aria-labelledby="phases-heading" style={{ ["--p" as string]: 0 }} className="relative isolate flex min-h-[calc(100svh-100px)] flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_40%,#0e3f6e_0%,#082b52_58%,#061f3c_100%)] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[106px] [--phase-card-h:0px] min-[1100px]:[--phase-card-h:594px]">
+    <section ref={root} id="phases" aria-labelledby="phases-heading" style={{ ["--p" as string]: 0 }} className="relative isolate flex min-h-[calc(100svh-100px)] flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_38%,#ffffff_0%,#f4f6f9_55%,#e4eaf2_100%)] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[106px] [--phase-card-h:0px] min-[1100px]:[--phase-card-h:594px]">
+      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(8,43,82,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(8,43,82,.05)_1px,transparent_1px)] bg-[length:56px_56px] [mask-image:radial-gradient(ellipse_at_50%_45%,#000_30%,transparent_78%)]" />
       <h2 id="phases-heading" className="sr-only">
         The three phases
       </h2>
 
-      {/* the cards sit in the middle of the film, all on one level */}
+      {/* the cards sit in the middle of the section, all on one level */}
       <div className="mx-auto grid w-full max-w-[1680px] items-start gap-8 min-[1100px]:grid-cols-3 min-[1100px]:gap-x-12" style={{ ["--lift" as string]: "calc(var(--p) * -34px)", ["--card-h" as string]: "var(--phase-card-h)" }}>
         {phases.map((p, i) => (
           <Card key={p.id} phase={p} tilt={["min-[1100px]:[--ry:16deg]", "", "min-[1100px]:[--ry:-16deg]"][i] ?? ""} />
