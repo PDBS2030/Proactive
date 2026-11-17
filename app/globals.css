@@ -363,3 +363,23 @@ section[data-paused="true"] .hero-progress { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   #vision-dialog[open], #vision-dialog[data-closing], #vision-dialog::backdrop, #vision-dialog .vision-rise, #vision-dialog .vision-drift { animation: none !important; }
 }
+
+@keyframes vision-turn {
+  from { transform: rotate(0deg) scale(0.6); opacity: 0; }
+  12% { opacity: 1; }
+  to { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+@keyframes vision-draw {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+#vision-dialog .vision-ring { animation: vision-turn 28s linear infinite; }
+#vision-dialog .vision-line { transform-origin: top; animation: vision-draw 1400ms cubic-bezier(0.77, 0, 0.18, 1) 800ms both; }
+#vision-dialog .vision-panel { animation: vision-lift 1300ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both; }
+@keyframes vision-lift {
+  from { transform: translate3d(0, 36px, 0) scale(0.97); }
+  to { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #vision-dialog .vision-ring, #vision-dialog .vision-line, #vision-dialog .vision-panel { animation: none !important; }
+}
