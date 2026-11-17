@@ -18,10 +18,9 @@ export default function ContactPage() {
     <>
       <Header />
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#082b52]">
-        <ImageHero title={c.title} image="/assets/contact-hero.jpg" alt="Curved blue glass facade of a modern building against the sky." position="center 40%" />
+        <ImageHero title={c.title} lead={c.lead} image="/assets/contact-hero.jpg" alt="Curved blue glass facade of a modern building against the sky." position="center 40%" />
 
         <section aria-label="Contact details and form" className={`${ui.pad} py-14 min-[768px]:py-[90px]`}>
-          <p className={`${ui.body} mx-auto mb-14 max-w-[62ch] text-center`}>{c.lead}</p>
           <div className={`${ui.wrap} grid gap-14 border-t border-[#082b52]/15 pt-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
             <div className="min-[992px]:col-span-4">
               <h2 className={ui.eyebrow}>Headquarters</h2>

@@ -5,7 +5,7 @@ import { HERO_H1 } from "@/lib/heroType";
  * A page-header band with a photograph behind a dark blue tint and the title centred. It is the same height as
  * the About page's header, so the two pages open alike.
  */
-export function ImageHero({ title, image, alt, position = "center" }: { title: string; image: string; alt: string; position?: string }) {
+export function ImageHero({ title, lead, image, alt, position = "center" }: { title: string; lead?: string; image: string; alt: string; position?: string }) {
   return (
     <section aria-label={title} className="relative isolate overflow-hidden bg-[#061a33] px-4 pt-[96px] text-center text-white min-[768px]:px-[124px] min-[768px]:pt-[110px]">
       <Image src={image} alt={alt} fill priority sizes="100vw" quality={85} className="-z-20 object-cover" style={{ objectPosition: position }} />
@@ -14,6 +14,7 @@ export function ImageHero({ title, image, alt, position = "center" }: { title: s
 
       <div className="mx-auto flex min-h-[480px] w-full max-w-[1680px] flex-col items-center justify-center py-14 min-[768px]:min-h-[530px]">
         <h1 className={`hero-in ${HERO_H1}`}>{title}</h1>
+        {lead && <p className="hero-in mt-6 max-w-[62ch] [text-wrap:balance] font-mulish text-[18px] leading-[1.6] text-white/95 [text-shadow:0_2px_12px_rgba(0,0,0,.35)] min-[768px]:text-[20px]">{lead}</p>}
       </div>
     </section>
   );
