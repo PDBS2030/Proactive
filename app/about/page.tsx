@@ -37,7 +37,7 @@ export default function AboutPage() {
         <section aria-label="Introduction" className={`${ui.pad} pt-14 min-[768px]:pt-[90px]`}>
           <ScrollProgress />
           <div className={ui.wrap}>
-            <p data-up className="mx-auto w-full max-w-[1340px] text-left font-mulish text-[22px] leading-[1.55] text-[#082b52] [text-wrap:balance]">
+            <p data-up className="mx-auto w-full max-w-[1340px] text-center font-mulish text-[22px] leading-[1.55] text-[#082b52] [text-wrap:balance]">
               {a.lead}
             </p>
             <AboutLinks
