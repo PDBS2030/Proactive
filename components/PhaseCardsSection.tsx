@@ -135,7 +135,7 @@ export function PhaseCardsSection({ phases }: { phases: Phase[] }) {
         <h2 id="phases-heading" className="font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal text-[#082b52] uppercase [text-wrap:initial]">
           From study to handover
         </h2>
-        <p className="mt-4 max-w-2xl font-mulish text-[17px] leading-[1.6] text-[#082b52]/85">Three phases, fifteen steps. Open any step to see what you decide and what we deliver.</p>
+        <p className="mt-4 font-mulish text-[17px] leading-[1.6] text-[#082b52]/85 min-[960px]:whitespace-nowrap">Three phases, fifteen steps. Open any step to see what you decide and what we deliver.</p>
       </div>
 
       {/* the cards sit in the middle of the section, all on one level */}
