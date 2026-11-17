@@ -129,7 +129,7 @@ export function PhaseCardsSection({ phases }: { phases: Phase[] }) {
   }, []);
 
   return (
-    <section ref={root} id="phases" aria-labelledby="phases-heading" style={{ ["--p" as string]: 0 }} className="relative isolate flex min-h-[calc(100svh-100px)] flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_38%,#ffffff_0%,#f4f6f9_55%,#e4eaf2_100%)] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[106px] [--phase-card-h:0px] min-[1100px]:[--phase-card-h:594px]">
+    <section ref={root} id="phases" aria-labelledby="phases-heading" style={{ ["--p" as string]: 0 }} className="relative isolate flex flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_38%,#ffffff_0%,#f4f6f9_55%,#e4eaf2_100%)] px-4 py-[48px] min-[768px]:px-[124px] min-[768px]:py-[56px] [--phase-card-h:0px] min-[1100px]:[--phase-card-h:594px]">
       <span aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(8,43,82,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(8,43,82,.05)_1px,transparent_1px)] bg-[length:56px_56px] [mask-image:radial-gradient(ellipse_at_50%_45%,#000_30%,transparent_78%)]" />
       <h2 id="phases-heading" className="sr-only">
         The three phases
