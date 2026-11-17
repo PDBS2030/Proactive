@@ -7,7 +7,6 @@ import { FilmDialog } from "@/components/FilmDialog";
 import { TeamSection } from "@/components/TeamSection";
 import { CtaBand, ui } from "@/components/PageIntro";
 import { ScrollProgress } from "@/components/MotionBits";
-import { FOOTER } from "@/lib/data";
 import { ABOUT } from "@/lib/pages";
 
 export const metadata: Metadata = {
@@ -60,33 +59,6 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
-
-        {/* Locations */}
-        <section id="locations" aria-labelledby="locations-title" className={`${ui.pad} scroll-mt-[130px] py-16 min-[768px]:py-[110px]`}>
-          <div className={`${ui.wrap} grid gap-10 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
-            <div className="min-[992px]:col-span-5">
-              <h2 id="locations-title" className={ui.title}>
-                {a.locations.heading}
-              </h2>
-              <p className={`${ui.body} mt-5 max-w-[44ch]`}>{a.locations.lead}</p>
-            </div>
-            <div className="border border-[#082b52]/15 p-7 transition-[border-color,box-shadow] duration-500 hover:border-gold hover:shadow-[0_20px_40px_-28px_rgba(8,43,82,.5)] min-[768px]:p-10 min-[992px]:col-span-6 min-[992px]:col-start-7">
-              <h3 className={ui.eyebrow}>Headquarters</h3>
-              <p className="mt-4 text-[19px] leading-snug font-medium">Proactive Design and Building Systems</p>
-              <address className="mt-3 text-[16px] leading-[1.6] whitespace-pre-line not-italic">{FOOTER.office}</address>
-              <p className="mt-4 text-[16px] leading-[1.6]">
-                <a href={FOOTER.phone.href} className={ui.link}>
-                  {FOOTER.phone.label}
-                </a>
-                <br />
-                <a href={`mailto:${FOOTER.email}`} className={ui.link}>
-                  {FOOTER.email}
-                </a>
-              </p>
-              <p className="mt-6 border-t border-[#082b52]/15 pt-5 text-[15px] text-[#082b52]/80">Service area: Maryland, DC and Virginia</p>
-            </div>
           </div>
         </section>
 
