@@ -33,7 +33,7 @@ const ICONS: Record<string, React.ReactNode> = {
 /** Three round icons, each with a link to a section further down the page, as on the reference's about page */
 export function AboutLinks({ items }: { items: { id: string; label: string; icon: keyof typeof ICONS }[] }) {
   return (
-    <ul className="mx-auto mt-9 grid max-w-[1400px] gap-10 min-[640px]:grid-cols-3 min-[1100px]:-mx-12">
+    <ul className="relative left-1/2 mt-9 grid w-full max-w-[1400px] -translate-x-1/2 gap-10 min-[640px]:grid-cols-3 min-[1100px]:w-[min(1400px,calc(100%+96px))]">
       {items.map((it) => (
         <li key={it.id}>
           <a
