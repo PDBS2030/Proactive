@@ -39,11 +39,12 @@ export const ABOUT = {
   leadership: {
     heading: "Our Team",
     lead: "Our leadership team sets the direction of the firm and stays accountable for every project we deliver.",
-    roles: [
-      { title: "Executive leadership", text: "Sets strategy, standards and the culture of the firm, and is the final point of accountability to our clients." },
-      { title: "Design", text: "Leads architecture and engineering, so every design is buildable, priced and coordinated before construction starts." },
-      { title: "Construction", text: "Leads field operations, safety, schedule and quality on every site." },
-      { title: "Preconstruction and estimating", text: "Develops budgets and contract pricing alongside the design, so cost is known early." },
+    /** Names, titles and portraits as on the earlier PDBS site (about-us page); replace with the real team when ready */
+    people: [
+      { name: "John Smith", title: "Principal Architect", image: "/assets/team/team-1.jpg" },
+      { name: "Dwayne Doe", title: "Senior Designer", image: "/assets/team/team-2.jpg" },
+      { name: "Jessica Larsson", title: "Technical Director", image: "/assets/team/team-3.jpg" },
+      { name: "Emily Bright", title: "Project Manager", image: "/assets/team/team-4.jpg" },
     ],
   },
   commitments: {

@@ -73,7 +73,7 @@ export default function AboutPage() {
         <ServicesNav items={NAV} />
 
         {/* Our team */}
-        <TeamSection id="leadership" heading={a.leadership.heading} lead={a.leadership.lead} roles={a.leadership.roles} />
+        <TeamSection id="leadership" heading={a.leadership.heading} lead={a.leadership.lead} people={a.leadership.people} />
 
         {/* Who we are */}
         <section id="who-we-are" aria-labelledby="who-title" className={`${ui.pad} scroll-mt-[130px] py-16 min-[768px]:py-[110px]`}>

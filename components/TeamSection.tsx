@@ -1,17 +1,13 @@
 import Image from "next/image";
 import { HERO_H1 } from "@/lib/heroType";
 
-type Role = { title: string; text: string };
-
-/** Where each person stands in the placeholder photograph of the crew, so each card shows one face (percent) */
-const CROPS = [{ x: 0 }, { x: 42 }, { x: 84 }, { x: 100 }];
+type Person = { name: string; title: string; image: string };
 
 /**
  * "Meet our dedicated team": a blurred photograph behind a title and a short line on the left, and a grid of
- * portrait cards on the right, each with the role underneath. The portraits are placeholders cut from the crew
- * photograph until the real team photos are supplied.
+ * portrait cards on the right, each with the name and the title underneath, as on the earlier PDBS site.
  */
-export function TeamSection({ id, heading, lead, roles }: { id: string; heading: string; lead: string; roles: Role[] }) {
+export function TeamSection({ id, heading, lead, people }: { id: string; heading: string; lead: string; people: Person[] }) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="relative isolate scroll-mt-[130px] overflow-hidden bg-[#061a33] px-4 py-[94px] text-white min-[768px]:px-[124px] min-[768px]:py-[120px]">
       <Image src="/assets/gallery/landmark/3.jpg" alt="" fill sizes="100vw" className="-z-20 scale-110 object-cover blur-[14px]" />
@@ -26,20 +22,22 @@ export function TeamSection({ id, heading, lead, roles }: { id: string; heading:
         </div>
 
         <div className="grid gap-5 min-[640px]:grid-cols-2 min-[992px]:col-span-8">
-          {roles.map((r, i) => (
-            <article key={r.title} className="group relative overflow-hidden shadow-[0_24px_60px_-24px_rgba(0,0,0,.7)] transition-[translate,box-shadow] duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_40px_80px_-24px_rgba(0,0,0,.85)]">
+          {people.map((p) => (
+            <article key={p.name} className="group relative overflow-hidden shadow-[0_24px_60px_-24px_rgba(0,0,0,.7)] transition-[translate,box-shadow] duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_40px_80px_-24px_rgba(0,0,0,.85)]">
               <div className="relative aspect-[1.245/1] overflow-hidden bg-[#0e365c]">
-                <div
-                  role="img"
-                  aria-label={`${r.title}, photo to be added`}
-                  className="absolute inset-0 scale-100 bg-no-repeat transition-transform duration-[1400ms] ease-out group-hover:scale-110"
-                  style={{ backgroundImage: "url(/assets/offerings-talent.jpg)", backgroundSize: "290% auto", backgroundPosition: `${CROPS[i % CROPS.length].x}% 58%` }}
+                <Image
+                  src={p.image}
+                  alt={`${p.name}, ${p.title}`}
+                  fill
+                  sizes="(max-width: 992px) 50vw, 330px"
+                  quality={90}
+                  className="scale-100 object-cover object-top transition-transform duration-[1400ms] ease-out group-hover:scale-110"
                 />
               </div>
               {/* the name and the title on a dark panel, as in the reference */}
               <div className="flex min-h-[8.6rem] flex-col justify-center bg-[#262626]/92 px-5 py-5 text-center">
-                <h3 className="text-[22px] leading-snug font-medium text-white">Name to be added</h3>
-                <p className="mt-1 text-[20px] leading-snug font-normal text-white/65">{r.title}</p>
+                <h3 className="text-[22px] leading-snug font-medium text-white">{p.name}</h3>
+                <p className="mt-1 text-[20px] leading-snug font-normal text-white/65">{p.title}</p>
               </div>
             </article>
           ))}
