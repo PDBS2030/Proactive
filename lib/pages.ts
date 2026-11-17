@@ -39,12 +39,48 @@ export const ABOUT = {
   leadership: {
     heading: "Our Team",
     lead: "Our leadership team sets the direction of the firm and stays accountable for every project we deliver.",
-    /** Names, titles and portraits as on the earlier PDBS site (about-us page); replace with the real team when ready */
+    /** Names, titles and portraits as on the earlier PDBS site (about-us page); the biographies are DRAFT role descriptions. Replace with the real team when ready */
     people: [
-      { name: "John Smith", title: "Principal Architect", image: "/assets/team/team-1.jpg" },
-      { name: "Dwayne Doe", title: "Senior Designer", image: "/assets/team/team-2.jpg" },
-      { name: "Jessica Larsson", title: "Technical Director", image: "/assets/team/team-3.jpg" },
-      { name: "Emily Bright", title: "Project Manager", image: "/assets/team/team-4.jpg" },
+      {
+        name: "John Smith",
+        title: "Principal Architect",
+        image: "/assets/team/team-1.jpg",
+        bio: [
+          "John leads architecture at PDBS, shaping each project from the first sketch so that the design is buildable, priced and coordinated before construction starts.",
+          "He works with owners, engineers and trades through every design phase, keeping decisions clear and the whole picture in view.",
+          "John stays involved from the preliminary study to handover, so the team that designs your building is the team that delivers it.",
+        ],
+      },
+      {
+        name: "Dwayne Doe",
+        title: "Senior Designer",
+        image: "/assets/team/team-2.jpg",
+        bio: [
+          "Dwayne develops each design from schematic plans to coordinated drawings and a schedule of selections for materials, finishes and systems.",
+          "He keeps the design tied to the budget, working with the estimating team so that every choice is made with its cost in front of you.",
+          "Dwayne brings owners into each decision, so the finished building reflects their priorities as well as the team's craft.",
+        ],
+      },
+      {
+        name: "Jessica Larsson",
+        title: "Technical Director",
+        image: "/assets/team/team-3.jpg",
+        bio: [
+          "Jessica oversees the technical side of every project, from coordinating structure and building systems to issuing construction documents and permit applications.",
+          "She reviews drawings and specifications before they reach the field, so questions are settled on paper and not on site.",
+          "Jessica works closely with the design and construction teams to make sure what is drawn is what is built.",
+        ],
+      },
+      {
+        name: "Emily Bright",
+        title: "Project Manager",
+        image: "/assets/team/team-4.jpg",
+        bio: [
+          "Emily is the single point of contact for clients from the first meeting to handover, and reports regularly on cost, schedule and quality.",
+          "She coordinates the design team, the trades and the site, and prices every change before it goes ahead so you decide with the facts in front of you.",
+          "Emily leads the final inspection and handover, making sure you receive training, documentation and warranty support.",
+        ],
+      },
     ],
   },
   commitments: {

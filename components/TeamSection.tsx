@@ -1,8 +1,7 @@
-import Image from "next/image";
+import { PersonDialog, type Person } from "@/components/PersonDialog";
 import { RotatingBadge } from "@/components/RotatingBadge";
+import { TeamCard } from "@/components/TeamCard";
 import { HERO_H1 } from "@/lib/heroType";
-
-type Person = { name: string; title: string; image: string };
 
 /** Towers for the faint line drawing: left edge, width and height in a 1600 by 560 drawing */
 const TOWERS = [
@@ -74,27 +73,13 @@ export function TeamSection({ id, people }: { id: string; people: Person[] }) {
         </div>
 
         <div className="grid gap-5 min-[640px]:grid-cols-2 min-[992px]:col-span-8">
-          {people.map((p) => (
-            <article key={p.name} className="group relative overflow-hidden shadow-[0_24px_50px_-22px_rgba(8,43,82,.55)] transition-[translate,box-shadow] duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_40px_70px_-24px_rgba(8,43,82,.7)]">
-              <div className="relative aspect-[1.245/1] overflow-hidden bg-[#0e365c]">
-                <Image
-                  src={p.image}
-                  alt={`${p.name}, ${p.title}`}
-                  fill
-                  sizes="(max-width: 992px) 50vw, 330px"
-                  quality={90}
-                  className="scale-100 object-cover object-top transition-transform duration-[1400ms] ease-out group-hover:scale-110"
-                />
-              </div>
-              {/* the name and the title on a very dark blue panel */}
-              <div className="flex min-h-[8.6rem] flex-col justify-center bg-[#04142a] px-5 py-5 text-center">
-                <h3 className="text-[22px] leading-snug font-medium text-white">{p.name}</h3>
-                <p className="mt-1 text-[20px] leading-snug font-normal text-white/65">{p.title}</p>
-              </div>
-            </article>
+          {people.map((p, i) => (
+            <TeamCard key={p.name} index={i} name={p.name} title={p.title} image={p.image} />
           ))}
         </div>
       </div>
+
+      <PersonDialog people={people} />
     </section>
   );
 }
