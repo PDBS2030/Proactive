@@ -43,7 +43,7 @@ export default function AboutPage() {
             <AboutLinks
               items={[
                 { id: "leadership", label: "Our Team", icon: "people" },
-                { id: "values", label: "Our values", icon: "idea" },
+                { id: "values", label: "Our Values", icon: "idea" },
                 { id: "who-we-are", label: "Our Vision", icon: "group" },
               ]}
             />

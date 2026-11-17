@@ -25,7 +25,7 @@ export const ABOUT = {
     ],
   },
   values: {
-    heading: "Our values",
+    heading: "Our Values",
     items: [
       { title: "Integrity", text: "We say what we will do, price it honestly and stand behind it." },
       { title: "Accountability", text: "One team owns the outcome from first sketch to final handover." },
