@@ -114,13 +114,13 @@ export default function AboutPage() {
               <h2 id="leadership-title" className={`${ui.title} min-[992px]:col-span-5`}>
                 {a.leadership.heading}
               </h2>
-              <p className={`${ui.body} max-w-[56ch] min-[992px]:col-span-6 min-[992px]:col-start-7`}>{a.leadership.lead}</p>
+              <p className="max-w-[48ch] font-mulish text-[clamp(18px,1.5vw,22px)] leading-[1.6] text-[#082b52]/90 min-[992px]:col-span-6 min-[992px]:col-start-7">{a.leadership.lead}</p>
             </div>
             <ul className="mt-12 grid border-t border-[#082b52]/15 min-[768px]:grid-cols-2">
               {a.leadership.roles.map((r, i) => (
                 <li key={r.title} className={`group border-b border-[#082b52]/15 py-8 min-[768px]:pr-10 ${i % 2 === 1 ? "min-[768px]:border-l min-[768px]:pl-10" : ""}`}>
-                  <h3 className={`${ui.tile} transition-colors duration-300 group-hover:text-gold`}>{r.title}</h3>
-                  <p className="mt-3 max-w-[52ch] text-[15px] leading-[1.6] text-[#082b52]/85">{r.text}</p>
+                  <h3 className="text-[clamp(24px,2.1vw,32px)] leading-[1.15] font-(--h5-weight) transition-colors duration-300 group-hover:text-gold">{r.title}</h3>
+                  <p className="mt-4 max-w-[48ch] text-[clamp(17px,1.35vw,20px)] leading-[1.6] text-[#082b52]/85">{r.text}</p>
                 </li>
               ))}
             </ul>
