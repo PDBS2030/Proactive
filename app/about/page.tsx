@@ -6,8 +6,7 @@ import { AboutLinks } from "@/components/AboutLinks";
 import { FilmDialog } from "@/components/FilmDialog";
 import { TeamSection } from "@/components/TeamSection";
 import { CtaBand, ui } from "@/components/PageIntro";
-import { ParallaxFrame, ScrollProgress } from "@/components/MotionBits";
-import Image from "next/image";
+import { ScrollProgress } from "@/components/MotionBits";
 import { ServicesNav } from "@/components/ServicesNav";
 import { FOOTER } from "@/lib/data";
 import { ABOUT } from "@/lib/pages";
@@ -48,9 +47,6 @@ export default function AboutPage() {
                 { id: "who-we-are", label: "Our Vision", icon: "group", dialog: "open-vision" },
               ]}
             />
-            <ParallaxFrame className="mt-16 aspect-[16/10] min-[992px]:aspect-[21/8]">
-              <Image src={a.image} alt={a.imageAlt ?? ""} fill priority sizes="100vw" className="object-cover" />
-            </ParallaxFrame>
           </div>
         </section>
 
