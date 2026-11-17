@@ -1,24 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HERO_H1 } from "@/lib/heroType";
-import { SECTOR_BLURB, SERVICE_LINE, projectGallery, projectPlace, type Project } from "@/lib/pages";
-
-/** Where each photograph sits in the collage on wide screens, as grid areas of a 12 by 12 grid, with its drift and delay */
-const SPOTS = [
-  { area: "1 / 4 / 8 / 13", delay: 250 }, // the project's own photograph, the largest
-  { area: "6 / 1 / 11 / 6", delay: 450 },
-  { area: "9 / 7 / 13 / 13", delay: 650 },
-  { area: "1 / 1 / 5 / 4", delay: 850 },
-  { area: "11 / 3 / 13 / 7", delay: 1050 },
-];
+import { SECTOR_BLURB, SERVICE_LINE, projectPlace, type Project } from "@/lib/pages";
 
 /**
  * The top of a project's own page. The type of project is the heading; the project's name, its place and a short
- * description sit under it; and the photographs are laid out as a collage that overlaps itself, the project's own
- * picture largest, on a deep blue field.
+ * description sit under it; and the project's own photograph runs from the middle of the page to the right edge
+ * of the screen, on a deep blue field.
  */
 export function ProjectHero({ project: p }: { project: Project }) {
-  const photos = [p.image, ...projectGallery(p)];
   return (
     <section aria-labelledby="project-type" className="relative isolate overflow-hidden bg-[#04142a] px-4 pt-[132px] pb-[90px] text-white min-[768px]:px-[124px] min-[768px]:pt-[150px] min-[768px]:pb-[120px]">
       {/* a soft light from the upper right and a hairline of gold along the foot */}
@@ -50,36 +40,16 @@ export function ProjectHero({ project: p }: { project: Project }) {
           <p className="mt-4 max-w-[46ch] font-mulish text-[16px] leading-[1.65] text-white/65">{SECTOR_BLURB[p.sector]}</p>
         </div>
 
-        {/* the collage: one wide grid with overlapping photographs on large screens, a simple stack below that */}
-        <div className="min-[992px]:col-span-7">
-          <div className="hidden h-[min(46vw,700px)] grid-cols-12 grid-rows-12 gap-3 min-[992px]:grid">
-            {SPOTS.map((s, i) => (
-              <div
-                key={i}
-                className="collage-in relative overflow-hidden bg-[#0e365c] shadow-[0_30px_60px_-26px_rgba(0,0,0,.75)] outline-[6px] outline-[#04142a] transition-transform duration-700 ease-out hover:z-10 hover:scale-[1.03]"
-                style={{ gridArea: s.area, ["--d" as string]: `${s.delay}ms`, zIndex: i === 0 ? 1 : 2 }}
-              >
-                <Image
-                  src={photos[i]}
-                  alt={i === 0 ? `${p.title}, ${p.city}` : ""}
-                  fill
-                  sizes="(max-width: 1680px) 40vw, 680px"
-                  priority={i < 2}
-                  quality={85}
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 min-[992px]:hidden">
-            {photos.slice(0, 5).map((src, i) => (
-              <div key={i} className={`collage-in relative overflow-hidden bg-[#0e365c] ${i === 0 ? "col-span-2 aspect-[16/10]" : "aspect-square"}`} style={{ ["--d" as string]: `${200 + i * 150}ms` }}>
-                <Image src={src} alt={i === 0 ? `${p.title}, ${p.city}` : ""} fill sizes="(max-width: 992px) 100vw, 50vw" priority={i === 0} className="object-cover" />
-              </div>
-            ))}
-          </div>
+        {/* on wide screens the photograph is laid against the right edge and fills the height under the header; on narrow ones it runs the full width below the text */}
+        <div className="min-[992px]:col-span-7" aria-hidden="true">
+          <div className="min-[992px]:h-[min(46vw,700px)]" />
         </div>
+      </div>
+
+      <div className="collage-in relative -mx-4 mt-14 aspect-[16/10] overflow-hidden bg-[#0e365c] min-[768px]:-mx-[124px] min-[992px]:absolute min-[992px]:top-[104px] min-[992px]:bottom-0 min-[992px]:right-0 min-[992px]:mx-0 min-[992px]:mt-0 min-[992px]:aspect-auto min-[992px]:w-[54%]" style={{ ["--d" as string]: "250ms" }}>
+        <Image src={p.image} alt={`${p.title}, ${p.city}`} fill sizes="(max-width: 992px) 100vw, 54vw" priority quality={90} className="object-cover" />
+        {/* the picture melts into the blue where it meets the text */}
+        <span aria-hidden="true" className="absolute inset-y-0 left-0 hidden w-[14%] bg-gradient-to-r from-[#04142a] to-transparent min-[992px]:block" />
       </div>
     </section>
   );
