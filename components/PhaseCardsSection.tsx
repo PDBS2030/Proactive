@@ -129,13 +129,13 @@ export function PhaseCardsSection({ phases }: { phases: Phase[] }) {
   }, []);
 
   return (
-    <section ref={root} id="phases" aria-labelledby="phases-heading" style={{ ["--p" as string]: 0 }} className="relative isolate flex flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_38%,#ffffff_0%,#f4f6f9_55%,#e4eaf2_100%)] px-4 pt-[134px] pb-[164px] min-[768px]:px-[124px] min-[768px]:pt-[158px] min-[768px]:pb-[188px] [--phase-card-h:0px] min-[1100px]:[--phase-card-h:594px]">
+    <section ref={root} id="phases" aria-labelledby="phases-heading" style={{ ["--p" as string]: 0 }} className="relative isolate flex flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_38%,#ffffff_0%,#f4f6f9_55%,#e4eaf2_100%)] px-4 pt-[109px] pb-[164px] min-[768px]:px-[124px] min-[768px]:pt-[133px] min-[768px]:pb-[188px] [--phase-card-h:0px] min-[1100px]:[--phase-card-h:594px]">
       <span aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(8,43,82,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(8,43,82,.05)_1px,transparent_1px)] bg-[length:56px_56px] [mask-image:radial-gradient(ellipse_at_50%_45%,#000_30%,transparent_78%)]" />
-      <div className="mx-auto mb-[78px] w-full max-w-[1680px]">
+      <div className="mx-auto mb-[111px] w-full max-w-[1680px]">
         <h2 id="phases-heading" className="font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal text-[#082b52] uppercase [text-wrap:initial]">
           From study to handover
         </h2>
-        <p className="mt-4 font-mulish text-[17px] leading-[1.6] text-[#082b52]/85 min-[960px]:whitespace-nowrap">Three phases, fifteen steps. Open any step to see what you decide and what we deliver.</p>
+        <p className="mt-2 font-mulish text-[17px] leading-[1.6] text-[#082b52]/85 min-[960px]:whitespace-nowrap">Three phases, fifteen steps. Open any step to see what you decide and what we deliver.</p>
       </div>
 
       {/* the cards sit in the middle of the section, all on one level */}
