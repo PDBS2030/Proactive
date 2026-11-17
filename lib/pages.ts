@@ -17,7 +17,7 @@ export const ABOUT = {
     { value: "3", label: "Regions served: Maryland, DC and Virginia" },
   ],
   who: {
-    heading: "Who we are",
+    heading: "Our Vision",
     statement: "We plan, design and build projects that move and inspire the communities around them.",
     body: [
       "PROACTIVE brings architecture, engineering and construction together in one firm. The people who design your building are the people who price it and build it, so decisions are made once, with the whole picture in view.",
@@ -34,7 +34,7 @@ export const ABOUT = {
     ],
   },
   leadership: {
-    heading: "Leadership",
+    heading: "Our Team",
     lead: "Our leadership team sets the direction of the firm and stays accountable for every project we deliver.",
     roles: [
       { title: "Executive leadership", text: "Sets strategy, standards and the culture of the firm, and is the final point of accountability to our clients." },

@@ -18,9 +18,9 @@ export const metadata: Metadata = {
 };
 
 const NAV = [
-  { id: "who-we-are", label: "Who we are" },
+  { id: "who-we-are", label: "Our Vision" },
   { id: "values", label: "Values" },
-  { id: "leadership", label: "Leadership" },
+  { id: "leadership", label: "Our Team" },
   { id: "commitments", label: "Commitments" },
   { id: "locations", label: "Locations" },
 ];
@@ -42,9 +42,9 @@ export default function AboutPage() {
             </p>
             <AboutLinks
               items={[
-                { id: "leadership", label: "Leadership", icon: "people" },
+                { id: "leadership", label: "Our Team", icon: "people" },
                 { id: "values", label: "Our values", icon: "idea" },
-                { id: "who-we-are", label: "Who we are", icon: "group" },
+                { id: "who-we-are", label: "Our Vision", icon: "group" },
               ]}
             />
             <ParallaxFrame className="mt-16 aspect-[16/10] min-[992px]:aspect-[21/8]">
