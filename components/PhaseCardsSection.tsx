@@ -1,9 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
-import { FaintVideo } from "@/components/FaintVideo";
 import type { Phase } from "@/lib/process";
 import { cn } from "@/lib/cn";
+
+/** A photograph behind each card (placeholders until project photos are chosen) */
+const CARD_IMAGES: Record<string, { src: string; position: string }> = {
+  "phase-1": { src: "/assets/gallery/landmark/2.jpg", position: "center 55%" },
+  "phase-2": { src: "/assets/process-design.jpg", position: "center 40%" },
+  "phase-3": { src: "/assets/offerings-talent.jpg", position: "center 70%" },
+};
 
 const LIFT =
   "shadow-[inset_0_1px_0_#fff,0_1px_1px_rgba(2,12,28,.18),0_8px_14px_rgba(2,12,28,.2),0_26px_44px_rgba(2,12,28,.3),0_64px_100px_-18px_rgba(2,12,28,.6)]";
@@ -50,14 +57,33 @@ function Row({ step, open, onToggle, id }: { step: Phase["steps"][number]; open:
 function Card({ phase, tilt }: { phase: Phase; tilt: string }) {
   const uid = useId();
   const [open, setOpen] = useState<number | null>(null);
+  const img = CARD_IMAGES[phase.id] ?? CARD_IMAGES["phase-1"];
   return (
     <article
       id={phase.id}
       aria-labelledby={`${phase.id}-title`}
-      className={cn("relative min-h-[var(--card-h,0px)] scroll-mt-[130px] border border-white/60 bg-white/90 p-7 backdrop-blur-[3px] [transform:translate3d(0,var(--lift,0px),0)] min-[768px]:p-9 min-[1100px]:[transform:perspective(1200px)_rotateY(var(--ry,0deg))_translate3d(0,var(--lift,0px),0)]", LIFT)}
-      style={{ ["--ry" as string]: tilt }}
+      className={cn(
+        "group relative isolate min-h-[var(--card-h,0px)] scroll-mt-[130px] overflow-hidden border border-white/60 bg-white p-7 min-[768px]:p-9",
+        "transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(.22,1,.36,1)] motion-reduce:transition-none",
+        "[transform:translate3d(0,calc(var(--lift,0px)+var(--hv,0px)),0)] min-[1100px]:[transform:perspective(1200px)_rotateY(var(--ry,0deg))_translate3d(0,calc(var(--lift,0px)+var(--hv,0px)),0)_scale(var(--hs,1))]",
+        tilt,
+        "hover:[--hs:1.03] hover:[--hv:-16px] min-[1100px]:hover:[--ry:0deg]",
+        LIFT,
+        "hover:shadow-[inset_0_1px_0_#fff,0_2px_2px_rgba(2,12,28,.22),0_16px_26px_rgba(2,12,28,.28),0_44px_72px_rgba(2,12,28,.38),0_90px_130px_-20px_rgba(2,12,28,.7)]",
+      )}
     >
-      <span aria-hidden="true" className="absolute top-0 left-0 h-1 w-20 bg-gold" />
+      {/* the photograph, washed so the text stays easy to read; it opens up and slowly zooms on hover */}
+      <span aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden">
+        <Image
+          src={img.src}
+          alt=""
+          fill
+          sizes="(max-width: 1100px) 100vw, 33vw"
+          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110 motion-reduce:transition-none"
+          style={{ objectPosition: img.position }}
+        />
+        <span className="absolute inset-0 bg-linear-to-b from-white/90 via-white/90 to-white/95 transition-opacity duration-500 group-hover:opacity-80" />
+      </span>
       <p className="text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase">{phase.range}</p>
       <h3 id={`${phase.id}-title`} className="mt-3 font-jost text-[clamp(24px,2vw,32px)] leading-[1.08] font-medium tracking-normal text-[#082b52] uppercase">
         {phase.title}
@@ -103,10 +129,7 @@ export function PhaseCardsSection({ phases }: { phases: Phase[] }) {
   }, []);
 
   return (
-    <section ref={root} id="phases" aria-labelledby="phases-heading" style={{ ["--p" as string]: 0 }} className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden bg-[#082b52] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px] [--phase-card-h:0px] min-[1100px]:[--phase-card-h:667px]">
-      <FaintVideo src="/assets/service-video.mp4" poster="/assets/service-video-poster.jpg" className="absolute inset-0 -z-20 size-full object-cover" />
-      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-[#082b52]/62" />
-      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,43,82,.55)_0%,rgba(8,43,82,0)_28%,rgba(8,43,82,0)_72%,rgba(8,43,82,.6)_100%)]" />
+    <section ref={root} id="phases" aria-labelledby="phases-heading" style={{ ["--p" as string]: 0 }} className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_40%,#0e3f6e_0%,#082b52_58%,#061f3c_100%)] px-4 py-[94px] min-[768px]:px-[124px] min-[768px]:py-[120px] [--phase-card-h:0px] min-[1100px]:[--phase-card-h:667px]">
       <h2 id="phases-heading" className="sr-only">
         The three phases
       </h2>
@@ -114,7 +137,7 @@ export function PhaseCardsSection({ phases }: { phases: Phase[] }) {
       {/* the cards sit in the middle of the film, all on one level */}
       <div className="mx-auto grid w-full max-w-[1680px] items-start gap-8 min-[1100px]:grid-cols-3 min-[1100px]:gap-x-12" style={{ ["--lift" as string]: "calc(var(--p) * -34px)", ["--card-h" as string]: "var(--phase-card-h)" }}>
         {phases.map((p, i) => (
-          <Card key={p.id} phase={p} tilt={["16deg", "0deg", "-16deg"][i] ?? "0deg"} />
+          <Card key={p.id} phase={p} tilt={["min-[1100px]:[--ry:16deg]", "", "min-[1100px]:[--ry:-16deg]"][i] ?? ""} />
         ))}
       </div>
     </section>
