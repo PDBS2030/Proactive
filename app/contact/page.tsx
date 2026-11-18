@@ -20,8 +20,8 @@ export default function ContactPage() {
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#082b52]">
         <ImageHero title={c.title} lead={c.lead} image="/assets/contact-hero.jpg" alt="Curved blue glass facade of a modern building against the sky." position="center 40%" />
 
-        <section aria-label="Contact details and form" className={`${ui.pad} py-14 min-[768px]:py-[90px]`}>
-          <div className={`${ui.wrap} grid gap-14 border-t border-[#082b52]/15 pt-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
+        <section aria-label="Contact details and form" className={`${ui.pad} bg-[#f3f6fa] py-14 min-[768px]:py-[90px]`}>
+          <div className={`${ui.wrap} grid items-start gap-14 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
             <div className="min-[992px]:col-span-4">
               <h2 className={ui.eyebrow}>Headquarters</h2>
               <p className="mt-4 text-[19px] leading-snug font-medium">Proactive Design and Building Systems</p>
@@ -45,7 +45,8 @@ export default function ContactPage() {
               <p className="mt-3 text-[16px]">Maryland, DC and Virginia</p>
             </div>
 
-            <div className="min-[992px]:col-span-7 min-[992px]:col-start-6">
+            {/* the form sits on a white platform that lifts a little off the pale page: a hairline border, a gold rule along the top and a soft, low shadow */}
+            <div className="rounded-[2px] border border-[#082b52]/10 border-t-2 border-t-gold bg-white p-7 shadow-[0_1px_2px_rgba(8,43,82,.06),0_28px_50px_-30px_rgba(8,43,82,.4)] min-[768px]:p-12 min-[992px]:col-span-7 min-[992px]:col-start-6">
               <h2 className={ui.title}>Send us a message</h2>
               <div className="mt-8">
                 <ContactForm topics={c.topics} />
