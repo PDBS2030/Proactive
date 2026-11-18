@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BrandLockup } from "@/components/BrandLockup";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -24,7 +25,9 @@ export default function ContactPage() {
           <div className={`${ui.wrap} grid items-start gap-14 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
             <div className="min-[992px]:col-span-4">
               <h2 className={ui.eyebrow}>Headquarters</h2>
-              <p className={`mt-4 ${ui.tile}`}>Proactive Design and Building Systems</p>
+              <div role="img" aria-label="Proactive Design and Building Systems, Inc." className="mt-5 inline-flex items-center gap-3">
+                <BrandLockup />
+              </div>
               <address className={`mt-3 ${ui.small} whitespace-pre-line not-italic`}>{FOOTER.office}</address>
 
               <h2 className={`${ui.eyebrow} mt-10`}>Phone</h2>
