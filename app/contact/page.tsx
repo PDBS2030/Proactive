@@ -46,7 +46,7 @@ export default function ContactPage() {
             </div>
 
             {/* the form sits on a white platform that lifts a little off the pale page: a hairline border, a gold rule along the top and a soft, low shadow */}
-            <div className="rounded-[2px] border border-[#082b52]/10 border-t-2 border-t-gold bg-white p-7 shadow-[0_1px_2px_rgba(8,43,82,.06),0_28px_50px_-30px_rgba(8,43,82,.4)] min-[768px]:p-12 min-[992px]:col-span-7 min-[992px]:col-start-6">
+            <div className="rounded-[2px] border border-[#082b52]/10 border-t-2 border-t-gold bg-white p-7 shadow-[0_1px_2px_rgba(8,43,82,.06),0_28px_50px_-30px_rgba(8,43,82,.4)] transition-[translate,box-shadow] duration-500 ease-out hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(8,43,82,.08),0_34px_58px_-30px_rgba(8,43,82,.5)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 min-[768px]:p-12 min-[992px]:col-span-7 min-[992px]:col-start-6">
               <h2 className={ui.title}>Send us a message</h2>
               <div className="mt-8">
                 <ContactForm topics={c.topics} />

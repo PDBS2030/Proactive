@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FOOTER } from "@/lib/data";
 
 const field =
-  "field-line mt-2 block w-full min-h-12 border border-[#082b52]/25 bg-white px-4 py-3 text-[16px] leading-snug text-[#082b52] outline-none transition-colors duration-200 placeholder:text-[#082b52]/40 focus:border-gold focus-visible:border-gold";
+  "field-line mt-2 block w-full min-h-12 border border-[#082b52]/25 bg-white px-4 py-3 text-[16px] leading-snug text-[#082b52] outline-none transition-[border-color,box-shadow,translate] duration-300 ease-out placeholder:text-[#082b52]/40 hover:-translate-y-px hover:border-[#082b52]/55 hover:shadow-[0_8px_16px_-12px_rgba(8,43,82,.45)] focus:border-gold focus:shadow-[0_0_0_3px_rgba(181,143,72,.18)] focus-visible:border-gold motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 const label = "block text-sm font-medium text-[#082b52]";
 
 /** There is no server yet, so sending opens the visitor's email app with the details filled in. */
@@ -66,9 +66,12 @@ export function ContactForm({ topics }: { topics: string[] }) {
       <div className="flex flex-wrap items-center gap-4 min-[640px]:col-span-2">
         <button
           type="submit"
-          className="inline-flex min-h-12 cursor-pointer items-center justify-center border border-[#082b52] bg-[#082b52] px-8 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase transition-colors duration-300 outline-none hover:bg-transparent hover:text-[#082b52] focus-visible:bg-transparent focus-visible:text-[#082b52]"
+          className="group inline-flex min-h-12 cursor-pointer items-center justify-center gap-3 border border-[#082b52] bg-[#082b52] px-8 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase transition-[color,background-color,translate,box-shadow] duration-300 outline-none hover:-translate-y-0.5 hover:bg-transparent hover:text-[#082b52] hover:shadow-[0_12px_20px_-14px_rgba(8,43,82,.6)] focus-visible:bg-transparent focus-visible:text-[#082b52] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
         >
           Send message
+          <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none">
+            <path d="M1 5h14M11 1l4 4-4 4" />
+          </svg>
         </button>
         <p id="contact-note" role="status" className="text-[14px] leading-snug text-[#082b52]/75">
           {sent ? "Your email app should now open with the message filled in. Press send there to finish." : "This opens your email app with your message filled in."}
