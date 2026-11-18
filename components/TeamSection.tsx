@@ -1,7 +1,7 @@
 import { PersonDialog, type Person } from "@/components/PersonDialog";
 import { RotatingBadge } from "@/components/RotatingBadge";
 import { TeamCard } from "@/components/TeamCard";
-import { HERO_H1 } from "@/lib/heroType";
+import { ui } from "@/components/PageIntro";
 
 /** Towers for the faint line drawing: left edge, width and height in a 1600 by 560 drawing */
 const TOWERS = [
@@ -65,7 +65,7 @@ export function TeamSection({ id, people }: { id: string; people: Person[] }) {
 
       <div className="mx-auto grid w-full max-w-[1680px] gap-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-14">
         <div className="relative min-[992px]:col-span-4">
-          <h2 id={`${id}-title`} className={HERO_H1}>
+          <h2 id={`${id}-title`} className={ui.title}>
             Our Team
           </h2>
           {/* on wide screens the badge sits level with the gap between the upper and the lower pictures */}

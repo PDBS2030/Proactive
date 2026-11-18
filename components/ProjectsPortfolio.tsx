@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { SERVICE_SLUGS, projectSlug, type Project, type Region } from "@/lib/pages";
 import { cn } from "@/lib/cn";
+import { HERO_H1 } from "@/lib/heroType";
+import { ui } from "@/components/PageIntro";
 
 const PAGE = 24;
 const REGIONS: Region[] = ["Maryland", "DC", "Virginia"];
@@ -15,7 +17,7 @@ type Sort = "Date" | "Featured" | "Name";
 
 /** Every control on the bar: the same outline, height and capital letters */
 const control =
-  "h-[41px] w-full rounded-md border border-[#c7c8ca] bg-white px-3 text-[16px] leading-[1.4] text-[#082b52] uppercase outline-none transition-colors duration-200 hover:border-[#082b52]/50 focus-visible:border-[#082b52] focus-visible:ring-2 focus-visible:ring-[#2356e5]/35";
+  "h-[41px] w-full rounded-md border border-[#c7c8ca] bg-white px-3 text-[.8125rem] leading-[1.4] font-medium tracking-[.08em] text-[#082b52] uppercase outline-none transition-colors duration-200 hover:border-[#082b52]/50 focus-visible:border-[#082b52] focus-visible:ring-2 focus-visible:ring-[#2356e5]/35";
 
 const chevron = (
   <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2">
@@ -50,11 +52,11 @@ function MultiFilter({
         <div className="absolute top-full left-0 z-30 mt-1 max-h-[min(60vh,420px)] w-full min-w-[250px] overflow-y-auto rounded-md border border-[#c7c8ca] bg-white py-2 shadow-[0_18px_40px_-18px_rgba(8,43,82,.4)]">
           {groups.map((g, gi) => (
             <div key={g.heading ?? gi} className={cn(gi > 0 && "mt-1 border-t border-[#c7c8ca]/70 pt-1")}>
-              {g.heading && <p className="px-4 pt-2 pb-1 text-[14px] font-semibold text-[#082b52]">{g.heading}</p>}
+              {g.heading && <p className="px-4 pt-2 pb-1 text-xs font-semibold tracking-[.15em] text-gold uppercase">{g.heading}</p>}
               {g.options.map((o) => {
                 const on = value.includes(o);
                 return (
-                  <label key={o} className="flex cursor-pointer items-start gap-3 px-4 py-1.5 text-[16px] leading-snug text-[#082b52] hover:bg-[#f3f6fa]">
+                  <label key={o} className="flex cursor-pointer items-start gap-3 px-4 py-1.5 text-[15px] leading-snug text-[#082b52] hover:bg-[#f3f6fa]">
                     <input
                       type="checkbox"
                       checked={on}
@@ -197,7 +199,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      <h1 className="px-4 pt-10 text-center font-bodoni text-[40px] leading-[1.05] text-[#082b52] min-[768px]:text-[64px] min-[768px]:leading-[64px]">All Projects</h1>
+      <h1 className={`px-4 pt-10 text-center text-[#082b52] ${HERO_H1}`}>All Projects</h1>
 
       {/* the bar of filters: it stays under the header while the grid scrolls */}
       <div ref={bar} className="relative z-20 min-[768px]:sticky min-[768px]:top-(--hdr,86px) mt-10 border-b border-[#c7c8ca] bg-white min-[768px]:mt-14">
@@ -244,7 +246,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
                 value={query}
                 onChange={(e) => reset(setQuery)(e.target.value)}
                 placeholder="Search"
-                className={cn(control, "pr-9 normal-case placeholder:text-[#082b52]/45 [&::-webkit-search-cancel-button]:hidden")}
+                className={cn(control, "pr-9 text-[15px] font-normal tracking-normal normal-case placeholder:text-[#082b52]/45 [&::-webkit-search-cancel-button]:hidden")}
               />
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#082b52" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 opacity-60">
                 <circle cx="10.5" cy="10.5" r="6.5" />
@@ -253,7 +255,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
             </div>
           </form>
 
-          <p role="status" aria-live="polite" className="pb-2 text-right text-[14px] leading-6 text-[#082b52] uppercase min-[768px]:pb-2">
+          <p role="status" aria-live="polite" className="pb-2 text-right text-xs leading-6 tracking-[.15em] text-[#082b52] uppercase min-[768px]:pb-2">
             <b className="font-bold">{shown.length}</b> {shown.length === 1 ? "result" : "results"}
           </p>
         </div>
@@ -262,10 +264,10 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
       <div className="mx-auto w-full max-w-[1920px] px-4 pt-6 min-[768px]:px-8 min-[1100px]:px-16">
         {shown.length === 0 ? (
           <div className="border border-[#c7c8ca] px-6 py-16 text-center">
-            <p className="font-bodoni text-[28px] leading-tight text-[#082b52]">No projects match these filters</p>
-            <p className="mt-3 text-[16px] text-[#082b52]/80">Try a different project type or location, or clear the filters to see everything.</p>
+            <p className={`${ui.sub} text-[#082b52]`}>No projects match these filters</p>
+            <p className="mt-3 font-mulish text-[17px] leading-[1.65] text-[#082b52]/85">Try a different project type or location, or clear the filters to see everything.</p>
             {filtered && (
-              <button type="button" onClick={clear} className="mt-7 inline-flex min-h-[42px] cursor-pointer items-center justify-center rounded-sm bg-[#082b52] px-6 text-[16px] text-white outline-none transition-colors duration-200 hover:bg-[#04142a] focus-visible:ring-2 focus-visible:ring-[#2356e5]/60">
+              <button type="button" onClick={clear} className="mt-7 inline-flex min-h-12 cursor-pointer items-center justify-center bg-[#082b52] px-7 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase outline-none transition-colors duration-200 hover:bg-[#04142a] focus-visible:ring-2 focus-visible:ring-[#2356e5]/60">
                 Clear filters
               </button>
             )}
@@ -288,7 +290,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
                   {/* the name sits over the foot of the picture; a bar of gold marks the card that is pointed at */}
                   <div className="absolute inset-x-px bottom-0 border-b border-[#c7c8ca] bg-white/95 p-4 transition-colors duration-200 group-hover:bg-white/75">
                     <span aria-hidden="true" className="absolute top-0 left-0 -mt-1 block h-1 w-full bg-gold opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-                    <h2 className="font-bodoni text-[20px] leading-[30px] text-[#082b52]">
+                    <h2 className={`${ui.tile} text-[#082b52]`}>
                       {p.title}
                     </h2>
                     <p className="sr-only">
@@ -306,7 +308,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
             <button
               type="button"
               onClick={() => setCount((c) => c + PAGE)}
-              className="inline-flex min-h-[42px] cursor-pointer items-center justify-center rounded-sm bg-[#082b52] px-6 text-[18px] text-white outline-none transition-colors duration-200 hover:bg-[#04142a] focus-visible:ring-2 focus-visible:ring-[#2356e5]/60"
+              className="inline-flex min-h-12 cursor-pointer items-center justify-center bg-[#082b52] px-8 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase outline-none transition-colors duration-200 hover:bg-[#04142a] focus-visible:ring-2 focus-visible:ring-[#2356e5]/60"
             >
               Load More
             </button>
@@ -316,8 +318,8 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
 
       <div className="mx-auto my-20 w-full max-w-5xl px-4 min-[1100px]:my-40">
         <div className="space-y-8 py-8">
-          <h2 className="font-bodoni text-[28px] leading-[1.1] text-[#082b52] min-[768px]:text-[40px] min-[768px]:leading-[40px]">Didn’t find what you were looking for?</h2>
-          <p className="font-mulish text-[17px] leading-[1.65] text-[#082b52]/90">
+          <h2 className={`${ui.title} text-[#082b52]`}>Didn’t find what you were looking for?</h2>
+          <p className="font-mulish text-[17px] leading-[1.65] text-[#082b52]/85">
             This is just a sample of the projects that Proactive Design and Building Systems has built. If you want more information, please{" "}
             <Link href="/contact" className="text-[#082b52] underline decoration-gold decoration-2 underline-offset-[5px]">
               contact us

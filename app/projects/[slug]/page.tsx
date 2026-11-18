@@ -29,7 +29,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <>
       <Header />
-      <main id="main-content" className="relative bg-white text-[#082b52]">
+      <main id="main-content" className="offerings-vars relative bg-white text-[#082b52]">
         <ProjectHero project={p} />
 
         <ProjectGallery title={p.title} photos={projectPhotos(p)} />

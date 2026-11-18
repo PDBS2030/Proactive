@@ -258,7 +258,7 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
                     href="#inquiry"
                     data-start-project
                     tabIndex={k === a ? 0 : -1}
-                    className="mt-9 inline-flex min-h-[55px] items-center justify-center border border-white bg-transparent px-6 text-[16px] font-medium text-white no-underline outline-none transition-colors duration-200 hover:bg-white hover:text-[#082b52] focus-visible:bg-white focus-visible:text-[#082b52]"
+                    className="mt-9 inline-flex min-h-[55px] items-center justify-center border border-white bg-transparent px-7 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline outline-none transition-colors duration-200 hover:bg-white hover:text-[#082b52] focus-visible:bg-white focus-visible:text-[#082b52]"
                   >
                     Start a project
                   </a>

@@ -27,7 +27,7 @@ export function Faq({ data = FAQS, roomy = false }: { data?: typeof FAQS; roomy?
     >
       <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 items-start gap-y-12 min-[1000px]:grid-cols-[544fr_731fr] min-[1000px]:gap-y-0">
         <div className="max-w-none min-[1000px]:max-w-[71%]">
-          <p className="text-sm leading-[23px] font-bold tracking-[2.5px] text-gold uppercase">{data.eyebrow}</p>
+          <p className="text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase">{data.eyebrow}</p>
           <h3
             id="faq-title"
             className="mt-[25px] font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial] text-[#020f18]"
@@ -36,7 +36,7 @@ export function Faq({ data = FAQS, roomy = false }: { data?: typeof FAQS; roomy?
           </h3>
           <Link
             href={data.cta.href}
-            className="mt-[25px] inline-block rounded-[200px] border border-[rgba(154,154,154,.75)] px-[35px] py-[13px] text-sm leading-5 font-bold tracking-[2.5px] text-[#020f18] uppercase no-underline outline-none transition-[background-color,color,border-color] duration-200 hover:border-[#020f18] hover:bg-[#020f18] hover:text-white focus-visible:border-[#020f18] focus-visible:bg-[#020f18] focus-visible:text-white"
+            className="mt-[25px] inline-block rounded-[200px] border border-[rgba(154,154,154,.75)] px-[35px] py-[13px] text-[.8125rem] leading-5 font-medium tracking-[.08em] text-[#020f18] uppercase no-underline outline-none transition-[background-color,color,border-color] duration-200 hover:border-[#020f18] hover:bg-[#020f18] hover:text-white focus-visible:border-[#020f18] focus-visible:bg-[#020f18] focus-visible:text-white"
           >
             {data.cta.label}
           </Link>

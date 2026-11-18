@@ -11,6 +11,10 @@ export const ui = {
   eyebrow: "text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase",
   body: "font-mulish text-[17px] leading-[1.65] text-[#082b52]/90",
   tile: "text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)",
+  sub: "font-jost text-[length:calc(var(--h2)*.68)] leading-[1.22] font-normal tracking-normal uppercase [text-wrap:initial]",
+  lead: "font-mulish text-[clamp(18px,1.55vw,24px)] leading-[1.6]",
+  small: "text-[15px] leading-snug",
+  btnText: "text-[.8125rem] font-medium tracking-[.08em] uppercase",
   btn: "btn-sweep inline-flex min-h-12 items-center justify-center border border-[#082b52] bg-[#082b52] bg-[linear-gradient(#fff,#fff)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline outline-none hover:text-[#082b52] focus-visible:text-[#082b52]",
   btnGhost:
     "btn-sweep inline-flex min-h-12 items-center justify-center border border-[#082b52]/30 bg-[linear-gradient(#082b52,#082b52)] px-7 text-[.8125rem] font-medium tracking-[.08em] text-[#082b52] uppercase no-underline outline-none hover:border-[#082b52] hover:text-white focus-visible:border-[#082b52] focus-visible:text-white",

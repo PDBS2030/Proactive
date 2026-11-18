@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { PROCESS } from "@/lib/data";
 
 const heading =
-  "font-sans text-[clamp(22px,2.4vw,34px)] leading-[1.1] font-[450] uppercase [text-wrap:initial]";
+  "font-jost text-[length:calc(var(--h2)*.68)] leading-[1.22] font-normal tracking-normal uppercase [text-wrap:initial]";
 
 /** Process: 15 steps in 3 phases over a photo that drifts at 0.3 of the scroll speed. */
 export function Process() {
@@ -54,7 +54,7 @@ export function Process() {
         <h2 id="process-title" className="font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial]">
           {PROCESS.title}
         </h2>
-        <p className="mt-[17px] text-[clamp(13px,1.4vw,20px)] leading-[1.65] tracking-[1px] uppercase">{PROCESS.lead}</p>
+        <p className="mt-4 font-mulish text-[clamp(18px,1.55vw,24px)] leading-[1.6]">{PROCESS.lead}</p>
         <hr className="mx-auto mt-6 mb-[25px] h-0 w-full border-0 border-t border-white/90 min-[768px]:w-3/4" />
 
         <div className="mt-8 grid grid-cols-1 gap-y-7 min-[768px]:mt-[87px] min-[768px]:grid-cols-3 min-[768px]:gap-x-[6%] min-[768px]:gap-y-0">
@@ -67,19 +67,16 @@ export function Process() {
                   : ""
               }
             >
-              <h3 className={`${heading} tracking-[3px]`}>{p.title}</h3>
-              <p className="mt-9 text-[clamp(12px,1.25vw,21px)] leading-loose tracking-[2px] uppercase">
-                <em className="italic">{p.steps}</em>
-                <br />
-                {p.name}
-              </p>
+              <h3 className={heading}>{p.title}</h3>
+              <p className="mt-6 text-xs leading-4 font-semibold tracking-[.15em] uppercase">{p.steps}</p>
+              <p className="mt-2 font-mulish text-[17px] leading-[1.6]">{p.name}</p>
             </div>
           ))}
         </div>
 
         <Link
           href={PROCESS.cta.href}
-          className="group mt-[53px] inline-flex items-center justify-center border border-white px-4 py-[11px] font-sans text-[clamp(13px,1.3vw,18px)] leading-[1.2] font-medium tracking-[.2em] text-white uppercase no-underline outline-none transition-[background-color,color] duration-300 hover:bg-white hover:text-[#4a4729] focus-visible:bg-white focus-visible:text-[#4a4729]"
+          className="group mt-[53px] inline-flex items-center justify-center border border-white px-6 py-[14px] font-sans text-[.8125rem] leading-[1.2] font-medium tracking-[.08em] text-white uppercase no-underline outline-none transition-[background-color,color] duration-300 hover:bg-white hover:text-[#4a4729] focus-visible:bg-white focus-visible:text-[#4a4729]"
         >
           <span>{PROCESS.cta.label}</span>
           <span

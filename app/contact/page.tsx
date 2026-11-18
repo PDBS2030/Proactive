@@ -24,25 +24,25 @@ export default function ContactPage() {
           <div className={`${ui.wrap} grid items-start gap-14 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
             <div className="min-[992px]:col-span-4">
               <h2 className={ui.eyebrow}>Headquarters</h2>
-              <p className="mt-4 text-[19px] leading-snug font-medium">Proactive Design and Building Systems</p>
-              <address className="mt-3 text-[16px] leading-[1.6] whitespace-pre-line not-italic">{FOOTER.office}</address>
+              <p className={`mt-4 ${ui.tile}`}>Proactive Design and Building Systems</p>
+              <address className={`mt-3 ${ui.small} whitespace-pre-line not-italic`}>{FOOTER.office}</address>
 
               <h2 className={`${ui.eyebrow} mt-10`}>Phone</h2>
-              <p className="mt-3 text-[16px]">
+              <p className={`mt-3 ${ui.small}`}>
                 <a href={FOOTER.phone.href} className={ui.link}>
                   {FOOTER.phone.label}
                 </a>
               </p>
 
               <h2 className={`${ui.eyebrow} mt-10`}>Email</h2>
-              <p className="mt-3 text-[16px]">
+              <p className={`mt-3 ${ui.small}`}>
                 <a href={`mailto:${FOOTER.email}`} className={ui.link}>
                   {FOOTER.email}
                 </a>
               </p>
 
               <h2 className={`${ui.eyebrow} mt-10`}>Service area</h2>
-              <p className="mt-3 text-[16px]">Maryland, DC and Virginia</p>
+              <p className={`mt-3 ${ui.small}`}>Maryland, DC and Virginia</p>
             </div>
 
             {/* the form sits on a white platform that lifts a little off the pale page: a hairline border, a gold rule along the top and a soft, low shadow */}

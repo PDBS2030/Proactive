@@ -13,7 +13,7 @@ export default function ProjectsPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="relative bg-white pt-[104px] text-[#082b52]">
+      <main id="main-content" className="offerings-vars relative bg-white pt-[104px] text-[#082b52]">
         <ProjectsPortfolio projects={PROJECTS} />
       </main>
       <Footer />

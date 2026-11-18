@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { HERO_H1 } from "@/lib/heroType";
+import { ui } from "@/components/PageIntro";
 
 type Item = { title: string; text: string };
 
@@ -48,11 +48,11 @@ export function CommitmentsSection({ id, heading, lead, items }: { id: string; h
       <div className="mx-auto grid w-full max-w-[1680px] gap-12 min-[992px]:grid-cols-12 min-[992px]:gap-x-14">
         <div className="min-[992px]:col-span-4">
           <div className="min-[992px]:sticky min-[992px]:top-[150px]">
-            <h2 id={`${id}-title`} className={HERO_H1}>
+            <h2 id={`${id}-title`} className={ui.title}>
               {heading}
             </h2>
             <span aria-hidden="true" className="mt-7 block h-0.5 w-14 bg-gold" />
-            <p className="mt-6 max-w-[30ch] font-mulish text-[20px] leading-[1.55] text-white/75">{lead}</p>
+            <p className="mt-6 max-w-[30ch] font-mulish text-[17px] leading-[1.6] text-white/80">{lead}</p>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ export function CommitmentsSection({ id, heading, lead, items }: { id: string; h
               {/* at rest only the title and the icon show; on hover the card opens downward onto its picture and text */}
               <div tabIndex={0} className="group h-full bg-white/[.04] outline-none transition-colors duration-500 hover:bg-white/[.08] focus-visible:bg-white/[.08] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#2356e5]">
                 <div className="flex h-[160px] items-end justify-between gap-6 px-8 pb-9">
-                  <h3 className="font-jost text-[27px] leading-[1.15] font-medium">{c.title}</h3>
+                  <h3 className={ui.tile}>{c.title}</h3>
                   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="mb-0.5 shrink-0 text-gold/75 transition-colors duration-500 group-hover:text-gold group-focus-visible:text-gold">
                     {ICONS[i]}
                   </svg>
@@ -80,7 +80,7 @@ export function CommitmentsSection({ id, heading, lead, items }: { id: string; h
                         style={{ objectPosition: IMAGES[i].pos ?? "center" }}
                       />
                     </div>
-                    <p className="px-8 pt-6 pb-9 text-[16px] leading-[1.65] text-white/75">{c.text}</p>
+                    <p className="px-8 pt-6 pb-9 font-mulish text-[17px] leading-[1.65] text-white/75">{c.text}</p>
                   </div>
                 </div>
               </div>

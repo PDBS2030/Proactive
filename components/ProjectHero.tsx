@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ui } from "@/components/PageIntro";
 import { HERO_H1 } from "@/lib/heroType";
 import { SECTOR_BLURB, SERVICE_LINE, projectPlace, type Project } from "@/lib/pages";
 
@@ -29,15 +30,15 @@ export function ProjectHero({ project: p }: { project: Project }) {
           </h1>
           <span aria-hidden="true" className="mt-7 block h-0.5 w-14 bg-gold" />
 
-          <p className="mt-8 font-bodoni text-[30px] leading-[1.15] min-[768px]:text-[38px]">{p.title}</p>
-          <p className="mt-3 text-[16px] tracking-[.04em] text-white/70">
+          <p className={`mt-8 ${ui.sub}`}>{p.title}</p>
+          <p className="mt-3 text-[15px] leading-snug text-white/70">
             {projectPlace(p)}
           </p>
 
-          <p className="mt-8 max-w-[46ch] font-mulish text-[18px] leading-[1.65] text-white/85">
+          <p className={`mt-8 max-w-[46ch] ${ui.lead} text-white/85`}>
             {p.scope}. {SERVICE_LINE[p.service]}
           </p>
-          <p className="mt-4 max-w-[46ch] font-mulish text-[16px] leading-[1.65] text-white/65">{SECTOR_BLURB[p.sector]}</p>
+          <p className="mt-4 max-w-[46ch] font-mulish text-[17px] leading-[1.65] text-white/65">{SECTOR_BLURB[p.sector]}</p>
         </div>
 
         {/* on wide screens the photograph is laid against the right edge and fills the height under the header; on narrow ones it runs the full width below the text */}
