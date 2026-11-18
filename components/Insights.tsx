@@ -28,7 +28,7 @@ export function Insights() {
   return (
     <section
       aria-labelledby="insights-title"
-      className="title-vars relative z-4 bg-white px-4 py-16 font-sans text-[#00142c] min-[768px]:px-[124px] min-[768px]:py-[110px]"
+      className="offerings-vars relative z-4 bg-white px-4 py-16 font-sans text-[#00142c] min-[768px]:px-[124px] min-[768px]:py-[110px]"
     >
       <div className="mx-auto w-full max-w-[1680px]">
         <p className="text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase">{INSIGHTS.eyebrow}</p>
@@ -73,8 +73,8 @@ export function Insights() {
                     <span aria-hidden="true" className="mt-3 block h-0.5 w-4 shrink-0 bg-gold" />
                     <h3
                       className={cn(
-                        "mt-4 line-clamp-4 shrink-0 text-lg leading-snug font-normal tracking-[-.025em] [text-wrap:initial] min-[1280px]:text-xl",
-                        lead && "max-w-2xl line-clamp-3 text-2xl min-[1280px]:text-3xl",
+                        "mt-4 line-clamp-4 shrink-0 text-(length:--h5) leading-(--h5-lh) font-(--h5-weight) tracking-normal [text-wrap:initial]",
+                        lead && "max-w-2xl line-clamp-3 text-[length:max(18px,calc(var(--h2)*.68))] leading-[1.22]",
                       )}
                     >
                       {item.title}

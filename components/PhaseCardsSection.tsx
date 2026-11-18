@@ -85,7 +85,7 @@ function Card({ phase, tilt }: { phase: Phase; tilt: string }) {
         <span className="absolute inset-0 bg-linear-to-b from-[#061a33]/72 via-[#061a33]/66 to-[#061a33]/82 transition-opacity duration-500 group-hover:opacity-85" />
       </span>
       <p className="text-xs leading-4 font-semibold tracking-[.15em] text-[#e3c98f] uppercase">{phase.range}</p>
-      <h3 id={`${phase.id}-title`} className="mt-3 font-jost text-[length:calc(var(--h2)*.68)] leading-[1.22] font-normal tracking-normal text-white uppercase">
+      <h3 id={`${phase.id}-title`} className="mt-3 font-jost text-[length:max(18px,calc(var(--h2)*.68))] leading-[1.22] font-normal tracking-normal text-white uppercase">
         {phase.title}
       </h3>
       <p className="mt-3 text-[15px] leading-[1.6] text-white/90">{phase.summary}</p>

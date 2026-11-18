@@ -96,8 +96,8 @@ export function ProcessIntro() {
       <div className="mx-auto w-full max-w-[1250px]">
         <div className="[container-type:inline-size]" style={{ transform: "translate3d(0, calc(var(--p) * -14px), 0)" }}>
           <p
-            className="font-jost leading-[1.12] font-normal text-[#082b52]"
-            style={{ fontSize: "clamp(22px, calc(100cqw / 27.5), 44px)", textWrap: "balance" }}
+            className="font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal text-[#082b52] uppercase"
+            style={{ textWrap: "balance" }}
           >
             {parts.map((p, i) =>
               p.startsWith("[[") ? (
@@ -117,7 +117,7 @@ export function ProcessIntro() {
               key={s.label}
               className={`flex flex-col items-center border border-[#082b52]/10 bg-white px-4 pt-9 pb-8 text-center transition-[translate,box-shadow] duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_2px_2px_rgba(8,43,82,.12),0_12px_22px_rgba(8,43,82,.16),0_30px_52px_rgba(8,43,82,.22),0_56px_88px_-16px_rgba(8,43,82,.36)] ${PLATE}`}
             >
-              <dd className="order-1 mt-6 text-[14px] leading-snug font-medium text-[#082b52] uppercase">{s.label}</dd>
+              <dd className="order-1 mt-6 text-xs leading-4 font-semibold tracking-[.15em] text-[#082b52] uppercase">{s.label}</dd>
               <dt className="order-0 font-jost text-[clamp(36px,3.3vw,52px)] leading-none font-normal text-[#7d9bc1]">
                 {"text" in s && s.text ? s.text : <Figure value={s.value as number} suffix={s.suffix} />}
               </dt>

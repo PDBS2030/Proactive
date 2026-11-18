@@ -11,7 +11,7 @@ export const ui = {
   eyebrow: "text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase",
   body: "font-mulish text-[17px] leading-[1.65] text-[#082b52]/90",
   tile: "text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)",
-  sub: "font-jost text-[length:calc(var(--h2)*.68)] leading-[1.22] font-normal tracking-normal uppercase [text-wrap:initial]",
+  sub: "font-jost text-[length:max(18px,calc(var(--h2)*.68))] leading-[1.22] font-normal tracking-normal uppercase [text-wrap:initial]",
   lead: "font-mulish text-[clamp(18px,1.55vw,24px)] leading-[1.6]",
   small: "text-[15px] leading-snug",
   btnText: "text-[.8125rem] font-medium tracking-[.08em] uppercase",

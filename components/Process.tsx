@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { PROCESS } from "@/lib/data";
 
 const heading =
-  "font-jost text-[length:calc(var(--h2)*.68)] leading-[1.22] font-normal tracking-normal uppercase [text-wrap:initial]";
+  "font-jost text-[length:max(18px,calc(var(--h2)*.68))] leading-[1.22] font-normal tracking-normal uppercase [text-wrap:initial]";
 
 /** Process: 15 steps in 3 phases over a photo that drifts at 0.3 of the scroll speed. */
 export function Process() {

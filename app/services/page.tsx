@@ -108,7 +108,7 @@ export default function ServicesPage() {
               <div className={cn("flex flex-col justify-between gap-9 min-[992px]:col-span-5", i % 2 === 1 && "min-[992px]:order-1")}>
                 <div>
                   <p className={eyebrow}>{s.name}</p>
-                  <h2 id={`${s.id}-title`} className="mt-4 font-jost text-[length:calc(var(--h2)*.68)] leading-[1.22] font-normal tracking-normal uppercase [text-wrap:initial]">
+                  <h2 id={`${s.id}-title`} className="mt-4 font-jost text-[length:max(18px,calc(var(--h2)*.68))] leading-[1.22] font-normal tracking-normal uppercase [text-wrap:initial]">
                     {s.headline}
                   </h2>
                 </div>
@@ -175,11 +175,11 @@ export default function ServicesPage() {
                 <div key={r.label} className="border border-white/20 p-5">
                   <p className="text-xs font-semibold tracking-[.15em] uppercase">{r.label}</p>
                   <p className="mt-3 text-[14px] text-white/60">
-                    <span className="block text-[11px] tracking-[.12em] uppercase">{COMPARISON.columns[0]}</span>
+                    <span className="block text-xs tracking-[.15em] uppercase">{COMPARISON.columns[0]}</span>
                     {r.a}
                   </p>
                   <p className="mt-3 text-[15px]">
-                    <span className="block text-[11px] tracking-[.12em] text-gold uppercase">{COMPARISON.columns[1]}</span>
+                    <span className="block text-xs tracking-[.15em] text-gold uppercase">{COMPARISON.columns[1]}</span>
                     {r.b}
                   </p>
                 </div>

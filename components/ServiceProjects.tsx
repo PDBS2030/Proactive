@@ -90,7 +90,7 @@ export function ServiceProjects({
                   <span
                     aria-hidden="true"
                     className={cn(
-                      "absolute left-4 text-[13px] font-medium tracking-[.1em] whitespace-nowrap text-white uppercase transition-opacity duration-300",
+                      "absolute left-4 text-[13px] font-medium tracking-[.08em] whitespace-nowrap text-white uppercase transition-opacity duration-300",
                       "max-md:top-1/2 max-md:-translate-y-1/2",
                       "min-[768px]:bottom-6 min-[768px]:left-1/2 min-[768px]:-translate-x-1/2 min-[768px]:rotate-180 min-[768px]:text-[13px] min-[768px]:[writing-mode:vertical-rl]",
                       on ? "opacity-0" : "opacity-100",
@@ -110,7 +110,7 @@ export function ServiceProjects({
                     on ? "opacity-100 delay-200" : "pointer-events-none opacity-0",
                   )}
                 >
-                  <p className="text-[18px] leading-snug font-semibold tracking-[.03em] uppercase">{x.title}</p>
+                  <p className="text-(length:--h5) leading-(--h5-lh) font-(--h5-weight)">{x.title}</p>
                   <p className="mt-1.5 text-[15px] leading-[1.5] text-white/90">{x.scope}</p>
                   <p className="mt-2 flex flex-wrap gap-x-4 gap-y-0.5 text-[13px] text-white/70">
                     <span>

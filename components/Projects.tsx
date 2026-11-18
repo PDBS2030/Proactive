@@ -157,18 +157,18 @@ export function Projects() {
         </div>
 
         <div className="mt-4 flex flex-col gap-2 font-sans min-[768px]:mt-[1.65cqw] min-[768px]:flex-row min-[768px]:items-stretch min-[768px]:gap-[.75cqw]">
-          <p className="flex h-14 w-full items-center justify-center bg-[#3b608a] text-xl font-semibold text-[#c9dbec] min-[768px]:h-[3.99cqw] min-[768px]:w-[21.24cqw] min-[768px]:text-[1.7cqw]">
+          <p className="flex h-14 w-full items-center justify-center bg-[#3b608a] text-[15px] font-semibold text-[#c9dbec] min-[768px]:h-[3.99cqw] min-[768px]:w-[21.24cqw]">
             Featured:
           </p>
           <p
             aria-live="polite"
-            className="flex h-14 w-full items-center justify-center border border-[#8ea6c4] text-xl font-medium text-[#001f45] min-[768px]:h-[4.04cqw] min-[768px]:w-[41.99cqw] min-[768px]:text-[1.7cqw]"
+            className="flex h-14 w-full items-center justify-center border border-[#8ea6c4] text-[15px] font-medium text-[#001f45] min-[768px]:h-[4.04cqw] min-[768px]:w-[41.99cqw]"
           >
             {tab.featured}
           </p>
           <Link
             href="/projects"
-            className="flex items-center py-2 text-sm font-semibold tracking-[.08em] whitespace-nowrap text-[#001f45] underline decoration-transparent decoration-2 underline-offset-[6px] outline-none transition-[text-decoration-color] duration-250 hover:decoration-gold focus-visible:decoration-gold min-[768px]:ml-auto min-[768px]:h-[3.99cqw] min-[768px]:py-0 min-[768px]:text-[.95cqw] min-[768px]:underline-offset-[.5cqw]"
+            className="flex items-center py-2 text-[.8125rem] font-medium tracking-[.08em] whitespace-nowrap text-[#001f45] underline decoration-transparent decoration-2 underline-offset-[6px] outline-none transition-[text-decoration-color] duration-250 hover:decoration-gold focus-visible:decoration-gold min-[768px]:ml-auto min-[768px]:h-[3.99cqw] min-[768px]:py-0 min-[768px]:underline-offset-[.5cqw]"
           >
             VIEW PROJECT GALLERY
           </Link>

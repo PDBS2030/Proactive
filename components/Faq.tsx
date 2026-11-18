@@ -54,7 +54,7 @@ export function Faq({ data = FAQS, roomy = false }: { data?: typeof FAQS; roomy?
                     aria-expanded={isOpen}
                     aria-controls={`faq-panel-${i}`}
                     onClick={() => toggle(i)}
-                    className="relative block w-full cursor-pointer py-[22px] pr-[60px] text-left text-[22px] leading-[30px] font-bold text-[#020f18] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#020f18] min-[600px]:py-[30px] min-[600px]:text-[30px] min-[600px]:leading-10"
+                    className="relative block w-full cursor-pointer py-[22px] pr-[60px] text-left text-[length:max(18px,calc(var(--h2)*.68))] leading-[1.3] font-medium text-[#020f18] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#020f18] min-[600px]:py-[30px]"
                   >
                     <span>{item.q}</span>
                     <i
@@ -79,7 +79,7 @@ export function Faq({ data = FAQS, roomy = false }: { data?: typeof FAQS; roomy?
                 >
                   <div className="min-h-0 overflow-hidden">
                     <div className="pt-[5px] pb-[35px]">
-                      <p className="text-[17px] leading-7 font-normal text-[#020f18] min-[600px]:text-xl min-[600px]:leading-[31px]">
+                      <p className="font-mulish text-[17px] leading-[1.65] font-normal text-[#020f18]">
                         {item.a}
                       </p>
                     </div>
