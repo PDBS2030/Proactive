@@ -50,7 +50,7 @@ export function Offerings() {
                   className="object-cover object-[center_top] transition-transform duration-500 min-[810px]:group-hover:scale-105 min-[810px]:group-focus-visible:scale-105 motion-reduce:transform-none"
                 />
               </div>
-              <h3 className="flex w-full items-center justify-between gap-3 pt-[15px] text-(length:--h5) leading-(--h5-lh) font-(--h5-weight) text-balance text-[#082b52] min-[810px]:pt-[21px] min-[1240px]:tracking-[-.028em]">
+              <h3 className="flex w-full items-center justify-between gap-3 pt-[15px] text-[17px] leading-[1.22] font-normal tracking-[.015em] text-balance text-[#082b52] min-[810px]:pt-[21px] min-[810px]:text-[length:clamp(14px,1.28cqw,24px)]">
                 {item.title}
                 <span className="self-start">
                   <span
