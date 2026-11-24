@@ -55,7 +55,7 @@ export function Offerings() {
                 <span className="self-start">
                   <span
                     role="presentation"
-                    className="teaser-arrow inline-block size-8 min-h-8 rounded-full bg-[#3ece7b] bg-[position:100%_center] bg-no-repeat transition-[color,background-position,background-color] duration-200 ease-[cubic-bezier(.25,.1,.25,1)] [transition-delay:20ms] group-hover:bg-[#082b52] group-hover:bg-[position:50%_center] group-focus-visible:bg-[#082b52] group-focus-visible:bg-[position:50%_center] group-active:bg-[#3cae6b]"
+                    className="teaser-arrow inline-block size-8 min-h-8 rounded-full bg-transparent bg-[position:100%_center] bg-no-repeat transition-[color,background-position,background-color] duration-200 ease-[cubic-bezier(.25,.1,.25,1)] [transition-delay:20ms] group-hover:bg-[#082b52] group-hover:bg-[position:50%_center] group-focus-visible:bg-[#082b52] group-focus-visible:bg-[position:50%_center] group-active:bg-[#04142a]"
                   />
                 </span>
               </h3>
