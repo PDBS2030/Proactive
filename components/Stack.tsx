@@ -48,22 +48,52 @@ export function StackSection({ children, index }: { children: React.ReactNode; i
  * Scrolls to a section by its natural place in the page. A plain #link would do nothing for a section
  * that is already pinned behind a later one, because the browser sees it as already on screen.
  */
-export function goToSection(e: React.MouseEvent, id: string) {
+function sectionTop(id: string) {
   const el = document.getElementById(id);
-  if (!el) return;
-  e.preventDefault();
+  if (!el) return null;
   const stack = el.closest<HTMLElement>("[data-stack]");
-  let y: number;
   if (stack?.parentElement) {
     let before = 0;
     for (const child of Array.from(stack.parentElement.children)) {
       if (child === stack) break;
       before += (child as HTMLElement).offsetHeight;
     }
-    y = stack.parentElement.getBoundingClientRect().top + window.scrollY + before - reservedTop();
-  } else {
-    y = el.getBoundingClientRect().top + window.scrollY - reservedTop();
+    return stack.parentElement.getBoundingClientRect().top + window.scrollY + before - reservedTop();
   }
+  return el.getBoundingClientRect().top + window.scrollY - reservedTop();
+}
+
+export function goToSection(e: React.MouseEvent, id: string) {
+  const y = sectionTop(id);
+  if (y === null) return;
+  e.preventDefault();
   window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
   history.replaceState(null, "", `#${id}`);
+}
+
+/**
+ * Opens the page at the section named in the address, e.g. /services#design-build, using the same place the
+ * section menu scrolls to, because the browser's own jump lands badly on pinned, overlapping sections.
+ */
+export function HashScroll() {
+  useEffect(() => {
+    const timers: number[] = [];
+    const run = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      if (!id) return;
+      // wait for the sections to set their pinned positions, and once more for images to settle
+      const go = () => {
+        const y = sectionTop(id);
+        if (y !== null) window.scrollTo({ top: Math.max(0, y), behavior: "instant" });
+      };
+      timers.push(window.setTimeout(go, 150), window.setTimeout(go, 700));
+    };
+    run();
+    window.addEventListener("hashchange", run);
+    return () => {
+      window.removeEventListener("hashchange", run);
+      timers.forEach((t) => window.clearTimeout(t));
+    };
+  }, []);
+  return null;
 }

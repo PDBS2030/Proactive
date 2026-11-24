@@ -17,20 +17,20 @@ export const OFFERINGS = {
   heading: "Our core offerings",
   items: [
     {
-      title: "Buildings",
-      href: "/work/buildings",
+      title: "Architecture & Design",
+      href: "/services#architecture",
       image: "/assets/offerings-buildings.jpg",
       alt: "Students walking near a modern university building with autumn trees and clear sky.",
     },
     {
-      title: "Transportation & Infrastructure",
-      href: "/work/transportation-infrastructure",
+      title: "Design-Build",
+      href: "/services#design-build",
       image: "/assets/offerings-infrastructure.jpg",
       alt: "View of a busy suspension bridge with steel towers and traffic over a river in a city.",
     },
     {
-      title: "Commercial development",
-      href: "/work/commercial-development",
+      title: "Construction Management",
+      href: "/services#construction-management",
       image: "/assets/offerings-development.jpg",
       alt: "Modern glass office building at sunset with sunlight reflecting on windows.",
     },

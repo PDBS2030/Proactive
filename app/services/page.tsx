@@ -12,7 +12,7 @@ import { FaintVideo } from "@/components/FaintVideo";
 import { InquiryForm } from "@/components/Inquiry";
 import { PhaseCards } from "@/components/PhaseCards";
 import { ServiceProjects } from "@/components/ServiceProjects";
-import { StackSection } from "@/components/Stack";
+import { HashScroll, StackSection } from "@/components/Stack";
 import { PROJECTS, SERVICE_SLUGS } from "@/lib/pages";
 import { cn } from "@/lib/cn";
 import {
@@ -63,6 +63,7 @@ export default function ServicesPage() {
       <main id="main-content" data-motion className="offerings-vars relative bg-white text-[#082b52]">
         {/* Hero: a full-screen slider with one slide per service, pinned so the sections below slide over it */}
         <ScrollProgress />
+        <HashScroll />
         <ServicesHero
           eyebrow={SERVICES_PAGE.eyebrow}
           title={SERVICES_PAGE.title}
