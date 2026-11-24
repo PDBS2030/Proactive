@@ -130,7 +130,7 @@ export const PHASES = {
 export const SERVICES_FAQS = {
   eyebrow: "Frequently Asked Questions",
   title: "Services FAQs",
-  cta: { label: "Contact Us", href: "/contact" },
+  cta: { label: "Contact us", href: "/contact" },
   items: [
     {
       q: "What is design-build?",

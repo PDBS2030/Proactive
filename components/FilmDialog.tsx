@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { HERO_H1 } from "@/lib/heroType";
+import { ui } from "@/components/PageIntro";
 import { cn } from "@/lib/cn";
 
 export type FilmDialogProps = {
@@ -91,7 +91,7 @@ export function FilmDialog({ id, event, title, outline, statement, rows, paragra
     <dialog
       ref={ref}
       id={`${id}-dialog`}
-      className="film-dialog"
+      className="film-dialog offerings-vars"
       aria-labelledby={`${id}-title`}
       onCancel={(e) => {
         e.preventDefault();
@@ -150,7 +150,7 @@ export function FilmDialog({ id, event, title, outline, statement, rows, paragra
 
             <span aria-hidden="true" className="vision-rise absolute top-0 left-0 h-1 w-24 bg-gold" style={{ ["--d" as string]: "500ms" }} />
             <div className="absolute inset-x-0 bottom-0 p-7 text-white min-[860px]:p-10">
-              <h2 id={`${id}-title`} className={`vision-rise ${HERO_H1} text-white`} style={{ ["--d" as string]: "900ms" }}>
+              <h2 id={`${id}-title`} className={`vision-rise ${ui.title} text-white`} style={{ ["--d" as string]: "900ms" }}>
                 {title}
               </h2>
             </div>
@@ -174,7 +174,7 @@ export function FilmDialog({ id, event, title, outline, statement, rows, paragra
               </svg>
             </button>
 
-            <p className="vision-rise max-w-[24ch] font-jost text-[clamp(26px,2.6vw,40px)] leading-[1.12] font-normal text-[#082b52]" style={{ ["--d" as string]: "1000ms" }}>
+            <p className={`vision-rise max-w-[34ch] ${ui.lead} text-[#082b52]`} style={{ ["--d" as string]: "1000ms" }}>
               {statement}
             </p>
 
@@ -186,7 +186,7 @@ export function FilmDialog({ id, event, title, outline, statement, rows, paragra
                   style={{ ["--d" as string]: `${1200 + i * 150}ms`, ["--ww" as string]: wordWidth }}
                 >
                   <span aria-hidden="true" className="absolute bottom-[-1px] left-0 h-0.5 w-0 bg-gold transition-[width] duration-500 ease-out group-hover:w-full" />
-                  <span className="font-jost text-[26px] leading-none text-[#082b52] transition-colors duration-300 group-hover:text-gold">{p.word}</span>
+                  <span className="text-(length:--h5) leading-(--h5-lh) font-(--h5-weight) text-[#082b52] transition-colors duration-300 group-hover:text-gold">{p.word}</span>
                   <span className="text-[15px] leading-snug text-[#082b52]/85">{p.text}</span>
                 </li>
               ))}
@@ -194,7 +194,7 @@ export function FilmDialog({ id, event, title, outline, statement, rows, paragra
 
             <div className="mt-7 grid gap-4">
               {paragraphs.map((t, i) => (
-                <p key={t} className="vision-rise font-mulish text-[16px] leading-[1.6] text-[#082b52]/90" style={{ ["--d" as string]: `${1200 + rows.length * 150 + 350 + i * 140}ms` }}>
+                <p key={t} className="vision-rise font-mulish text-[17px] leading-[1.65] text-[#082b52]/90" style={{ ["--d" as string]: `${1200 + rows.length * 150 + 350 + i * 140}ms` }}>
                   {t}
                 </p>
               ))}

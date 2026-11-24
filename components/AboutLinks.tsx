@@ -53,7 +53,7 @@ export function AboutLinks({ items }: { items: { id: string; label: string; icon
                 {ICONS[it.icon]}
               </svg>
             </span>
-            <span className="mt-4 text-[26px] leading-snug font-bold underline decoration-2 underline-offset-[6px] transition-colors duration-300 group-hover:text-gold group-focus-visible:text-gold">{it.label}</span>
+            <span className="mt-4 font-jost text-[length:max(18px,calc(var(--h2)*.68))] leading-[1.22] font-normal tracking-normal uppercase underline decoration-2 underline-offset-[6px] transition-colors duration-300 group-hover:text-gold group-focus-visible:text-gold">{it.label}</span>
           </a>
         </li>
       ))}

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { goToSection } from "@/components/Stack";
 import { FOOTER } from "@/lib/data";
 
-const SERVICES = ["Design-build", "Architecture and design", "Construction management", "Not sure yet"];
+const SERVICES = ["Design-Build", "Architecture & Design", "Construction Management", "Not sure yet"];
 const TYPES = ["New construction", "Renovation or addition", "Interior fit-out", "Historic or landmark building", "Industrial conversion", "Other"];
 const SIZES = ["Under $500K", "$500K to $2M", "$2M to $10M", "Over $10M", "Not sure yet"];
 const WHEN = ["As soon as possible", "Within 3 months", "3 to 6 months", "6 to 12 months", "Just exploring"];

@@ -104,7 +104,7 @@ export const ABOUT = {
 
 export type Sector = "Residential" | "Loft & industrial conversions" | "Landmark & brownstone" | "Commercial";
 export type Region = "Maryland" | "DC" | "Virginia";
-export type ServiceType = "Architecture & design" | "Design-build" | "Construction management";
+export type ServiceType = "Architecture & Design" | "Design-Build" | "Construction Management";
 
 export type Project = {
   id: string;
@@ -123,53 +123,53 @@ export type Project = {
 
 /** Address-bar values for the service filter, shared by the Services and Projects pages. */
 export const SERVICE_SLUGS: Record<string, ServiceType> = {
-  architecture: "Architecture & design",
-  "design-build": "Design-build",
-  "construction-management": "Construction management",
+  architecture: "Architecture & Design",
+  "design-build": "Design-Build",
+  "construction-management": "Construction Management",
 };
 
 /** SAMPLE portfolio entries (photos from the prototype gallery, sizes and years invented). Replace with real PDBS projects. */
 export const PROJECTS: Project[] = [
-  { id: "p1", title: "Harbor view residence", city: "Baltimore", region: "Maryland", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/1.jpg", year: 2024, size: "3,800 sq ft", scope: "New residence, designed and built" },
-  { id: "p2", title: "Family home renovation", city: "Bethesda", region: "Maryland", sector: "Residential", service: "Architecture & design", image: "/assets/gallery/residential/2.jpg", year: 2023, size: "2,600 sq ft", scope: "Whole-house renovation and redesign" },
-  { id: "p3", title: "Hillside residence", city: "Arlington", region: "Virginia", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/3.jpg", hero: "/assets/projects/hillside-residence.jpg", year: 2024, size: "4,100 sq ft", scope: "Hillside residence with new structure" },
-  { id: "p4", title: "Warehouse loft conversion", city: "Baltimore", region: "Maryland", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/1.jpg", year: 2023, size: "6,500 sq ft", scope: "Warehouse converted to loft residences" },
-  { id: "p5", title: "Industrial studio", city: "Washington", region: "DC", sector: "Loft & industrial conversions", service: "Construction management", image: "/assets/gallery/loft/2.jpg", year: 2022, size: "5,200 sq ft", scope: "Studio fit-out managed for the owner" },
-  { id: "p6", title: "Factory residences", city: "Alexandria", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/3.jpg", year: 2024, size: "18,000 sq ft", scope: "Factory building converted to homes" },
-  { id: "p7", title: "Historic rowhouse restoration", city: "Washington", region: "DC", sector: "Landmark & brownstone", service: "Architecture & design", image: "/assets/gallery/landmark/1.jpg", year: 2022, size: "3,400 sq ft", scope: "Historic rowhouse restoration and redesign" },
-  { id: "p8", title: "Townhouse renovation", city: "Annapolis", region: "Maryland", sector: "Landmark & brownstone", service: "Design-build", image: "/assets/gallery/landmark/2.jpg", year: 2023, size: "2,900 sq ft", scope: "Townhouse renovation, interiors and systems" },
-  { id: "p9", title: "Landmark facade and interiors", city: "Richmond", region: "Virginia", sector: "Landmark & brownstone", service: "Construction management", image: "/assets/gallery/landmark/3.jpg", year: 2021, size: "22,000 sq ft", scope: "Landmark facade and interiors, managed construction" },
-  { id: "p10", title: "Office interior fit-out", city: "Baltimore", region: "Maryland", sector: "Commercial", service: "Design-build", image: "/assets/gallery/commercial/1.jpg", year: 2024, size: "8,800 sq ft", scope: "Office interior fit-out" },
-  { id: "p11", title: "Academy and learning space", city: "Washington", region: "DC", sector: "Commercial", service: "Construction management", image: "/assets/gallery/commercial/2.jpg", year: 2023, size: "12,000 sq ft", scope: "Learning space built to the owner’s design" },
-  { id: "p12", title: "Retail and showroom", city: "Tysons", region: "Virginia", sector: "Commercial", service: "Architecture & design", image: "/assets/gallery/commercial/3.jpg", year: 2022, size: "5,600 sq ft", scope: "Retail and showroom design" },
-  { id: "p13", title: "Library and fireplace renovation", city: "Bethesda", region: "Maryland", sector: "Residential", service: "Architecture & design", image: "/assets/gallery/residential/4.jpg", year: 2023, size: "2,400 sq ft", scope: "Living room rebuilt around a fireplace wall and built-in library" },
-  { id: "p14", title: "Children’s playroom", city: "Towson", region: "Maryland", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/5.jpg", year: 2022, size: "900 sq ft", scope: "Playroom with built-in cubby storage" },
-  { id: "p15", title: "Homework and play room", city: "Silver Spring", region: "Maryland", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/6.jpg", year: 2023, size: "1,100 sq ft", scope: "Study desk, storage and play space in one room" },
-  { id: "p16", title: "Lower-level fitness and play space", city: "Arlington", region: "Virginia", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/7.jpg", year: 2024, size: "2,800 sq ft", scope: "Finished lower level for family fitness and play" },
-  { id: "p17", title: "Home office with garden view", city: "Fairfax", region: "Virginia", sector: "Residential", service: "Architecture & design", image: "/assets/gallery/residential/8.jpg", year: 2022, size: "320 sq ft", scope: "Built-in desk and shelving under a wide window" },
-  { id: "p18", title: "Lower-level bar and lounge", city: "Annapolis", region: "Maryland", sector: "Residential", service: "Construction management", image: "/assets/gallery/residential/9.jpg", year: 2021, size: "1,500 sq ft", scope: "Entertaining space with a stone-topped bar" },
-  { id: "p19", title: "Primary bath renovation", city: "Washington", region: "DC", sector: "Residential", service: "Design-build", image: "/assets/gallery/residential/10.jpg", year: 2023, size: "260 sq ft", scope: "Bath rebuilt in colored glass tile" },
-  { id: "p20", title: "Loft living room and library", city: "Baltimore", region: "Maryland", sector: "Loft & industrial conversions", service: "Architecture & design", image: "/assets/gallery/loft/4.jpg", year: 2022, size: "1,800 sq ft", scope: "Living space with a built-in library and media wall" },
-  { id: "p21", title: "Loft kitchen and fireplace corner", city: "Washington", region: "DC", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/5.jpg", year: 2023, size: "1,400 sq ft", scope: "Kitchen and hearth corner in a converted loft" },
-  { id: "p22", title: "Loft kitchen with marble island", city: "Alexandria", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/6.jpg", year: 2024, size: "1,300 sq ft", scope: "Walnut kitchen with a marble island" },
-  { id: "p23", title: "Loft cooking suite", city: "Baltimore", region: "Maryland", sector: "Loft & industrial conversions", service: "Construction management", image: "/assets/gallery/loft/7.jpg", year: 2022, size: "1,200 sq ft", scope: "Cooking area with a range hood and wine storage" },
-  { id: "p24", title: "Loft kitchen and breakfast bar", city: "Richmond", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/8.jpg", year: 2021, size: "1,500 sq ft", scope: "Kitchen opened to a breakfast bar and tall windows" },
-  { id: "p25", title: "Loft dining room", city: "Washington", region: "DC", sector: "Loft & industrial conversions", service: "Architecture & design", image: "/assets/gallery/loft/9.jpg", year: 2023, size: "1,900 sq ft", scope: "Dining room set between original columns" },
-  { id: "p26", title: "Open-plan loft", city: "Tysons", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-build", image: "/assets/gallery/loft/10.jpg", year: 2024, size: "2,600 sq ft", scope: "Open plan with a curved wall and walnut storage doors" },
-  { id: "p27", title: "Brownstone living room", city: "Washington", region: "DC", sector: "Landmark & brownstone", service: "Design-build", image: "/assets/gallery/landmark/4.jpg", year: 2023, size: "1,700 sq ft", scope: "Living room with the original brick left exposed" },
-  { id: "p28", title: "Brownstone front parlor", city: "Washington", region: "DC", sector: "Landmark & brownstone", service: "Architecture & design", image: "/assets/gallery/landmark/5.jpg", year: 2022, size: "1,300 sq ft", scope: "Front parlor under bay windows with a new stair" },
-  { id: "p29", title: "Brownstone primary suite", city: "Baltimore", region: "Maryland", sector: "Landmark & brownstone", service: "Design-build", image: "/assets/gallery/landmark/6.jpg", year: 2024, size: "950 sq ft", scope: "Primary suite with exposed brick and new windows" },
-  { id: "p30", title: "Marble bath renovation", city: "Annapolis", region: "Maryland", sector: "Landmark & brownstone", service: "Design-build", image: "/assets/gallery/landmark/7.jpg", year: 2023, size: "180 sq ft", scope: "Bath in large-format marble tile" },
-  { id: "p31", title: "Brownstone stair hall", city: "Alexandria", region: "Virginia", sector: "Landmark & brownstone", service: "Construction management", image: "/assets/gallery/landmark/8.jpg", year: 2021, size: "2,200 sq ft", scope: "Open stair and brick wall restored and lit" },
-  { id: "p32", title: "Brownstone kitchen and dining", city: "Washington", region: "DC", sector: "Landmark & brownstone", service: "Design-build", image: "/assets/gallery/landmark/9.jpg", year: 2024, size: "1,600 sq ft", scope: "Kitchen and dining room opened to the garden" },
-  { id: "p33", title: "Bay-window sitting room", city: "Richmond", region: "Virginia", sector: "Landmark & brownstone", service: "Architecture & design", image: "/assets/gallery/landmark/10.jpg", year: 2022, size: "700 sq ft", scope: "Sitting room in a restored bay with a curved screen" },
-  { id: "p34", title: "Early learning classroom", city: "Baltimore", region: "Maryland", sector: "Commercial", service: "Design-build", image: "/assets/gallery/commercial/4.jpg", year: 2023, size: "2,100 sq ft", scope: "Classroom with play kitchen and built-in storage" },
-  { id: "p35", title: "Classroom and craft kitchen", city: "Washington", region: "DC", sector: "Commercial", service: "Construction management", image: "/assets/gallery/commercial/5.jpg", year: 2022, size: "2,600 sq ft", scope: "Classroom with a craft kitchen in an older building" },
-  { id: "p36", title: "Daylit activity room", city: "Silver Spring", region: "Maryland", sector: "Commercial", service: "Design-build", image: "/assets/gallery/commercial/6.jpg", year: 2024, size: "1,400 sq ft", scope: "Activity room with round ceiling lights" },
-  { id: "p37", title: "Staff kitchen", city: "Fairfax", region: "Virginia", sector: "Commercial", service: "Architecture & design", image: "/assets/gallery/commercial/7.jpg", year: 2022, size: "420 sq ft", scope: "Kitchenette with built-in microwave storage" },
-  { id: "p38", title: "Learning space and pantry", city: "Arlington", region: "Virginia", sector: "Commercial", service: "Construction management", image: "/assets/gallery/commercial/8.jpg", year: 2023, size: "3,000 sq ft", scope: "Learning space with a pantry wall" },
-  { id: "p39", title: "Reading nook", city: "Towson", region: "Maryland", sector: "Commercial", service: "Design-build", image: "/assets/gallery/commercial/9.jpg", year: 2024, size: "600 sq ft", scope: "Raised reading nook under a canopy" },
-  { id: "p40", title: "Light installation lobby", city: "Tysons", region: "Virginia", sector: "Commercial", service: "Architecture & design", image: "/assets/gallery/commercial/10.jpg", year: 2021, size: "900 sq ft", scope: "Lobby ceiling with a linear light installation" },
+  { id: "p1", title: "Harbor view residence", city: "Baltimore", region: "Maryland", sector: "Residential", service: "Design-Build", image: "/assets/gallery/residential/1.jpg", year: 2024, size: "3,800 sq ft", scope: "New residence, designed and built" },
+  { id: "p2", title: "Family home renovation", city: "Bethesda", region: "Maryland", sector: "Residential", service: "Architecture & Design", image: "/assets/gallery/residential/2.jpg", year: 2023, size: "2,600 sq ft", scope: "Whole-house renovation and redesign" },
+  { id: "p3", title: "Hillside residence", city: "Arlington", region: "Virginia", sector: "Residential", service: "Design-Build", image: "/assets/gallery/residential/3.jpg", hero: "/assets/projects/hillside-residence.jpg", year: 2024, size: "4,100 sq ft", scope: "Hillside residence with new structure" },
+  { id: "p4", title: "Warehouse loft conversion", city: "Baltimore", region: "Maryland", sector: "Loft & industrial conversions", service: "Design-Build", image: "/assets/gallery/loft/1.jpg", year: 2023, size: "6,500 sq ft", scope: "Warehouse converted to loft residences" },
+  { id: "p5", title: "Industrial studio", city: "Washington", region: "DC", sector: "Loft & industrial conversions", service: "Construction Management", image: "/assets/gallery/loft/2.jpg", year: 2022, size: "5,200 sq ft", scope: "Studio fit-out managed for the owner" },
+  { id: "p6", title: "Factory residences", city: "Alexandria", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-Build", image: "/assets/gallery/loft/3.jpg", year: 2024, size: "18,000 sq ft", scope: "Factory building converted to homes" },
+  { id: "p7", title: "Historic rowhouse restoration", city: "Washington", region: "DC", sector: "Landmark & brownstone", service: "Architecture & Design", image: "/assets/gallery/landmark/1.jpg", year: 2022, size: "3,400 sq ft", scope: "Historic rowhouse restoration and redesign" },
+  { id: "p8", title: "Townhouse renovation", city: "Annapolis", region: "Maryland", sector: "Landmark & brownstone", service: "Design-Build", image: "/assets/gallery/landmark/2.jpg", year: 2023, size: "2,900 sq ft", scope: "Townhouse renovation, interiors and systems" },
+  { id: "p9", title: "Landmark facade and interiors", city: "Richmond", region: "Virginia", sector: "Landmark & brownstone", service: "Construction Management", image: "/assets/gallery/landmark/3.jpg", year: 2021, size: "22,000 sq ft", scope: "Landmark facade and interiors, managed construction" },
+  { id: "p10", title: "Office interior fit-out", city: "Baltimore", region: "Maryland", sector: "Commercial", service: "Design-Build", image: "/assets/gallery/commercial/1.jpg", year: 2024, size: "8,800 sq ft", scope: "Office interior fit-out" },
+  { id: "p11", title: "Academy and learning space", city: "Washington", region: "DC", sector: "Commercial", service: "Construction Management", image: "/assets/gallery/commercial/2.jpg", year: 2023, size: "12,000 sq ft", scope: "Learning space built to the owner’s design" },
+  { id: "p12", title: "Retail and showroom", city: "Tysons", region: "Virginia", sector: "Commercial", service: "Architecture & Design", image: "/assets/gallery/commercial/3.jpg", year: 2022, size: "5,600 sq ft", scope: "Retail and showroom design" },
+  { id: "p13", title: "Library and fireplace renovation", city: "Bethesda", region: "Maryland", sector: "Residential", service: "Architecture & Design", image: "/assets/gallery/residential/4.jpg", year: 2023, size: "2,400 sq ft", scope: "Living room rebuilt around a fireplace wall and built-in library" },
+  { id: "p14", title: "Children’s playroom", city: "Towson", region: "Maryland", sector: "Residential", service: "Design-Build", image: "/assets/gallery/residential/5.jpg", year: 2022, size: "900 sq ft", scope: "Playroom with built-in cubby storage" },
+  { id: "p15", title: "Homework and play room", city: "Silver Spring", region: "Maryland", sector: "Residential", service: "Design-Build", image: "/assets/gallery/residential/6.jpg", year: 2023, size: "1,100 sq ft", scope: "Study desk, storage and play space in one room" },
+  { id: "p16", title: "Lower-level fitness and play space", city: "Arlington", region: "Virginia", sector: "Residential", service: "Design-Build", image: "/assets/gallery/residential/7.jpg", year: 2024, size: "2,800 sq ft", scope: "Finished lower level for family fitness and play" },
+  { id: "p17", title: "Home office with garden view", city: "Fairfax", region: "Virginia", sector: "Residential", service: "Architecture & Design", image: "/assets/gallery/residential/8.jpg", year: 2022, size: "320 sq ft", scope: "Built-in desk and shelving under a wide window" },
+  { id: "p18", title: "Lower-level bar and lounge", city: "Annapolis", region: "Maryland", sector: "Residential", service: "Construction Management", image: "/assets/gallery/residential/9.jpg", year: 2021, size: "1,500 sq ft", scope: "Entertaining space with a stone-topped bar" },
+  { id: "p19", title: "Primary bath renovation", city: "Washington", region: "DC", sector: "Residential", service: "Design-Build", image: "/assets/gallery/residential/10.jpg", year: 2023, size: "260 sq ft", scope: "Bath rebuilt in colored glass tile" },
+  { id: "p20", title: "Loft living room and library", city: "Baltimore", region: "Maryland", sector: "Loft & industrial conversions", service: "Architecture & Design", image: "/assets/gallery/loft/4.jpg", year: 2022, size: "1,800 sq ft", scope: "Living space with a built-in library and media wall" },
+  { id: "p21", title: "Loft kitchen and fireplace corner", city: "Washington", region: "DC", sector: "Loft & industrial conversions", service: "Design-Build", image: "/assets/gallery/loft/5.jpg", year: 2023, size: "1,400 sq ft", scope: "Kitchen and hearth corner in a converted loft" },
+  { id: "p22", title: "Loft kitchen with marble island", city: "Alexandria", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-Build", image: "/assets/gallery/loft/6.jpg", year: 2024, size: "1,300 sq ft", scope: "Walnut kitchen with a marble island" },
+  { id: "p23", title: "Loft cooking suite", city: "Baltimore", region: "Maryland", sector: "Loft & industrial conversions", service: "Construction Management", image: "/assets/gallery/loft/7.jpg", year: 2022, size: "1,200 sq ft", scope: "Cooking area with a range hood and wine storage" },
+  { id: "p24", title: "Loft kitchen and breakfast bar", city: "Richmond", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-Build", image: "/assets/gallery/loft/8.jpg", year: 2021, size: "1,500 sq ft", scope: "Kitchen opened to a breakfast bar and tall windows" },
+  { id: "p25", title: "Loft dining room", city: "Washington", region: "DC", sector: "Loft & industrial conversions", service: "Architecture & Design", image: "/assets/gallery/loft/9.jpg", year: 2023, size: "1,900 sq ft", scope: "Dining room set between original columns" },
+  { id: "p26", title: "Open-plan loft", city: "Tysons", region: "Virginia", sector: "Loft & industrial conversions", service: "Design-Build", image: "/assets/gallery/loft/10.jpg", year: 2024, size: "2,600 sq ft", scope: "Open plan with a curved wall and walnut storage doors" },
+  { id: "p27", title: "Brownstone living room", city: "Washington", region: "DC", sector: "Landmark & brownstone", service: "Design-Build", image: "/assets/gallery/landmark/4.jpg", year: 2023, size: "1,700 sq ft", scope: "Living room with the original brick left exposed" },
+  { id: "p28", title: "Brownstone front parlor", city: "Washington", region: "DC", sector: "Landmark & brownstone", service: "Architecture & Design", image: "/assets/gallery/landmark/5.jpg", year: 2022, size: "1,300 sq ft", scope: "Front parlor under bay windows with a new stair" },
+  { id: "p29", title: "Brownstone primary suite", city: "Baltimore", region: "Maryland", sector: "Landmark & brownstone", service: "Design-Build", image: "/assets/gallery/landmark/6.jpg", year: 2024, size: "950 sq ft", scope: "Primary suite with exposed brick and new windows" },
+  { id: "p30", title: "Marble bath renovation", city: "Annapolis", region: "Maryland", sector: "Landmark & brownstone", service: "Design-Build", image: "/assets/gallery/landmark/7.jpg", year: 2023, size: "180 sq ft", scope: "Bath in large-format marble tile" },
+  { id: "p31", title: "Brownstone stair hall", city: "Alexandria", region: "Virginia", sector: "Landmark & brownstone", service: "Construction Management", image: "/assets/gallery/landmark/8.jpg", year: 2021, size: "2,200 sq ft", scope: "Open stair and brick wall restored and lit" },
+  { id: "p32", title: "Brownstone kitchen and dining", city: "Washington", region: "DC", sector: "Landmark & brownstone", service: "Design-Build", image: "/assets/gallery/landmark/9.jpg", year: 2024, size: "1,600 sq ft", scope: "Kitchen and dining room opened to the garden" },
+  { id: "p33", title: "Bay-window sitting room", city: "Richmond", region: "Virginia", sector: "Landmark & brownstone", service: "Architecture & Design", image: "/assets/gallery/landmark/10.jpg", year: 2022, size: "700 sq ft", scope: "Sitting room in a restored bay with a curved screen" },
+  { id: "p34", title: "Early learning classroom", city: "Baltimore", region: "Maryland", sector: "Commercial", service: "Design-Build", image: "/assets/gallery/commercial/4.jpg", year: 2023, size: "2,100 sq ft", scope: "Classroom with play kitchen and built-in storage" },
+  { id: "p35", title: "Classroom and craft kitchen", city: "Washington", region: "DC", sector: "Commercial", service: "Construction Management", image: "/assets/gallery/commercial/5.jpg", year: 2022, size: "2,600 sq ft", scope: "Classroom with a craft kitchen in an older building" },
+  { id: "p36", title: "Daylit activity room", city: "Silver Spring", region: "Maryland", sector: "Commercial", service: "Design-Build", image: "/assets/gallery/commercial/6.jpg", year: 2024, size: "1,400 sq ft", scope: "Activity room with round ceiling lights" },
+  { id: "p37", title: "Staff kitchen", city: "Fairfax", region: "Virginia", sector: "Commercial", service: "Architecture & Design", image: "/assets/gallery/commercial/7.jpg", year: 2022, size: "420 sq ft", scope: "Kitchenette with built-in microwave storage" },
+  { id: "p38", title: "Learning space and pantry", city: "Arlington", region: "Virginia", sector: "Commercial", service: "Construction Management", image: "/assets/gallery/commercial/8.jpg", year: 2023, size: "3,000 sq ft", scope: "Learning space with a pantry wall" },
+  { id: "p39", title: "Reading nook", city: "Towson", region: "Maryland", sector: "Commercial", service: "Design-Build", image: "/assets/gallery/commercial/9.jpg", year: 2024, size: "600 sq ft", scope: "Raised reading nook under a canopy" },
+  { id: "p40", title: "Light installation lobby", city: "Tysons", region: "Virginia", sector: "Commercial", service: "Architecture & Design", image: "/assets/gallery/commercial/10.jpg", year: 2021, size: "900 sq ft", scope: "Lobby ceiling with a linear light installation" },
 ];
 
 /** Address of a project's own page, from its title */
@@ -213,9 +213,9 @@ export const SECTOR_BLURB: Record<Sector, string> = {
 
 /** How PDBS worked on a project, by service */
 export const SERVICE_LINE: Record<ServiceType, string> = {
-  "Design-build": "One PDBS team designed and built it under a single contract, so the price and the plan stayed in step.",
-  "Architecture & design": "PDBS provided the architecture and design, checked for buildability and priced as it developed.",
-  "Construction management": "PDBS managed the construction on the owner’s behalf, from preconstruction to closeout.",
+  "Design-Build": "One PDBS team designed and built it under a single contract, so the price and the plan stayed in step.",
+  "Architecture & Design": "PDBS provided the architecture and design, checked for buildability and priced as it developed.",
+  "Construction Management": "PDBS managed the construction on the owner’s behalf, from preconstruction to closeout.",
 };
 
 export const PROJECTS_PAGE = {
@@ -285,9 +285,9 @@ export const PROCESS_PAGE = {
     heading: "Delivery methods",
     lead: "Most clients choose design-build, and we also manage projects you have already designed.",
     items: [
-      { title: "Design-build", text: "One contract and one team for design and construction. The route to the fastest schedule and the clearest accountability.", href: "/services#design-build" },
-      { title: "Construction management", text: "Builder-side oversight for projects with their own architect, from preconstruction to closeout.", href: "/services#construction-management" },
-      { title: "Architecture and design", text: "Design services that are priced and checked for buildability as they develop.", href: "/services#architecture" },
+      { title: "Design-Build", text: "One contract and one team for design and construction. The route to the fastest schedule and the clearest accountability.", href: "/services#design-build" },
+      { title: "Construction Management", text: "Builder-side oversight for projects with their own architect, from preconstruction to closeout.", href: "/services#construction-management" },
+      { title: "Architecture & Design", text: "Design services that are priced and checked for buildability as they develop.", href: "/services#architecture" },
     ],
   },
   cta: { heading: "Ready to start the first step?", button: { label: "Start a conversation", href: "/contact" } },

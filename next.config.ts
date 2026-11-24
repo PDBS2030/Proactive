@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
     inlineCss: true,
   },
   partialPrefetching: true,
+  // The qualities the pages ask for; any other value is quietly lowered to 75
+  images: {
+    qualities: [75, 85, 90, 92],
+  },
   turbopack: {
     rules: {
       "*.css": {

@@ -24,27 +24,27 @@ export default function ContactPage() {
         <section aria-label="Contact details and form" className={`${ui.pad} bg-[#f3f6fa] py-14 min-[768px]:py-[90px]`}>
           <div className={`${ui.wrap} grid items-start gap-14 min-[992px]:grid-cols-12 min-[992px]:gap-x-10`}>
             <div className="min-[992px]:col-span-4">
-              <h2 className={ui.eyebrow}>Headquarters</h2>
+              <p className={ui.eyebrow}>Headquarters</p>
               <div role="img" aria-label="Proactive Design and Building Systems, Inc." className="mt-5 inline-flex items-center gap-3">
                 <BrandLockup />
               </div>
               <address className={`mt-3 ${ui.small} whitespace-pre-line not-italic`}>{FOOTER.office}</address>
 
-              <h2 className={`${ui.eyebrow} mt-10`}>Phone</h2>
+              <p className={`${ui.eyebrow} mt-10`}>Phone</p>
               <p className={`mt-3 ${ui.small}`}>
                 <a href={FOOTER.phone.href} className={ui.link}>
                   {FOOTER.phone.label}
                 </a>
               </p>
 
-              <h2 className={`${ui.eyebrow} mt-10`}>Email</h2>
+              <p className={`${ui.eyebrow} mt-10`}>Email</p>
               <p className={`mt-3 ${ui.small}`}>
                 <a href={`mailto:${FOOTER.email}`} className={ui.link}>
                   {FOOTER.email}
                 </a>
               </p>
 
-              <h2 className={`${ui.eyebrow} mt-10`}>Service area</h2>
+              <p className={`${ui.eyebrow} mt-10`}>Service area</p>
               <p className={`mt-3 ${ui.small}`}>Maryland, DC and Virginia</p>
             </div>
 

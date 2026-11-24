@@ -139,7 +139,7 @@ export function Projects() {
               className={cn(
                 "relative flex min-h-16 cursor-pointer items-center justify-center border-t border-[rgba(162,194,223,.35)] px-[1.6cqw] text-center text-[17px] leading-[1.22] tracking-[.015em] transition-colors duration-300 outline-none",
                 "min-[768px]:min-h-0 min-[768px]:border-t-0 min-[768px]:border-l min-[768px]:text-[length:clamp(14px,1.28cqw,24px)]",
-                i === 0 && "border-t-0 text-[18px] font-bold min-[768px]:border-l-0 min-[768px]:text-[length:clamp(15px,1.33cqw,25px)]",
+                i === 0 && "border-t-0 font-medium min-[768px]:border-l-0",
                 TAB_BG[i],
                 active === i || i === 0 ? "text-white" : "text-[#a2c2df]",
               )}
@@ -168,9 +168,9 @@ export function Projects() {
           </p>
           <Link
             href="/projects"
-            className="flex items-center py-2 text-[.8125rem] font-medium tracking-[.08em] whitespace-nowrap text-[#001f45] underline decoration-transparent decoration-2 underline-offset-[6px] outline-none transition-[text-decoration-color] duration-250 hover:decoration-gold focus-visible:decoration-gold min-[768px]:ml-auto min-[768px]:h-[3.99cqw] min-[768px]:py-0 min-[768px]:underline-offset-[.5cqw]"
+            className="flex items-center py-2 text-[.8125rem] font-medium tracking-[.08em] whitespace-nowrap text-[#001f45] uppercase underline decoration-transparent decoration-2 underline-offset-[6px] outline-none transition-[text-decoration-color] duration-250 hover:decoration-gold focus-visible:decoration-gold min-[768px]:ml-auto min-[768px]:h-[3.99cqw] min-[768px]:py-0 min-[768px]:underline-offset-[.5cqw]"
           >
-            VIEW PROJECT GALLERY
+            View project gallery
           </Link>
         </div>
 

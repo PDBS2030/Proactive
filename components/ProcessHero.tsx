@@ -276,7 +276,7 @@ export function ProcessHero({ title, tagline, states }: { title: string; tagline
           style={{ bottom: "7%" }}
         >
           <span aria-hidden="true" className="w-px flex-1 bg-white" />
-          <span aria-hidden="true" className="flex h-24 w-24 shrink-0 rotate-90 items-center justify-center gap-2 text-base font-bold tracking-[.0625rem] whitespace-nowrap uppercase">
+          <span aria-hidden="true" className="flex h-24 w-24 shrink-0 rotate-90 items-center justify-center gap-2 text-xs font-semibold tracking-[.15em] whitespace-nowrap uppercase">
             Scroll <span aria-hidden="true">→</span>
           </span>
         </a>

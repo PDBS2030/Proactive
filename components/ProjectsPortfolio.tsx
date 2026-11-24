@@ -210,7 +210,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
             aria-expanded={mobile}
             className="my-3 flex min-h-11 w-full cursor-pointer items-center justify-center rounded-md border border-[#082b52] bg-white text-[15px] font-medium text-[#082b52] uppercase outline-none focus-visible:ring-2 focus-visible:ring-[#2356e5]/45 min-[768px]:hidden"
           >
-            {mobile ? "Hide Filters" : "View Filters"}
+            {mobile ? "Hide filters" : "View filters"}
           </button>
 
           <form
@@ -255,7 +255,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
             </div>
           </form>
 
-          <p role="status" aria-live="polite" className="pb-2 text-right text-xs leading-6 tracking-[.15em] text-[#082b52] uppercase min-[768px]:pb-2">
+          <p role="status" aria-live="polite" className="pb-2 text-right text-xs leading-4 tracking-[.15em] text-[#082b52] uppercase min-[768px]:pb-2">
             <b className="font-bold">{shown.length}</b> {shown.length === 1 ? "result" : "results"}
           </p>
         </div>
@@ -310,7 +310,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
               onClick={() => setCount((c) => c + PAGE)}
               className="inline-flex min-h-12 cursor-pointer items-center justify-center bg-[#082b52] px-8 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase outline-none transition-colors duration-200 hover:bg-[#04142a] focus-visible:ring-2 focus-visible:ring-[#2356e5]/60"
             >
-              Load More
+              Load more
             </button>
           </div>
         )}

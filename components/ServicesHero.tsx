@@ -10,9 +10,9 @@ import { goToSection } from "@/components/Stack";
 
 /** The service the popup form chooses for each slide */
 const START_SERVICE: Record<string, string> = {
-  architecture: "Architecture and design",
-  "design-build": "Design-build",
-  "construction-management": "Construction management",
+  architecture: "Architecture & Design",
+  "design-build": "Design-Build",
+  "construction-management": "Construction Management",
 };
 
 export type HeroSlide = {

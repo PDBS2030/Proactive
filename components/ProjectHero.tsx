@@ -27,6 +27,7 @@ export function ProjectHero({ project: p }: { project: Project }) {
 
           <h1 id="project-type" className={`${HERO_H1} mt-6`}>
             {p.sector}
+            <span className="sr-only">: {p.title}, {projectPlace(p)}</span>
           </h1>
           <span aria-hidden="true" className="mt-7 block h-0.5 w-14 bg-gold" />
 

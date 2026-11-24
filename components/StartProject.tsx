@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { InquiryForm } from "@/components/Inquiry";
+import { ui } from "@/components/PageIntro";
 import { FOOTER } from "@/lib/data";
 
 /**
@@ -69,15 +70,15 @@ export function StartProject() {
       onClick={(e) => {
         if (e.target === ref.current) close();
       }}
-      className="m-auto max-h-none w-screen max-w-none overflow-hidden border-0 bg-white p-0 max-md:m-0 max-md:h-dvh max-md:w-dvw text-[#082b52] shadow-[0_40px_120px_-20px_rgba(4,18,40,.65)] min-[768px]:max-h-[min(92dvh,880px)] min-[768px]:w-[min(1040px,calc(100vw-3rem))]"
+      className="offerings-vars m-auto max-h-none w-screen max-w-none overflow-hidden border-0 bg-white p-0 max-md:m-0 max-md:h-dvh max-md:w-dvw text-[#082b52] shadow-[0_40px_120px_-20px_rgba(4,18,40,.65)] min-[768px]:max-h-[min(92dvh,880px)] min-[768px]:w-[min(1040px,calc(100vw-3rem))]"
     >
       {open && (
         <div className="grid h-full min-[768px]:grid-cols-[5fr_7fr]">
           <aside className="relative hidden flex-col justify-between overflow-hidden bg-[#082b52] p-10 text-white min-[768px]:flex">
             <span aria-hidden="true" className="absolute -top-px left-0 h-1 w-24 bg-gold" />
             <div>
-              <p className="text-sm font-semibold text-gold">PDBS</p>
-              <h2 id="start-project-title" className="mt-4 font-jost text-[clamp(30px,3vw,42px)] leading-[1.08] font-normal tracking-normal uppercase">
+              <p className="text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase">PDBS</p>
+              <h2 id="start-project-title" className={`mt-4 ${ui.title}`}>
                 Start a project
               </h2>
               <p className="mt-5 max-w-[34ch] font-mulish text-[17px] leading-[1.65] text-white/85">
@@ -86,7 +87,7 @@ export function StartProject() {
             </div>
             <dl className="grid gap-5 border-t border-white/20 pt-6 text-[15px] leading-snug">
               <div>
-                <dt className="text-sm font-semibold text-gold">Call</dt>
+                <dt className="text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase">Call</dt>
                 <dd className="mt-1">
                   <a href={FOOTER.phone.href} className="text-inherit no-underline hover:underline">
                     {FOOTER.phone.label}
@@ -94,7 +95,7 @@ export function StartProject() {
                 </dd>
               </div>
               <div>
-                <dt className="text-sm font-semibold text-gold">Email</dt>
+                <dt className="text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase">Email</dt>
                 <dd className="mt-1">
                   <a href={`mailto:${FOOTER.email}`} className="text-inherit no-underline hover:underline">
                     {FOOTER.email}
@@ -102,7 +103,7 @@ export function StartProject() {
                 </dd>
               </div>
               <div>
-                <dt className="text-sm font-semibold text-gold">Office</dt>
+                <dt className="text-xs leading-4 font-semibold tracking-[.15em] text-gold uppercase">Office</dt>
                 <dd className="mt-1 whitespace-pre-line">{FOOTER.office}</dd>
               </div>
             </dl>
@@ -121,12 +122,12 @@ export function StartProject() {
               </svg>
             </button>
 
-            <h2 className="mb-6 font-jost text-[26px] leading-[1.1] font-normal uppercase min-[768px]:hidden">Start a project</h2>
+            <h2 className={`mb-6 ${ui.title} min-[768px]:hidden`}>Start a project</h2>
 
             {sent ? (
               <div role="status" className="hero-in my-auto max-w-[44ch]">
                 <span aria-hidden="true" className="block h-0.5 w-12 bg-gold" />
-                <p className="mt-5 font-jost text-[clamp(26px,2.6vw,36px)] leading-[1.1] uppercase">Thank you</p>
+                <p className={`mt-5 ${ui.title}`}>Thank you</p>
                 <p className="mt-4 font-mulish text-[17px] leading-[1.65] text-[#082b52]/90">
                   Your email app should now be open with your project details filled in. Press send there to finish, and we will reply within one business day.
                 </p>

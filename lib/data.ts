@@ -71,11 +71,11 @@ export const PROCESS = {
     { title: "Phase 2", steps: "Steps 6-10", name: "Design Development" },
     { title: "Phase 3", steps: "Steps 11-15", name: "Construction" },
   ],
-  cta: { label: "Learn More About Our Process", href: "/process" },
+  cta: { label: "Learn more about our process", href: "/process" },
 };
 
 export const INSIGHTS = {
-  eyebrow: "PDBS NEWS & EVENTS",
+  eyebrow: "PDBS news & events",
   heading: "What’s Happening at PDBS",
   items: [
     {
@@ -105,7 +105,7 @@ export const INSIGHTS = {
 export const FAQS = {
   eyebrow: "Frequently Asked Questions",
   title: "FAQs",
-  cta: { label: "Contact Us", href: "/contact" },
+  cta: { label: "Contact us", href: "/contact" },
   items: [
     {
       q: "What is the PDBS Advantage?",

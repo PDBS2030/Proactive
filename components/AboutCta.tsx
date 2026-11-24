@@ -3,7 +3,7 @@ import { ui } from "@/components/PageIntro";
 
 /**
  * The closing call to action: a full-width photograph of a client and a designer going over plans, under a
- * deep blue wash so the heading and the button stay clear, with one button that opens the Start a Project popup.
+ * deep blue wash so the heading and the button stay clear, with one button that opens the Start a project popup.
  */
 export function AboutCta({ heading }: { heading: string }) {
   return (
@@ -29,7 +29,7 @@ export function AboutCta({ heading }: { heading: string }) {
           data-start-project
           className="mt-11 inline-flex min-h-[58px] items-center justify-center border border-gold bg-gold px-10 text-[.8125rem] font-medium tracking-[.08em] text-[#04142a] uppercase no-underline outline-none transition-colors duration-300 hover:bg-transparent hover:text-white focus-visible:bg-transparent focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
         >
-          Start a Project
+          Start a project
         </a>
       </div>
     </section>

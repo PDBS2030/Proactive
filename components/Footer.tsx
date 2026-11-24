@@ -2,10 +2,10 @@ import Link from "next/link";
 import { BrandLockup } from "@/components/BrandLockup";
 import { FOOTER, NAV } from "@/lib/data";
 
-const labelBase = "block text-[11px] leading-[16.5px] font-medium text-navy";
+const labelBase = "block text-xs leading-4 font-semibold tracking-[.15em] text-navy";
 const label = `${labelBase} mb-4`;
 const textLink =
-  "inline-flex min-h-8 w-fit items-center text-[13px] leading-5 font-medium text-navy underline decoration-transparent decoration-2 underline-offset-[6px] outline-none transition-[text-decoration-color] duration-300 hover:decoration-gold focus-visible:decoration-gold";
+  "inline-flex min-h-8 w-fit items-center text-[13px] leading-5 font-medium tracking-[.08em] text-navy underline decoration-transparent decoration-2 underline-offset-[6px] outline-none transition-[text-decoration-color] duration-300 hover:decoration-gold focus-visible:decoration-gold";
 
 function Icon({ children }: { children: React.ReactNode }) {
   return (
@@ -59,7 +59,7 @@ export function Footer() {
         <div className="mb-8 grid grid-cols-1 gap-y-8 min-[640px]:grid-cols-[repeat(3,auto)] min-[640px]:justify-between min-[640px]:gap-x-6 min-[768px]:gap-x-10">
           <div>
             <span className={label}>Office</span>
-            <address className="pt-1.5 text-[13px] leading-5 font-medium text-navy not-italic">
+            <address className="pt-1.5 text-[13px] leading-5 font-medium tracking-[.08em] text-navy not-italic">
               {line1}
               <br />
               {line2}
@@ -110,7 +110,7 @@ export function Footer() {
           <a href={FOOTER.credit.href} target="_blank" rel="noopener noreferrer" className={textLink}>
             {FOOTER.credit.label}
           </a>
-          <p className="text-[11px] leading-[16.5px] font-medium text-navy">© 2026</p>
+          <p className="text-xs leading-4 font-medium tracking-[.08em] text-navy">© 2026</p>
         </div>
       </div>
     </footer>

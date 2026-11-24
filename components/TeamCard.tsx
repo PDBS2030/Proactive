@@ -28,8 +28,8 @@ export function TeamCard({ index, name, title, image }: { index: number; name: s
       </div>
       {/* the name and the title on a very dark blue panel */}
       <div className="flex min-h-[8.6rem] flex-col justify-center bg-[#04142a] px-5 py-5 text-center">
-        <span className="block text-[22px] leading-snug font-medium text-white">{name}</span>
-        <span className="mt-1 block text-[20px] leading-snug font-normal text-white/65">{title}</span>
+        <span className="block text-(length:--h5) leading-(--h5-lh) font-(--h5-weight) text-white">{name}</span>
+        <span className="mt-1 block text-[15px] leading-snug font-normal text-white/65">{title}</span>
       </div>
     </button>
   );

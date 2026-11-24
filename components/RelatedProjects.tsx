@@ -7,9 +7,9 @@ import { SERVICE_SLUGS, type Project } from "@/lib/pages";
 import { cn } from "@/lib/cn";
 
 const TABS = [
-  { id: "design-build", label: "Design-build" },
-  { id: "architecture", label: "Architecture & design" },
-  { id: "construction-management", label: "Construction management" },
+  { id: "design-build", label: "Design-Build" },
+  { id: "architecture", label: "Architecture & Design" },
+  { id: "construction-management", label: "Construction Management" },
 ];
 
 /** Completed work for each service, taken from the Projects page data, with a link to the filtered gallery. */

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ui } from "@/components/PageIntro";
 import { FOOTER } from "@/lib/data";
 
 export const OPEN_PERSON = "open-person";
@@ -62,7 +63,7 @@ export function PersonDialog({ people }: { people: Person[] }) {
   return (
     <dialog
       ref={ref}
-      className="film-dialog person-dialog"
+      className="film-dialog person-dialog offerings-vars"
       aria-labelledby="person-name"
       onCancel={(e) => {
         e.preventDefault();
@@ -101,7 +102,7 @@ export function PersonDialog({ people }: { people: Person[] }) {
                 <Image src={p.image} alt={`${p.name}, ${p.title}`} fill sizes="(max-width: 860px) 90vw, 420px" quality={92} className="object-cover object-top" />
               </div>
               <div className="px-6 py-5 text-white">
-                <h2 id="person-name" className="text-[19px] leading-tight font-semibold tracking-[.08em] uppercase">
+                <h2 id="person-name" className={ui.tile}>
                   {p.name}
                 </h2>
                 <p className="mt-1 text-[15px] text-white/75">{p.title}</p>
@@ -110,15 +111,15 @@ export function PersonDialog({ people }: { people: Person[] }) {
           </div>
 
           <div className="flex flex-col justify-center min-[860px]:py-4">
-            <div className="vision-rise flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] font-medium tracking-[.1em] uppercase" style={{ ["--d" as string]: "500ms" }}>
+            <div className="vision-rise flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-[.15em] uppercase" style={{ ["--d" as string]: "500ms" }}>
               <span className="rounded-md bg-[#04142a] px-3.5 py-2.5 font-semibold text-white">Team profile</span>
               <span className="text-[#082b52]/55">| PDBS</span>
-              <span className="text-[#082b52]/55">| Design-build</span>
+              <span className="text-[#082b52]/55">| Design-Build</span>
             </div>
             <hr className="vision-rise my-8 border-0 border-t border-[#082b52]/15" style={{ ["--d" as string]: "650ms" }} />
             <div className="grid max-w-[64ch] gap-5">
               {p.bio.map((t, k) => (
-                <p key={k} className="vision-rise font-mulish text-[18px] leading-[1.6] text-[#082b52]/85" style={{ ["--d" as string]: `${800 + k * 160}ms` }}>
+                <p key={k} className="vision-rise font-mulish text-[17px] leading-[1.65] text-[#082b52]/85" style={{ ["--d" as string]: `${800 + k * 160}ms` }}>
                   {t}
                 </p>
               ))}
@@ -126,7 +127,7 @@ export function PersonDialog({ people }: { people: Person[] }) {
             <div className="vision-rise mt-9 flex flex-wrap gap-3" style={{ ["--d" as string]: `${800 + p.bio.length * 160 + 120}ms` }}>
               <a
                 href={`mailto:${FOOTER.email}?subject=${encodeURIComponent(`For ${p.name}`)}`}
-                className="inline-flex min-h-[54px] items-center gap-3 rounded-md bg-[#04142a] px-6 text-[15px] font-semibold text-white no-underline outline-none transition-colors duration-200 hover:bg-[#082b52] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2356e5]"
+                className="inline-flex min-h-[54px] items-center gap-3 rounded-md bg-[#04142a] px-6 text-[.8125rem] font-medium tracking-[.08em] text-white uppercase no-underline outline-none transition-colors duration-200 hover:bg-[#082b52] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2356e5]"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -138,7 +139,7 @@ export function PersonDialog({ people }: { people: Person[] }) {
                 href="#inquiry"
                 data-start-project
                 onClick={hide}
-                className="inline-flex min-h-[54px] items-center rounded-md border border-[#082b52]/15 bg-white px-6 text-[15px] font-semibold text-[#04142a] no-underline outline-none transition-colors duration-200 hover:border-[#082b52]/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2356e5]"
+                className="inline-flex min-h-[54px] items-center rounded-md border border-[#082b52]/15 bg-white px-6 text-[.8125rem] font-medium tracking-[.08em] text-[#04142a] uppercase no-underline outline-none transition-colors duration-200 hover:border-[#082b52]/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2356e5]"
               >
                 Request consultation
               </a>
