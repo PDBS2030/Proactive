@@ -21,7 +21,7 @@ export function Offerings() {
         <div className="col-span-12 w-full min-[810px]:[container-type:inline-size]">
         <div
           onMouseLeave={() => setActive(null)}
-          className="flex w-full flex-col gap-y-9 min-[810px]:h-[calc((100cqw-24px)*4/9+96px)] min-[810px]:flex-row min-[810px]:items-start min-[810px]:gap-x-3 min-[810px]:gap-y-0"
+          className="flex w-full flex-col gap-y-9 min-[810px]:h-[calc((100cqw-24px)*4/9+46px)] min-[810px]:flex-row min-[810px]:items-start min-[810px]:gap-x-3 min-[810px]:gap-y-0"
         >
           {OFFERINGS.items.map((item, i) => (
             <Link
@@ -39,7 +39,7 @@ export function Offerings() {
               <div
                 className={cn(
                   "relative aspect-[3/2] w-full overflow-hidden min-[810px]:aspect-auto min-[810px]:transition-[height] min-[810px]:duration-500 min-[810px]:ease-[cubic-bezier(.22,1,.36,1)] motion-reduce:transition-none",
-                  active === i ? "min-[810px]:h-[calc((100cqw-24px)*4/9)]" : "min-[810px]:h-[calc((100cqw-24px)/3)]",
+                  active === i ? "min-[810px]:h-[calc((100cqw-24px)*4/9-50px)]" : "min-[810px]:h-[calc((100cqw-24px)/3-50px)]",
                 )}
               >
                 <Image
