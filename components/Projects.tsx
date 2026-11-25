@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { GALLERY_LAYOUT, PROJECT_TABS } from "@/lib/data";
 import { cn } from "@/lib/cn";
@@ -47,6 +48,7 @@ function Gallery({ folder }: { folder: string }) {
 
 /** Explore Projects: each tab features a different property and swaps the gallery. */
 export function Projects() {
+  const router = useRouter();
   const [selected, setSelected] = useState(0);
   const [shown, setShown] = useState(0);
   const [fading, setFading] = useState(false);
@@ -123,7 +125,7 @@ export function Projects() {
               aria-selected={selected === i}
               aria-controls="gallery-panel"
               tabIndex={selected === i ? 0 : -1}
-              onClick={() => select(i)}
+              onClick={() => (t.key === "explore" ? router.push("/projects") : select(i))}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
               onFocus={(e) => e.currentTarget.matches(":focus-visible") && setFocused(i)}
