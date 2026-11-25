@@ -14,7 +14,7 @@ export const HERO = {
 };
 
 export const OFFERINGS = {
-  heading: "Our core offerings",
+  heading: "Our services",
   items: [
     {
       title: "Architecture & Design",
@@ -33,12 +33,6 @@ export const OFFERINGS = {
       href: "/services#construction-management",
       image: "/assets/offerings-development.jpg",
       alt: "Modern glass office building at sunset with sunlight reflecting on windows.",
-    },
-    {
-      title: "Careers",
-      href: "/careers",
-      image: "/assets/offerings-talent.jpg",
-      alt: "Construction workers wearing safety helmets and vests at an outdoor site.",
     },
   ],
 };
