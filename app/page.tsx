@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Intro />
       <main id="main-content" className="relative bg-background">
-        <Header />
+        <Header dark />
         <Hero />
         <Offerings />
         <Projects />

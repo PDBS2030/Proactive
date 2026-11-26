@@ -7,10 +7,9 @@ export const NAV = [
 ] as const;
 
 export const HERO = {
-  title: "Building places that move and inspire",
-  intro:
-    "We construct projects of all types across Maryland, DC and Virginia, with a clear-cut focus: build for a better society.",
-  alt: "Open oak stair with slender black balusters",
+  title: "We are redefining how America builds",
+  intro: "Any scope. Any size. One connected flow.",
+  alt: "Aerial views of a glass tower, a house with a pool and a timber frame going up.",
 };
 
 export const OFFERINGS = {
@@ -18,18 +17,21 @@ export const OFFERINGS = {
   items: [
     {
       title: "Architecture & Design",
+      text: "Design that is priced and buildable from day one.",
       href: "/services#architecture",
       image: "/assets/offerings-buildings.jpg",
       alt: "Students walking near a modern university building with autumn trees and clear sky.",
     },
     {
       title: "Design-Build",
+      text: "One contract, one accountable team.",
       href: "/services#design-build",
       image: "/assets/offerings-infrastructure.jpg",
       alt: "View of a busy suspension bridge with steel towers and traffic over a river in a city.",
     },
     {
       title: "Construction Management",
+      text: "Expert oversight, on your side.",
       href: "/services#construction-management",
       image: "/assets/offerings-development.jpg",
       alt: "Modern glass office building at sunset with sunlight reflecting on windows.",

@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
   images: {
     qualities: [75, 85, 90, 92],
   },
+  // The hero films and their stills never change under the same name, so browsers and the CDN may keep them for a week.
+  async headers() {
+    return [
+      {
+        source: "/assets/hero/:file*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }],
+      },
+    ];
+  },
   turbopack: {
     rules: {
       "*.css": {
