@@ -1,22 +1,47 @@
-import { BrandMark } from "@/components/BrandMark";
+import { MARK_PATHS } from "@/components/BrandMark";
 import { cn } from "@/lib/cn";
 
 /**
- * The full logo: the mark, PROACTIVE, the full descriptor "Design and Building Systems, Inc." spread to the width
- * of the name, and the gold rule beneath. The header and the footer both use it, so they always match. `light`
- * sets the dark parts in white, for the header over the home page's dark hero.
+ * The full logo, drawn as one scalable picture: the mark, the thin gold line, PROACTIVE, the full descriptor and the
+ * gold rule beneath it, and the three services along the foot. It is set in live text and vector shapes, so it stays
+ * sharp at any size and can be turned white (`light`) for the header over the home page's dark hero. Pass the width
+ * you need in `className`; the height follows.
  */
-export function BrandLockup({ light = false }: { light?: boolean }) {
+export function BrandLockup({ light = false, className }: { light?: boolean; className?: string }) {
+  const ink = light ? "fill-white" : "fill-navy";
+  const type = "font-montserrat";
   return (
-    <>
-      <BrandMark light={light} className="h-[34px] md:h-[46px]" />
-      <span className="inline-grid justify-items-start gap-y-[3px]">
-        <span className={cn("font-montserrat text-[22px] leading-none font-extrabold tracking-[-.01em] normal-case transition-colors duration-350 md:text-[30px]", light ? "text-white" : "text-navy")}>PROACTIVE</span>
-        <span className={cn("w-0 min-w-full font-montserrat text-[5.4px] leading-[1.2] font-medium tracking-[.12em] whitespace-nowrap transition-colors duration-350 [text-align-last:justify] [text-align:justify] md:text-[7.4px]", light ? "text-white/85" : "text-[#1c232c]")}>
-          DESIGN AND BUILDING SYSTEMS, INC.
-        </span>
-        <span className="block h-0.5 w-full bg-gold" />
-      </span>
-    </>
+    <svg viewBox="0 0 1600 465" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className={cn("block h-auto w-[220px] flex-none overflow-visible", className)}>
+      {/* the mark */}
+      <svg x="32" y="30" width="298" height="335" viewBox="217 178 823 925">
+        {MARK_PATHS.map((p) => (
+          <path key={p.d} d={p.d} className={p.gold ? "fill-gold" : ink} style={{ transition: "fill 350ms" }} />
+        ))}
+      </svg>
+      <rect x="372" y="73" width="8" height="292" className="fill-gold" />
+
+      {/* the name, the descriptor and the rule */}
+      <text x="417" y="228" fontSize="197" textLength="1135" lengthAdjust="spacingAndGlyphs" className={cn(type, "font-extrabold", ink)} style={{ transition: "fill 350ms" }}>
+        PROACTIVE
+      </text>
+      <text x="417" y="300" fontSize="52" textLength="1146" lengthAdjust="spacingAndGlyphs" className={cn(type, "font-medium", ink)} style={{ transition: "fill 350ms" }}>
+        DESIGN AND BUILDING SYSTEMS, INC.
+      </text>
+      <rect x="417" y="343" width="1145" height="6" className="fill-gold" />
+
+      {/* the services: set at their natural width, with even room around each gold dot, so no word is squeezed */}
+      <text x="33" y="440" fontSize="42" textLength="336" lengthAdjust="spacing" className={cn(type, "font-medium", ink)} style={{ transition: "fill 350ms" }}>
+        ARCHITECTURE
+      </text>
+      <circle cx="413.5" cy="425" r="10" className="fill-gold" />
+      <text x="458" y="440" fontSize="42" className={cn(type, "font-medium", ink)} style={{ transition: "fill 350ms" }}>
+        DESIGN<tspan dx="9">-</tspan>
+        <tspan dx="9">BUILD</tspan>
+      </text>
+      <circle cx="840.5" cy="425" r="10" className="fill-gold" />
+      <text x="885" y="440" fontSize="42" textLength="682" lengthAdjust="spacing" className={cn(type, "font-medium", ink)} style={{ transition: "fill 350ms" }}>
+        CONSTRUCTION MANAGEMENT
+      </text>
+    </svg>
   );
 }

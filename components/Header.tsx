@@ -77,7 +77,7 @@ export function Header({ dark = false }: { dark?: boolean }) {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-60 border-b py-[calc(1rem+20px)] transition-[background-color,border-color] duration-350 ease-out md:py-[calc(.5rem+20px)]",
+          "fixed inset-x-0 top-0 z-60 border-b py-[29.5px] transition-[background-color,border-color] duration-350 ease-out md:py-[19.5px]",
           solid ? "border-foreground/6 bg-white" : "border-transparent bg-transparent",
         )}
       >
@@ -91,7 +91,7 @@ export function Header({ dark = false }: { dark?: boolean }) {
         <div className="px-4 md:px-[124px]">
         <div className="mx-auto flex w-full max-w-[1680px] items-center">
           <Link href="/" aria-label="Proactive Design and Building Systems — home" className="flex min-h-11 min-w-11 items-center gap-3 focus-visible:outline-2 focus-visible:outline-navy/40">
-            <BrandLockup light={over} />
+            <BrandLockup light={over} className="w-[158px] md:w-[220px]" />
           </Link>
 
           <nav aria-label="Main" className="-mr-3 ml-auto hidden items-center gap-1 md:flex">
