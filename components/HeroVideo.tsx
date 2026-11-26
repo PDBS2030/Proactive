@@ -131,7 +131,9 @@ export function HeroVideo() {
         leaving.cancel();
         shade.style.opacity = String(VEIL[to]);
         deepening.cancel();
+        // park the film that has just left on its first frame, decoded and waiting for its next turn
         prev.pause();
+        prev.currentTime = 0;
         current = to;
         moving = false;
         fetchClip((to + 1) % CLIPS.length);
@@ -146,7 +148,13 @@ export function HeroVideo() {
       const to = (current + 1) % CLIPS.length;
       fetchClip(to);
       // the next film must be ready to play through before it is allowed to take over
-      if (vids[to].readyState >= 3) void begin(to);
+      if (vids[to].readyState >= 3) {
+        void begin(to);
+      } else if (v.ended) {
+        // it has not arrived yet and this one has run out: keep the picture moving instead of holding the last frame
+        v.currentTime = 0;
+        void v.play().catch(() => {});
+      }
     };
 
     const resume = () => {
@@ -175,7 +183,8 @@ export function HeroVideo() {
         first.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 900, easing: "ease-out", fill: "both" }).onfinish = () => {
           settle(first, true);
         };
-        timers.push(window.setTimeout(() => fetchClip(1), 1200));
+        timers.push(window.setTimeout(() => fetchClip(1), 600));
+        vids[1].addEventListener("canplaythrough", () => fetchClip(2), { once: true });
       },
       { once: true },
     );

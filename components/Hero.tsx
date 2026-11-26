@@ -156,7 +156,7 @@ export function Hero() {
               </h1>
             </div>
 
-            <div ref={introRef} className="-mt-3 flex flex-col gap-7">
+            <div ref={introRef} className="-mt-3 flex flex-col gap-7 min-[1025px]:gap-[58px]">
               <p className={`max-w-[40rem] text-[17px] leading-7 font-light tracking-[.02em] text-white/90 min-[768px]:text-[22px] min-[768px]:leading-8 ${textShadow}`}>
                 {HERO.intro}
               </p>
