@@ -79,10 +79,7 @@ export function Hero() {
       }
     };
 
-    const onDone = () => requestAnimationFrame(play);
-    if (document.documentElement.dataset.intro !== "play") onDone();
-    else document.addEventListener("intro:done", onDone, { once: true });
-    cleanups.push(() => document.removeEventListener("intro:done", onDone));
+    requestAnimationFrame(play);
 
     // Parallax: the photo drifts 0–30% and the text 0–20% of their height over one hero height of scroll.
     if (!reduced) {
@@ -139,7 +136,6 @@ export function Hero() {
         <div className="mx-auto w-full max-w-[1472px] px-4 min-[768px]:px-16 min-[1025px]:px-28">
           <div className="flex max-w-[70rem] flex-col gap-7 pt-[6.25rem] pb-16 min-[768px]:px-10 min-[768px]:pt-[8.75rem] min-[768px]:pb-20">
             <div className="flex flex-col gap-4">
-              <p className="text-base leading-4 font-bold tracking-[.2em] uppercase">PDBS</p>
               <h1
                 className={`max-w-[62.5rem] font-sans text-[34px] leading-none font-extralight tracking-normal break-words text-white normal-case [text-wrap:initial] min-[768px]:text-[56px] min-[1025px]:text-[76px] min-[1025px]:leading-[.92] ${textShadow}`}
               >

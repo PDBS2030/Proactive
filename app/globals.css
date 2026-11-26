@@ -109,47 +109,6 @@ body {
   }
 }
 
-/* ───── Intro (rhythm) ───── */
-:root { --intro-bg: #9ea6b2; }
-@keyframes rhythm-build {
-  0% { opacity: 0; transform: scaleY(0); }
-  30%, 76% { opacity: 1; transform: scaleY(1); }
-  to { opacity: 0; transform: scaleY(1); }
-}
-@keyframes rhythm-space {
-  0%, 15% { transform: rotateX(55deg) rotate(-26deg) scale(0.8); }
-  55% { transform: rotateX(32deg) rotate(-12deg); }
-  85%, to { transform: rotateX(0) rotate(0) scale(0.85); }
-}
-@keyframes rhythm-name {
-  0%, 57% { opacity: 0; transform: translateY(20px); }
-  69%, 80% { opacity: 1; transform: none; }
-  92%, to { opacity: 0; transform: translateY(-12px); }
-}
-@keyframes rhythm-rule {
-  0% { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-/* The intro screen fades away to reveal the hero */
-@keyframes rhythm-veil {
-  from { background-color: var(--intro-bg); }
-  to { background-color: transparent; }
-}
-
-#rhythm-intro::backdrop { background: var(--intro-bg); }
-#rhythm-intro[open]::backdrop { animation: rhythm-veil .55s 4.85s ease-in-out both; }
-
-/* Cover the page from first paint when the intro is going to play (set by the inline script in layout) */
-/* If an early paint happens before the cover is parsed, the page behind it is still dark, not white */
-html[data-intro="play"] { background-color: var(--intro-bg); }
-html[data-intro="play"] #rhythm-intro:not([open]) { display: block; }
-/* ...but show only the plain gray screen until the dialog opens: the logo mark builds up from nothing, so it must not sit there fully drawn first */
-#rhythm-intro:not([open]) img { opacity: 0; }
-
-@media (prefers-reduced-motion: reduce) {
-  #rhythm-intro:not(.rhythm-explicit) * { animation: none !important; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
