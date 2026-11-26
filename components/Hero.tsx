@@ -135,30 +135,6 @@ export function Hero() {
         />
       </div>
 
-      {/* four hairlines, laid out as on the reference and starting at the foot of the header, not behind it: two straight inside, and an outer pair that run straight down and then bend inward toward the foot */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-[6.5rem] bottom-0 z-2 hidden overflow-hidden [--g:64px] min-[768px]:block min-[1025px]:[--g:112px]">
-        <div className="relative mx-auto h-full w-full max-w-[1552px]">
-          <span className="absolute inset-y-0 left-(--g) border-l-[1.5px] border-white/95" />
-          <span className="absolute inset-y-0 right-(--g) border-r-[1.5px] border-white/95" />
-          <svg
-            viewBox="0 0 318 830"
-            fill="none"
-            preserveAspectRatio="none"
-            className="absolute inset-y-0 left-[calc(var(--g)-5.75rem)] h-full w-[19.875rem] -scale-x-100 overflow-visible"
-          >
-            <path d="M316.53 0V523.53L0.53 839.53" stroke="white" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
-          </svg>
-          <svg
-            viewBox="0 0 318 830"
-            fill="none"
-            preserveAspectRatio="none"
-            className="absolute inset-y-0 right-[calc(var(--g)-5.75rem)] h-full w-[19.875rem] overflow-visible"
-          >
-            <path d="M316.53 0V523.53L0.53 839.53" stroke="white" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
-          </svg>
-        </div>
-      </div>
-
       <div ref={contentRef} className="absolute inset-0 z-3 flex transform-gpu items-center will-change-transform">
         <div className="mx-auto w-full max-w-[1472px] px-4 min-[768px]:px-16 min-[1025px]:px-28">
           <div className="flex max-w-[70rem] flex-col gap-7 pt-[6.25rem] pb-16 min-[768px]:px-10 min-[768px]:pt-[8.75rem] min-[768px]:pb-20">
