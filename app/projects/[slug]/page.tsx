@@ -22,7 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${p.title}, ${p.city}`,
     description: `${p.title}: a ${p.sector.toLowerCase()} project in ${p.city}, ${p.region}. ${p.scope}. Designed and built by Proactive Design and Building Systems.`,
     path: `/projects/${slug}`,
-    image: p.hero || p.image,
+    // resized to share-card size, so the picture is small and fast for WhatsApp, Facebook and the others
+    image: `/_next/image?url=${encodeURIComponent(p.hero || p.image)}&w=1200&q=75`,
   });
 }
 

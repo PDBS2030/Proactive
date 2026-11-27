@@ -3,7 +3,7 @@ import { fontVariables } from "./fonts";
 import { Suspense } from "react";
 import { Motion } from "@/components/Motion";
 import { StartProject } from "@/components/StartProject";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,8 +22,9 @@ export const metadata: Metadata = {
     url: "/",
     title: "Architecture, Design-Build & Construction Management | PDBS",
     description: "Proactive Design and Building Systems offers Architecture & Design, Design-Build and Construction Management across Maryland and DC.",
+    images: [OG_IMAGE],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", images: [OG_IMAGE.url] },
 };
 
 /** Marks the document as able to play reveals; the page shows normally if the reveal script never starts. */
