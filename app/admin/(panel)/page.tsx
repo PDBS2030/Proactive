@@ -3,6 +3,7 @@ import { connection } from "next/server";
 import { BarList, Donut, Spark } from "../charts";
 import { CountUp } from "../CountUp";
 import { HomePreview } from "../HomePreview";
+import { Greeting, TodayLabel } from "../LocalTime";
 import { Icons } from "../icons";
 import { grid, Panel } from "../ui";
 import { PROJECT_TABS } from "@/lib/data";
@@ -13,8 +14,6 @@ const count = <T,>(items: T[], key: (i: T) => string, order: string[]) => order.
 export default async function Overview() {
   await connection();
   const now = new Date();
-  const hour = now.getHours();
-  const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
   const today = now.toISOString().slice(0, 10);
 
   const db = await readDb();
@@ -79,8 +78,8 @@ export default async function Overview() {
         <span aria-hidden="true" className="absolute inset-0 -z-10" style={grid("dark")} />
         <span aria-hidden="true" className="absolute -right-20 -bottom-40 -z-10 h-[420px] w-[70%] rounded-full opacity-90 blur-[110px]" style={{ background: "linear-gradient(270deg,#f7bd2f 0%,#e3a93a 9%,#2a5cf0 38%,#123f9e 70%,#082b52 100%)" }} />
         <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-        <p className="text-[12px] font-semibold tracking-[.22em] text-gold uppercase">{dateText}</p>
-        <h1 className="mt-3 font-sans text-[44px] leading-[1.02] font-extralight tracking-[-.01em] min-[700px]:text-[72px]">{greeting}.</h1>
+        <TodayLabel fallback={dateText} className="text-[12px] font-semibold tracking-[.22em] text-gold uppercase" />
+        <Greeting className="mt-3 font-sans text-[44px] leading-[1.02] font-extralight tracking-[-.01em] min-[700px]:text-[72px]" />
         <p className="mt-4 max-w-[52ch] font-mulish text-[18px] leading-[1.55] text-white/85">
           {unread.length > 0 ? (
             <>
