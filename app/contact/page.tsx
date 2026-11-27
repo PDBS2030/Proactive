@@ -45,7 +45,7 @@ export default function ContactPage() {
               </p>
 
               <p className={`${ui.eyebrow} mt-10`}>Service area</p>
-              <p className={`mt-3 ${ui.small}`}>Maryland, DC and Virginia</p>
+              <p className={`mt-3 ${ui.small}`}>Maryland and DC</p>
             </div>
 
             {/* the form sits on a white platform that lifts a little off the pale page: a hairline border, a gold rule along the top and a soft, low shadow */}

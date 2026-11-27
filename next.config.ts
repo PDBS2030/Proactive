@@ -6,7 +6,9 @@ const nextConfig: NextConfig = {
   // Inline the CSS so the first paint already has the intro cover (an external stylesheet delays it, and the browser shows a white page meanwhile).
   experimental: {
     inlineCss: true,
+    serverActions: { bodySizeLimit: "200mb" },
   },
+  // Uploads from the admin dashboard (photographs, and video files up to a point) are larger than the 1 MB default.
   partialPrefetching: true,
   // The qualities the pages ask for; any other value is quietly lowered to 75
   images: {

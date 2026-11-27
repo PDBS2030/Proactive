@@ -24,7 +24,9 @@ function Chevron() {
 }
 
 /** News & events: three cards whose white panel wipes away on hover (values from the reference). */
-export function Insights() {
+type Card = { image: string; date: string; iso: string; title: string; href: string; kind?: string };
+
+export function Insights({ items = INSIGHTS.items }: { items?: Card[] }) {
   return (
     <section
       aria-labelledby="insights-title"
@@ -40,7 +42,7 @@ export function Insights() {
         </h2>
 
         <div className="mt-12 grid grid-cols-1 gap-6 min-[640px]:grid-cols-2 min-[1024px]:grid-cols-[2fr_1fr_1fr] min-[1024px]:gap-8">
-          {INSIGHTS.items.map((item, i) => {
+          {items.map((item, i) => {
             const lead = i === 0;
             return (
               <Link
@@ -63,6 +65,11 @@ export function Insights() {
                   />
                   <div className="relative flex h-full flex-col p-6 transition-colors duration-300 group-hover:text-white group-focus-visible:text-white min-[1280px]:p-7 motion-reduce:transition-none">
                     <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs leading-4">
+                      {item.kind && (
+                        <span className="font-semibold tracking-[.12em] text-gold uppercase transition-colors duration-300 group-hover:text-white group-focus-visible:text-white">
+                          {item.kind}
+                        </span>
+                      )}
                       <time
                         dateTime={item.iso}
                         className="text-[#4a6690] transition-colors duration-300 group-hover:text-white/70 group-focus-visible:text-white/70"

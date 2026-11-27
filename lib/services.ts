@@ -2,7 +2,7 @@ export const SERVICES_PAGE = {
   eyebrow: "Services",
   title: "One team, from first sketch to final handover",
   lead: "Architecture, design-build and construction management under one roof, so design decisions and construction realities are made together, with one accountable partner from the first meeting to the keys.",
-  regions: "Maryland · DC · Virginia",
+  regions: "Maryland · DC",
   primaryCta: { label: "Start a project", href: "#inquiry" },
   secondaryCta: { label: "See our process", href: "/process" },
   image: "/assets/hero.jpg",
@@ -98,7 +98,7 @@ export const COMPARISON = {
 
 export const MARKETS = {
   heading: "Markets we serve",
-  lead: "Projects of all types across Maryland, DC and Virginia.",
+  lead: "Projects of all types across Maryland and DC.",
   items: [
     { title: "Buildings", href: "/work/buildings", image: "/assets/offerings-buildings.jpg", alt: "Modern university building" },
     {
@@ -146,7 +146,7 @@ export const SERVICES_FAQS = {
     },
     {
       q: "Where do you work?",
-      a: "We construct projects of all types across Maryland, DC and Virginia, from our office in Baltimore.",
+      a: "We construct projects of all types across Maryland and DC, from our office in Baltimore.",
     },
     {
       q: "How do we get started?",

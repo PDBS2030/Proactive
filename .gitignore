@@ -43,3 +43,7 @@ next-env.d.ts
 # local tooling
 .claude/
 Thumbs.db
+
+# admin dashboard (local mock): its saved data and uploaded pictures
+/data/
+/public/uploads/

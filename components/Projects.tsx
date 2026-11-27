@@ -47,7 +47,7 @@ function Gallery({ folder }: { folder: string }) {
 }
 
 /** Explore Projects: each tab features a different property and swaps the gallery. */
-export function Projects() {
+export function Projects({ featured }: { featured?: Record<string, string> }) {
   const router = useRouter();
   const [selected, setSelected] = useState(0);
   const [shown, setShown] = useState(0);
@@ -166,7 +166,7 @@ export function Projects() {
             aria-live="polite"
             className="flex h-14 w-full items-center justify-center border border-[#8ea6c4] text-[15px] font-medium text-[#001f45] min-[768px]:h-[4.04cqw] min-[768px]:w-[41.99cqw]"
           >
-            {tab.featured}
+            {featured?.[tab.key] ?? tab.featured}
           </p>
           <Link
             href="/projects"

@@ -5,7 +5,7 @@
  */
 export const QUALIFICATIONS: { label: string; value: string }[] = [
   { label: "Repeat business", value: "80–90%" },
-  { label: "Regions served", value: "Maryland, DC and Virginia" },
+  { label: "Regions served", value: "Maryland and DC" },
   { label: "Services under one roof", value: "Architecture, design-build and construction management" },
   // To be supplied by PDBS:
   { label: "Contractor licence numbers", value: "" },

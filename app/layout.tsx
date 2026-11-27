@@ -6,7 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Proactive Design and Building Systems",
-  description: "Proactive Design and Building Systems — design-build across Maryland, DC and Virginia.",
+  description: "Proactive Design and Building Systems — design-build across Maryland and DC.",
 };
 
 /** Marks the document as able to play reveals; the page shows normally if the reveal script never starts. */

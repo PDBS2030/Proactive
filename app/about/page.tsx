@@ -14,7 +14,7 @@ import { ABOUT } from "@/lib/pages";
 export const metadata: Metadata = {
   title: "About — Proactive Design and Building Systems",
   description:
-    "Proactive Design and Building Systems is a Baltimore design-build firm serving Maryland, DC and Virginia.",
+    "Proactive Design and Building Systems is a Baltimore design-build firm serving Maryland and DC.",
 };
 
 export default function AboutPage() {

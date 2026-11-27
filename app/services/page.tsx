@@ -13,7 +13,8 @@ import { InquiryForm } from "@/components/Inquiry";
 import { PhaseCards } from "@/components/PhaseCards";
 import { ServiceProjects } from "@/components/ServiceProjects";
 import { HashScroll, StackSection } from "@/components/Stack";
-import { PROJECTS, SERVICE_SLUGS } from "@/lib/pages";
+import { getProjects } from "@/lib/db";
+import { SERVICE_SLUGS } from "@/lib/pages";
 import { cn } from "@/lib/cn";
 import {
   COMPARISON,
@@ -28,7 +29,7 @@ import { FOOTER } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Services — Proactive Design and Building Systems",
   description:
-    "Architecture, design-build and construction management from one accountable team, serving Maryland, DC and Virginia.",
+    "Architecture, design-build and construction management from one accountable team, serving Maryland and DC.",
 };
 
 const NAV_ITEMS = [
@@ -102,7 +103,7 @@ export default function ServicesPage() {
                 <ServiceProjects
                   serviceId={s.id}
                   serviceName={s.name}
-                  projects={PROJECTS.filter((p) => p.service === SERVICE_SLUGS[s.id]).slice(0, 5)}
+                  projects={getProjects().filter((p) => p.service === SERVICE_SLUGS[s.id]).slice(0, 5)}
                 />
               </div>
               {/* The text runs from the top edge of the project accordion to its bottom edge, with even space between its parts */}

@@ -9,7 +9,7 @@ import { HERO_H1 } from "@/lib/heroType";
 import { ui } from "@/components/PageIntro";
 
 const PAGE = 24;
-const REGIONS: Region[] = ["Maryland", "DC", "Virginia"];
+const REGIONS: Region[] = ["Maryland", "DC"];
 const slugify = (v: string) => v.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 type Group = { heading?: string; options: string[] };
