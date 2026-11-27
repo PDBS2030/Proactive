@@ -26,8 +26,8 @@ export const OFFERINGS = {
       title: "Design-Build",
       text: "One contract, one accountable team.",
       href: "/services#design-build",
-      image: "/assets/offerings-infrastructure.jpg",
-      alt: "View of a busy suspension bridge with steel towers and traffic over a river in a city.",
+      image: "/assets/offerings-design-build.jpg",
+      alt: "A two-storey stone and stucco home with a dark hipped roof and large black-framed windows, lit warmly at dusk.",
     },
     {
       title: "Construction Management",
