@@ -33,8 +33,8 @@ export const OFFERINGS = {
       title: "Construction Management",
       text: "Expert oversight, on your side.",
       href: "/services#construction-management",
-      image: "/assets/offerings-development.jpg",
-      alt: "Modern glass office building at sunset with sunlight reflecting on windows.",
+      image: "/assets/offerings-construction-management.jpg",
+      alt: "A two-storey brick and panel building with a glazed entrance, seen across its parking lot under an overcast sky.",
     },
   ],
 };
