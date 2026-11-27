@@ -49,7 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Motion />
         </Suspense>
         <StartProject />
-        <MobileBar />
+        <Suspense fallback={null}>
+          <MobileBar />
+        </Suspense>
       </body>
     </html>
   );
