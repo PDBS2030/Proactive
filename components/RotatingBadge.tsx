@@ -1,6 +1,6 @@
 import { BrandMark } from "@/components/BrandMark";
 
-const RING = "proactivedbs.com • proactivedbs.com • ";
+const RING = "proactivedbs.com •";
 
 /**
  * A round badge: a frosted pale disc with the web address running round its edge, which turns slowly, and the
@@ -14,9 +14,12 @@ export function RotatingBadge({ className = "" }: { className?: string }) {
           <path id="badge-ring-path" d="M100 100 m-76 0 a76 76 0 1 1 152 0 a76 76 0 1 1 -152 0" />
         </defs>
         <text className="fill-[#082b52]" style={{ fontSize: 17, fontWeight: 400, fontFamily: "var(--font-sans)" }}>
-          <textPath href="#badge-ring-path" textLength="473" lengthAdjust="spacing">
-            {RING}
-          </textPath>
+          {/* two halves, each stretched to exactly half the circle, so the ring always closes whatever the font does */}
+          {[0, 50].map((at) => (
+            <textPath key={at} href="#badge-ring-path" startOffset={`${at}%`} textLength="234" lengthAdjust="spacing">
+              {RING}
+            </textPath>
+          ))}
         </text>
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
