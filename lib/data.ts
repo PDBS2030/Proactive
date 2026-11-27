@@ -117,6 +117,6 @@ export const FAQS = {
 export const FOOTER = {
   office: "6505 Liberty Road,\nBaltimore, MD 21207",
   email: "info@proactivedbs.com",
-  phone: { label: "443.226.8700", href: "tel:+14432268700" },
+  phone: { label: "(443) 226-8700", href: "tel:+14432268700" },
   credit: { label: "Designed by MAYRIAN", href: "https://www.mayrian.com/" },
 };
