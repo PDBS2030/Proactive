@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { fontVariables } from "./fonts";
+import { Suspense } from "react";
 import { Motion } from "@/components/Motion";
 import { StartProject } from "@/components/StartProject";
 import "./globals.css";
@@ -26,7 +27,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         {children}
-        <Motion />
+        <Suspense fallback={null}>
+          <Motion />
+        </Suspense>
         <StartProject />
       </body>
     </html>
