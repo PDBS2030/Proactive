@@ -8,6 +8,10 @@
   --font-jost: var(--f-jost), var(--f-hanken), sans-serif;
 }
 
+:root {
+  color-scheme: only light;
+}
+
 @theme {
   --color-background: oklch(96.2% 0.004 75);
   --color-foreground: oklch(20.5% 0.004 75);

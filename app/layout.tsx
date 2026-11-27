@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { fontVariables } from "./fonts";
 import { Suspense } from "react";
 import { MobileBar } from "@/components/MobileBar";
@@ -6,6 +6,13 @@ import { Motion } from "@/components/Motion";
 import { StartProject } from "@/components/StartProject";
 import { OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
+
+/**
+ * The site has one set of colours (a light page with a deep blue hero), designed as is. "only light" tells the browser
+ * not to recolour it: without it, an Android phone with dark mode forced on for all sites inverts the gold buttons and
+ * their text (the Contact us button turned red-brown with white text).
+ */
+export const viewport: Viewport = { colorScheme: "only light" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
