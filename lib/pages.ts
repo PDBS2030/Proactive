@@ -42,13 +42,13 @@ export const ABOUT = {
     /** Names, titles and portraits as on the earlier PDBS site (about-us page); the biographies are DRAFT role descriptions. Replace with the real team when ready */
     people: [
       {
-        name: "John Smith",
-        title: "Principal Architect",
+        name: "Seun Owojuyigbe",
+        title: "Chief Executive Officer",
         image: "/assets/team/team-1.jpg",
         bio: [
-          "John leads architecture at PDBS, shaping each project from the first sketch so that the design is buildable, priced and coordinated before construction starts.",
-          "He works with owners, engineers and trades through every design phase, keeping decisions clear and the whole picture in view.",
-          "John stays involved from the preliminary study to handover, so the team that designs your building is the team that delivers it.",
+          "Seun leads PDBS as Chief Executive Officer, setting the direction of the firm and standing behind every project from the first sketch to handover.",
+          "Seun works with owners, engineers and trades, keeping decisions clear and the whole picture in view.",
+          "Seun stays involved throughout, so the team that designs your building is the team that delivers it.",
         ],
       },
       {
