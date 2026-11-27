@@ -5,8 +5,8 @@ import { CATEGORY_TAB, getProjects, readDb } from "@/lib/db";
 
 export default async function FeaturedAdmin({ searchParams }: { searchParams: Promise<{ saved?: string }> }) {
   const { saved } = await searchParams;
-  const db = readDb();
-  const projects = getProjects().map((p) => ({ id: p.id, title: p.title, city: p.city, image: p.image, sector: p.sector }));
+  const db = await readDb();
+  const projects = (await getProjects()).map((p) => ({ id: p.id, title: p.title, city: p.city, image: p.image, sector: p.sector }));
   return (
     <Page
       eyebrow="Home page"

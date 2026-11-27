@@ -4,11 +4,14 @@ import { INSIGHTS, PROJECT_TABS } from "@/lib/data";
 import { PROJECTS, type Project, type Sector } from "@/lib/pages";
 import type { Video } from "@/lib/video";
 
+import { cacheLife, cacheTag } from "next/cache";
+import { get, put } from "@vercel/blob";
+
 /**
- * The store behind the admin dashboard. For now it is one JSON file (data/db.json) on the developer's machine, so the
- * dashboard can be built and approved on localhost. Anything not yet edited falls back to the content that is written
- * in the code, so the live site reads exactly what it always has. The file cannot be written on the host, so the
- * dashboard is switched off there until a real database is connected: swap `readDb` and `writeDb` for it.
+ * The store behind the admin dashboard. On the developer's machine it is one JSON file (data/db.json). On the host it is
+ * one private Vercel Blob (db.json), so it survives deploys and is never public. Anything not yet edited falls back to
+ * the content written in the code, so the site reads exactly what it always has. The public pages read a cached copy
+ * (tag "db") that every dashboard save refreshes; the dashboard itself always reads the stored file.
  */
 
 export type NewsItem = {
@@ -53,49 +56,78 @@ export const CATEGORY_TAB: Record<Sector, string> = {
 };
 
 const FILE = path.join(process.cwd(), "data", "db.json");
+const BLOB_NAME = "db.json";
 
-/** The dashboard can only save where the project's folder is writable, which is the developer's machine. */
-export const canWrite = !process.env.VERCEL && process.env.NODE_ENV !== "production";
+/** On the host the data lives in a private Blob store; on the developer's machine, in a file. */
+const onHost = Boolean(process.env.VERCEL);
+const dataToken = () => process.env.PDBS_DATA_BLOB_TOKEN;
+
+/** Whether the dashboard has somewhere to save: always on the developer's machine, on the host once the data store is connected. */
+export const canWrite = onHost ? Boolean(dataToken()) : process.env.NODE_ENV !== "production";
 
 const empty = (): Db => ({ projects: null, featured: {}, news: null, messages: [], videos: [] });
 
-export function readDb(): Db {
+export async function readDb(): Promise<Db> {
   try {
+    if (onHost) {
+      const res = await get(BLOB_NAME, { access: "private", token: dataToken(), useCache: false });
+      if (!res || res.statusCode !== 200) return empty();
+      return { ...empty(), ...(JSON.parse(await new Response(res.stream).text()) as Partial<Db>) };
+    }
     return { ...empty(), ...(JSON.parse(fs.readFileSync(FILE, "utf8")) as Partial<Db>) };
   } catch {
     return empty();
   }
 }
 
-export function writeDb(db: Db) {
+export async function writeDb(db: Db) {
   if (!canWrite) throw new Error("The store cannot be written here.");
+  if (onHost) {
+    await put(BLOB_NAME, JSON.stringify(db), {
+      access: "private",
+      token: dataToken(),
+      allowOverwrite: true,
+      addRandomSuffix: false,
+      contentType: "application/json",
+    });
+    return;
+  }
   fs.mkdirSync(path.dirname(FILE), { recursive: true });
   fs.writeFileSync(FILE, JSON.stringify(db, null, 2));
 }
 
-export const update = (change: (db: Db) => void) => {
-  const db = readDb();
+export const update = async (change: (db: Db) => void) => {
+  const db = await readDb();
   change(db);
-  writeDb(db);
+  await writeDb(db);
 };
+
+/** What the public pages read: the stored content without the visitors' messages, kept until a dashboard save refreshes it. */
+async function readPublic(): Promise<Omit<Db, "messages">> {
+  "use cache";
+  cacheTag("db");
+  cacheLife("days");
+  const { messages: _messages, ...rest } = await readDb();
+  return rest;
+}
 
 /* ── what the rest of the site reads ── */
 
-export function getProjects(): Project[] {
-  return readDb().projects ?? PROJECTS;
+export async function getProjects(): Promise<Project[]> {
+  return (await readPublic()).projects ?? PROJECTS;
 }
 
 const defaultNews = (): NewsItem[] =>
   INSIGHTS.items.map((n, i) => ({ id: `n${i + 1}`, title: n.title, date: n.iso, kind: "News", summary: "", href: n.href, image: n.image }));
 
-export function getNews(): NewsItem[] {
-  return [...(readDb().news ?? defaultNews())].sort((a, b) => b.date.localeCompare(a.date));
+export async function getNews(): Promise<NewsItem[]> {
+  return [...((await readPublic()).news ?? defaultNews())].sort((a, b) => b.date.localeCompare(a.date));
 }
 
 /** The three newest, as the home page's cards want them. */
-export function getLatestNews() {
+export async function getLatestNews() {
   const fmt = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
-  return getNews()
+  return (await getNews())
     .slice(0, 3)
     .map((n) => ({
       image: n.image || "/assets/offerings-development.jpg",
@@ -108,8 +140,8 @@ export function getLatestNews() {
 }
 
 /** The line shown after "Featured:" on each tab: the chosen project, or the wording written in the code. */
-export function getFeaturedLines(): Record<string, string> {
-  const db = readDb();
+export async function getFeaturedLines(): Promise<Record<string, string>> {
+  const db = await readPublic();
   const projects = db.projects ?? PROJECTS;
   const lines: Record<string, string> = {};
   for (const tab of PROJECT_TABS) {
@@ -119,13 +151,13 @@ export function getFeaturedLines(): Record<string, string> {
   return lines;
 }
 
-export const getVideos = (): Video[] => readDb().videos;
-export const getProjectVideos = (projectId: string): Video[] => readDb().videos.filter((v) => v.projectId === projectId);
-export const getHomeVideos = (): Video[] => readDb().videos.filter((v) => v.onHome);
+export const getVideos = async (): Promise<Video[]> => (await readPublic()).videos;
+export const getProjectVideos = async (projectId: string): Promise<Video[]> => (await getVideos()).filter((v) => v.projectId === projectId);
+export const getHomeVideos = async (): Promise<Video[]> => (await getVideos()).filter((v) => v.onHome);
 
-export function addMessage(m: Omit<Message, "id" | "at" | "handled">): boolean {
+export async function addMessage(m: Omit<Message, "id" | "at" | "handled">): Promise<boolean> {
   if (!canWrite) return false;
-  update((db) => {
+  await update((db) => {
     db.messages.unshift({ ...m, id: `m${Date.now()}`, at: new Date().toISOString(), handled: false });
   });
   return true;

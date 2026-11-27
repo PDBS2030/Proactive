@@ -9,13 +9,13 @@ import { VideoPlayer } from "@/components/VideoPlayer";
 import { getProjectVideos, getProjects } from "@/lib/db";
 import { projectPhotos, projectSlug } from "@/lib/pages";
 
-export function generateStaticParams() {
-  return getProjects().map((p) => ({ slug: projectSlug(p) }));
+export async function generateStaticParams() {
+  return (await getProjects()).map((p) => ({ slug: projectSlug(p) }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const p = getProjects().find((x) => projectSlug(x) === slug);
+  const p = (await getProjects()).find((x) => projectSlug(x) === slug);
   if (!p) return {};
   return {
     title: `${p.title} — Proactive Design and Building Systems`,
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const p = getProjects().find((x) => projectSlug(x) === slug);
+  const p = (await getProjects()).find((x) => projectSlug(x) === slug);
   if (!p) notFound();
 
   return (
@@ -34,10 +34,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <main id="main-content" className="offerings-vars relative bg-white text-[#082b52]">
         <ProjectHero project={p} />
 
-        {getProjectVideos(p.id).length > 0 && (
+        {(await getProjectVideos(p.id)).length > 0 && (
           <section aria-label={`Films of ${p.title}`} className="bg-white px-4 pt-14 min-[768px]:px-[124px] min-[768px]:pt-20">
             <div className="mx-auto grid w-full max-w-[1680px] gap-[6px]">
-              {getProjectVideos(p.id).map((v) => (
+              {(await getProjectVideos(p.id)).map((v) => (
                 <VideoPlayer key={v.id} video={v} />
               ))}
             </div>

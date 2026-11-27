@@ -9,17 +9,17 @@ import { Process } from "@/components/Process";
 import { Projects } from "@/components/Projects";
 import { getFeaturedLines, getLatestNews } from "@/lib/db";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <main id="main-content" className="relative bg-background">
         <Header dark />
         <Hero />
         <Offerings />
-        <Projects featured={getFeaturedLines()} />
+        <Projects featured={await getFeaturedLines()} />
         <Films />
         <Process />
-        <Insights items={getLatestNews()} />
+        <Insights items={await getLatestNews()} />
         <Faq />
       </main>
       <Footer />

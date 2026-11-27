@@ -5,8 +5,8 @@ import { getHomeVideos } from "@/lib/db";
  * Films: the videos chosen for the home page in the dashboard. With none chosen the section is not there at all, so it adds
  * nothing to the page. Each one is a still picture until it is pressed, then plays in place (see VideoPlayer).
  */
-export function Films() {
-  const videos = getHomeVideos();
+export async function Films() {
+  const videos = await getHomeVideos();
   if (videos.length === 0) return null;
   const [lead, ...rest] = videos;
   return (

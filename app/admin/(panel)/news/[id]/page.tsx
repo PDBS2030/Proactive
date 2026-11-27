@@ -1,14 +1,17 @@
+import { UploadField } from "../../../UploadField";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { saveNews } from "../../../actions";
 import { Field, ghost, input, Notice, Page, primary } from "../../../ui";
 import { getNews } from "@/lib/db";
+import { mediaReady } from "@/lib/media";
 
 export default async function NewsForm({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ error?: string }> }) {
   const { id } = await params;
   const { error } = await searchParams;
   const isNew = id === "new";
-  const n = isNew ? undefined : getNews().find((x) => x.id === id);
+  const direct = mediaReady();
+  const n = isNew ? undefined : (await getNews()).find((x) => x.id === id);
   if (!isNew && !n) notFound();
   const today = new Date().toISOString().slice(0, 10);
 
@@ -42,7 +45,7 @@ export default async function NewsForm({ params, searchParams }: { params: Promi
             // eslint-disable-next-line @next/next/no-img-element
             <img src={n.image} alt="" className="mt-2 h-28 w-44 bg-[#e6ebf2] object-cover" />
           )}
-          <input id="image" name="image" type="file" accept="image/jpeg,image/png,image/webp" className={`${input} !py-2`} />
+          <UploadField id="image" name="image" accept="image/jpeg,image/png,image/webp" direct={direct} maxMb={8} />
           <span className="mt-1 block text-[13px] text-[#082b52]/60">Leave empty to keep the current one. A tall photograph works best on the card.</span>
         </Field>
 

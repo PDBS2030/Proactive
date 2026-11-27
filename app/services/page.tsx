@@ -57,7 +57,8 @@ function Check() {
   );
 }
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const allProjects = await getProjects();
   return (
     <>
       <Header />
@@ -103,7 +104,7 @@ export default function ServicesPage() {
                 <ServiceProjects
                   serviceId={s.id}
                   serviceName={s.name}
-                  projects={getProjects().filter((p) => p.service === SERVICE_SLUGS[s.id]).slice(0, 5)}
+                  projects={allProjects.filter((p) => p.service === SERVICE_SLUGS[s.id]).slice(0, 5)}
                 />
               </div>
               {/* The text runs from the top edge of the project accordion to its bottom edge, with even space between its parts */}

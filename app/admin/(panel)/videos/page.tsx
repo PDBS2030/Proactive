@@ -7,8 +7,8 @@ import { videoPoster } from "@/lib/video";
 
 export default async function VideosAdmin({ searchParams }: { searchParams: Promise<{ saved?: string; deleted?: string }> }) {
   const { saved, deleted } = await searchParams;
-  const videos = getVideos();
-  const projects = getProjects();
+  const videos = await getVideos();
+  const projects = await getProjects();
   return (
     <Page
       eyebrow="Films"

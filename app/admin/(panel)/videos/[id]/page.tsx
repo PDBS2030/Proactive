@@ -1,9 +1,11 @@
+import { UploadField } from "../../../UploadField";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { saveVideo } from "../../../actions";
 import { Field, ghost, input, Notice, Page, primary } from "../../../ui";
 import { VideoSource } from "../../../VideoSource";
 import { getProjects, getVideos } from "@/lib/db";
+import { mediaReady } from "@/lib/media";
 
 const ERRORS: Record<string, string> = {
   title: "The video needs a title.",
@@ -15,9 +17,10 @@ export default async function VideoForm({ params, searchParams }: { params: Prom
   const { id } = await params;
   const { error } = await searchParams;
   const isNew = id === "new";
-  const v = isNew ? undefined : getVideos().find((x) => x.id === id);
+  const direct = mediaReady();
+  const v = isNew ? undefined : (await getVideos()).find((x) => x.id === id);
   if (!isNew && !v) notFound();
-  const projects = getProjects();
+  const projects = await getProjects();
 
   return (
     <Page eyebrow="Films" title={isNew ? "Add a video" : "Edit video"} lead="Choose the source, then where it shows. A still picture stands in for it until a visitor presses play.">
@@ -30,14 +33,14 @@ export default async function VideoForm({ params, searchParams }: { params: Prom
           <input id="title" name="title" required defaultValue={v?.title} className={input} />
         </Field>
 
-        <VideoSource kind={v?.kind ?? "youtube"} youtube={v?.kind === "youtube" ? v.src : ""} srcPath={v?.kind === "file" ? v.src : ""} />
+        <VideoSource direct={direct} kind={v?.kind ?? "youtube"} youtube={v?.kind === "youtube" ? v.src : ""} srcPath={v?.kind === "file" ? v.src : ""} />
 
         <Field id="posterFile" name="Still picture (optional)">
           {v?.poster && (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={v.poster} alt="" className="mt-2 h-24 w-40 bg-[#e6ebf2] object-cover" />
           )}
-          <input id="posterFile" name="posterFile" type="file" accept="image/jpeg,image/png,image/webp" className={`${input} !py-2`} />
+          <UploadField id="posterFile" name="posterFile" accept="image/jpeg,image/png,image/webp" direct={direct} maxMb={8} />
           <span className="mt-1 block text-[13px] text-[#082b52]/60">Shown until the video is played. For YouTube, leave it empty to use YouTube&apos;s own picture. For a file, add one, or it shows a plain navy panel.</span>
         </Field>
         <Field id="description" name="Short description (optional)">

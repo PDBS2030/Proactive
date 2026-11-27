@@ -1,8 +1,10 @@
+import { UploadField } from "../../../UploadField";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { saveProject } from "../../../actions";
 import { Field, ghost, input, Notice, Page, primary } from "../../../ui";
 import { CATEGORY_TAB, getProjects, readDb } from "@/lib/db";
+import { mediaReady } from "@/lib/media";
 
 const SECTORS = ["Residential", "Loft & industrial conversions", "Landmark & brownstone", "Commercial"];
 const REGIONS = ["Maryland", "DC"];
@@ -12,13 +14,14 @@ export default async function ProjectForm({ params, searchParams }: { params: Pr
   const { id } = await params;
   const { error } = await searchParams;
   const isNew = id === "new";
-  const p = isNew ? undefined : getProjects().find((x) => x.id === id);
-  const featured = readDb().featured;
-  const all = getProjects();
+  const direct = mediaReady();
+  const p = isNew ? undefined : (await getProjects()).find((x) => x.id === id);
+  const featured = (await readDb()).featured;
+  const all = await getProjects();
   if (!isNew && !p) notFound();
 
   return (
-    <Page title={isNew ? "Add a project" : "Edit project"} lead="Fill in the property, add its photographs, and tick “Featured property” at the foot if it should be the one featured for its category. Photographs are saved to this computer's public/uploads folder.">
+    <Page title={isNew ? "Add a project" : "Edit project"} lead="Fill in the property, add its photographs, and tick “Featured property” at the foot if it should be the one featured for its category.">
       {error && <Notice tone="bad">A title and a city are needed.</Notice>}
       <form action={saveProject} className="grid gap-5 border border-[#082b52]/15 bg-white p-6 min-[700px]:grid-cols-2 min-[700px]:p-8">
         <input type="hidden" name="id" value={p?.id ?? ""} />
@@ -67,7 +70,7 @@ export default async function ProjectForm({ params, searchParams }: { params: Pr
             // eslint-disable-next-line @next/next/no-img-element
             <img src={p.image} alt="" className="mt-2 h-28 w-44 bg-[#e6ebf2] object-cover" />
           )}
-          <input id="image" name="image" type="file" accept="image/jpeg,image/png,image/webp" className={`${input} !py-2`} />
+          <UploadField id="image" name="image" accept="image/jpeg,image/png,image/webp" direct={direct} maxMb={8} />
           <span className="mt-1 block text-[13px] text-[#082b52]/60">Leave empty to keep the current one.</span>
         </Field>
         <Field id="hero" name="Large photograph for the project's own page (optional)">
@@ -75,7 +78,7 @@ export default async function ProjectForm({ params, searchParams }: { params: Pr
             // eslint-disable-next-line @next/next/no-img-element
             <img src={p.hero} alt="" className="mt-2 h-28 w-44 bg-[#e6ebf2] object-cover" />
           )}
-          <input id="hero" name="hero" type="file" accept="image/jpeg,image/png,image/webp" className={`${input} !py-2`} />
+          <UploadField id="hero" name="hero" accept="image/jpeg,image/png,image/webp" direct={direct} maxMb={8} />
         </Field>
 
         <fieldset className="border border-gold/60 bg-gold/8 p-4 min-[700px]:col-span-2">

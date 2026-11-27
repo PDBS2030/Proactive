@@ -12,7 +12,7 @@ import { readDb } from "@/lib/db";
 
 async function Gate({ children }: { children: React.ReactNode }) {
   if (!(await isAdmin())) redirect("/admin/login");
-  const unread = readDb().messages.filter((m) => !m.handled).length;
+  const unread = (await readDb()).messages.filter((m) => !m.handled).length;
   return (
     <div className="min-[900px]:grid min-[900px]:min-h-screen min-[900px]:grid-cols-[272px_1fr]">
       <aside className="relative isolate flex flex-col gap-8 overflow-hidden bg-[#04142a] px-3 py-8 text-white min-[900px]:sticky min-[900px]:top-0 min-[900px]:h-screen">

@@ -17,9 +17,9 @@ export default async function Overview() {
   const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
   const today = now.toISOString().slice(0, 10);
 
-  const db = readDb();
-  const projects = getProjects();
-  const news = getNews();
+  const db = await readDb();
+  const projects = await getProjects();
+  const news = await getNews();
   const unread = db.messages.filter((m) => !m.handled);
   const featuredSet = PROJECT_TABS.filter((t) => db.featured[t.key]).length;
   const upcoming = news.filter((n) => n.kind === "Event" && n.date >= today).sort((a, b) => a.date.localeCompare(b.date));

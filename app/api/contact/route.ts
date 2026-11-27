@@ -40,7 +40,7 @@ export async function POST(request: Request) {
   }
 
   // keep a copy for the admin inbox wherever the store can be written (the developer's machine for now)
-  const stored = addMessage({ first, last, email, phone, topic, message });
+  const stored = await addMessage({ first, last, email, phone, topic, message });
 
   const key = process.env.RESEND_API_KEY;
   if (!key) return stored ? Response.json({ ok: true }) : Response.json({ error: "not_configured" }, { status: 503 });

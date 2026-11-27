@@ -2,7 +2,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { endSession, isAdmin, passwordOk, startSession } from "@/lib/admin-auth";
 import { PROJECT_TABS } from "@/lib/data";
@@ -24,8 +24,17 @@ const pick = <T extends string>(f: FormData, k: string, options: readonly T[]) =
   return options.includes(v) ? v : options[0];
 };
 
+/** An address sent by the browser after it uploaded a file straight to the media store; anything else is ignored. */
+function uploaded(f: FormData, field: string) {
+  const url = String(f.get(`${field}Url`) ?? "").trim();
+  return /^https:\/\/[a-z0-9-]+\.public\.blob\.vercel-storage\.com\//.test(url) ? url : "";
+}
+
 /** Saves an uploaded picture under public/uploads and returns its address; keeps `current` when nothing was chosen. */
 async function picture(f: FormData, field: string, current: string) {
+  const direct = uploaded(f, field);
+  if (direct) return direct;
+  if (process.env.VERCEL) return current;
   const file = f.get(field);
   if (!(file instanceof File) || file.size === 0) return current;
   if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size > 8 * 1024 * 1024) return current;
@@ -40,6 +49,9 @@ async function picture(f: FormData, field: string, current: string) {
 
 /** Saves an uploaded video file under public/uploads/videos and returns its address; keeps `current` when nothing was chosen. */
 async function film(f: FormData, field: string, current: string) {
+  const direct = uploaded(f, field);
+  if (direct) return direct;
+  if (process.env.VERCEL) return current;
   const file = f.get(field);
   if (!(file instanceof File) || file.size === 0) return current;
   if (!/^video\/(mp4|webm|quicktime)$/.test(file.type) || file.size > 190 * 1024 * 1024) return current;
@@ -52,7 +64,10 @@ async function film(f: FormData, field: string, current: string) {
   return `/uploads/videos/${name}`;
 }
 
-const refresh = () => revalidatePath("/", "layout");
+const refresh = () => {
+  updateTag("db");
+  revalidatePath("/", "layout");
+};
 
 /* ── sign in and out ── */
 
@@ -72,7 +87,7 @@ export async function logout() {
 export async function saveProject(form: FormData) {
   await guard();
   const id = text(form, "id", 40);
-  const existing = readDb().projects?.find((p) => p.id === id) ?? PROJECTS.find((p) => p.id === id);
+  const existing = (await readDb()).projects?.find((p) => p.id === id) ?? PROJECTS.find((p) => p.id === id);
   const title = text(form, "title", 120);
   const city = text(form, "city", 80);
   if (!title || !city) redirect(id ? `/admin/projects/${id}?error=1` : "/admin/projects/new?error=1");
@@ -89,7 +104,7 @@ export async function saveProject(form: FormData) {
     size: text(form, "size", 60),
     scope: text(form, "scope", 200),
   };
-  update((db) => {
+  await update((db) => {
     const list = db.projects ?? [...PROJECTS];
     const at = list.findIndex((p) => p.id === project.id);
     if (at >= 0) list[at] = project;
@@ -108,7 +123,7 @@ export async function saveProject(form: FormData) {
 export async function deleteProject(form: FormData) {
   await guard();
   const id = text(form, "id", 40);
-  update((db) => {
+  await update((db) => {
     db.projects = (db.projects ?? [...PROJECTS]).filter((p) => p.id !== id);
     for (const k of Object.keys(db.featured)) if (db.featured[k] === id) delete db.featured[k];
   });
@@ -121,10 +136,10 @@ export async function deleteProject(form: FormData) {
 /** The star on a project: make it the featured property of its category (replacing the one there), or let go of it. */
 export async function toggleFeatured(id: string) {
   await guard();
-  const project = getProjects().find((p) => p.id === id);
+  const project = (await getProjects()).find((p) => p.id === id);
   if (!project) return;
   const tab = CATEGORY_TAB[project.sector];
-  update((db) => {
+  await update((db) => {
     if (db.featured[tab] === id) delete db.featured[tab];
     else db.featured[tab] = id;
   });
@@ -133,7 +148,7 @@ export async function toggleFeatured(id: string) {
 
 export async function saveFeatured(form: FormData) {
   await guard();
-  update((db) => {
+  await update((db) => {
     for (const tab of PROJECT_TABS) {
       const id = text(form, tab.key, 40);
       if (id) db.featured[tab.key] = id;
@@ -149,7 +164,7 @@ export async function saveFeatured(form: FormData) {
 export async function saveNews(form: FormData) {
   await guard();
   const id = text(form, "id", 40);
-  const existing = getNews().find((n) => n.id === id);
+  const existing = (await getNews()).find((n) => n.id === id);
   const title = text(form, "title", 200);
   const date = text(form, "date", 10);
   if (!title || !/^\d{4}-\d{2}-\d{2}$/.test(date)) redirect(id ? `/admin/news/${id}?error=1` : "/admin/news/new?error=1");
@@ -162,8 +177,9 @@ export async function saveNews(form: FormData) {
     href: text(form, "href", 300),
     image: await picture(form, "image", text(form, "imagePath", 300)),
   };
-  update((db) => {
-    const list = db.news ?? getNews();
+  const fallback = await getNews();
+  await update((db) => {
+    const list = db.news ?? fallback;
     const at = list.findIndex((n) => n.id === item.id);
     if (at >= 0) list[at] = item;
     else list.push(item);
@@ -176,8 +192,9 @@ export async function saveNews(form: FormData) {
 export async function deleteNews(form: FormData) {
   await guard();
   const id = text(form, "id", 40);
-  update((db) => {
-    db.news = (db.news ?? getNews()).filter((n) => n.id !== id);
+  const fallback = await getNews();
+  await update((db) => {
+    db.news = (db.news ?? fallback).filter((n) => n.id !== id);
   });
   refresh();
   redirect("/admin/news?deleted=1");
@@ -212,7 +229,7 @@ export async function saveVideo(form: FormData) {
     projectId: text(form, "projectId", 40),
     onHome: form.get("onHome") === "on",
   };
-  update((db) => {
+  await update((db) => {
     const at = db.videos.findIndex((v) => v.id === video.id);
     if (at >= 0) db.videos[at] = video;
     else db.videos.unshift(video);
@@ -224,7 +241,7 @@ export async function saveVideo(form: FormData) {
 export async function deleteVideo(form: FormData) {
   await guard();
   const id = text(form, "id", 40);
-  update((db) => {
+  await update((db) => {
     db.videos = db.videos.filter((v) => v.id !== id);
   });
   refresh();
@@ -237,7 +254,7 @@ export async function setHandled(form: FormData) {
   await guard();
   const id = text(form, "id", 40);
   const handled = text(form, "handled") === "1";
-  update((db) => {
+  await update((db) => {
     const m = db.messages.find((x) => x.id === id);
     if (m) m.handled = handled;
   });
@@ -248,7 +265,7 @@ export async function setHandled(form: FormData) {
 export async function deleteMessage(form: FormData) {
   await guard();
   const id = text(form, "id", 40);
-  update((db) => {
+  await update((db) => {
     db.messages = db.messages.filter((m) => m.id !== id);
   });
   revalidatePath("/admin", "layout");

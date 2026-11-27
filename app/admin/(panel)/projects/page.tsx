@@ -7,8 +7,8 @@ import { projectPlace } from "@/lib/pages";
 
 export default async function ProjectsAdmin({ searchParams }: { searchParams: Promise<{ saved?: string; deleted?: string }> }) {
   const { saved, deleted } = await searchParams;
-  const featured = readDb().featured;
-  const cards = getProjects().map((p) => ({ id: p.id, title: p.title, place: projectPlace(p), sector: p.sector, service: p.service, year: p.year, image: p.image, tab: CATEGORY_TAB[p.sector] }));
+  const featured = (await readDb()).featured;
+  const cards = (await getProjects()).map((p) => ({ id: p.id, title: p.title, place: projectPlace(p), sector: p.sector, service: p.service, year: p.year, image: p.image, tab: CATEGORY_TAB[p.sector] }));
   return (
     <Page
       eyebrow="Portfolio"

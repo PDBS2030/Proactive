@@ -9,7 +9,7 @@ export default async function NewsAdmin({ searchParams }: { searchParams: Promis
   await connection();
   const { saved, deleted } = await searchParams;
   const today = new Date().toISOString().slice(0, 10);
-  const items = getNews();
+  const items = await getNews();
   const onHome = new Set(items.slice(0, 3).map((n) => n.id));
 
   // group by month, newest first

@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
   // The qualities the pages ask for; any other value is quietly lowered to 75
   images: {
     qualities: [75, 85, 90, 92],
+    // photographs uploaded from the dashboard live in the public media store
+    remotePatterns: [{ protocol: "https", hostname: "*.public.blob.vercel-storage.com" }],
   },
   // The hero films and their stills never change under the same name, so browsers and the CDN may keep them for a week.
   async headers() {
