@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: "Architecture, Design-Build & Construction Management | PDBS",
     template: `%s — ${SITE_NAME}`,
   },
-  description: "Proactive Design and Building Systems offers Architecture & Design, Design-Build and Construction Management across Maryland and DC, from our Baltimore office.",
+  description: "Proactive Design and Building Systems offers Architecture & Design, Design-Build and Construction Management across Maryland and DC.",
   applicationName: "PDBS",
   alternates: { canonical: "/" },
   openGraph: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     title: "Architecture, Design-Build & Construction Management | PDBS",
-    description: "Proactive Design and Building Systems offers Architecture & Design, Design-Build and Construction Management across Maryland and DC, from our Baltimore office.",
+    description: "Proactive Design and Building Systems offers Architecture & Design, Design-Build and Construction Management across Maryland and DC.",
   },
   twitter: { card: "summary_large_image" },
 };
