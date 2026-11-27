@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { adminAvailable } from "@/lib/admin-auth";
 
 export const metadata: Metadata = {
-  title: "Admin — Proactive Design and Building Systems",
+  title: { absolute: "Admin — Proactive Design and Building Systems" },
   robots: { index: false, follow: false },
 };
 

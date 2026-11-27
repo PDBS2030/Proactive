@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { BrandLockup } from "@/components/BrandLockup";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
@@ -8,10 +9,11 @@ import { ui } from "@/components/PageIntro";
 import { FOOTER } from "@/lib/data";
 import { CONTACT } from "@/lib/pages";
 
-export const metadata: Metadata = {
-  title: "Contact — Proactive Design and Building Systems",
-  description: "Contact Proactive Design and Building Systems in Baltimore, Maryland.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Contact",
+  description: "Tell us about your project. Contact Proactive Design and Building Systems in Baltimore, Maryland, through the form or at info@proactivedbs.com.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   const c = CONTACT;

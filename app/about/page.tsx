@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { AboutCta } from "@/components/AboutCta";
@@ -11,11 +12,11 @@ import { ui } from "@/components/PageIntro";
 import { ScrollProgress } from "@/components/MotionBits";
 import { ABOUT } from "@/lib/pages";
 
-export const metadata: Metadata = {
-  title: "About — Proactive Design and Building Systems",
-  description:
-    "Proactive Design and Building Systems is a Baltimore design-build firm serving Maryland and DC.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "About",
+  description: "Proactive Design and Building Systems is a Baltimore design-build firm. Our vision, values and people, and how we build for a better society across Maryland and DC.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   const a = ABOUT;

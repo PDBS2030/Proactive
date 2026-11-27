@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { AboutCta } from "@/components/AboutCta";
 import { Footer } from "@/components/Footer";
@@ -17,10 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = (await getProjects()).find((x) => projectSlug(x) === slug);
   if (!p) return {};
-  return {
-    title: `${p.title} — Proactive Design and Building Systems`,
-    description: `${p.sector} project in ${p.city}, ${p.region}. ${p.scope}.`,
-  };
+  return pageMeta({
+    title: `${p.title}, ${p.city}`,
+    description: `${p.title}: a ${p.sector.toLowerCase()} project in ${p.city}, ${p.region}. ${p.scope}. Designed and built by Proactive Design and Building Systems.`,
+    path: `/projects/${slug}`,
+    image: p.hero || p.image,
+  });
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {

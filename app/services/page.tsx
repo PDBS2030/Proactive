@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Faq } from "@/components/Faq";
@@ -26,11 +27,11 @@ import {
 } from "@/lib/services";
 import { FOOTER } from "@/lib/data";
 
-export const metadata: Metadata = {
-  title: "Services — Proactive Design and Building Systems",
-  description:
-    "Architecture, design-build and construction management from one accountable team, serving Maryland and DC.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Services",
+  description: "Architecture and design, design-build and construction management from one accountable team, for projects of any size across Maryland and DC.",
+  path: "/services",
+});
 
 const NAV_ITEMS = [
   ...SERVICE_LIST.map((s) => ({ id: s.id, label: s.name })),

@@ -3,11 +3,27 @@ import { fontVariables } from "./fonts";
 import { Suspense } from "react";
 import { Motion } from "@/components/Motion";
 import { StartProject } from "@/components/StartProject";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Proactive Design and Building Systems",
-  description: "Proactive Design and Building Systems — design-build across Maryland and DC.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Proactive Design and Building Systems (PDBS) — Design-Build in Maryland and DC",
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: "PDBS is a Baltimore design-build firm. Architecture and design, design-build and construction management across Maryland and DC, in one connected flow.",
+  applicationName: "PDBS",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    locale: "en_US",
+    url: "/",
+    title: "Proactive Design and Building Systems (PDBS) — Design-Build in Maryland and DC",
+    description: "A Baltimore design-build firm. Architecture and design, design-build and construction management across Maryland and DC.",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 /** Marks the document as able to play reveals; the page shows normally if the reveal script never starts. */

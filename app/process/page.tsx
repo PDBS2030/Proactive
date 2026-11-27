@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -11,10 +12,11 @@ import { StackSection } from "@/components/Stack";
 import { FOOTER } from "@/lib/data";
 import { COMMITMENTS, HERO_STATES, PHASES, PROCESS_FAQS, PROCESS_HERO } from "@/lib/process";
 
-export const metadata: Metadata = {
-  title: "Process — Proactive Design and Building Systems",
-  description: "Our design-build process: fifteen steps in three phases, from preliminary study to handover.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Our Process",
+  description: "How a PDBS design-build project runs: fifteen steps in three phases, from the preliminary study to handover, with one team accountable throughout.",
+  path: "/process",
+});
 
 const COMMITMENT_IMAGES = [
   { src: "/assets/offerings-talent.jpg", position: "center 72%" },
