@@ -46,9 +46,9 @@ export const ABOUT = {
         title: "Chief Executive Officer",
         image: "/assets/team/team-1.jpg",
         bio: [
-          "Seun leads PDBS as Chief Executive Officer, setting the direction of the firm and standing behind every project from the first sketch to handover.",
-          "Seun works with owners, engineers and trades, keeping decisions clear and the whole picture in view.",
-          "Seun stays involved throughout, so the team that designs your building is the team that delivers it.",
+          "Seun is the Chief Executive Officer of Proactive Design and Building Systems Inc., a certified MBE/DBE design-build firm serving Maryland and the Mid-Atlantic region. With over 25 years of experience in architecture, construction, and integrated project delivery, Seun leads the firm with a commitment to technical excellence, disciplined project management, and client-focused service. He is a member of the American Institute of Architects (AIA).",
+          "His leadership emphasizes precise coordination, clear communication, and a seamless workflow from concept through completion. Seun oversees all phases of project development, including architectural coordination, budgeting, subcontractor management, and field supervision.",
+          "Under his leadership, Proactive Design and Building Systems Inc. has earned a reputation for strong cost control, reliable scheduling, and exceptional craftsmanship. Clients value his hands-on involvement, attention to detail, and ability to anticipate and address challenges before they affect project outcomes.",
         ],
       },
       {
