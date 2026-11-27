@@ -19,8 +19,8 @@ export const OFFERINGS = {
       title: "Architecture & Design",
       text: "Design that is priced and buildable from day one.",
       href: "/services#architecture",
-      image: "/assets/offerings-buildings.jpg",
-      alt: "Students walking near a modern university building with autumn trees and clear sky.",
+      image: "/assets/offerings-architecture.jpg",
+      alt: "A two-storey stone and stucco home with a dark hipped roof and large black-framed windows, lit warmly at dusk.",
     },
     {
       title: "Design-Build",
