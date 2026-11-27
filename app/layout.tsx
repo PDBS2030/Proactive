@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { fontVariables } from "./fonts";
 import { Suspense } from "react";
+import { MobileBar } from "@/components/MobileBar";
 import { Motion } from "@/components/Motion";
 import { StartProject } from "@/components/StartProject";
 import { OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Motion />
         </Suspense>
         <StartProject />
+        <MobileBar />
       </body>
     </html>
   );

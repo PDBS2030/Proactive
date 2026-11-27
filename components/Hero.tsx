@@ -160,7 +160,7 @@ export function Hero() {
               <p className={`max-w-[40rem] text-[17px] leading-7 font-light tracking-[.02em] text-white/90 min-[768px]:text-[22px] min-[768px]:leading-8 ${textShadow}`}>
                 {HERO.intro}
               </p>
-              <div className="flex flex-col items-stretch gap-[1.5625rem] min-[768px]:flex-row min-[768px]:items-center">
+              <div className="flex flex-row items-stretch gap-3 min-[768px]:items-center min-[768px]:gap-[1.5625rem]">
                 <HeroCta href="/contact">Contact us</HeroCta>
                 <HeroCta href="/services" outline>
                   Explore services
@@ -183,9 +183,9 @@ function HeroCta({ href, outline, children }: { href: string; outline?: boolean;
     </svg>
   );
   return (
-    <Link href={href} className="group inline-block w-full no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white min-[768px]:w-auto">
+    <Link href={href} className="group inline-block min-w-0 flex-1 no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white min-[768px]:w-auto min-[768px]:flex-none">
       <span
-        className={`flex min-h-[3.25rem] items-center justify-center overflow-hidden px-5 py-4 text-base font-medium min-[1025px]:text-lg ${
+        className={`flex h-full min-h-[3.25rem] items-center justify-center overflow-hidden px-3 py-3 text-[15px] font-medium min-[420px]:px-5 min-[768px]:py-4 min-[768px]:text-base min-[1025px]:text-lg ${
           outline ? "border border-white/95 text-white" : "bg-gold text-[#04142a]"
         }`}
       >
@@ -196,7 +196,7 @@ function HeroCta({ href, outline, children }: { href: string; outline?: boolean;
               <span aria-hidden="true" className="block h-5 leading-5 whitespace-nowrap">{children}</span>
             </span>
           </span>
-          <span className="block size-5 overflow-hidden">
+          <span className="block size-5 overflow-hidden max-[379px]:hidden">
             <span className={roll}>
               {arrow}
               {arrow}
