@@ -9,10 +9,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Proactive Design and Building Systems (PDBS) — Design-Build in Maryland and DC",
+    default: "Architecture, Design-Build & Construction Management | PDBS",
     template: `%s — ${SITE_NAME}`,
   },
-  description: "PDBS is a Baltimore design-build firm. Architecture and design, design-build and construction management across Maryland and DC, in one connected flow.",
+  description: "Proactive Design and Building Systems offers Architecture & Design, Design-Build and Construction Management across Maryland and DC, from our Baltimore office.",
   applicationName: "PDBS",
   alternates: { canonical: "/" },
   openGraph: {
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: "en_US",
     url: "/",
-    title: "Proactive Design and Building Systems (PDBS) — Design-Build in Maryland and DC",
-    description: "A Baltimore design-build firm. Architecture and design, design-build and construction management across Maryland and DC.",
+    title: "Architecture, Design-Build & Construction Management | PDBS",
+    description: "Proactive Design and Building Systems offers Architecture & Design, Design-Build and Construction Management across Maryland and DC, from our Baltimore office.",
   },
   twitter: { card: "summary_large_image" },
 };
