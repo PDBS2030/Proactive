@@ -32,7 +32,7 @@ export function Faq({ data = FAQS, roomy = false }: { data?: typeof FAQS; roomy?
             id="faq-title"
             className="mt-[25px] font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial] text-[#020f18]"
           >
-            {data.title}
+            {data.title.split(/(?<=FAQ)(?=s\b)/).map((part, i) => (i === 0 ? part : <span key={i} className="normal-case">{part}</span>))}
           </h2>
           <Link
             href={data.cta.href}
