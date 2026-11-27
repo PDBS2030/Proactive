@@ -8,7 +8,7 @@ import { Nav } from "../Nav";
 import { grid } from "../ui";
 import { BrandLockup } from "@/components/BrandLockup";
 import { isAdmin } from "@/lib/admin-auth";
-import { readDb } from "@/lib/db";
+import { onHost, readDb } from "@/lib/db";
 
 async function Gate({ children }: { children: React.ReactNode }) {
   if (!(await isAdmin())) redirect("/admin/login");
@@ -34,7 +34,7 @@ async function Gate({ children }: { children: React.ReactNode }) {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-gold opacity-60 motion-reduce:animate-none" />
               <span className="relative inline-flex size-2.5 rounded-full bg-gold" />
             </span>
-            Local mode: saved on this computer, not on the live site.
+            {onHost ? "Live site: what you save here goes straight to the website." : "Local mode: saved on this computer, not on the live site."}
           </p>
           <form action={logout}>
             <button type="submit" className="flex cursor-pointer items-center gap-2 text-sm text-white/65 transition-colors duration-200 hover:text-gold">

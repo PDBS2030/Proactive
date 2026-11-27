@@ -59,7 +59,7 @@ const FILE = path.join(process.cwd(), "data", "db.json");
 const BLOB_NAME = "db.json";
 
 /** On the host the data lives in a private Blob store; on the developer's machine, in a file. */
-const onHost = Boolean(process.env.VERCEL);
+export const onHost = Boolean(process.env.VERCEL);
 const dataToken = () => process.env.PDBS_DATA_BLOB_TOKEN;
 
 /** Whether the dashboard has somewhere to save: always on the developer's machine, on the host once the data store is connected. */

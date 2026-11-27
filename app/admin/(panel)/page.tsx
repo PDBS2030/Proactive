@@ -7,7 +7,7 @@ import { Greeting, TodayLabel } from "../LocalTime";
 import { Icons } from "../icons";
 import { grid, Panel } from "../ui";
 import { PROJECT_TABS } from "@/lib/data";
-import { getNews, getProjects, readDb } from "@/lib/db";
+import { getNews, getProjects, onHost, readDb } from "@/lib/db";
 
 const count = <T,>(items: T[], key: (i: T) => string, order: string[]) => order.map((label) => ({ label, value: items.filter((i) => key(i) === label).length }));
 
@@ -141,7 +141,7 @@ export default async function Overview() {
       </div>
 
       {/* the real site, live */}
-      <Panel title="The live site" note="This is the local site. Refresh after you save a change." className="mt-6">
+      <Panel title="The live site" note={onHost ? "This is the live site. Refresh after you save a change." : "This is the local site. Refresh after you save a change."} className="mt-6">
         <HomePreview />
       </Panel>
 
