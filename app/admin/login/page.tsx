@@ -16,7 +16,7 @@ export default function LoginPage() {
           <LoginForm />
         ) : (
           <p className="mt-4 text-[15px] leading-[1.6] text-white/80">
-            The dashboard needs two settings in <code>.env.local</code>: <code>ADMIN_PASSWORD</code> and <code>ADMIN_SECRET</code>. Add them and restart the local server.
+            The dashboard needs three settings: <code>ADMIN_EMAIL</code>, <code>ADMIN_PASSWORD</code> and <code>ADMIN_SECRET</code>. Add them to <code>.env.local</code> (or to the host&apos;s environment) and restart.
           </p>
         )}
       </div>

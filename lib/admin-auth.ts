@@ -4,7 +4,7 @@ import { connection } from "next/server";
 import { canWrite } from "@/lib/db";
 
 /**
- * Sign-in for the admin dashboard. The password and a signing secret live in .env.local (never in the code); a
+ * Sign-in for the admin dashboard. The admin email, the password and a signing secret live in .env.local (never in the code); a
  * successful sign-in sets a signed, http-only cookie that lasts a week. The dashboard is available only on the
  * developer's machine, and only when both settings are present.
  */
@@ -12,15 +12,20 @@ export const COOKIE = "pdbs_admin";
 const DAY = 24 * 60 * 60 * 1000;
 
 export const adminAvailable = () => canWrite;
-export const adminConfigured = () => Boolean(process.env.ADMIN_PASSWORD && process.env.ADMIN_SECRET);
+export const adminConfigured = () => Boolean(process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD && process.env.ADMIN_SECRET);
 
 const sign = (value: string) => createHmac("sha256", process.env.ADMIN_SECRET ?? "").update(value).digest("hex");
 const digest = (value: string) => createHash("sha256").update(value).digest();
 
-export function passwordOk(input: string) {
+/** Signing in takes the admin's email address and the password. ADMIN_EMAIL may list several addresses, separated by commas; they share the one password. */
+export function credentialsOk(email: string, password: string) {
   const real = process.env.ADMIN_PASSWORD;
-  if (!real || !process.env.ADMIN_SECRET) return false;
-  return timingSafeEqual(digest(input), digest(real));
+  if (!real || !process.env.ADMIN_SECRET || !process.env.ADMIN_EMAIL) return false;
+  const given = email.trim().toLowerCase();
+  const emailGood = process.env.ADMIN_EMAIL.split(",").some((e) => e.trim() !== "" && e.trim().toLowerCase() === given);
+  // both are always checked, so a wrong email and a wrong password look the same
+  const passwordGood = timingSafeEqual(digest(password), digest(real));
+  return emailGood && passwordGood;
 }
 
 export async function startSession() {

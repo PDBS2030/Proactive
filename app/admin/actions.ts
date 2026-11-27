@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { revalidatePath, updateTag } from "next/cache";
 import { redirect } from "next/navigation";
-import { endSession, isAdmin, passwordOk, startSession } from "@/lib/admin-auth";
+import { credentialsOk, endSession, isAdmin, startSession } from "@/lib/admin-auth";
 import { PROJECT_TABS } from "@/lib/data";
 import { CATEGORY_TAB, getNews, getProjects, readDb, update, type NewsItem } from "@/lib/db";
 import { PROJECTS, type Project, type Region, type Sector, type ServiceType } from "@/lib/pages";
@@ -72,7 +72,7 @@ const refresh = () => {
 /* ── sign in and out ── */
 
 export async function login(_state: { error?: string } | undefined, form: FormData) {
-  if (!passwordOk(String(form.get("password") ?? ""))) return { error: "That password is not right." };
+  if (!credentialsOk(String(form.get("email") ?? ""), String(form.get("password") ?? ""))) return { error: "That email or password is not right." };
   await startSession();
   redirect("/admin");
 }

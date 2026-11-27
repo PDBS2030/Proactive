@@ -3,10 +3,19 @@
 import { useActionState } from "react";
 import { login } from "../actions";
 
+const field =
+  "mt-1.5 block min-h-12 w-full border border-white/25 bg-white/8 px-4 text-[16px] text-white outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-white/35 hover:border-white/50 focus:border-gold focus:shadow-[0_0_0_3px_rgba(181,143,72,.3)]";
+
 export function LoginForm() {
   const [state, action, pending] = useActionState(login, undefined);
   return (
     <form action={action} className="mt-7 grid gap-5">
+      <div>
+        <label htmlFor="email" className="block text-[13px] font-semibold tracking-[.02em] text-white/80">
+          Email
+        </label>
+        <input id="email" name="email" type="email" required autoFocus autoComplete="username" className={field} />
+      </div>
       <div>
         <label htmlFor="password" className="block text-[13px] font-semibold tracking-[.02em] text-white/80">
           Password
@@ -16,9 +25,8 @@ export function LoginForm() {
           name="password"
           type="password"
           required
-          autoFocus
           autoComplete="current-password"
-          className="mt-1.5 block min-h-12 w-full border border-white/25 bg-white/8 px-4 text-[16px] text-white outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-white/35 hover:border-white/50 focus:border-gold focus:shadow-[0_0_0_3px_rgba(181,143,72,.3)]"
+          className={field}
         />
       </div>
       {state?.error && (
