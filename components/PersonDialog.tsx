@@ -113,8 +113,6 @@ export function PersonDialog({ people }: { people: Person[] }) {
           <div className="flex flex-col justify-center min-[860px]:py-4">
             <div className="vision-rise flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-[.15em] uppercase" style={{ ["--d" as string]: "500ms" }}>
               <span className="rounded-md bg-[#04142a] px-3.5 py-2.5 font-semibold text-white">Team profile</span>
-              <span className="text-[#082b52]/55">| PDBS</span>
-              <span className="text-[#082b52]/55">| Design-Build</span>
             </div>
             <hr className="vision-rise my-8 border-0 border-t border-[#082b52]/15" style={{ ["--d" as string]: "650ms" }} />
             <div className="grid max-w-[64ch] gap-5">
