@@ -211,6 +211,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
   const toggle = (k: "type" | "place" | "exp") => setOpen((o) => (o === k ? null : k));
   const visible = shown.slice(0, count);
   const columns = useColumns();
+  const [active, setActive] = useState<[number, number] | null>(null);
   // the cards stand in rows, so that the one pointed at can widen while the others in its row narrow by the same share
   const rows = useMemo(() => {
     const out: (Project | null)[][] = [];
@@ -303,10 +304,18 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
               <ul key={r} className="flex gap-6 min-[1100px]:gap-10">
                 {row.map((p, c) =>
                   p ? (
-                    <li key={p.id} className="min-w-0 grow basis-0 transition-[flex-grow] duration-500 ease-[cubic-bezier(.22,.7,.2,1)] hover:grow-[1.5] focus-within:grow-[1.5] motion-reduce:transition-none">
+                    <li
+                      key={p.id}
+                      onPointerEnter={(e) => e.pointerType === "mouse" && setActive([r, c])}
+                      onPointerLeave={() => setActive(null)}
+                      onFocus={() => setActive([r, c])}
+                      onBlur={() => setActive(null)}
+                      className="min-w-0 grow basis-0 transition-[flex-grow] duration-500 ease-[cubic-bezier(.22,.7,.2,1)] hover:grow-[1.5] focus-within:grow-[1.5] motion-reduce:transition-none">
                       <Link
                         href={`/projects/${projectSlug(p)}`}
-                        className="group relative block h-[clamp(300px,25vw,400px)] overflow-hidden bg-[#e6e6e6] no-underline shadow-[0_22px_40px_-22px_rgba(8,43,82,.55),0_2px_6px_rgba(8,43,82,.12)] outline-none transition-shadow duration-500 hover:shadow-[0_34px_56px_-24px_rgba(8,43,82,.65),0_4px_10px_rgba(8,43,82,.14)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]"
+                        // only the cards in the same row or column as the one pointed at fade, and only a little: a touch less colour, a touch darker
+                        style={{ filter: active && (active[0] === r) !== (active[1] === c) ? "grayscale(.4) brightness(.93)" : "none" }}
+                        className="group relative block h-[clamp(300px,25vw,400px)] overflow-hidden bg-[#e6e6e6] transition-[box-shadow,filter] duration-500 no-underline shadow-[0_22px_40px_-22px_rgba(8,43,82,.55),0_2px_6px_rgba(8,43,82,.12)] outline-none hover:shadow-[0_34px_56px_-24px_rgba(8,43,82,.65),0_4px_10px_rgba(8,43,82,.14)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]"
                       >
                         <Image
                           src={p.image}
