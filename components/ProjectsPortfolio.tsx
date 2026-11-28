@@ -317,8 +317,16 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
                           className="object-cover"
                         />
                         {/* the name sits over the foot of the picture; the card that is pointed at opens to show a few words about the project */}
-                        <div className="absolute inset-x-0 bottom-0 bg-white/95 px-4 pt-3.5 pb-3.5">
-                          <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-[#0d4189] via-[#082b52] to-[#04142a] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
+                        <div className="absolute inset-x-0 bottom-0 bg-white/95 px-4 pt-3.5 pb-3.5 transition-colors duration-500 group-hover:bg-transparent group-focus-visible:bg-transparent">
+                          {/* a cinematic fall of colour: the photograph darkens into deep navy from above, with a cold blue light in one corner and a warm one in the other */}
+                          <span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute inset-x-0 -top-24 bottom-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100"
+                            style={{
+                              background:
+                                "radial-gradient(90% 70% at 100% 100%, rgba(35,86,229,.55), transparent 65%), radial-gradient(60% 55% at 0% 100%, rgba(227,169,58,.22), transparent 70%), linear-gradient(to top, #020a16 0%, #04142a 38%, rgba(4,20,42,.92) 58%, rgba(4,20,42,.55) 80%, rgba(4,20,42,0) 100%)",
+                            }}
+                          />
                           <span aria-hidden="true" className="absolute top-0 left-0 block h-[3px] w-full bg-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
                           <h2 className="relative text-[12px] leading-[1.35] font-semibold tracking-[.12em] text-[#082b52] uppercase transition-colors duration-300 group-hover:text-white group-focus-visible:text-white">{p.title}</h2>
                           <p className="sr-only">
