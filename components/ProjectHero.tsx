@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ui } from "@/components/PageIntro";
+import { ShareProject } from "@/components/ShareProject";
 import { HERO_H1 } from "@/lib/heroType";
-import { SECTOR_BLURB, SERVICE_LINE, projectPlace, type Project } from "@/lib/pages";
+import { SECTOR_BLURB, SERVICE_LINE, projectPlace, projectSlug, type Project } from "@/lib/pages";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 /**
  * The top of a project's own page. The type of project is the heading; the project's name, its place and a short
@@ -40,6 +42,8 @@ export function ProjectHero({ project: p }: { project: Project }) {
             {p.scope}. {SERVICE_LINE[p.service]}
           </p>
           <p className="mt-4 max-w-[46ch] font-mulish text-[17px] leading-[1.65] text-white/65">{SECTOR_BLURB[p.sector]}</p>
+
+          <ShareProject url={`${SITE_URL}/projects/${projectSlug(p)}`} title={`${p.title}, ${p.city} — ${SITE_NAME}`} />
         </div>
 
         {/* on wide screens the photograph is laid against the right edge and fills the height under the header; on narrow ones it runs the full width below the text */}
