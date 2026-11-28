@@ -228,7 +228,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
 
       {/* the bar of filters: it stays under the header while the grid scrolls */}
       <div ref={bar} className="relative z-20 min-[768px]:sticky min-[768px]:top-(--hdr,86px) mt-10 border-b border-[#c7c8ca] bg-white min-[768px]:mt-14">
-        <div className="mx-auto w-full max-w-[1920px] px-4 min-[768px]:px-8 min-[1100px]:px-16">
+        <div className="mx-auto w-full max-w-[1928px] px-4 min-[768px]:px-[124px]">
           <button
             type="button"
             onClick={() => setMobile((m) => !m)}
@@ -286,7 +286,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1920px] px-4 pt-10 pb-8 min-[768px]:px-8 min-[1100px]:px-16 min-[1100px]:pt-14">
+      <div className="mx-auto w-full max-w-[1928px] px-4 pt-10 pb-8 min-[768px]:px-[124px] min-[1100px]:pt-14">
         {shown.length === 0 ? (
           <div className="border border-[#c7c8ca] px-6 py-16 text-center">
             <p className={`${ui.sub} text-[#082b52]`}>No projects match these filters</p>
