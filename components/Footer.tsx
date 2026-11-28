@@ -28,10 +28,12 @@ function Icon({ children }: { children: React.ReactNode }) {
 const SOCIAL = [
   {
     label: "Facebook",
+    href: "https://www.facebook.com/ProActiveDBS",
     icon: <path d="M14 8.5V7a1.5 1.5 0 0 1 1.5-1.5H17V3h-2.5A3.5 3.5 0 0 0 11 6.5v2H8.5V11H11v10h3V11h2.5l.5-2.5H14Z" />,
   },
   {
     label: "LinkedIn",
+    href: "#",
     icon: (
       <>
         <rect x="3" y="3" width="18" height="18" rx="3" />
@@ -41,6 +43,7 @@ const SOCIAL = [
   },
   {
     label: "Instagram",
+    href: "#",
     icon: (
       <>
         <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -81,7 +84,7 @@ export function Footer() {
               {SOCIAL.map((s) => (
                 <a
                   key={s.label}
-                  href="#"
+                  href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
