@@ -55,6 +55,27 @@ export function HeroVideo() {
   const veil = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    let stop: (() => void) | undefined;
+    let waiting = 0;
+    let cancelled = false;
+
+    // The page, its pictures and its type come first; the film only starts once they have arrived
+    const run = () => {
+      waiting = window.setTimeout(() => {
+        if (!cancelled) stop = init();
+      }, 800);
+    };
+    if (document.readyState === "complete") run();
+    else window.addEventListener("load", run, { once: true });
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener("load", run);
+      window.clearTimeout(waiting);
+      stop?.();
+    };
+
+    function init(): (() => void) | undefined {
     const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
     const still =
       window.matchMedia("(prefers-reduced-motion: reduce)").matches || conn?.saveData || /(^|-)2g$|3g$/.test(conn?.effectiveType ?? "");
@@ -62,9 +83,12 @@ export function HeroVideo() {
     const area = root.current;
     const light = wash.current;
     const shade = veil.current;
-    if (still || vids.length !== CLIPS.length || !area || !light || !shade) return;
+    if (still || vids.length !== CLIPS.length || !area || !light || !shade) return undefined;
 
     const narrow = window.matchMedia("(max-width: 900px)").matches;
+    // a phone gets one film, played over and over: that is a quarter of the download on mobile data
+    const count = narrow ? 1 : CLIPS.length;
+    if (count === 1) vids[0].loop = true;
     // a soft focus pull is lovely on a big screen and costly on a small one
     const pull = !narrow;
 
@@ -143,7 +167,7 @@ export function HeroVideo() {
     const watch = () => {
       if (moving || !onScreen || disposed) return;
       const v = vids[current];
-      if (!v.duration || (v.paused && !v.ended)) return;
+      if (count === 1 || !v.duration || (v.paused && !v.ended)) return;
       if (v.duration - v.currentTime > OVERLAP) return;
       const to = (current + 1) % CLIPS.length;
       fetchClip(to);
@@ -183,8 +207,10 @@ export function HeroVideo() {
         first.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 900, easing: "ease-out", fill: "both" }).onfinish = () => {
           settle(first, true);
         };
-        timers.push(window.setTimeout(() => fetchClip(1), 600));
-        vids[1].addEventListener("canplaythrough", () => fetchClip(2), { once: true });
+        if (count > 1) {
+          timers.push(window.setTimeout(() => fetchClip(1), 600));
+          vids[1].addEventListener("canplaythrough", () => fetchClip(2), { once: true });
+        }
       },
       { once: true },
     );
@@ -202,6 +228,7 @@ export function HeroVideo() {
       document.removeEventListener("visibilitychange", onVisibility);
       pause();
     };
+    }
   }, []);
 
   return (
