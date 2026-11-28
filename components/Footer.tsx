@@ -43,7 +43,7 @@ const SOCIAL = [
   },
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/proactivedesignbuilds/",
     icon: (
       <>
         <rect x="3" y="3" width="18" height="18" rx="5" />
