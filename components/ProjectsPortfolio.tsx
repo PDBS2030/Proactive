@@ -303,7 +303,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
               <ul key={r} className="flex gap-6 min-[1100px]:gap-10">
                 {row.map((p, c) =>
                   p ? (
-                    <li key={p.id} className="min-w-0 grow basis-0 transition-[flex-grow] duration-500 ease-[cubic-bezier(.22,.7,.2,1)] hover:grow-[2.4] focus-within:grow-[2.4] motion-reduce:transition-none">
+                    <li key={p.id} className="min-w-0 grow basis-0 transition-[flex-grow] duration-500 ease-[cubic-bezier(.22,.7,.2,1)] hover:grow-[1.5] focus-within:grow-[1.5] motion-reduce:transition-none">
                       <Link
                         href={`/projects/${projectSlug(p)}`}
                         className="group relative block h-[clamp(300px,25vw,400px)] overflow-hidden bg-[#e6e6e6] no-underline shadow-[0_22px_40px_-22px_rgba(8,43,82,.55),0_2px_6px_rgba(8,43,82,.12)] outline-none transition-shadow duration-500 hover:shadow-[0_34px_56px_-24px_rgba(8,43,82,.65),0_4px_10px_rgba(8,43,82,.14)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]"
