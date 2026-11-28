@@ -33,7 +33,7 @@ const SOCIAL = [
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/proactive-design-and-building-systems-inc./",
     icon: (
       <>
         <rect x="3" y="3" width="18" height="18" rx="3" />
