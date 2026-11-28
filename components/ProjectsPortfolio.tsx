@@ -2,13 +2,27 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { SERVICE_SLUGS, projectSlug, type Project, type Region } from "@/lib/pages";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { SERVICE_LINE, SERVICE_SLUGS, projectPlace, projectSlug, type Project, type Region } from "@/lib/pages";
 import { cn } from "@/lib/cn";
 import { HERO_H1 } from "@/lib/heroType";
 import { ui } from "@/components/PageIntro";
 
 const PAGE = 24;
+
+/** How many cards stand in a row at this width, as the grid used to decide with its breakpoints. */
+const BREAKPOINTS: [string, number][] = [
+  ["(min-width: 1100px)", 4],
+  ["(min-width: 768px)", 3],
+  ["(min-width: 520px)", 2],
+];
+const subscribeColumns = (notify: () => void) => {
+  const lists = BREAKPOINTS.map(([q]) => window.matchMedia(q));
+  lists.forEach((l) => l.addEventListener("change", notify));
+  return () => lists.forEach((l) => l.removeEventListener("change", notify));
+};
+const columnsNow = () => BREAKPOINTS.find(([q]) => window.matchMedia(q).matches)?.[1] ?? 1;
+const useColumns = () => useSyncExternalStore(subscribeColumns, columnsNow, () => 4);
 const REGIONS: Region[] = ["Maryland", "DC"];
 const slugify = (v: string) => v.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -196,6 +210,17 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
   };
   const toggle = (k: "type" | "place" | "exp") => setOpen((o) => (o === k ? null : k));
   const visible = shown.slice(0, count);
+  const columns = useColumns();
+  // the cards stand in rows, so that the one pointed at can widen while the others in its row narrow by the same share
+  const rows = useMemo(() => {
+    const out: (Project | null)[][] = [];
+    for (let i = 0; i < visible.length; i += columns) {
+      const row: (Project | null)[] = visible.slice(i, i + columns);
+      while (row.length < columns) row.push(null);
+      out.push(row);
+    }
+    return out;
+  }, [visible, columns]);
 
   return (
     <div>
@@ -261,7 +286,7 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1920px] px-4 pt-6 min-[768px]:px-8 min-[1100px]:px-16">
+      <div className="mx-auto w-full max-w-[1920px] px-4 pt-10 pb-8 min-[768px]:px-8 min-[1100px]:px-16 min-[1100px]:pt-14">
         {shown.length === 0 ? (
           <div className="border border-[#c7c8ca] px-6 py-16 text-center">
             <p className={`${ui.sub} text-[#082b52]`}>No projects match these filters</p>
@@ -273,34 +298,50 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
             )}
           </div>
         ) : (
-          <ul className="grid grid-cols-1 gap-6 min-[520px]:grid-cols-2 min-[768px]:grid-cols-3 min-[1100px]:grid-cols-4">
-            {visible.map((p, i) => (
-              <li key={p.id}>
-                <Link href={`/projects/${projectSlug(p)}`} className="group relative block overflow-hidden border border-[#c7c8ca] no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]">
-                  <div className="relative aspect-[3/4] bg-[#e6e6e6]">
-                    <Image
-                      src={p.image}
-                      alt=""
-                      fill
-                      sizes="(max-width: 520px) 100vw, (max-width: 768px) 50vw, (max-width: 1100px) 33vw, 25vw"
-                      priority={i < 4}
-                      className="object-cover"
-                    />
-                  </div>
-                  {/* the name sits over the foot of the picture; a bar of gold marks the card that is pointed at */}
-                  <div className="absolute inset-x-px bottom-0 border-b border-[#c7c8ca] bg-white/95 p-4 transition-colors duration-200 group-hover:bg-white/75">
-                    <span aria-hidden="true" className="absolute top-0 left-0 -mt-1 block h-1 w-full bg-gold opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-                    <h2 className={`${ui.tile} text-[#082b52]`}>
-                      {p.title}
-                    </h2>
-                    <p className="sr-only">
-                      {p.city}, {p.region}. {p.sector}. {p.service}.
-                    </p>
-                  </div>
-                </Link>
-              </li>
+          <div className="grid gap-y-12 min-[768px]:gap-y-16">
+            {rows.map((row, r) => (
+              <ul key={r} className="flex gap-6 min-[1100px]:gap-10">
+                {row.map((p, c) =>
+                  p ? (
+                    <li key={p.id} className="min-w-0 grow basis-0 transition-[flex-grow] duration-500 ease-[cubic-bezier(.22,.7,.2,1)] hover:grow-[2.4] focus-within:grow-[2.4] motion-reduce:transition-none">
+                      <Link
+                        href={`/projects/${projectSlug(p)}`}
+                        className="group relative block h-[clamp(300px,25vw,400px)] overflow-hidden bg-[#e6e6e6] no-underline shadow-[0_22px_40px_-22px_rgba(8,43,82,.55),0_2px_6px_rgba(8,43,82,.12)] outline-none transition-shadow duration-500 hover:shadow-[0_34px_56px_-24px_rgba(8,43,82,.65),0_4px_10px_rgba(8,43,82,.14)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]"
+                      >
+                        <Image
+                          src={p.image}
+                          alt=""
+                          fill
+                          sizes="(max-width: 520px) 100vw, (max-width: 768px) 50vw, (max-width: 1100px) 33vw, 40vw"
+                          priority={r === 0}
+                          className="object-cover"
+                        />
+                        {/* the name sits over the foot of the picture; the card that is pointed at opens to show a few words about the project */}
+                        <div className="absolute inset-x-0 bottom-0 bg-white/95 px-4 pt-3.5 pb-3.5 transition-colors duration-300 group-hover:bg-white group-focus-visible:bg-white">
+                          <span aria-hidden="true" className="absolute top-0 left-0 block h-[3px] w-full bg-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
+                          <h2 className="text-[12px] leading-[1.35] font-semibold tracking-[.12em] text-[#082b52] uppercase">{p.title}</h2>
+                          <p className="sr-only">
+                            {p.city}, {p.region}. {p.sector}. {p.service}.
+                          </p>
+                          <div aria-hidden="true" className="hidden min-[768px]:[@media(hover:hover)]:grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.22,.7,.2,1)] group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
+                            <div className="overflow-hidden">
+                              <p className="mt-2 text-[11px] leading-4 font-medium tracking-[.14em] text-gold uppercase">{projectPlace(p)}</p>
+                              <p className="mt-2 line-clamp-4 font-mulish text-[14px] leading-[1.55] text-[#082b52]/85">
+                                {p.scope}. {SERVICE_LINE[p.service]}
+                              </p>
+                              <span className="mt-3 inline-block text-[11px] font-semibold tracking-[.14em] text-[#082b52] uppercase">View project</span>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </li>
+                  ) : (
+                    <li key={`gap-${c}`} aria-hidden="true" className="min-w-0 grow basis-0" />
+                  ),
+                )}
+              </ul>
             ))}
-          </ul>
+          </div>
         )}
 
         {shown.length > count && (
