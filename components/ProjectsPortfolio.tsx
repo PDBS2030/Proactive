@@ -317,19 +317,20 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
                           className="object-cover"
                         />
                         {/* the name sits over the foot of the picture; the card that is pointed at opens to show a few words about the project */}
-                        <div className="absolute inset-x-0 bottom-0 bg-white/95 px-4 pt-3.5 pb-3.5 transition-colors duration-300 group-hover:bg-white group-focus-visible:bg-white">
+                        <div className="absolute inset-x-0 bottom-0 bg-white/95 px-4 pt-3.5 pb-3.5">
+                          <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-[#0d4189] via-[#082b52] to-[#04142a] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
                           <span aria-hidden="true" className="absolute top-0 left-0 block h-[3px] w-full bg-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
-                          <h2 className="text-[12px] leading-[1.35] font-semibold tracking-[.12em] text-[#082b52] uppercase">{p.title}</h2>
+                          <h2 className="relative text-[12px] leading-[1.35] font-semibold tracking-[.12em] text-[#082b52] uppercase transition-colors duration-300 group-hover:text-white group-focus-visible:text-white">{p.title}</h2>
                           <p className="sr-only">
                             {p.city}, {p.region}. {p.sector}. {p.service}.
                           </p>
-                          <div aria-hidden="true" className="hidden min-[768px]:[@media(hover:hover)]:grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.22,.7,.2,1)] group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
+                          <div aria-hidden="true" className="relative hidden min-[768px]:[@media(hover:hover)]:grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.22,.7,.2,1)] group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
                             <div className="overflow-hidden">
                               <p className="mt-2 text-[11px] leading-4 font-medium tracking-[.14em] text-gold uppercase">{projectPlace(p)}</p>
-                              <p className="mt-2 line-clamp-4 font-mulish text-[14px] leading-[1.55] text-[#082b52]/85">
+                              <p className="mt-2 line-clamp-4 font-mulish text-[14px] leading-[1.55] text-white/90">
                                 {p.scope}. {SERVICE_LINE[p.service]}
                               </p>
-                              <span className="mt-3 inline-block text-[11px] font-semibold tracking-[.14em] text-[#082b52] uppercase">View project</span>
+                              <span className="mt-3 inline-block text-[11px] font-semibold tracking-[.14em] text-white uppercase">View project</span>
                             </div>
                           </div>
                         </div>
