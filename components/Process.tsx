@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { PROCESS } from "@/lib/data";
@@ -45,11 +46,10 @@ export function Process() {
       aria-labelledby="process-title"
       className="title-vars relative z-4 overflow-hidden bg-[#5c5834] px-4 py-16 text-white min-[768px]:px-[124px] min-[768px]:py-[110px]"
     >
-      <div
-        ref={bgRef}
-        aria-hidden="true"
-        className="absolute inset-x-0 -top-[25vh] -bottom-[25vh] z-0 bg-[url(/assets/process-bg.jpg)] bg-cover bg-center bg-no-repeat will-change-transform"
-      />
+      <div ref={bgRef} aria-hidden="true" className="absolute inset-x-0 -top-[25vh] -bottom-[25vh] z-0 will-change-transform">
+        {/* a real image, so it is sized to the screen and fetched only when the page scrolls near it */}
+        <Image src="/assets/process-bg.jpg" alt="" fill sizes="100vw" quality={60} className="object-cover object-center" />
+      </div>
       <div className="relative z-1 mx-auto w-[min(1210px,100%)] text-center">
         <h2 id="process-title" className="font-jost text-(length:--h2) leading-(--h2-lh) font-normal tracking-normal uppercase [text-wrap:initial]">
           {PROCESS.title}

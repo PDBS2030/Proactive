@@ -1,3 +1,4 @@
+import { Jost, Montserrat, Mulish } from "next/font/google";
 import localFont from "next/font/local";
 
 export const hanken = localFont({
@@ -7,29 +8,24 @@ export const hanken = localFont({
   display: "swap",
 });
 
-export const montserrat = localFont({
-  src: [
-    { path: "./fonts/montserrat-500.ttf", weight: "500" },
-    { path: "./fonts/montserrat-800.ttf", weight: "800" },
-  ],
+// Served from this site by Next.js at build time: the same typefaces as before, as small latin-only web fonts
+export const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["500", "800"],
   variable: "--f-montserrat",
   display: "swap",
 });
 
-export const mulish = localFont({
-  src: [
-    { path: "./fonts/mulish-400.ttf", weight: "400" },
-    { path: "./fonts/mulish-800.ttf", weight: "800" },
-  ],
+export const mulish = Mulish({
+  subsets: ["latin"],
+  weight: ["400", "800"],
   variable: "--f-mulish",
   display: "swap",
 });
 
-export const jost = localFont({
-  src: [
-    { path: "./fonts/jost-400.ttf", weight: "400" },
-    { path: "./fonts/jost-500.ttf", weight: "500" },
-  ],
+export const jost = Jost({
+  subsets: ["latin"],
+  weight: ["400", "500"],
   variable: "--f-jost",
   display: "swap",
 });
