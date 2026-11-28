@@ -313,8 +313,8 @@ export function ProjectsPortfolio({ projects }: { projects: Project[] }) {
                       className="min-w-0 grow basis-0 transition-[flex-grow] duration-500 ease-[cubic-bezier(.22,.7,.2,1)] hover:grow-[1.5] focus-within:grow-[1.5] motion-reduce:transition-none">
                       <Link
                         href={`/projects/${projectSlug(p)}`}
-                        // only the cards in the same row or column as the one pointed at fade, and only a little: a touch less colour, a touch darker
-                        style={{ filter: active && (active[0] === r) !== (active[1] === c) ? "grayscale(.4) brightness(.93)" : "none" }}
+                        // only the cards in the same row or column as the one pointed at fade, and only a little: clearly less colour and darker
+                        style={{ filter: active && (active[0] === r) !== (active[1] === c) ? "grayscale(.85) brightness(.8)" : "none" }}
                         className="group relative block h-[clamp(300px,25vw,400px)] overflow-hidden bg-[#e6e6e6] transition-[box-shadow,filter] duration-500 no-underline shadow-[0_22px_40px_-22px_rgba(8,43,82,.55),0_2px_6px_rgba(8,43,82,.12)] outline-none hover:shadow-[0_34px_56px_-24px_rgba(8,43,82,.65),0_4px_10px_rgba(8,43,82,.14)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2356e5]"
                       >
                         <Image
